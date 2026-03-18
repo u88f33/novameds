@@ -16,6 +16,9 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "src", "views"));
 app.set("view engine", "ejs");
 
+// Middleware for static public folder
+app.use( express.static( "public" ) );
+
 // Middleware for JSON and HTML Form data
 app.use( express.urlencoded( { extended: false } ) );
 app.use( express.json() );
