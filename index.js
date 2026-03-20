@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
+import Routes from "./src/routes/index.js";
 
 // Initializing Environment variables from ".env" file
 dotenv.config();
@@ -23,12 +24,7 @@ app.use( express.static( "public" ) );
 app.use( express.urlencoded( { extended: false } ) );
 app.use( express.json() );
 
-// Route
-app.get( "/", ( req, res, next ) => {
-    res.render( 
-        "show/show"
-    )
-} );
+app.use( "/", Routes );
 
 const PORT = process.env.PORT;
 app.listen( PORT, () => {
