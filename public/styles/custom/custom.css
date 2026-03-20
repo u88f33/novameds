@@ -85,6 +85,8 @@ nav {
   gap: 20px;
   padding-top: 50px;
   padding-bottom: 50px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Card */
@@ -93,6 +95,7 @@ nav {
   border-radius: 10px;
   overflow: hidden;
   background: #fff;
+  box-shadow: 2px 2px 5px #999;
 }
 
 /* Header Image */
