@@ -17,6 +17,11 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "src", "views"));
 app.set("view engine", "ejs");
 
+// Adding icons to a website
+app.use("/fa", express.static(
+  path.join(process.cwd(), "node_modules/@fortawesome/fontawesome-free")
+));
+
 // Middleware for static public folder
 app.use( express.static( "public" ) );
 
@@ -25,6 +30,7 @@ app.use( express.urlencoded( { extended: false } ) );
 app.use( express.json() );
 
 app.use( "/", Routes );
+
 
 const PORT = process.env.PORT;
 app.listen( PORT, () => {
