@@ -199,7 +199,7 @@ nav {
     color: #ffffff;
     text-align: center;
     padding: 15px 0;
-    margin-top: 120px;
+    margin-top: 30px;
 }
 
 .footer p {
@@ -207,26 +207,46 @@ nav {
     font-size: 14px;
 }
 
-.login-form-container {
-    border: 1px solid black;
-    margin: 50px 0;
+.login-container {
+    margin: 80px 0 80px 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 70vh;
+    padding: 20px;
 }
 
-.login-form-container > form {
-    padding: 40px;
-    width: 40%;
-    border: 1px solid black;
+.login-container-left {
+    width: 50%;
+    padding: 50px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-container-right {
+    overflow: hidden;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 2px 15px #212121;
     border-radius: 10px;
 }
 
+.login-container-right > img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.login-container-left form {
+    width: 90%;
+}
+
 .form-control {
-    border: 1px solid #212121;
     padding-left: 10px;
-    border-radius: 50px;
+    border-radius: 10px;
 }
 
 .login-btn {
@@ -242,4 +262,35 @@ nav {
     background-color: #fff;
     color: #212121;
     border: 2px solid #212121;
+}
+
+.login-tabs-container {
+    height: 455px;
+    padding-top: 25px;
+    
+}
+
+.login-tabs-buttons {
+    margin-bottom: 50px;
+}
+
+.login-tabs-buttons > button.tab {
+    border: 2px solid #212121;
+    padding: 8px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    color: #212121;
+}
+
+.login-tabs-buttons > .tab.active {
+    background-color: #212121;
+    color: #fff;
+}
+
+.login-panel {
+    display: none;
+}
+
+.login-panel > h1 {
+    margin-bottom: 30px;
 }
