@@ -1,0 +1,49 @@
+<%- include( "../partials/header/prelogin" ) -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="login-form-container">
+                <form
+                    class="form login-form"
+                    action="/login"
+                    method="POST">
+
+                    <div class="mb-3">
+                        <label for="emailInputLogin" class="form-label">Email</label>
+                        <input 
+                            type="email"
+                            class="form-control"
+                            id="emailInputLogin"
+                            placeholder="username@gmail.com"
+                            required="true"
+                            maxlength="60"
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="passwordInputLogin" class="form-label">Password</label>
+                        <input 
+                            type="password"
+                            class="form-control"
+                            id="passwordInputLogin"
+                            placeholder="P@ssword123"
+                            required="true"
+                            min="8"
+                            maxlength="30"
+                        />
+                    </div>
+
+                    <button type="submit" class="btn login-btn">Submit</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<%- include( "../partials/footer/footer" ) -%>

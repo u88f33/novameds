@@ -49,6 +49,10 @@ nav {
     padding-right: 20px !important;
 }
 
+.login:hover {
+  background-color: #d1d1d1;
+}
+
 .dropdown-item:hover {
     color: var(--text-light) !important;
     background-color: #ffffff33 !important;
@@ -70,7 +74,7 @@ nav {
     outline: none;
 }
 
-[type="submit"] {
+.search-medicine {
     border-radius: 50px;
     border: 3px solid #fff !important;
     color: var(--text-light) !important;
@@ -84,7 +88,7 @@ nav {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -148,5 +152,94 @@ nav {
 }
 
 .add-to-cart-btn:hover {
-  background: #e0e0e0;
+    background-color: #212529;
+    color: #fff;
+}
+
+.card-info {
+  margin-top: 10px;
+}
+
+.add-to-cart-btn {
+  margin-top: 20px;
+}
+
+.pagination-container {
+    margin: 20px 0 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-btn {
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #212529;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #212529;
+    font-size: 18px;
+}
+
+.page-btn:hover {
+    background-color: #212529;
+    color: #fff;
+}
+
+.arrow {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.footer {
+    background-color: #212529;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 120px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.login-form-container {
+    border: 1px solid black;
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.login-form-container > form {
+    padding: 40px;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.form-control {
+    border: 1px solid #212121;
+    padding-left: 10px;
+    border-radius: 50px;
+}
+
+.login-btn {
+    width: 100%;
+    border-radius: 50px;
+    border: 2px solid #212121;
+    background-color: #212121;
+    color: white;
+    margin-top: 20px;
+}
+
+.login-btn:hover {
+    background-color: #fff;
+    color: #212121;
+    border: 2px solid #212121;
 }
