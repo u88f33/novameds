@@ -18,9 +18,10 @@
                             <div class="login-panel user-tabs-panel" id="userPanelId">
                                 <h1>User Login</h1>
 
+                                <%# User Login Form %>
                                 <form
                                 class="form login-form"
-                                action="/login"
+                                action="/user-login"
                                 method="POST">
 
                                 <div class="mb-3">
@@ -32,6 +33,7 @@
                                         placeholder="username@gmail.com"
                                         required="true"
                                         maxlength="60"
+                                        name="user_email"
                                     />
                                 </div>
 
@@ -45,16 +47,58 @@
                                         required="true"
                                         min="8"
                                         maxlength="30"
+                                        name="user_password"
                                     />
                                 </div>
 
                                     <button type="submit" class="btn login-btn">Submit</button>
+
+                                    <div class="login-footer">
+                                        <span class="login-text">Don't have an account?</span>
+                                        <a href="/register" class="login-link">Create Account</a>
+                                    </div>
 
                                 </form>
                             </div>
 
                             <div class="login-panel admin-tabs-panel" id="adminPanelId">
                                 <h1>Admin Login</h1>
+                                <%# Admin Login Form %>
+                                <form
+                                    class="form login-form"
+                                    action="/admin-login"
+                                    method="POST">
+
+                                <div class="mb-3">
+                                    <label for="emailInputLogin" class="form-label">Email</label>
+                                    <input 
+                                        type="email"
+                                        class="form-control border border-dark"
+                                        id="emailInputLogin"
+                                        placeholder="admin@gmail.com"
+                                        required="true"
+                                        maxlength="60"
+                                        name="admin_email"
+                                    />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="passwordInputLogin" class="form-label">Password</label>
+                                    <input 
+                                        type="password"
+                                        class="form-control border border-dark"
+                                        id="passwordInputLogin"
+                                        placeholder="P@ssword123"
+                                        required="true"
+                                        min="8"
+                                        maxlength="30"
+                                        name="admin_password"
+                                    />
+                                </div>
+
+                                    <button type="submit" class="btn login-btn">Submit</button>
+
+                                </form>
                             </div>
                         </div>
 

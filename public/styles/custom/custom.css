@@ -246,12 +246,12 @@ nav {
 
 .form-control {
     padding-left: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .login-btn {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 5px;
     border: 2px solid #212121;
     background-color: #212121;
     color: white;
@@ -271,14 +271,14 @@ nav {
 }
 
 .login-tabs-buttons {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .login-tabs-buttons > button.tab {
     border: 2px solid #212121;
     padding: 8px 20px;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #212121;
 }
 
@@ -293,4 +293,8 @@ nav {
 
 .login-panel > h1 {
     margin-bottom: 30px;
+}
+
+.login-footer {
+    margin-top: 15px;
 }
