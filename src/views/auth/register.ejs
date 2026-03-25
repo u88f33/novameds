@@ -1,0 +1,113 @@
+<%- include( "../partials/header/prelogin" ) -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="login-container">
+                <div class="login-container-left">
+                    <h1 class="mb-4">REGISTER</h1>
+
+                    <%# User Registration Form %>
+                    <form
+                    class="form login-form"
+                    action="/user-register"
+                    method="POST">
+
+                    <div class="mb-3">
+                        <label for="nameInputRegister" class="form-label">Name</label>
+                        <input 
+                            type="text"
+                            class="form-control border border-dark"
+                            id="nameInputRegister"
+                            placeholder="Your name"
+                            required="true"
+                            maxlength="60"
+                            name="user_name"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="emailInputRegister" class="form-label">Email</label>
+                        <input 
+                            type="email"
+                            class="form-control border border-dark"
+                            id="emailInputRegister"
+                            placeholder="username@gmail.com"
+                            required="true"
+                            maxlength="60"
+                            name="user_email"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phoneInputRegister" class="form-label">Phone</label>
+                        <input 
+                            type="tel"
+                            class="form-control border border-dark"
+                            id="phoneInputRegister"
+                            placeholder="+923331234567"
+                            required="true"
+                            maxlength="14"
+                            name="user_phone"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="passwordInputRegister" class="form-label">Password</label>
+                        <input 
+                            type="password"
+                            class="form-control border border-dark"
+                            id="passwordInputRegister"
+                            placeholder="P@ssword123"
+                            required="true"
+                            min="8"
+                            maxlength="30"
+                            name="user_password"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Address</label>
+                        <input 
+                            type="text"
+                            class="form-control border border-dark"
+                            id="passwordInputLogin"
+                            placeholder="House# 98, Street# 18, G-6/2 Islamabad"
+                            required="true"
+                            min="8"
+                            maxlength="30"
+                            name="user_password"
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <button type="submit" class="btn login-btn">Register</button>
+
+                        <div class="login-footer">
+                            <span class="login-text">Already have an account?</span>
+                            <a href="/login" class="login-link">Login here</a>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div
+                    class="login-container-right">
+                    <img 
+                        src="/assets/images/login_page_image.jpg"
+                    />
+                </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<%- include( "../partials/footer/footer" ) -%>

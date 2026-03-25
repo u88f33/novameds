@@ -16,7 +16,7 @@
 
                         <div class="login-tabs-panels">
                             <div class="login-panel user-tabs-panel" id="userPanelId">
-                                <h1>User Login</h1>
+                                <h1 class="mb-4">LOGIN</h1>
 
                                 <%# User Login Form %>
                                 <form
@@ -34,6 +34,7 @@
                                         required="true"
                                         maxlength="60"
                                         name="user_email"
+                                        autocomplete="off"
                                     />
                                 </div>
 
@@ -48,10 +49,11 @@
                                         min="8"
                                         maxlength="30"
                                         name="user_password"
+                                        autocomplete="off"
                                     />
                                 </div>
 
-                                    <button type="submit" class="btn login-btn">Submit</button>
+                                    <button type="submit" class="btn login-btn">LOGIN</button>
 
                                     <div class="login-footer">
                                         <span class="login-text">Don't have an account?</span>
@@ -62,7 +64,7 @@
                             </div>
 
                             <div class="login-panel admin-tabs-panel" id="adminPanelId">
-                                <h1>Admin Login</h1>
+                                <h1 class="mb-4">Admin Login</h1>
                                 <%# Admin Login Form %>
                                 <form
                                     class="form login-form"
@@ -96,7 +98,7 @@
                                     />
                                 </div>
 
-                                    <button type="submit" class="btn login-btn">Submit</button>
+                                    <button type="submit" class="btn login-btn">LOGIN</button>
 
                                 </form>
                             </div>
