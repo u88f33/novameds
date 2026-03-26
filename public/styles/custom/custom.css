@@ -315,6 +315,8 @@ nav {
     margin-top: 30px;
     margin-left: 30px;
     font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .sidebar__title-main {
@@ -385,4 +387,18 @@ nav {
 .logout-admin__link-text {
     margin-left: 5px;
     color: #ff3131;
+}
+
+.dashboard-admin {
+    border: 6px solid blue;
+    width: 80%;
+    margin-left: auto;
+    height: 100vh;
+}
+
+.dashboard-admin div {
+    width: 20%;
+    background-color: #006eb9;
+    color: #fff;
+    margin: 0;
 }
