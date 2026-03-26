@@ -1,9 +1,30 @@
 <%- include( "../../partials/admin/sidebar" ) -%>
 
-<div class="dashboard-admin">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
+<div class="dashboard">
+
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__main">
+        <div class="dashboard__header-title">
+            <h1 class="dashboard__title">Dashboard</h1>
+        </div>
+    </div>
 </div>
 
 <%- include( "../../partials/admin/footer" ) -%>
