@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="stylesheet" href="/styles/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/custom/custom.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css">
+    <title>Novameds</title>
 </head>
 <body>
 
-    <h1 style="color:goldenrod;">Admin</h1>
-    <h2 style="color:green;">Admin heading</h2>
+    <div id="admin-sidebar" class="sidebar">
+        <div class="sidebar__header">
+            <h1 class="sidebar__title">
+                <span class="sidebar__title-main">Admin</span>
+                <span class="sidebar__title-sub">Panel</span>
+            </h1>
+
+            <ul class="sidebar__list">
+                <li class="sidebar__item">
+                    <a href="#medicines" class="sidebar__link">
+                        <i class="fa-solid fa-briefcase-medical sidebar__link-icon" class="sidebar__link-icon"></i>
+                        <span class="sidebar__link-text">Manage Medicines</span>
+                    </a>
+                </li>
+
+                <li class="sidebar__item">
+                    <a href="#customers" class="sidebar__link">
+                        <i class="fa-solid fa-user sidebar__link-icon"></i>
+                        <span  class="sidebar__link-text">Manage Customer</span>
+                    </a>
+                </li>
+
+                <li class="sidebar__item">
+                    <a href="#suppliers" class="sidebar__link">
+                        <i class="fa-solid fa-truck sidebar__link-icon"></i>
+                        <span class="sidebar__link-text">Manage Suppliers</span>
+                    </a>
+                </li>
+
+                <li class="sidebar__item">
+                    <a href="#suppliers" class="sidebar__link">
+                        <i class="fa-solid fa-cart-shopping sidebar__link-icon"></i>
+                        <span class="sidebar__link-text">Manage Orders</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar__footer">
+            <a href="#Logout" class="logout-admin__link">
+                <i class="fa-solid fa-arrow-right-from-bracket logout-admin__link-icon"></i>
+                <span class="logout-admin__link-text">Logout</span>
+            </a>            
+        </div>
+    </div>
     
 </body>
 </html>

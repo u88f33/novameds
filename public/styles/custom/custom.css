@@ -294,3 +294,95 @@ nav {
 .login-footer {
     margin-top: 15px;
 }
+
+.sidebar {
+    background-color: var(--bg-dark);
+    width: 20%;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar__title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+.sidebar__title-main {
+    color: var(--primary-green);
+}
+
+.sidebar__title-sub {
+    color: var(--primary-blue);
+}
+
+.sidebar__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0;
+    display: inline-block;
+    border-bottom: 1px solid #616161;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.sidebar__link:hover {
+    background-color: #3d454d;
+}
+
+.sidebar__link-icon {
+    display: inline-block;
+    color: var(--primary-green);
+}
+
+.sidebar__link-text {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.sidebar__footer {
+    width: 100%;
+}
+
+.logout-admin__link {
+    margin-top: auto;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 8px 0;
+    padding-left: 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 1px solid #616161;
+    border-top: 1px solid #616161;
+}
+
+.logout-admin__link:hover {
+    background-color: #4d3d3d;
+}
+
+.logout-admin__link-icon {
+    color: #ff3131;
+    font-size: 20px;
+    transform: rotate(180deg);
+}
+
+.logout-admin__link-text {
+    margin-left: 5px;
+    color: #ff3131;
+}
