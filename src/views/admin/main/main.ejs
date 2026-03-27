@@ -5,6 +5,10 @@
     <header class="dashboard__header">
 
         <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
             <a href="/admin" class="dashboard__profile">
 
                 <div class="dashboard__profile-image-wrapper">
@@ -19,12 +23,71 @@
         </nav> 
         
     </header>
+    
+    <div class="dashboard__stats">
 
-    <div class="dashboard__main">
-        <div class="dashboard__header-title">
-            <h1 class="dashboard__title">Dashboard</h1>
+        <!-- Medicines -->
+        <div class="dashboard__stat-card">
+            <div class="dashboard__stat-icon">
+                <i class="fa-solid fa-capsules"></i>
+            </div>
+            <div class="dashboard__stat-content">
+                <h2 class="dashboard__stat-number">120</h2>
+                <p class="dashboard__stat-label">Total Medicines</p>
+            </div>
         </div>
+
+        <!-- Orders -->
+        <div class="dashboard__stat-card">
+            <div class="dashboard__stat-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div class="dashboard__stat-content">
+                <h2 class="dashboard__stat-number">45</h2>
+                <p class="dashboard__stat-label">Pending Orders</p>
+            </div>
+        </div>
+
+        <!-- Customers -->
+        <div class="dashboard__stat-card">
+            <div class="dashboard__stat-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="dashboard__stat-content">
+                <h2 class="dashboard__stat-number">300</h2>
+                <p class="dashboard__stat-label">Total Customers</p>
+            </div>
+        </div>
+
+        <!-- Suppliers -->
+        <div class="dashboard__stat-card">
+            <div class="dashboard__stat-icon">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+            <div class="dashboard__stat-content">
+                <h2 class="dashboard__stat-number">25</h2>
+                <p class="dashboard__stat-label">Total Suppliers</p>
+            </div>
+        </div>
+
     </div>
+
+    <div class="dashboard__analytics">
+
+        <!-- Map (Left) -->
+        <div class="dashboard__map-container">
+            <h3 class="dashboard__section-title">Customer Locations</h3>
+            <div id="map"></div>
+        </div>
+
+        <!-- Bar Chart (Right) -->
+        <div class="dashboard__chart-container">
+            <h3 class="dashboard__section-title">Monthly Orders</h3>
+            <canvas id="ordersChart"></canvas>
+        </div>
+
+    </div>
+
 </div>
 
 <%- include( "../../partials/admin/footer" ) -%>

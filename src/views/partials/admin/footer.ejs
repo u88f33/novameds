@@ -1,3 +1,68 @@
 </div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+/* ================= MAP ================= */
+
+// Initialize map centered on Pakistan
+var map = L.map('map').setView([30.3753, 69.3451], 5);
+
+// Tile layer (styled later)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: ''
+}).addTo(map);
+
+// Example customer cities (dummy data)
+var cities = [
+    { name: "Lahore", coords: [31.5204, 74.3587] },
+    { name: "Karachi", coords: [24.8607, 67.0011] },
+    { name: "Islamabad", coords: [33.6844, 73.0479] },
+    { name: "Peshawar", coords: [34.0151, 71.5249] }
+];
+
+// Add markers
+cities.forEach(city => {
+    L.circleMarker(city.coords, {
+        color: "#9cc500",
+        fillColor: "#9cc500",
+        fillOpacity: 0.8,
+        radius: 6
+    })
+    .addTo(map)
+    .bindPopup(city.name);
+});
+
+
+/* ================= CHART ================= */
+
+const ctx = document.getElementById('ordersChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Orders',
+            data: [12, 19, 8, 15, 10, 20],
+            backgroundColor: '#006eb9'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>
