@@ -23,7 +23,7 @@ app.use("/fa", express.static(
 ));
 
 // Middleware for static public folder
-app.use( express.static( "public" ) );
+app.use( express.static( "./public" ) );
 
 // Middleware for JSON and HTML Form data
 app.use( express.urlencoded( { extended: false } ) );
