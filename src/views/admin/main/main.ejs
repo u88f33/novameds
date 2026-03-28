@@ -23,7 +23,8 @@
         </nav> 
         
     </header>
-    
+
+    <%# Dashboard Statistics %>
     <div class="dashboard__stats">
 
         <!-- Medicines -->
@@ -72,8 +73,104 @@
 
     </div>
 
-    <%# Recent Orders %>
+    <%# Recent Orders Table %>
+    <div class="dashboard__table-container">
 
+    <h3 class="dashboard__section-title">Recent Orders</h3>
+
+    <table class="dashboard__table">
+        <thead>
+            <tr>
+                <th>Order#</th>
+                <th>Customer Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Ali Khan</td>
+                <td>03001234567</td>
+                <td>Lahore</td>
+                <td>25 Mar 2026</td>
+                <td><span class="status status--pending">Pending</span></td>
+                <td>Rs 1500</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Ahmed Raza</td>
+                <td>03111234567</td>
+                <td>Karachi</td>
+                <td>24 Mar 2026</td>
+                <td><span class="status status--completed">Completed</span></td>
+                <td>Rs 2200</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Usman Tariq</td>
+                <td>03221234567</td>
+                <td>Islamabad</td>
+                <td>23 Mar 2026</td>
+                <td><span class="status status--pending">Pending</span></td>
+                <td>Rs 900</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+    <%# Recent Customers Table %>
+    <div class="dashboard__table-container">
+
+        <h3 class="dashboard__section-title">Recent Customers</h3>
+
+        <table class="dashboard__table">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">#</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Join Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ali Khan</td>
+                    <td>03001234567</td>
+                    <td>Lahore</td>
+                    <td>20 Mar 2026</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Ahmed Raza</td>
+                    <td>03111234567</td>
+                    <td>Karachi</td>
+                    <td>18 Mar 2026</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Usman Tariq</td>
+                    <td>03221234567</td>
+                    <td>Islamabad</td>
+                    <td>15 Mar 2026</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%# Dashboard Analytics %>
     <div class="dashboard__analytics">
 
         <!-- Map (Left) -->
