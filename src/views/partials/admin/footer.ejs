@@ -8,7 +8,7 @@
 /* ================= MAP ================= */
 
 // Initialize map centered on Pakistan
-var map = L.map('map').setView([30.3753, 69.3451], 5);
+var map = L.map('map').setView([30.3753, 69.3451], 4);
 
 // Tile layer (styled later)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -26,10 +26,10 @@ var cities = [
 // Add markers
 cities.forEach(city => {
     L.circleMarker(city.coords, {
-        color: "#9cc500",
-        fillColor: "#9cc500",
-        fillOpacity: 0.8,
-        radius: 6
+        color: "#006eb9",
+        fillColor: "#006eb9",
+        fillOpacity: 0.9,
+        radius: 5
     })
     .addTo(map)
     .bindPopup(city.name);
@@ -40,17 +40,24 @@ cities.forEach(city => {
 
 const ctx = document.getElementById('ordersChart');
 
-new Chart(ctx, {
+let barChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', "July"],
         datasets: [{
             label: 'Orders',
             data: [12, 19, 8, 15, 10, 20, 99],
-            backgroundColor: '#006eb9'
+            backgroundColor: '#006eb9',
+            labelsColor: "#006eb9"
         }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
     }
 });
+
+
 </script>
 
 </body>
