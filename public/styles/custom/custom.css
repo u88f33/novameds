@@ -458,11 +458,14 @@ nav {
     color: #fff;
 }
 
+.dashboard__stats-container {
+    padding: 20px 30px;
+}
+
 .dashboard__stats {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    padding: 20px 30px;
 }
 
 .dashboard__stat-card {
