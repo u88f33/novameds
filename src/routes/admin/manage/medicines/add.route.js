@@ -1,9 +1,9 @@
 import express from "express";
-import AddMedicinesCtrl 
-from "../../../../controllers/admin/manage/medicines/add.controller.js"
+import AddMedicineRecordCtrl 
+from "../../../../controllers/admin/manage/medicines/add/add_get.controller.js"
 
 const router = express.Router();
 
-router.get( "/", AddMedicinesCtrl );
+router.get( "/", AddMedicineRecordCtrl );
 
 export default router;

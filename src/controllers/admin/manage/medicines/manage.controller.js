@@ -1,7 +1,7 @@
-const ManageMedicinesCtrl = ( req, res, next ) => {
+const ManageMedicineRecordsCtrl = ( req, res, next ) => {
     res.render(
         "admin/manage/medicines/manage"
     )
 }
 
-export default ManageMedicinesCtrl;
+export default ManageMedicineRecordsCtrl;
