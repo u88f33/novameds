@@ -1,8 +1,147 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color:blue;">Add Medicines</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="medicine">
+
+        <div class="medicine__body">
+            <h3 class="dashboard__section-title">Add New Medicine</h3>
+
+            <div class="medicine__add-container">
+                <form 
+                    action="/admin/manage/medicines/add"
+                    method="POST"
+                    class="medicine-form"
+                    >
+
+                <!-- First Row -->
+                <div class="medicine-form__row">
+                    
+                    <!-- Medicine Name -->
+                    <div class="medicine-form__group">
+                        <label for="medicineName" class="medicine-form__label">Medicine Name</label>
+                        <input 
+                            type="text" 
+                            id="medicineName" 
+                            name="medicine_name" 
+                            class="medicine-form__input"
+                            required="true"
+                            maxlength="50"
+                            placeholder="e.g. Panadol"
+                        />
+                    </div>
+
+                    <!-- Medicine Category -->
+                    <div class="medicine-form__group">
+                        <label for="medicineCategory" class="medicine-form__label">Medicine Category</label>
+                        <input 
+                            type="text" 
+                            id="medicineCategory" 
+                            name="medicine_category" 
+                            class="medicine-form__input"
+                            required="true"
+                            maxlength="50"
+                            placeholder="e.g. Pain Killer"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Second Row -->
+                <div class="medicine-form__row">
+                    
+                    <!-- Medicine Price -->
+                    <div class="medicine-form__group">
+                        <label for="medicinePrice" class="medicine-form__label">Medicine Price</label>
+                        <input 
+                            type="text" 
+                            id="medicinePrice" 
+                            name="medicine_price" 
+                            class="medicine-form__input"
+                            required="true"
+                            maxlength="50"
+                            placeholder="e.g. Rs 50"
+                        />
+                    </div>
+
+                    <!-- Stock Quantity -->
+                    <div class="medicine-form__group">
+                        <label for="stockQuantity" class="medicine-form__label">Stock Quantity</label>
+                        <input 
+                            type="text" 
+                            id="stockQuantity" 
+                            name="medicine_stock" 
+                            class="medicine-form__input"
+                            required="required"
+                            placeholder="e.g. 400"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Third Row -->
+                <div class="medicine-form__row">
+                    
+                    <!-- Supplier Name -->
+                    <div class="medicine-form__group">
+                        <label for="supplierName" class="medicine-form__label">Supplier Name</label>
+                        <select 
+                            id="supplierName" 
+                            name="supplier_name" 
+                            class="medicine-form__select"
+                        >
+                            <option value="abc_pharma">ABC Pharma</option>
+                            <option value="xyz_suppliers">XYZ Suppliers</option>
+                            <option value="healthcorp">HealthCorp</option>
+                            <option value="medisupply">MediSupply</option>
+                        </select>
+                    </div>
+
+                    <!-- Upload Medicine Image -->
+                    <div class="medicine-form__group">
+                        <label for="medicineImage" class="medicine-form__label">Upload Medicine Image</label>
+                        <input 
+                            type="file" 
+                            id="medicineImage" 
+                            name="medicine_image" 
+                            class="medicine-form__file"
+                            required="true"
+                        />
+                    </div>
+
+                </div>
+
+                <div class="medicine-form__actions">
+                    <button type="submit" class="medicine-form__button">
+                        Add Medicine
+                    </button>
+                </div>
+
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 

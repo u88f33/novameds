@@ -400,10 +400,6 @@ nav {
     justify-content: space-between;
 }
 
-[required="true"] {
-    box-shadow: 2px 2px 10px #777;
-}
-
 .dashboard {
     width: 80%;
     margin-left: auto;
@@ -411,6 +407,7 @@ nav {
 
 .dashboard__header {
     background-color: #006eb9;
+    margin-bottom: 30px;
 }
 
 .dashboard__nav {
@@ -589,4 +586,216 @@ nav {
 #ordersChart {
     width: 100%;
     height: 300px;
+}
+
+.medicine {
+    padding: 20px 30px;
+    border-radius: 6px;
+}
+
+.medicine__header {
+    margin-bottom: 20px;
+}
+
+.medicine__body {
+    margin-bottom: 20px;
+}
+
+.medicine__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.medicine__search {
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.medicine__add-btn {
+    background-color: #006eb9;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.medicine__add-btn:hover {
+    opacity: 0.9;
+}
+
+.medicine__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+.medicine__table thead {
+    background-color: #f5f5f5;
+}
+
+.medicine__table th {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #999;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.medicine__table td {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #999;
+    text-align: center;
+}
+
+
+.medicine__table tbody tr:nth-child(odd) {
+    background-color: #dfdfdf;
+}
+
+.medicine__table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.medicine__table tbody tr:hover {
+    background-color: #eaeaea;
+}
+
+.medicine__actions-cell {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #006eb9;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.action-btn:hover {
+    opacity: 0.85;
+}
+
+.medicine__pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.pagination__numbers {
+    display: flex;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+
+.pagination__btn {
+    background-color: #006eb9;
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.pagination__btn:hover {
+    opacity: 0.85;
+}
+
+.medicine__add-container {
+    margin-top: 40px;
+}
+
+.medicine-form__row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.medicine-form__group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.medicine-form__label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #006eb9;
+}
+
+.medicine-form__input,
+.medicine-form__select {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.medicine-form__file {
+    border: 1px solid #ced4da;
+}
+
+.medicine-form__input:focus,
+.medicine-form__select:focus,
+.medicine-form__file:focus {
+    border-color: #006eb9;
+}
+
+.medicine-form__file {
+    padding: 6px;
+    background-color: #fff;
+}
+
+/* Actions Container */
+.medicine-form__actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.medicine-form__button {
+    padding: 10px 20px;
+    border: 1px solid #006eb9;
+    background-color: #006eb9;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.medicine-form__button:hover {
+    background-color: #00568f;
+    color: #fff;
+}
+
+
+.medicine-form__button:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+    .medicine-form__row {
+        flex-direction: column;
+    }
 }
