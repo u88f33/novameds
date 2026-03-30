@@ -588,34 +588,34 @@ nav {
     height: 300px;
 }
 
-.medicine-dashboard {
+.dashboard__section {
     padding: 20px 30px;
     border-radius: 6px;
 }
 
-.medicine__header {
-    margin-bottom: 20px;
+.dashboard__section-top {
+    margin-bottom: 50px;
 }
 
 .medicine__body {
     margin-bottom: 20px;
 }
 
-.medicine__actions {
+.dashboard__section-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
 }
 
-.medicine__search {
+.dashboard__section-search {
     width: 85%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.medicine__add-btn {
+.dashboard__section-add {
     background-color: #006eb9;
     color: #fff;
     padding: 10px 15px;
@@ -628,17 +628,17 @@ nav {
     opacity: 0.9;
 }
 
-.medicine__table {
+.dashboard__section-table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 5px;
 }
 
-.medicine__table thead {
+.dashboard__section-table thead {
     background-color: #f5f5f5;
 }
 
-.medicine__table th {
+.dashboard__section-table th {
     text-align: left;
     padding: 12px;
     border: 1px solid #999;
@@ -647,7 +647,7 @@ nav {
 }
 
 
-.medicine__table td {
+.dashboard__section-table td {
     padding: 12px;
     font-size: 14px;
     border: 1px solid #999;
@@ -655,19 +655,19 @@ nav {
 }
 
 
-.medicine__table tbody tr:nth-child(odd) {
+.dashboard__section-table tbody tr:nth-child(odd) {
     background-color: #dfdfdf;
 }
 
-.medicine__table tbody tr:nth-child(even) {
+.dashboard__section-table tbody tr:nth-child(even) {
     background-color: #fff;
 }
 
-.medicine__table tbody tr:hover {
+.dashboard__section-table tbody tr:hover {
     background-color: #eaeaea;
 }
 
-.medicine__actions-cell {
+.dashboard__section-cell-actions {
     display: flex;
     justify-content: center;
     gap: 8px;
@@ -689,7 +689,7 @@ nav {
     opacity: 0.85;
 }
 
-.medicine__pagination {
+.dashboard__section-pagination {
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -718,6 +718,8 @@ nav {
     background-color: #006eb9;
     color: #fff;
 }
+
+/***  March 30, 2026 *********/
 
 .medicine__body-container {
     margin-top: 40px;
@@ -852,4 +854,13 @@ nav {
         display: block;
         border: 1px solid #dee2e6;
     }
+}
+
+.customer-dashboard {
+    padding: 20px 30px;
+    border-radius: 6px;
+}
+
+.customer-dashboard__header {
+    margin-bottom: 20px;
 }
