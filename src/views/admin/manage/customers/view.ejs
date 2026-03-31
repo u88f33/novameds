@@ -1,8 +1,66 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color: red;">View Customers</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <div class="dashboard__section-main">
+            <h3 class="dashboard__section-title mb-0">View Customer Details: </h3>
+            
+            <div class="dashboard__section-view-table-wrapper mt-4">
+
+                <table class="dashboard__section-view-table">
+                    <tbody>
+                        <tr>
+                            <th>Customer Name</th>
+                            <td>Ali Khan</td>
+                        </tr>
+                        <tr>
+                            <th>Customer Email</th>
+                            <td>ak123@example.com</td>
+                        </tr>
+                        <tr>
+                            <th>Customer Contact</th>
+                            <td>+92 301 2345678</td>
+                        </tr>
+                        <tr>
+                            <th>Customer Address</th>
+                            <td>Islamabad, Pakistan</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="dashboard__secion-actions">
+                    <a href="/admin/manage/customers" class="dashboard__secion-action-button">
+                        Go Back
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </div>
 

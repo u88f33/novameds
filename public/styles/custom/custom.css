@@ -594,7 +594,7 @@ nav {
 }
 
 .dashboard__section-top {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .dashboard__section-main {
@@ -609,7 +609,7 @@ nav {
 }
 
 .dashboard__section-search {
-    width: 85%;
+    width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -618,8 +618,10 @@ nav {
 .dashboard__section-add {
     background-color: #006eb9;
     color: #fff;
+    width: 20%;
     padding: 10px 15px;
     text-decoration: none;
+    text-align: center;
     border-radius: 5px;
     margin-left: 10px;
 }
@@ -769,7 +771,6 @@ nav {
     background-color: #fff;
 }
 
-/* Actions Container */
 .dashboard__secion-form-actions {
     margin-top: 20px;
     display: flex;
@@ -786,6 +787,30 @@ nav {
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
+    margin-right: 5px;
+}
+
+.dashboard__secion-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dashboard__secion-action-button {
+    padding: 10px 20px;
+    border: 1px solid #006eb9;
+    background-color: #006eb9;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.dashboard__secion-action-button:hover {
+    background-color: #00568f;
+    color: #fff;
 }
 
 

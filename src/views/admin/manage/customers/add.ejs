@@ -1,8 +1,150 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color: red;">Add Customers</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <div class="dashboard__section-main">
+            <h3 class="dashboard__section-title">Add Customer Record</h3>
+
+            <div class="dashboard__secion-form-container">
+                <form 
+                    action="/admin/manage/medicines/add"
+                    method="POST"
+                    class="dashboard__secion-form"
+                    >
+
+                <!-- First Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Medicine Name -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicineName" class="dashboard__secion-form-label">Medicine Name</label>
+                        <input 
+                            type="text" 
+                            id="medicineName" 
+                            name="medicine_name" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            placeholder="e.g. Panadol"
+                        />
+                    </div>
+
+                    <!-- Medicine Category -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicineCategory" class="dashboard__secion-form-label">Medicine Category</label>
+                        <input 
+                            type="text" 
+                            id="medicineCategory" 
+                            name="medicine_category" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            placeholder="e.g. Pain Killer"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Second Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Medicine Price -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicinePrice" class="dashboard__secion-form-label">Medicine Price</label>
+                        <input 
+                            type="text" 
+                            id="medicinePrice" 
+                            name="medicine_price" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            placeholder="e.g. Rs 50"
+                        />
+                    </div>
+
+                    <!-- Stock Quantity -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="stockQuantity" class="dashboard__secion-form-label">Stock Quantity</label>
+                        <input 
+                            type="text" 
+                            id="stockQuantity" 
+                            name="medicine_stock" 
+                            class="dashboard__secion-form-input"
+                            required="required"
+                            placeholder="e.g. 400"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Third Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Supplier Name -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
+                        <select 
+                            id="supplierName" 
+                            name="supplier_name" 
+                            class="dashboard__secion-form-select"
+                        >
+                            <option value="abc_pharma">ABC Pharma</option>
+                            <option value="xyz_suppliers">XYZ Suppliers</option>
+                            <option value="healthcorp">HealthCorp</option>
+                            <option value="medisupply">MediSupply</option>
+                        </select>
+                    </div>
+
+                    <!-- Upload Medicine Image -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicineImage" class="dashboard__secion-form-label">Upload Medicine Image</label>
+                        <input 
+                            type="file" 
+                            id="medicineImage" 
+                            name="medicine_image" 
+                            class="dashboard__secion-form-file"
+                            required="true"
+                        />
+                    </div>
+
+                </div>
+
+                <div class="dashboard__secion-form-actions">
+                    <button type="submit" class="dashboard__secion-form-button">
+                        Add Customer Record
+                    </button>
+                    <a href="/admin/manage/medicines" class="dashboard__secion-action-button">
+                        Go Back
+                    </a>
+                </div>
+
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 

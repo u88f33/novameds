@@ -1,0 +1,159 @@
+<%- include( "../../../partials/admin/sidebar" ) -%>
+
+<div class="dashboard">
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <!-- Top Section -->
+        <div class="dashboard__section-top">
+            <h3 class="dashboard__section-title">Customer Details</h3>
+
+            <div class="dashboard__section-actions">
+                <input 
+                    type="text" 
+                    class="dashboard__section-search" 
+                    placeholder="Search Specific Customer"
+                />
+
+                <a href="/admin/manage/customers/add" class="dashboard__section-add">
+                    Add Customer Record
+                </a>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="dashboard__section-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ali Khan</td>
+                    <td>+92 301 2345678</td>
+                    <td>Islamabad, Pakistan</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Ahmed Raza</td>
+                    <td>+92 302 9876543</td>
+                    <td>Lahore, Pakistan</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Sara Malik</td>
+                    <td>+92 300 1122334</td>
+                    <td>Karachi, Pakistan</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="dashboard__section-pagination">
+
+            <a href="#" class="pagination__btn">&laquo;</a>
+
+            <div class="pagination__numbers">
+                <a href="#" class="pagination__btn">1</a>
+                <a href="#" class="pagination__btn">2</a>
+                <a href="#" class="pagination__btn">3</a>
+            </div>
+
+            <a href="#" class="pagination__btn">&raquo;</a>
+
+        </div>
+
+    </div>
+</div>
+
+<%- include( "../../../partials/admin/footer" ) -%>
