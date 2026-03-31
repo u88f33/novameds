@@ -881,3 +881,41 @@ nav {
         border: 1px solid #dee2e6;
     }
 }
+
+
+.order-status {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+
+.order-status:hover {
+    border-color: #006eb9;
+}
+
+.order-status:focus {
+    border-color: #006eb9;
+    box-shadow: 0 0 4px #006eb9;
+}
+
+
+.order-status option[value="Pending"] {
+    color: #64078f;
+}
+
+.order-status option[value="Processing"] {
+    color: #07428f;
+}
+
+.order-status option[value="Delivered"] {
+    color: #128f07;
+}
+
+.order-status option[value="Cancelled"] {
+    color: #8f1507;
+}
