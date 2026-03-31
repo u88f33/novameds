@@ -30,7 +30,7 @@
 
             <div class="dashboard__secion-form-container">
                 <form 
-                    action="/admin/manage/medicines/add"
+                    action="/admin/manage/customers/add"
                     method="POST"
                     class="dashboard__secion-form"
                     >
@@ -38,31 +38,31 @@
                 <!-- First Row -->
                 <div class="dashboard__secion-form-row">
                     
-                    <!-- Medicine Name -->
+                    <!-- Customer Name -->
                     <div class="dashboard__secion-form-group">
-                        <label for="medicineName" class="dashboard__secion-form-label">Medicine Name</label>
+                        <label for="customerName" class="dashboard__secion-form-label">Customer Name</label>
                         <input 
                             type="text" 
-                            id="medicineName" 
-                            name="medicine_name" 
+                            id="customerName" 
+                            name="customer_name" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
-                            placeholder="e.g. Panadol"
+                            placeholder="Your name"
                         />
                     </div>
 
-                    <!-- Medicine Category -->
+                    <!-- Customer Email -->
                     <div class="dashboard__secion-form-group">
-                        <label for="medicineCategory" class="dashboard__secion-form-label">Medicine Category</label>
+                        <label for="customerEmail" class="dashboard__secion-form-label">Customer Email:</label>
                         <input 
-                            type="text" 
-                            id="medicineCategory" 
-                            name="medicine_category" 
+                            type="email" 
+                            id="customerEmail" 
+                            name="customer_email" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
-                            placeholder="e.g. Pain Killer"
+                            placeholder="email@example.com"
                         />
                     </div>
 
@@ -71,30 +71,30 @@
                 <!-- Second Row -->
                 <div class="dashboard__secion-form-row">
                     
-                    <!-- Medicine Price -->
+                    <!-- Customer Phone -->
                     <div class="dashboard__secion-form-group">
-                        <label for="medicinePrice" class="dashboard__secion-form-label">Medicine Price</label>
+                        <label for="customerPhone" class="dashboard__secion-form-label">Customer Phone</label>
                         <input 
                             type="text" 
-                            id="medicinePrice" 
-                            name="medicine_price" 
+                            id="customerPhone" 
+                            name="customer_phone" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
-                            placeholder="e.g. Rs 50"
+                            placeholder="03331234567"
                         />
                     </div>
 
-                    <!-- Stock Quantity -->
+                    <!-- Customer Address -->
                     <div class="dashboard__secion-form-group">
-                        <label for="stockQuantity" class="dashboard__secion-form-label">Stock Quantity</label>
+                        <label for="customerAddress" class="dashboard__secion-form-label">Customer Address</label>
                         <input 
                             type="text" 
-                            id="stockQuantity" 
-                            name="medicine_stock" 
+                            id="customerAddress" 
+                            name="customer_address" 
                             class="dashboard__secion-form-input"
                             required="required"
-                            placeholder="e.g. 400"
+                            placeholder="House# 13, Street# 18, G-6/2 Islamabad"
                         />
                     </div>
 
@@ -103,30 +103,28 @@
                 <!-- Third Row -->
                 <div class="dashboard__secion-form-row">
                     
-                    <!-- Supplier Name -->
+                    <!-- Customer Password -->
                     <div class="dashboard__secion-form-group">
-                        <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
-                        <select 
-                            id="supplierName" 
-                            name="supplier_name" 
-                            class="dashboard__secion-form-select"
-                        >
-                            <option value="abc_pharma">ABC Pharma</option>
-                            <option value="xyz_suppliers">XYZ Suppliers</option>
-                            <option value="healthcorp">HealthCorp</option>
-                            <option value="medisupply">MediSupply</option>
-                        </select>
+                        <label for="Password" class="dashboard__secion-form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="customer_password" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                        />
                     </div>
 
-                    <!-- Upload Medicine Image -->
+                    <!-- Customer Address -->
                     <div class="dashboard__secion-form-group">
-                        <label for="medicineImage" class="dashboard__secion-form-label">Upload Medicine Image</label>
+                        <label for="confirmPassword" class="dashboard__secion-form-label">Confirm Password</label>
                         <input 
-                            type="file" 
-                            id="medicineImage" 
-                            name="medicine_image" 
-                            class="dashboard__secion-form-file"
-                            required="true"
+                            type="password" 
+                            id="confirmPassword" 
+                            name="customer_confirm_password" 
+                            class="dashboard__secion-form-input"
+                            required="required"
                         />
                     </div>
 
@@ -136,7 +134,7 @@
                     <button type="submit" class="dashboard__secion-form-button">
                         Add Customer Record
                     </button>
-                    <a href="/admin/manage/medicines" class="dashboard__secion-action-button">
+                    <a href="/admin/manage/customers" class="dashboard__secion-action-button">
                         Go Back
                     </a>
                 </div>
