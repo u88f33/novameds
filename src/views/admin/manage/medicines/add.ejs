@@ -25,27 +25,27 @@
 
     <div class="dashboard__section">
 
-        <div class="medicine__body">
+        <div class="dashboard__section-main">
             <h3 class="dashboard__section-title">Add New Medicine</h3>
 
-            <div class="medicine__body-container">
+            <div class="dashboard__secion-form-container">
                 <form 
                     action="/admin/manage/medicines/add"
                     method="POST"
-                    class="medicine-form"
+                    class="dashboard__secion-form"
                     >
 
                 <!-- First Row -->
-                <div class="medicine-form__row">
+                <div class="dashboard__secion-form-row">
                     
                     <!-- Medicine Name -->
-                    <div class="medicine-form__group">
-                        <label for="medicineName" class="medicine-form__label">Medicine Name</label>
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicineName" class="dashboard__secion-form-label">Medicine Name</label>
                         <input 
                             type="text" 
                             id="medicineName" 
                             name="medicine_name" 
-                            class="medicine-form__input"
+                            class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             placeholder="e.g. Panadol"
@@ -53,13 +53,13 @@
                     </div>
 
                     <!-- Medicine Category -->
-                    <div class="medicine-form__group">
-                        <label for="medicineCategory" class="medicine-form__label">Medicine Category</label>
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicineCategory" class="dashboard__secion-form-label">Medicine Category</label>
                         <input 
                             type="text" 
                             id="medicineCategory" 
                             name="medicine_category" 
-                            class="medicine-form__input"
+                            class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             placeholder="e.g. Pain Killer"
@@ -69,16 +69,16 @@
                 </div>
 
                 <!-- Second Row -->
-                <div class="medicine-form__row">
+                <div class="dashboard__secion-form-row">
                     
                     <!-- Medicine Price -->
-                    <div class="medicine-form__group">
-                        <label for="medicinePrice" class="medicine-form__label">Medicine Price</label>
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicinePrice" class="dashboard__secion-form-label">Medicine Price</label>
                         <input 
                             type="text" 
                             id="medicinePrice" 
                             name="medicine_price" 
-                            class="medicine-form__input"
+                            class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             placeholder="e.g. Rs 50"
@@ -86,13 +86,13 @@
                     </div>
 
                     <!-- Stock Quantity -->
-                    <div class="medicine-form__group">
-                        <label for="stockQuantity" class="medicine-form__label">Stock Quantity</label>
+                    <div class="dashboard__secion-form-group">
+                        <label for="stockQuantity" class="dashboard__secion-form-label">Stock Quantity</label>
                         <input 
                             type="text" 
                             id="stockQuantity" 
                             name="medicine_stock" 
-                            class="medicine-form__input"
+                            class="dashboard__secion-form-input"
                             required="required"
                             placeholder="e.g. 400"
                         />
@@ -101,15 +101,15 @@
                 </div>
 
                 <!-- Third Row -->
-                <div class="medicine-form__row">
+                <div class="dashboard__secion-form-row">
                     
                     <!-- Supplier Name -->
-                    <div class="medicine-form__group">
-                        <label for="supplierName" class="medicine-form__label">Supplier Name</label>
+                    <div class="dashboard__secion-form-group">
+                        <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
                         <select 
                             id="supplierName" 
                             name="supplier_name" 
-                            class="medicine-form__select"
+                            class="dashboard__secion-form-select"
                         >
                             <option value="abc_pharma">ABC Pharma</option>
                             <option value="xyz_suppliers">XYZ Suppliers</option>
@@ -119,21 +119,21 @@
                     </div>
 
                     <!-- Upload Medicine Image -->
-                    <div class="medicine-form__group">
-                        <label for="medicineImage" class="medicine-form__label">Upload Medicine Image</label>
+                    <div class="dashboard__secion-form-group">
+                        <label for="medicineImage" class="dashboard__secion-form-label">Upload Medicine Image</label>
                         <input 
                             type="file" 
                             id="medicineImage" 
                             name="medicine_image" 
-                            class="medicine-form__file"
+                            class="dashboard__secion-form-file"
                             required="true"
                         />
                     </div>
 
                 </div>
 
-                <div class="medicine-form__actions">
-                    <button type="submit" class="medicine-form__button">
+                <div class="dashboard__secion-form-actions">
+                    <button type="submit" class="dashboard__secion-form-button">
                         Add Medicine
                     </button>
                 </div>
