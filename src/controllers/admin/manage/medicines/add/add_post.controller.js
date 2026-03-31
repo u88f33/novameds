@@ -1,6 +1,6 @@
 const AddMedicineRecortCtrlPost = ( req, res, next ) => {
     console.log( "------------------------------" );
-    console.log( "Medicine Record Added" );
+    console.log( "New Medicine Record Added" );
     console.log( "---------------------------------" );
     console.log( req.body );
     console.log( "--------------------------------" );

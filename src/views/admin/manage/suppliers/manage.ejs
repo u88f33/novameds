@@ -1,8 +1,185 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color: goldenrod;">Manage Suppliers</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <!-- Top Section -->
+        <div class="dashboard__section-top">
+            <h3 class="dashboard__section-title">Supplier Details</h3>
+
+            <div class="dashboard__section-actions">
+                <input 
+                    type="text" 
+                    class="dashboard__section-search" 
+                    placeholder="Search Specific Customer"
+                />
+
+                <a href="/admin/manage/suppliers/add" class="dashboard__section-add">
+                    Add Supplier Record
+                </a>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="dashboard__section-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>ABC Pharma</td>
+                    <td>0512223333</td>
+                    <td>I-8, Islamabad</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>XYZ Suppliers</td>
+                    <td>0513334444</td>
+                    <td>Gulshan-e-Iqbal, Karachi</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>HealthCorp</td>
+                    <td>0514445555</td>
+                    <td>Faisalabad</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+
+                                <tr>
+                    <td>4</td>
+                    <td>MediSupply</td>
+                    <td>0515556666</td>
+                    <td>Faisalabad</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </a>
+
+                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="dashboard__section-pagination">
+
+            <a href="#" class="pagination__btn">&laquo;</a>
+
+            <div class="pagination__numbers">
+                <a href="#" class="pagination__btn">1</a>
+                <a href="#" class="pagination__btn">2</a>
+                <a href="#" class="pagination__btn">3</a>
+            </div>
+
+            <a href="#" class="pagination__btn">&raquo;</a>
+
+        </div>
+
     </div>
 </div>
 

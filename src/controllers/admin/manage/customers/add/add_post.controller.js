@@ -1,6 +1,6 @@
 const AddCustomerRecordCtrlPost = ( req, res, next ) => {
     console.log( "++++++++++++++++++++++++++++++++" );
-    console.log( "Customer Record Added" );    
+    console.log( "New Customer Record Added" );    
     console.log( "++++++++++++++++++++++++++++++++" );
     console.log( req.body );
     console.log( "++++++++++++++++++++++++++++++++" );
