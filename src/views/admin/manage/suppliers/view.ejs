@@ -1,8 +1,66 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color: goldenrod;">View Suppliers</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <div class="dashboard__section-main">
+            <h3 class="dashboard__section-title mb-0">View Supplier Details: </h3>
+            
+            <div class="dashboard__section-view-table-wrapper mt-4">
+
+                <table class="dashboard__section-view-table">
+                    <tbody>
+                        <tr>
+                            <th>Supplier Name</th>
+                            <td>ABC Pharma</td>
+                        </tr>
+                        <tr>
+                            <th>Supplier Email</th>
+                            <td>abc_pharma@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th>Supplier Contact</th>
+                            <td>0512223333</td>
+                        </tr>
+                        <tr>
+                            <th>Supplier Address</th>
+                            <td>I-8, Islamabad</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="dashboard__secion-actions">
+                    <a href="/admin/manage/suppliers" class="dashboard__secion-action-button">
+                        Go Back
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </div>
 

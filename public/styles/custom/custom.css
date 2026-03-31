@@ -846,7 +846,7 @@ nav {
 .dashboard__section-view-table th {
     text-align: left;
     padding: 12px;
-    width: 30%;
+    width: 20%;
     background-color: #f8f9fa;
     color: #212529;
     border: 1px solid #999;
@@ -858,6 +858,7 @@ nav {
     padding: 12px;
     color: #495057;
     border: 1px solid #999;
+    width: 80%;
 }
 
 
