@@ -1,8 +1,146 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color: red;">Update Customers</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <div class="dashboard__section-main">
+            <h3 class="dashboard__section-title">Update Customer Record</h3>
+
+            <div class="dashboard__secion-form-container">
+                <form 
+                    action="/admin/manage/customers/update/customer_id_123"
+                    method="POST"
+                    class="dashboard__secion-form"
+                    >
+
+                <!-- First Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Customer Name -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerName" class="dashboard__secion-form-label">Customer Name</label>
+                        <input 
+                            type="text" 
+                            id="customerName" 
+                            name="customer_name" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            value="Updated Customer name"
+                        />
+                    </div>
+
+                    <!-- Customer Email -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerEmail" class="dashboard__secion-form-label">Customer Email:</label>
+                        <input 
+                            type="email" 
+                            id="customerEmail" 
+                            name="customer_email" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            value="updated_email@example.com"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Second Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Customer Phone -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerPhone" class="dashboard__secion-form-label">Customer Phone</label>
+                        <input 
+                            type="text" 
+                            id="customerPhone" 
+                            name="customer_phone" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            value="Updated Customer Phone"
+                        />
+                    </div>
+
+                    <!-- Customer Address -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerAddress" class="dashboard__secion-form-label">Customer Address</label>
+                        <input 
+                            type="text" 
+                            id="customerAddress" 
+                            name="customer_address" 
+                            class="dashboard__secion-form-input"
+                            required="required"
+                            value="Updated Customer Address"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Third Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Customer Password -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="Password" class="dashboard__secion-form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="customer_password" 
+                            class="dashboard__secion-form-input"
+                            maxlength="50"
+                        />
+                    </div>
+
+                    <!-- Customer Address -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="confirmPassword" class="dashboard__secion-form-label">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="customer_confirm_password" 
+                            class="dashboard__secion-form-input"
+                        />
+                    </div>
+
+                </div>
+
+                <div class="dashboard__secion-form-actions">
+                    <button type="submit" class="dashboard__secion-form-button">
+                        Update Record
+                    </button>
+                    <a href="/admin/manage/customers" class="dashboard__secion-action-button">
+                        Go Back
+                    </a>
+                </div>
+
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
