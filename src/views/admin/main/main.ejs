@@ -100,50 +100,92 @@
 
     <h3 class="dashboard__section-title">Recent Orders</h3>
 
-    <table class="dashboard__table">
-        <thead>
-            <tr>
-                <th>Order#</th>
-                <th>Customer Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Order Date</th>
-                <th>Status</th>
-                <th>Total Amount</th>
-            </tr>
-        </thead>
+    <table class="dashboard__section-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Customer Name</th>
+                    <th>Total Amount</th>
+                    <th>Payment Method</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ali Khan</td>
-                <td>03001234567</td>
-                <td>Lahore</td>
-                <td>25 Mar 2026</td>
-                <td><span class="status status--pending">Pending</span></td>
-                <td>Rs 1500</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ali Khan</td>
+                    <td>Rs. 280</td>
+                    <td>Cash</td>
+                    <td>2026-03-26</td>
+                    <td>
+                        <select class="order-status" data-order-id="order_id_101">
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                            </a>
+                        </div>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>2</td>
-                <td>Ahmed Raza</td>
-                <td>03111234567</td>
-                <td>Karachi</td>
-                <td>24 Mar 2026</td>
-                <td><span class="status status--completed">Completed</span></td>
-                <td>Rs 2200</td>
-            </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ahmed Raza</td>
+                    <td>Rs. 1,200</td>
+                    <td>Card</td>
+                    <td>2026-03-29</td>
+                    <td>
+                        <select class="order-status" data-order-id="order_id_102">
+                            <option value="Pending">Pending</option>
+                            <option value="Processing" selected>Processing</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                            </a>
+                        </div>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>3</td>
-                <td>Usman Tariq</td>
-                <td>03221234567</td>
-                <td>Islamabad</td>
-                <td>23 Mar 2026</td>
-                <td><span class="status status--pending">Pending</span></td>
-                <td>Rs 900</td>
-            </tr>
-        </tbody>
+                <tr>
+                    <td>3</td>
+                    <td>Sara Ahmed</td>
+                    <td>Rs. 3,800</td>
+                    <td>Cash</td>
+                    <td>2026-03-28</td>
+                    <td>
+                        <select class="order-status" data-order-id="order_id_103">
+                            <option value="Pending">Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Delivered" selected>Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
     </table>
 
     </div>
@@ -153,14 +195,14 @@
 
         <h3 class="dashboard__section-title">Recent Customers</h3>
 
-        <table class="dashboard__table">
+        <table class="dashboard__section-table">
             <thead>
                 <tr>
-                    <th style="width: 5%;">#</th>
+                    <th>No.</th>
                     <th>Name</th>
                     <th>Phone</th>
-                    <th>City</th>
-                    <th>Join Date</th>
+                    <th>Address</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -168,25 +210,81 @@
                 <tr>
                     <td>1</td>
                     <td>Ali Khan</td>
-                    <td>03001234567</td>
-                    <td>Lahore</td>
-                    <td>20 Mar 2026</td>
+                    <td>+92 301 2345678</td>
+                    <td>Islamabad, Pakistan</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                            </a>
+
+                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
                 </tr>
 
                 <tr>
                     <td>2</td>
                     <td>Ahmed Raza</td>
-                    <td>03111234567</td>
-                    <td>Karachi</td>
-                    <td>18 Mar 2026</td>
+                    <td>+92 302 9876543</td>
+                    <td>Lahore, Pakistan</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                            </a>
+
+                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+
+                        </div>
+                    </td>
                 </tr>
 
                 <tr>
                     <td>3</td>
-                    <td>Usman Tariq</td>
-                    <td>03221234567</td>
-                    <td>Islamabad</td>
-                    <td>15 Mar 2026</td>
+                    <td>Sara Malik</td>
+                    <td>+92 300 1122334</td>
+                    <td>Karachi, Pakistan</td>
+                    <td>
+                        <div class="dashboard__section-cell-actions">
+
+                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                            </a>
+
+                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                            </a>
+
+                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
