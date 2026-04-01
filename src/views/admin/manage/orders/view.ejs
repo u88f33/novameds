@@ -1,8 +1,164 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
 <div class="dashboard">
-    <div style="padding: 20px 30px;">
-        <h1 style="color: cornflowerblue;">View Orders</h1>
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <div class="dashboard__section-main">
+            <h3 class="dashboard__section-title mb-0">Order Details: </h3>
+            
+            <div class="mt-4">
+
+                <table class="dashboard__section-view-table">
+                    <tbody>
+                        <tr>
+                            <th>Order#</th>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th>Ordered By</th>
+                            <td>Ali Khan</td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td>March 26, 2026</td>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <td>03:30 PM</td>
+                        </tr>
+                        <tr>
+                            <th>Payment Method</th>
+                            <td>Cash</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <th>Total Amount</th>
+                            <td>Rs. 280</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard__section pt-0">
+        <div class="dashboard__section-main">
+            <h3 class="dashboard__section-title mb-0">Ordered Medicines: </h3>
+
+            <div class="mt-4">
+                <table class="dashboard__section-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Medicine Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Panadol</td>
+                            <td>Pain Relief</td>
+                            <td>Rs 50</td>
+                            <td>
+                                <div class="dashboard__section-cell-actions">
+
+                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                        View Details
+                                    </a>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Disprin</td>
+                            <td>Pain Relief</td>
+                            <td>Rs 30</td>
+                            <td>
+                                <div class="dashboard__section-cell-actions">
+
+                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                        View Details
+                                    </a>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Augmentin</td>
+                            <td>Antibiotic</td>
+                            <td>Rs 200</td>
+                            <td>
+                                <div class="dashboard__section-cell-actions">
+
+                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                        View Details
+                                    </a>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="dashboard__section-pagination">
+
+                <a href="#" class="pagination__btn">&laquo;</a>
+
+                <div class="pagination__numbers">
+                    <a href="#" class="pagination__btn">1</a>
+                    <a href="#" class="pagination__btn">2</a>
+                    <a href="#" class="pagination__btn">3</a>
+                </div>
+
+                <a href="#" class="pagination__btn">&raquo;</a>
+
+            </div>
+
+            <div class="dashboard__secion-actions">
+                <a href="/admin/manage/customers" class="dashboard__secion-action-button">
+                    Go Back
+                </a>
+            </div>
+
+        </div>
     </div>
 </div>
 
