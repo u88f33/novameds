@@ -791,7 +791,7 @@ nav {
 }
 
 .dashboard__secion-actions {
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     justify-content: flex-end;
 }
@@ -918,4 +918,27 @@ nav {
 
 .order-status option[value="Cancelled"] {
     color: #8f1507;
+}
+
+th.customer-orders-history-header {
+    background-color: #006eb9;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.customer-orders-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+.customer-orders-history-table tr {
+    border: none;
+}
+
+.customer-orders-history__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
 }
