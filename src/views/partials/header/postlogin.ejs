@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="stylesheet" href="/styles/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/custom/custom.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css">
+    <title>Novameds</title>
+</head>
+<body>
+
+<div class="header">
+    <div class="header_top">
+        <a href="/">
+            <img
+                class="logo"
+                src="/assets/logo/Logo.png"
+            />
+        </a>
+    </div>
+</div>
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <div class="container ps-0 pe-0">
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <form class="d-flex w-50 bg-white" role="search">
+        <input 
+            class="form-control p-1" 
+            type="search" 
+            placeholder="Search for Medicines" 
+            aria-label="Search"/>
+        <button class="btn btn-outline-success search-medicine bg-dark" type="submit">
+            <i class="fa-solid fa-search"></i>
+        </button>
+      </form>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-item">
+            <a class="nav-link">Browse Medicines</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu bg-dark pt-0 pb-0">
+            <li><a class="dropdown-item text-light pt-2 pb-2" href="#">Skin Care</a></li>
+            <li><a class="dropdown-item text-light pt-2 pb-2" href="#">Herbal</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link login dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user"></i>
+                <span>Muhammad Umar</span>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end user-dropdown">
+                <li>
+                    <a class="dropdown-item" href="/profile">
+                        <i class="fa-solid fa-gear"></i> Profile Settings
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/logout">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
