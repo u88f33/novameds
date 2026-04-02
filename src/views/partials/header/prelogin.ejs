@@ -33,17 +33,12 @@
             </div>
         </div>
 
-        <div class="header-top__profile-button">
-            <div class="profile-dropdown">
-                <button class="profile-btn">
-                    <i class="fa-solid fa-user"></i>
-                    <span>Muhammad Umar</span>
-                </button>
-
-                <div class="dropdown-menu">
-                    <a href="/profile/settings">Profile Settings</a>
-                    <a href="/logout">Logout</a>
-                </div>
+        <div class="header-top__cart-button">
+            <div class="cart-container">
+                <a href="#cart" class="cart-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-text">11</span>
+                </a>
             </div>
         </div>
 
@@ -62,26 +57,51 @@
                 <a href="#browse">Browse Medices</a>
             </li>
             <li>
-                <div class="categories-dropdown">
-                    <button class="categories-dropdown-btn">
+                <div class="navbar-dropdown">
+                    <button class="navbar-dropdown-btn">
                         <span>Categories</span>
                         <i class="fa-solid fa-angle-down"></i>
                     </button>
 
-                    <div class="categories-dropdown-menu-container">
-                        <ul class="categories-dropdown-menu">
+                    <div class="navbar-dropdown-menu-container">
+                        <ul class="navbar-dropdown-menu">
                             <li>
-                                <a href="#skin_care" class="categories-dropdown-link">Skin Care</a>
+                                <a href="#skin_care" class="navbar-dropdown-link">Skin Care</a>
                             </li>
                             <li>
-                                <a href="#feet" class="categories-dropdown-link">Feet</a>
+                                <a href="#feet" class="navbar-dropdown-link">Feet</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </li>
+        </ul>
+
+        <ul>
             <li>
-                <a href="#logout">Logout</a>
+                <div class="navbar-dropdown">
+                    <button class="navbar-dropdown-btn">
+                        <i class="fa-solid fa-user pe-2"></i>
+                        <span>Muhammad Umar</span>
+                    </button>
+
+                    <div class="navbar-dropdown-menu-container">
+                        <ul class="navbar-dropdown-menu">
+                            <li>
+                                <a href="#profile_setting" class="navbar-dropdown-link">
+                                    <i class="fa-solid fa-gear pe-3"></i>
+                                    Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#logout" class="navbar-dropdown-link">
+                                    <i class="fa-solid fa-right-from-bracket pe-3"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </li>
         </ul>
     </nav>

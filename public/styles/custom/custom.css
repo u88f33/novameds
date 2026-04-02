@@ -90,11 +90,16 @@ nav {
   box-shadow: 2px 2px 5px #999;
 }
 
+.card-header {
+    padding: 0;
+}
+
 /* Header Image */
 .card-header img {
   width: 100%;
   height: 230px;
   object-fit: cover;
+  padding: 0;
 }
 
 /* Body */
