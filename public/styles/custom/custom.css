@@ -1194,6 +1194,10 @@ th.customer-orders-history-header {
     background-color: #dc3545;
 }
 
+.shopping-cart {
+    min-height: 90vh;
+}
+
 .shopping-cart__items-list {
     width: 70%;
 }
