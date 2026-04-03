@@ -1,0 +1,131 @@
+<%- include( "../partials/header/postlogin" ) -%>
+
+<div class="container">
+    <div class="row">
+
+        <div class="shopping-cart">
+            <div class="shopping-cart__heading-container">
+                <h1 class="shopping-cart__heading">Shopping Cart</h1>
+            </div>
+
+            <div class="shopping-cart__body-container">
+                <div class="shopping-cart__items-list">
+                    <table class="shopping-cart__list-table">
+                        <thead>
+                            <tr>
+                                <th class="shopping-cart__product-col">Product</th>
+                                <th class="shopping-cart__price-col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="shopping-cart__product-details-container">
+                                        <div class="shopping-cart__product-image-container">
+                                            <img 
+                                                src="/assets/images/no-image.jpg" 
+                                                alt="Product Image"
+                                                class="shopping-cart__product-image"
+                                            />
+                                        </div>
+                                        <div class="shopping-cart__product-body">
+                                            <h3 class="shopping-cart__product-details-title">Brufen</h3>
+                                            <h3 class="shopping-cart__product-details-subtitle mb-4">Pain</h3>
+                                            <h3 class="shopping-cart__product-details-subtitle">Qty: 3</h3>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="shopping-cart__product-price-container">
+                                        <h1>Rs. 220</h1>
+                                        <button class="btn btn-danger shopping-cart__delete-btn">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="shopping-cart__product-details-container">
+                                        <div class="shopping-cart__product-image-container">
+                                            <img 
+                                                src="/assets/images/no-image.jpg" 
+                                                alt="Product Image"
+                                                class="shopping-cart__product-image"
+                                            />
+                                        </div>
+                                        <div class="shopping-cart__product-body">
+                                            <h3 class="shopping-cart__product-details-title">Paracetamol Tablets</h3>
+                                            <h3 class="shopping-cart__product-details-subtitle mb-4">Fever and pain</h3>
+                                            <h3 class="shopping-cart__product-details-subtitle">Qty: 2</h3>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="shopping-cart__product-price-container">
+                                        <h1>Rs. 180</h1>
+                                        <button class="btn btn-danger shopping-cart__delete-btn">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="shopping-cart__product-details-container">
+                                        <div class="shopping-cart__product-image-container">
+                                            <img 
+                                                src="/assets/images/no-image.jpg" 
+                                                alt="Product Image"
+                                                class="shopping-cart__product-image"
+                                            />
+                                        </div>
+                                        <div class="shopping-cart__product-body">
+                                            <h3 class="shopping-cart__product-details-title">Panadol</h3>
+                                            <h3 class="shopping-cart__product-details-subtitle mb-4">Fever</h3>
+                                            <h3 class="shopping-cart__product-details-subtitle">Qty: 2</h3>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="shopping-cart__product-price-container">
+                                        <h1>Rs. 220</h1>
+                                        <button class="btn btn-danger shopping-cart__delete-btn">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="shopping-cart__order-container">
+                    <div class="shopping-cart__order-details">
+                        <h3 class="shopping-cart__order-title">Order Summary</h3>
+                        <div class="shopping-cart__order-total-amount">
+                            <p>Total Amount</p>
+                            <p><b>620</b></p>
+                        </div>
+                    </div>
+
+                    <div class="shopping-cart__order-actions">
+                        <button class="btn btn-dark w-100 rounded rounded-5">
+                            Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+
+
+
+<%- include( "../partials/footer/footer" ) -%>
