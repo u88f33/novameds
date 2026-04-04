@@ -1137,16 +1137,32 @@ th.customer-orders-history-header {
     width: 100%;
 }
 
+.product__category {
+    font-size: 20px;
+}
+
 .product__title {
     font-size: 32px;
     margin-bottom: 10px;
 }
 
+.product__details-body {
+    margin-bottom: 60px;
+}
+
+.product__details-header-bottom {
+    margin-bottom: 40px;
+}
+
+.product__details-header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .product__price {
     color: #006eb9;
-    font-size: 24px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 100px;
+    font-size: 26px;
 }
 
 .product__quantity {
