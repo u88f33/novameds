@@ -2,10 +2,16 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
+import connectDB from "./src/config/database.connection.js";
 import Routes from "./src/routes/index.js";
 
 // Initializing Environment variables from ".env" file
 dotenv.config();
+
+// Connected to Database on "mongodb://127.0.0.1:27017/novameds"
+const MONGO_URI = process.env.MONGO_URI;  // mongodb://127.0.0.1:27017
+const DATABASE_NAME = process.env.DATABASE_NAME;  // novameds
+connectDB( MONGO_URI, DATABASE_NAME );
 
 const app = express();
 
