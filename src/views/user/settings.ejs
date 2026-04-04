@@ -1,0 +1,87 @@
+<%- include( "../partials/header/postlogin" ) -%>
+
+<div class="profile-main-container">
+    <div class="profile-inner-container">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="profile-sidebar">
+            <div class="profile-tab active" data-tab="profile">Profile Settings</div>
+            <div class="profile-tab" data-tab="security">Security</div>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="profile-content">
+
+            <!-- PROFILE SETTINGS FORM -->
+            <div id="profilePanel" class="tab-panel active">
+                <form id="profileSettingForm" action="/profile/settings/profile-settings" method="POST">
+
+                    <div class="form-group form-group--inline mb-3">
+                        <div class="form-group__field">
+                            <label class="form-label">Change Name</label>
+                            <input type="text" class="form-control border border-dark" name="user_name">
+                        </div>
+
+                        <div class="form-group__field">
+                            <label class="form-label">Change Email</label>
+                            <input type="email" class="form-control border border-dark" name="user_email">
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group--inline mb-3">
+                        <div class="form-group__field">
+                            <label class="form-label">Change Phone</label>
+                            <input type="tel" class="form-control border border-dark" name="user_phone">
+                        </div>
+
+                        <div class="form-group__field">
+                            <label class="form-label">Change Address</label>
+                            <input type="text" class="form-control border border-dark" name="user_address">
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group--inline mb-3">
+                        <div class="form-group__field">
+                            <label class="form-label">Change City</label>
+                            <input type="text" class="form-control border border-dark" name="user_city">
+                        </div>
+
+                        <div class="form-group__field">
+                            <label class="form-label">Change Country</label>
+                            <input type="text" class="form-control border border-dark" name="user_country">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn login-btn">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- SECURITY FORM -->
+            <div id="securityPanel" class="tab-panel">
+                <form id="changePasswordForm" action="/profile/settings/change-password" method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Old Password</label>
+                        <input type="password" class="form-control border border-dark" name="user_old_password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">New Password</label>
+                        <input type="password" class="form-control border border-dark" name="user_new_password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control border border-dark" name="confirm_new_password">
+                    </div>
+
+                    <button type="submit" class="btn login-btn">Change Password</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/scripts/settings.js"></script>
+<%- include( "../partials/footer/footer" ) -%>

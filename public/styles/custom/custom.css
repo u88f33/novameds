@@ -1311,3 +1311,70 @@ th.customer-orders-history-header {
     padding: 0;
     margin-bottom: 5px;
 }
+
+.profile-main-container {
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-inner-container {
+    width: 90%;
+    display: flex;
+    gap: 20px;
+}
+
+.profile-sidebar {
+    width: 30%;
+    background: #ccc;
+    border-radius: 50px;
+    padding: 40px 20px;
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-tab {
+    padding: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile-tab:hover {
+    background: #ccc;
+}
+
+.profile-tab.active {
+    background: #212529;
+    color: #fff;
+}
+
+.profile-content {
+    width: 80%;
+    padding: 0 80px;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.form-group--inline {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group__field {
+    width: 50%;
+}
+
+#securityPanel {
+    width: 50%;
+}
