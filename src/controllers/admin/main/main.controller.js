@@ -1,6 +1,14 @@
-const AdminMainCtrl = ( req, res, next ) => {
+import SuppliersCollection from "../../../models/suppliers.model.js";
+
+const AdminMainCtrl = async ( req, res, next ) => {
+    
+    const totalSupplierRecords = await SuppliersCollection.countDocuments();
+
     res.render(
-        "admin/main/main"
+        "admin/main/main",
+        {
+            totalSupplierRecords
+        }
     )
 }
 
