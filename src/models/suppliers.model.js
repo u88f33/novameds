@@ -11,8 +11,8 @@ const supplierCollectionSchema = new mongoose.Schema({
 
     supplierEmail: {
         type: String,
-        required: true,
         trim: true,
+        default: "Email not found",
         match: [/^\S+@\S+\.\S+$/, "Please use a valid email address"]
     },
 

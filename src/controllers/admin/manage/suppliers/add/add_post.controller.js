@@ -1,4 +1,6 @@
-import SuppliersCollection from "../../../../../models/suppliers.model.js"
+import SuppliersCollection from "../../../../../models/suppliers.model.js";
+// For checking Supplier Phone number.
+import { validationResult } from "express-validator";
 
 const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
 
@@ -12,7 +14,47 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
          * The submitted values are stored in "req.body".
          
         */
+
+        // Validating Supplier's phone number using "express-validator"
+        const validationErrors = validationResult( req );
     
+        /**
+         * If "validationErrors" is not empty then store error messages and 
+         * error values in arrays and send them to "src/views/admin/manage/suppliers/add.ejs"  
+         * */ 
+        if ( !validationErrors.isEmpty() ) {
+
+            // Stores Error messages in validationErrors.errors.msg
+            let arrayOfErrorMessages = [];
+
+            // Stores Error values in validationErrors.errors.value
+            let arrayOfErrorValues = [];
+            
+            // Storing Error Messages "validationErrors.errors.msg" in "ArrayOfError"
+            for ( let error of validationErrors.errors ) {
+                arrayOfErrorMessages.push( error.msg );
+                arrayOfErrorValues.push( error.value );
+            }
+
+            /**
+             * "ArrayOfErrorMessages" object contains error messages stored in 
+             * "validationErrors.errors.msg"
+             * 
+             * 
+             * "ArrayOfErrorsValues" object contains errors stored messages
+             * stored in "validationErrors.errors.value"
+             */
+
+            res.render(
+                "admin/manage/suppliers/add",
+                {
+                    arrayOfErrorMessages,
+                    arrayOfErrorValues
+                }
+            )
+            
+            return false;
+        }
 
         /* 
         * The data recieved in "req.body" is stored in individual variables using
@@ -26,8 +68,9 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
         } = req.body
 
         /**
-         * The keys of "req.body" must match with the keys of collection
-         * in database. Otherwise, data would not be saved in Database.
+         * The keys of "req.body" must match with the keys of collection schema
+         * defined in "src/models/suppliers.model.js" database. Otherwise, data
+         * would not be saved in Database.
          * */    
         const supplierRecrord = {
             supplierName: supplier_name,
@@ -36,12 +79,17 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
             supplierAddress: supplier_address
         }
 
+        /**
+         * Storing data in database collection using "insertOne()".
+         */
+
         const dataInsertedInMongoDB = await SuppliersCollection.insertOne(
             supplierRecrord
         );
 
+
         if ( dataInsertedInMongoDB ) {
-            console.log( `Supplier inserted successfully in Database` );
+            console.log( `Supplier record inserted successfully in Database` );
         } else {
             console.log( `Something went wrong` );
             console.log( "Failed to insert Supplier Record in Database" );

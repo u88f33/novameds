@@ -26,7 +26,7 @@
     <div class="dashboard__section">
 
         <div class="dashboard__section-main">
-            <h3 class="dashboard__section-title">Add Customer Record</h3>
+            <h3 class="dashboard__section-title">Add Supplier Record</h3>
 
             <div class="dashboard__secion-form-container">
                 <form 
@@ -111,6 +111,37 @@
 
                 </form>
             </div>
+
+            <%# 
+                # If Array containing Error Messages is not empty then show
+                Error messages on page at route "/admin/manage/suppliers/add".
+            %>
+            <% if ( arrayOfErrorMessages.length != 0 ) { %>
+                <%# 
+                    # "for" loop to iterate over the "arrayOfErrorMessages" arrray.
+                    
+                    # Length of both "arrayOfErrorMessages" and
+                    "arrayOfErrorValues" is same.
+                %>
+                <% for (let index = 0; index < arrayOfErrorMessages.length; index++) { %>
+
+                    <%# 
+                        # "div" container containing Error messages appears the 
+                        same number of time as the length of the "arrayOfErrorMessages"
+                        messages.
+                    %>
+                    <div class="alert alert-danger mt-4">
+                        <p class="mb-0">
+                            <b><%= arrayOfErrorMessages[0] %>: </b>
+                            <%= arrayOfErrorValues[0] %>
+                        </p>
+                    </div>
+
+                <%# End of "for" loop %>
+                <% } %>
+
+            <%# End of "if" block %>
+            <% } %>
         </div>
 
     </div>

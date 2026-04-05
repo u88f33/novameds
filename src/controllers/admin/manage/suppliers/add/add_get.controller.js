@@ -1,6 +1,10 @@
 const ManageSupplierRecordsCtrl = ( req, res, next ) => {
     res.render(
-        "admin/manage/suppliers/add"
+        "admin/manage/suppliers/add",
+        {
+            arrayOfErrorMessages: [],
+            arrayOfErrorValues: []
+        }
     );
 }
 
