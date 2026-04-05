@@ -55,128 +55,63 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>ABC Pharma</td>
-                    <td>0512223333</td>
-                    <td>I-8, Islamabad</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
+                <% let i = 0 %>
+                <% suppliersRecordsInDatabase.forEach(singleSupplierRecord => { %>
+                    <tr>
+                        <td><%= ++i %></td>
+                        <td><%= singleSupplierRecord.supplierName %></td>
+                        <td><%= singleSupplierRecord.supplierPhone %></td>
+                        <td><%= singleSupplierRecord.supplierAddress %></td>
+                        <td>
+                            <div class="dashboard__section-cell-actions">
 
-                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
+                                <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                    More Info
+                                </a>
 
-                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
+                                <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                    Update
+                                </a>
 
-                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
+                                <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </a>
 
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>XYZ Suppliers</td>
-                    <td>0513334444</td>
-                    <td>Gulshan-e-Iqbal, Karachi</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>HealthCorp</td>
-                    <td>0514445555</td>
-                    <td>Faisalabad</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>MediSupply</td>
-                    <td>0515556666</td>
-                    <td>Faisalabad</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/suppliers/view/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/suppliers/update/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/suppliers/delete/supplier_id_456" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
             </tbody>
         </table>
 
         <!-- Pagination -->
         <div class="dashboard__section-pagination">
 
-            <a href="#" class="pagination__btn">&laquo;</a>
+            <% let page = currentPage; %>
+            <a 
+                href="/admin/manage/suppliers?page=<%= ( page > 1 )? (page - 1) : 1 %>" 
+                class="pagination__btn"
+            >
+                &laquo;
+            </a>
 
             <div class="pagination__numbers">
-                <a href="#" class="pagination__btn">1</a>
-                <a href="#" class="pagination__btn">2</a>
-                <a href="#" class="pagination__btn">3</a>
+                <% for ( let i = 1; i < 3; ++i ) { %>
+                    <a href="/admin/manage/suppliers?page=<%= i %>" class="pagination__btn">
+                        <%= i %>
+                    </a>            
+                <% } %>
             </div>
 
-            <a href="#" class="pagination__btn">&raquo;</a>
+            <a 
+                href="/admin/manage/suppliers?page=<%= (page < totalPages)? ( page + 1 ) : totalPages %>" 
+                class="pagination__btn"
+            >
+                &raquo;
+            </a>
 
         </div>
 
