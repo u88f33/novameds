@@ -21,9 +21,20 @@ function searchSupplierRecord(inputValue) {
                         <td>${supplier.supplierAddress}</td>
                         <td>
                             <div class="dashboard__section-cell-actions">
-                                <a href="/admin/manage/suppliers/view/${supplier._id}" class="action-btn">More Info</a>
-                                <a href="/admin/manage/suppliers/update/${supplier._id}" class="action-btn">Update</a>
-                                <a href="/admin/manage/suppliers/delete/${supplier._id}" class="action-btn">Delete</a>
+                                <a href="/admin/manage/suppliers/view/${supplier._id}" class="action-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                More Info
+                                </a>
+
+                                <a href="/admin/manage/suppliers/update/${supplier._id}" class="action-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Update
+                                </a>
+
+                                <a href="/admin/manage/suppliers/delete/${supplier._id}" class="action-btn">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                                </a>
                             </div>
                         </td>
                     </tr>

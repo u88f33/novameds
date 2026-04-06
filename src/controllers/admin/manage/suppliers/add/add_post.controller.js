@@ -97,7 +97,7 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
 
     } catch ( error ) {
         console.log( 
-            `File: src/controllers/admin/manage/suppliers/add/add_post.controller.js` 
+            `File path: src/controllers/admin/manage/suppliers/add/add_post.controller.js` 
         );
         console.log( `Error: ${ error }` );
     }
