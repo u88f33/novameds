@@ -1,5 +1,20 @@
 import SuppliersCollection from "../../../../../models/suppliers.model.js";
 
+/**
+ * Developer: Muhammad Umar Farooq
+ * File name: update_post.controller.js
+ * Modified date: April 6, 2026
+ * 
+ * 
+ * ---------------------------------------------------------------
+ * Purpose of a file:
+ * ---------------------------------------------------------------
+ * The input data received from an HTML form in "/views/admin/manage/suppliers/update.ejs"
+ * is received here. This file contains the logic to process that form data and update
+ * a record of a "supplier" collection in a Database.
+ * ----------------------------------------------------------------- 
+**/
+
 const UpdateSupplierRecordsCtrlPost = async ( req, res, next ) => {
 
     try {
