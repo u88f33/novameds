@@ -9,10 +9,7 @@ const ManageSupplierRecordsCtrl = async ( req, res, next ) => {
     const totalSupplierRecords = await SuppliersCollection.countDocuments();
     const totalPages =  Math.ceil( totalSupplierRecords / limit );
     
-    console.log( `page: `, page );
-    console.log( `limit: `, limit );
-    console.log( `Supplier records: `, totalSupplierRecords );
-    console.log( `Total Pages: `, totalPages );
+
 
 
     // Return all the documents in a "suppliers" collection

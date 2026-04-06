@@ -72,7 +72,7 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
          * defined in "src/models/suppliers.model.js" database. Otherwise, data
          * would not be saved in Database.
          * */    
-        const supplierRecrord = {
+        const supplierRecord = {
             supplierName: supplier_name,
             supplierEmail: supplier_email,
             supplierPhone: supplier_phone,
@@ -84,7 +84,7 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
          */
 
         const dataInsertedInMongoDB = await SuppliersCollection.insertOne(
-            supplierRecrord
+            supplierRecord
         );
 
 
