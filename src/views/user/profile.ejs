@@ -5,306 +5,39 @@
 
         <div class="card-container">
 
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
+            <%# Printing cards on a "http://localhost:5050/profile" %>
+                <% if ( MedicinesRecordsFromDB ) { %>
+                    <% MedicinesRecordsFromDB.forEach(singleMedicineRecord => { %>
+                        <%#-- Card --%>
+                        <div class="card">
+                            <div class="card-header">
+                                <img 
+                                    src="/uploads/medicines/<%= singleMedicineRecord.medicineImage %>" 
+                                    alt="Medicine">
+                            </div>
 
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <%= singleMedicineRecord.medicineName %>
+                                </h3>
 
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
+                                <div class="card-info">
+                                    <span class="category">
+                                        <%= singleMedicineRecord.medicineCategory %>
+                                    </span>
+                                    <span class="price">
+                                        Rs. <%= singleMedicineRecord.medicinePrice %>
+                                    </span>
+                                </div>
 
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
-
-            <%#-- Card --%>
-            <div class="card">
-                <div class="card-header">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine">
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">Medicine Name</h3>
-
-                    <div class="card-info">
-                        <span class="category">Skin Care</span>
-                        <span class="price">Rs 180</span>
-                    </div>
-
-                    <a href="/profile/product/product_id_111" class="add-to-cart-btn">
-                        Add to Cart
-                    </a>
-                </div>
-            </div>
+                                <a href="/profile/product/product_id_111" class="add-to-cart-btn">
+                                    Add to Cart
+                                </a>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } %>
+            <%# End of forEach loop %>
 
         </div>
     </div>

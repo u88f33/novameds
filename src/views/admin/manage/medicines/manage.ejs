@@ -68,17 +68,17 @@
                             <td>
                                 <div class="dashboard__section-cell-actions">
 
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
+                                    <a href="/admin/manage/medicines/view/<%= singleMedicineRecord._id %>" class="action-btn">
                                         <i class="fa-solid fa-eye"></i>
                                         More Info
                                     </a>
 
-                                    <a href="/admin/manage/medicines/update/medicine_id_123" class="action-btn">
+                                    <a href="/admin/manage/medicines/update/<%= singleMedicineRecord._id %>" class="action-btn">
                                         <i class="fa-solid fa-pen"></i>
                                         Update
                                     </a>
 
-                                    <a href="/admin/manage/medicines/delete/medicine_id_123" class="action-btn">
+                                    <a href="/admin/manage/medicines/delete/<%= singleMedicineRecord._id %>" class="action-btn">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete
                                     </a>

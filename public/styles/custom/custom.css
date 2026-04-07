@@ -124,10 +124,10 @@ nav {
 .category {
   color: #000;
   border-radius: 50px;
+  font-size: 14px;
 }
 
 .price {
-  font-weight: bold;
   background-color: var(--primary-blue);
   color: white;
   padding: 4px 10px;

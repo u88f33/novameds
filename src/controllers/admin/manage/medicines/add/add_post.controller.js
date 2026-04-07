@@ -11,8 +11,7 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
             medicine_category,
             medicine_price,
             medicine_stock,
-            supplier_id,
-            medicine_image
+            supplier_id
         } = req.body;
 
         // Defining an object storing keys map with Medicines Collection Schema.
@@ -22,7 +21,11 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
             medicinePrice: medicine_price,
             medicineStock: medicine_stock,
             supplierId: supplier_id,
-            medicineImage: req.file.filename
+            medicineImage: "no-image.jpg"
+        }
+
+        if ( req.file ) {
+            medicineRecord.medicineImage = req.file.filename;
         }
 
         const dataInsertedInMongoDB = 
