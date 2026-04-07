@@ -33,6 +33,7 @@
                     action="/admin/manage/medicines/add"
                     method="POST"
                     class="dashboard__secion-form"
+                    enctype="multipart/form-data"
                     >
 
                 <!-- First Row -->
@@ -108,13 +109,14 @@
                         <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
                         <select 
                             id="supplierName" 
-                            name="supplier_name" 
+                            name="supplier_id" 
                             class="dashboard__secion-form-select"
                         >
-                            <option value="abc_pharma">ABC Pharma</option>
-                            <option value="xyz_suppliers">XYZ Suppliers</option>
-                            <option value="healthcorp">HealthCorp</option>
-                            <option value="medisupply">MediSupply</option>
+                            <% suppliersRecords.forEach(singleSupplierRecord => { %>
+                                <option value="<%= singleSupplierRecord._id %>">
+                                    <%= singleSupplierRecord.supplierName %>
+                                </option>
+                            <% }); %>
                         </select>
                     </div>
 
@@ -126,7 +128,6 @@
                             id="medicineImage" 
                             name="medicine_image" 
                             class="dashboard__secion-form-file"
-                            required="true"
                         />
                     </div>
 
@@ -144,6 +145,14 @@
                 </form>
             </div>
         </div>
+
+        <% if ( successMessage ) { %>
+            <div class="dashboard__section-main mt-5">
+                <p class="alert alert-primary mt-5 mb-4 border border-primary">
+                    <%= successMessage  %>
+                </p>
+            </div>
+        <% } %>
 
     </div>
 </div>
