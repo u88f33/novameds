@@ -36,7 +36,7 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
         }
 
         const suppliersRecords = await SuppliersCollection.find();
-        res.redirect( "/admin/manage/medicines/add?message=New Medicine Record added" );
+        res.redirect( "/admin/manage/medicines/add?success=New Medicine Record added" );
 
     } catch ( error ) {
         console.log( 

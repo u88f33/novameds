@@ -56,117 +56,38 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>M101</td>
-                    <td>Panadol</td>
-                    <td>Pain Relief</td>
-                    <td>Rs 50</td>
-                    <td>120</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
+                <% let i = 0; %>
+                <% if ( MedicinesRecordsFromDB ) { %>
+                    <% MedicinesRecordsFromDB.forEach(singleMedicineRecord => { %>
+                        <tr>
+                            <td><%= ++i %></td>
+                            <td><%= singleMedicineRecord.medicineName %></td>
+                            <td><%= singleMedicineRecord.medicineCategory %></td>
+                            <td>Rs. <%= singleMedicineRecord.medicinePrice %></td>
+                            <td><%= singleMedicineRecord.medicineStock %></td>
+                            <td>
+                                <div class="dashboard__section-cell-actions">
 
-                            <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
+                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                        More Info
+                                    </a>
 
-                            <a href="/admin/manage/medicines/update/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
+                                    <a href="/admin/manage/medicines/update/medicine_id_123" class="action-btn">
+                                        <i class="fa-solid fa-pen"></i>
+                                        Update
+                                    </a>
 
-                            <a href="/admin/manage/medicines/delete/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
+                                    <a href="/admin/manage/medicines/delete/medicine_id_123" class="action-btn">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Delete
+                                    </a>
 
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>M102</td>
-                    <td>Disprin</td>
-                    <td>Pain Relief</td>
-                    <td>Rs 30</td>
-                    <td>80</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/medicines/update/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/medicines/delete/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>M103</td>
-                    <td>Augmentin</td>
-                    <td>Antibiotic</td>
-                    <td>Rs 200</td>
-                    <td>40</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/medicines/update/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/medicines/delete/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>M104</td>
-                    <td>Brufen</td>
-                    <td>Anti-inflammatory</td>
-                    <td>Rs 100</td>
-                    <td>60</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/medicines/update/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/medicines/delete/medicine_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
+                                </div>
+                            </td>
+                        </tr>                        
+                    <% }); %>
+                <% } %>
             </tbody>
         </table>
 

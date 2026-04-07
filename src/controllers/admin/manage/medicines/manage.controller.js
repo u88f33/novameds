@@ -1,6 +1,14 @@
-const ManageMedicineRecordsCtrl = ( req, res, next ) => {
+import MedicinesCollection from "../../../../models/medicines.model.js";
+
+const ManageMedicineRecordsCtrl = async ( req, res, next ) => {
+
+    const MedicinesRecordsFromDB = await MedicinesCollection.find();
+
     res.render(
-        "admin/manage/medicines/manage"
+        "admin/manage/medicines/manage",
+        {
+            MedicinesRecordsFromDB
+        }
     )
 }
 
