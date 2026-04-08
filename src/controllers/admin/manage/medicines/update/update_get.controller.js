@@ -11,8 +11,6 @@ const UpdateMedicineRecordCtrl = async ( req, res, next ) => {
     .findById( req.params.id )
     .populate("supplierId");
 
-    console.log( medicineRecordFromDB );
-
     res.render(
         "admin/manage/medicines/update",
         {
