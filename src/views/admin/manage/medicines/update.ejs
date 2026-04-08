@@ -47,7 +47,7 @@
                             id="medicineName" 
                             name="medicine_name" 
                             class="dashboard__secion-form-input"
-                            value="Updated Medicine Name"
+                            value="<%= medicineRecordFromDB.medicineName %>"
                         />
                     </div>
 
@@ -59,7 +59,7 @@
                             id="medicineCategory" 
                             name="medicine_category" 
                             class="dashboard__secion-form-input"
-                            value="Updated Medicine Category"
+                            value="<%= medicineRecordFromDB.medicineCategory %>"
                         />
                     </div>
 
@@ -76,7 +76,7 @@
                             id="medicinePrice" 
                             name="medicine_price" 
                             class="dashboard__secion-form-input"
-                            value="Updated Medicine Price"
+                            value="<%= medicineRecordFromDB.medicinePrice %>"
                         />
                     </div>
 
@@ -88,7 +88,7 @@
                             id="stockQuantity" 
                             name="medicine_stock" 
                             class="dashboard__secion-form-input"
-                            value="Updated Stock Quantity"
+                            value="<%= medicineRecordFromDB.medicineStock %>"
                         />
                     </div>
 
@@ -105,10 +105,24 @@
                             name="supplier_name" 
                             class="dashboard__secion-form-select"
                         >
-                            <option value="abc_pharma">ABC Pharma</option>
-                            <option value="xyz_suppliers">XYZ Suppliers</option>
-                            <option value="healthcorp">HealthCorp</option>
-                            <option value="medisupply">MediSupply</option>
+                            <% if ( suppliersRecordsFromDB ) { %>
+                                <% suppliersRecordsFromDB.forEach(singleSupplierRecord => { %>
+                                    <% if ( medicineRecordFromDB.supplierId._id.toString() == singleSupplierRecord._id.toString() ) { %>
+                                        <option 
+                                            value="<%= singleSupplierRecord._id %>"
+                                            selected="selected"
+                                        >
+                                            <%= singleSupplierRecord.supplierName %>
+                                        </option>                               
+                                    <% } else { %>
+                                        <option 
+                                            value="<%= singleSupplierRecord._id %>"
+                                        >
+                                            <%= singleSupplierRecord.supplierName %>
+                                        </option>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
                         </select>
                     </div>
 
