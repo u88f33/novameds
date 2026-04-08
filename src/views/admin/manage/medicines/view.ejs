@@ -34,31 +34,35 @@
                     <tbody>
                         <tr>
                             <th>Medicine Name</th>
-                            <td>Paracetamol</td>
+                            <td><%= medicineRecordFromDB.medicineName %></td>
                         </tr>
                         <tr>
                             <th>Medicine Category</th>
-                            <td>Pain Relief</td>
+                            <td><%= medicineRecordFromDB.medicineCategory %></td>
                         </tr>
                         <tr>
                             <th>Medicine Price</th>
-                            <td>Rs. 150</td>
+                            <td><%= medicineRecordFromDB.medicinePrice %></td>
                         </tr>
                         <tr>
                             <th>Stock Quantity</th>
-                            <td>250</td>
+                            <td><%= medicineRecordFromDB.medicineStock %></td>
                         </tr>
                         <tr>
-                            <th>Supplier Name</th>
-                            <td>ABC Pharma</td>
+                            <th>Supplied By</th>
+                            <td><%= medicineRecordFromDB.supplierId.supplierName %></td>
                         </tr>
                         <tr>
-                            <th>Supplier Contact#</th>
-                            <td>+92 300 1234567</td>
+                            <th>Supplier Email</th>
+                            <td><%= medicineRecordFromDB.supplierId.supplierEmail %></td>
+                        </tr>
+                        <tr>
+                            <th>Supplier Contact</th>
+                            <td><%= medicineRecordFromDB.supplierId.supplierPhone %></td>
                         </tr>
                         <tr>
                             <th>Supplier Address</th>
-                            <td>Lahore, Pakistan</td>
+                            <td><%= medicineRecordFromDB.supplierId.supplierAddress %></td>
                         </tr>
                     </tbody>
                 </table>
