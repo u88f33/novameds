@@ -34,6 +34,7 @@
                     type="text" 
                     class="dashboard__section-search" 
                     placeholder="Search Specific Medicine"
+                    oninput="searchMedicineRecord( this.value )"
                 />
 
                 <a href="/admin/manage/medicines/add" class="dashboard__section-add">
@@ -55,7 +56,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="medicineRecordsTableBody">
                 <% let i = 0; %>
                 <% if ( MedicinesRecordsFromDB ) { %>
                     <% MedicinesRecordsFromDB.forEach(singleMedicineRecord => { %>
@@ -109,4 +110,5 @@
     </div>
 </div>
 
+<script src="/js/scripts/medicines/search_medicines.js" ></script>
 <%- include( "../../../partials/admin/footer" ) -%>
