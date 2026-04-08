@@ -2,10 +2,9 @@ import MedicinesCollection from "../../../../models/medicines.model.js";
 
 const ViewMedicineRecordCtrl = async ( req, res, next ) => {
 
-    const medicineRecordFromDB = 
-    await MedicinesCollection
+    const medicineRecordFromDB = await MedicinesCollection
     .findById( req.params.id )
-    .populate("supplierId")
+    .populate("supplierId");
 
     console.log( medicineRecordFromDB );
 
