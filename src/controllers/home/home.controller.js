@@ -10,7 +10,7 @@ const HomePageCtrl = async ( req, res, next ) => {
     const medicineRecords = await MedicinesCollection.find();
 
     const page = req.query.page || 1;
-    const limit = req.query.page || 12;
+    const limit = req.query.limit || 12;
     const medicineCategory = req.query.category || "";
 
     const search = ( medicineCategory != "" )? { medicineCategory } : {};
@@ -27,7 +27,8 @@ const HomePageCtrl = async ( req, res, next ) => {
         "home/home",
         {
             MedicinesRecordsFromDB: medicinesRecordsPaginationInfo.docs,
-            medicineRecords
+            medicineRecords,
+            medicinesRecordsPaginationInfo
         }
     )
 }
