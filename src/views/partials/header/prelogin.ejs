@@ -31,7 +31,7 @@
                     type="text"
                     id="searchBarInputLabel"
                     placeholder="Search Medicines"
-                    oninput="searchMedicineByUser( this.value )"
+                    oninput="( this.value == '' )? window.location.replace( `/?page=1` ) : searchMedicineByUser(this.value)"
                 />
             </div>
         </div>
