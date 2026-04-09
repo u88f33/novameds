@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const medicineCollectionSchema = new mongoose.Schema({
 
@@ -40,6 +41,8 @@ const medicineCollectionSchema = new mongoose.Schema({
 }, { 
     timestamps: true
 });
+
+medicineCollectionSchema.plugin( mongoosePaginate );
 
 const MedicinesCollection = mongoose.model("Medicine", medicineCollectionSchema);
 

@@ -58,8 +58,8 @@
 
             <tbody id="medicineRecordsTableBody">
                 <% let i = 0; %>
-                <% if ( MedicinesRecordsFromDB ) { %>
-                    <% MedicinesRecordsFromDB.forEach(singleMedicineRecord => { %>
+                <% if ( MedicineRecordsArray ) { %>
+                    <% MedicineRecordsArray.forEach(singleMedicineRecord => { %>
                         <tr>
                             <td><%= ++i %></td>
                             <td><%= singleMedicineRecord.medicineName %></td>
@@ -95,15 +95,56 @@
         <!-- Pagination -->
         <div class="dashboard__section-pagination">
 
-            <a href="#" class="pagination__btn">&laquo;</a>
+            <%# Move to Previous Page %>
+            <% let currentPage = MedicineRecordsPaginationInfo.page %>
+            <% if ( MedicineRecordsPaginationInfo.hasPrevPage ) { %>
+                <a 
+                    href="/admin/manage/medicines/?page=<%= currentPage - 1 %>" 
+                    class="pagination__btn"
+                >
+                    &laquo;
+                </a>
+            <% } %>
 
             <div class="pagination__numbers">
-                <a href="#" class="pagination__btn">1</a>
-                <a href="#" class="pagination__btn">2</a>
-                <a href="#" class="pagination__btn">3</a>
+                <% if ( MedicineRecordsPaginationInfo ) { %>
+                    <% if ( MedicineRecordsPaginationInfo.prevPage ) { %>
+                        <a 
+                            href="/admin/manage/medicines/?page=<%= MedicineRecordsPaginationInfo.prevPage %>" 
+                            class="pagination__btn"
+                        >
+                            <%= MedicineRecordsPaginationInfo.prevPage %>
+                        </a>
+                    <% } %>
+
+                    <a 
+                        href="/admin/manage/medicines/?page=<%= MedicineRecordsPaginationInfo.page %>" 
+                        class="pagination__btn"
+                    >
+                        <%= MedicineRecordsPaginationInfo.page  %>
+                    </a>
+
+                    <% if ( MedicineRecordsPaginationInfo.nextPage ) { %>
+                        <a 
+                            href="/admin/manage/medicines/?page=<%= MedicineRecordsPaginationInfo.nextPage %>" 
+                            class="pagination__btn"
+                        >
+                            <%= MedicineRecordsPaginationInfo.nextPage %>
+                        </a>
+                    <% } %>
+            <% } %>
             </div>
 
-            <a href="#" class="pagination__btn">&raquo;</a>
+            <%# Move to Next Page %>
+            <% if ( MedicineRecordsPaginationInfo.hasNextPage ) { %>
+                <a 
+                    href="/admin/manage/medicines/?page=<%= currentPage + 1 %>" 
+                    class="pagination__btn"
+                >
+                    &raquo;
+                </a>
+            <% } %>
+
 
         </div>
 

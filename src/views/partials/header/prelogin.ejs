@@ -64,12 +64,22 @@
 
                     <div class="navbar-dropdown-menu-container">
                         <ul class="navbar-dropdown-menu">
-                            <li>
-                                <a href="#skin_care" class="navbar-dropdown-link">Skin Care</a>
-                            </li>
-                            <li>
-                                <a href="#feet" class="navbar-dropdown-link">Feet</a>
-                            </li>
+                            <% 
+                                let medicineCategoriesSet = new Set(); 
+                                medicineRecords.forEach(singleMedicineCategory => {
+                                    medicineCategoriesSet.add( singleMedicineCategory.medicineCategory )
+                                });
+                                let categories = medicineCategoriesSet.values();
+                            %>
+                            <% for ( let category of categories ) { %>
+                                <li>
+                                    <a href="/?category=<%= category %>" 
+                                        class="navbar-dropdown-link"
+                                    >
+                                        <%= category %>
+                                    </a>
+                                </li>
+                            <% }; %>
                         </ul>
                     </div>
                 </div>

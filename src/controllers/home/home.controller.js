@@ -7,12 +7,27 @@ on http://localhost:5050
 
 const HomePageCtrl = async ( req, res, next ) => {
 
-    const MedicinesRecordsFromDB = await MedicinesCollection.find();
+    const medicineRecords = await MedicinesCollection.find();
+
+    const page = req.query.page || 1;
+    const limit = req.query.page || 12;
+    const medicineCategory = req.query.category || "";
+
+    const search = ( medicineCategory != "" )? { medicineCategory } : {};
+
+    const medicinesRecordsPaginationInfo = 
+    await MedicinesCollection.paginate( search, {
+        page,
+        limit
+    });
+
+    console.log( medicinesRecordsPaginationInfo );
 
     res.render(
         "home/home",
         {
-            MedicinesRecordsFromDB
+            MedicinesRecordsFromDB: medicinesRecordsPaginationInfo.docs,
+            medicineRecords
         }
     )
 }
