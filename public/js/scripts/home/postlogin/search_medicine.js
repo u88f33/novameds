@@ -10,7 +10,7 @@ function searchMedicineByUser(inputValue) {
             const res = await fetch(`/user/api/medicines/?page=1&search=${inputValue}`);
             const data = await res.json();
 
-            const homePageCardContainer = document.getElementById("homePageCardContainer");
+            const homePageCardContainer = document.getElementById("profilePageCardContainer");
 
             if ( homePageCardContainer == null ) {
                 window.location.replace("/");
@@ -39,7 +39,9 @@ function searchMedicineByUser(inputValue) {
                             </span>
                         </div>
 
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <a href="/profile/product/${ medicineRecord._id }" class="add-to-cart-btn">
+                            Add to Cart
+                        </a>
                         </div>
                     </div> 
                 `

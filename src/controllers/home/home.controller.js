@@ -21,7 +21,7 @@ const HomePageCtrl = async ( req, res, next ) => {
         limit
     });
 
-    console.log( medicinesRecordsPaginationInfo );
+
 
     res.render(
         "home/home",

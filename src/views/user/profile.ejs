@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="card-container">
+        <div id="profilePageCardContainer" class="card-container">
 
             <%# Printing cards on a "http://localhost:5050/profile" %>
                 <% if ( MedicinesRecordsFromDB ) { %>
@@ -30,7 +30,7 @@
                                     </span>
                                 </div>
 
-                                <a href="/profile/product/product_id_111" class="add-to-cart-btn">
+                                <a href="/profile/product/<%= singleMedicineRecord._id %>" class="add-to-cart-btn">
                                     Add to Cart
                                 </a>
                             </div>

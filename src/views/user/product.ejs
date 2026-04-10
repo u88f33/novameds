@@ -7,18 +7,19 @@
             <div class="product__container">
 
                 <div class="product__image-container">
-                    <img src="/assets/images/no-image.jpg" alt="Medicine" class="product__image">
+                    <img src="/uploads/medicines/<%= singleMedicineRecord.medicineImage %>" 
+                    alt="Medicine" class="product__image">
                 </div>
 
                 <div class="product__details">
                     <div class="product__details-header">
                         <div class="product__details-header-top">
-                            <h1 class="product__title">Paracetamol Tablets</h1>
+                            <h1 class="product__title"><%= singleMedicineRecord.medicineName %></h1>
                         </div>
 
                         <div class="product__details-header-bottom">
-                            <p class="product__category">Fever and Pain Relief</p>
-                            <p class="product__price">Rs. 180</p>
+                            <p class="product__category"><%= singleMedicineRecord.medicineCategory %></p>
+                            <p class="product__price">Rs. <%= singleMedicineRecord.medicinePrice %></p>
                         </div>
                     </div>
 
