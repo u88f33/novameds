@@ -1,6 +1,13 @@
-const SettingsPageUrl = ( req, res, next ) => {
+import medicineRecordsArray from "../../../utils/medicines/records.js"
+
+const SettingsPageUrl = async ( req, res, next ) => {
+    const medicineRecords = await medicineRecordsArray();
+
     res.render(
-        "user/settings"
+        "user/settings",
+        {
+            medicineRecords
+        }
     )
 }
 

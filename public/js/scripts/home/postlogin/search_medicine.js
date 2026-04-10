@@ -7,19 +7,20 @@ function searchMedicineByUser(inputValue) {
         try {
 
             
-            const res = await fetch(`/user/api/medicines/?page=1&search=${inputValue}`);
-            const data = await res.json();
+            let res = await fetch(`/user/api/medicines/?page=1&search=${inputValue}`);
+            let data = await res.json();
 
-            const homePageCardContainer = document.getElementById("profilePageCardContainer");
+            const profilePageCardContainer = document.getElementById("profilePageCardContainer");
 
-            if ( homePageCardContainer == null ) {
-                window.location.replace("/");
+            if ( profilePageCardContainer == null ) {
+                window.location.assign( "/profile" );
             }
+            
+            profilePageCardContainer.innerHTML = "";
 
-            homePageCardContainer.innerHTML = "";
 
             data.forEach((medicineRecord, index) => {
-                homePageCardContainer.innerHTML += `
+                profilePageCardContainer.innerHTML += `
                     <div class="card">
                         <div class="card-header">
                         <img 

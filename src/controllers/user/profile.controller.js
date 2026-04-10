@@ -1,5 +1,5 @@
 import MedicinesCollection from "../../models/medicines.model.js";
-
+import medicineRecordsArray from "../../utils/medicines/records.js"
 /* 
 When a user Logins to our Website, this page appears open
 on http://localhost:5050/profile
@@ -7,7 +7,7 @@ on http://localhost:5050/profile
 
 const UserProfileCtrl = async ( req, res, next ) => {
     
-    const medicineRecords = await MedicinesCollection.find();
+    const medicineRecords = await medicineRecordsArray();
 
     const page = req.query.page || 1;
     const limit = req.query.limit || 12;

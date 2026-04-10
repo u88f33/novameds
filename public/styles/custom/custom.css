@@ -5,6 +5,8 @@
 
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 :root {
@@ -197,7 +199,7 @@ nav {
     color: #ffffff;
     text-align: center;
     padding: 15px 0;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .footer p {
@@ -1089,11 +1091,8 @@ th.customer-orders-history-header {
     display: inline-block;
     padding: 10px 30px;
     width: 100%;
-}
-
-.navbar-dropdown-link {
+    text-align: left;
     background-color: var(--primary-blue);
-    color: white;
 }
 
 .navbar-dropdown:hover .navbar-dropdown-menu-container {
@@ -1109,7 +1108,7 @@ th.customer-orders-history-header {
     grid-template-columns: repeat( 4, 1fr );
 }
 
-.navbar-dropdown-link {
+.category-dropdown-link {
     text-align: center;
 }
 

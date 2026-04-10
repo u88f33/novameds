@@ -42,11 +42,60 @@
         </div>
     </div>
 
-    <div class="pagination-container">
-        <a href="#" class="page-btn arrow">&laquo;</a>
-        <a href="#" class="page-btn">1</a>
-        <a href="#" class="page-btn">2</a>
-        <a href="#" class="page-btn arrow">&raquo;</a>
+    <!-- Pagination -->
+    <div class="dashboard__section-pagination">
+
+        <%# Move to Previous Page %>
+        <% let currentPage = medicinesRecordsPaginationInfo.page %>
+        <% if ( medicinesRecordsPaginationInfo.hasPrevPage ) { %>
+            <a 
+                href="/profile/?page=<%= currentPage - 1 %>" 
+                class="pagination__btn"
+            >
+                &laquo;
+            </a>
+        <% } %>
+
+        <div class="pagination__numbers">
+            <% if ( medicinesRecordsPaginationInfo ) { %>
+                <% if ( medicinesRecordsPaginationInfo.prevPage ) { %>
+                    <a 
+                        href="/profile/?page=<%= medicinesRecordsPaginationInfo.prevPage %>" 
+                        class="pagination__btn"
+                    >
+                        <%= medicinesRecordsPaginationInfo.prevPage %>
+                    </a>
+                <% } %>
+
+                <a 
+                    href="/profile/?page=<%= medicinesRecordsPaginationInfo.page %>" 
+                    class="pagination__btn"
+                >
+                    <%= medicinesRecordsPaginationInfo.page  %>
+                </a>
+
+                <% if ( medicinesRecordsPaginationInfo.nextPage ) { %>
+                    <a 
+                        href="/profile/?page=<%= medicinesRecordsPaginationInfo.nextPage %>" 
+                        class="pagination__btn"
+                    >
+                        <%= medicinesRecordsPaginationInfo.nextPage %>
+                    </a>
+                <% } %>
+        <% } %>
+        </div>
+
+        <%# Move to Next Page %>
+        <% if ( medicinesRecordsPaginationInfo.hasNextPage ) { %>
+            <a 
+                href="/profile/?page=<%= currentPage + 1 %>" 
+                class="pagination__btn"
+            >
+                &raquo;
+            </a>
+        <% } %>
+
+
     </div>
 
     

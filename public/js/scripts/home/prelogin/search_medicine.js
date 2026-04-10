@@ -15,8 +15,10 @@ function searchMedicineByUser(inputValue) {
             if ( homePageCardContainer == null ) {
                 window.location.replace("/");
             }
-
+            
             homePageCardContainer.innerHTML = "";
+            
+
 
             data.forEach((medicineRecord, index) => {
                 homePageCardContainer.innerHTML += `
