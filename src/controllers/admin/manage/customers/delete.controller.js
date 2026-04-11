@@ -1,8 +1,11 @@
-const DeleteCustomerRecordCtrl = ( req, res, next ) => {
-    console.log( "-----------------------------" );
-    console.log( `Delete Customer Parameter: ${req.params.id}` );
-    console.log( "-----------------------------" );
-    res.redirect( "/admin" )
+import CustomerCollections from "../../../../models/customers.model.js";
+
+const DeleteCustomerRecordCtrl = async ( req, res, next ) => {
+    
+    const deleteCustomerRecord = 
+    await CustomerCollections.findByIdAndDelete( req.params.id );
+
+    res.redirect( "/admin/manage/customers" )
 }
 
 export default DeleteCustomerRecordCtrl;

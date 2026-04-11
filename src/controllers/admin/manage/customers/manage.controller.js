@@ -14,7 +14,7 @@ const ManageCustomerRecordsCtrl = async ( req, res, next ) => {
     );
 
     const CustomerRecordsArray = CustomerRecordsPaginationInfo.docs; 
-    console.log( CustomerRecordsPaginationInfo );
+    
 
     res.render(
         "admin/manage/customers/manage",

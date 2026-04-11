@@ -40,7 +40,7 @@
                     
                     <!-- Customer Name -->
                     <div class="dashboard__secion-form-group">
-                        <label for="customerName" class="dashboard__secion-form-label">Customer Name</label>
+                        <label for="customerName" class="dashboard__secion-form-label">Customer Name:</label>
                         <input 
                             type="text" 
                             id="customerName" 
@@ -48,7 +48,7 @@
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
-                            value="Updated Customer name"
+                            value="<%= singleCustomerRecord.customerName %>"
                         />
                     </div>
 
@@ -62,45 +62,13 @@
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
-                            value="updated_email@example.com"
+                            value="<%= singleCustomerRecord.customerEmail %>"
                         />
                     </div>
 
                 </div>
 
                 <!-- Second Row -->
-                <div class="dashboard__secion-form-row">
-                    
-                    <!-- Customer Phone -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="customerPhone" class="dashboard__secion-form-label">Customer Phone</label>
-                        <input 
-                            type="text" 
-                            id="customerPhone" 
-                            name="customer_phone" 
-                            class="dashboard__secion-form-input"
-                            required="true"
-                            maxlength="50"
-                            value="Updated Customer Phone"
-                        />
-                    </div>
-
-                    <!-- Customer Address -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="customerAddress" class="dashboard__secion-form-label">Customer Address</label>
-                        <input 
-                            type="text" 
-                            id="customerAddress" 
-                            name="customer_address" 
-                            class="dashboard__secion-form-input"
-                            required="required"
-                            value="Updated Customer Address"
-                        />
-                    </div>
-
-                </div>
-
-                <!-- Third Row -->
                 <div class="dashboard__secion-form-row">
                     
                     <!-- Customer Password -->
@@ -123,6 +91,70 @@
                             id="confirmPassword" 
                             name="customer_confirm_password" 
                             class="dashboard__secion-form-input"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Third Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Customer Phone -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerPhone" class="dashboard__secion-form-label">Customer Phone</label>
+                        <input 
+                            type="text" 
+                            id="customerPhone" 
+                            name="customer_phone" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            value="<%= singleCustomerRecord.customerPhone %>"
+                        />
+                    </div>
+
+                    <!-- Customer Address -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerAddress" class="dashboard__secion-form-label">Customer Address</label>
+                        <input 
+                            type="text" 
+                            id="customerAddress" 
+                            name="customer_address" 
+                            class="dashboard__secion-form-input"
+                            required="required"
+                            value="<%= singleCustomerRecord.customerAddress %>"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Fourth Row -->
+                <div class="dashboard__secion-form-row">
+                    
+                    <!-- Customer City -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customerCity" class="dashboard__secion-form-label">Customer City</label>
+                        <input 
+                            type="text" 
+                            id="customerCity" 
+                            name="customer_city" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                            value="<%= singleCustomerRecord.customerCity %>"
+                        />
+                    </div>
+
+                    <!-- Customer Address -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="customer_country" class="dashboard__secion-form-label">Customer Country</label>
+                        <input 
+                            type="text" 
+                            id="customerCountry" 
+                            name="customer_country" 
+                            class="dashboard__secion-form-input"
+                            required="required"
+                            value="<%= singleCustomerRecord.customerCountry %>"
                         />
                     </div>
 

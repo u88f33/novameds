@@ -1,6 +1,14 @@
-const ViewCustomerRecordCtrl = ( req, res, next ) => {
+import CustomerCollection from "../../../../models/customers.model.js";
+
+const ViewCustomerRecordCtrl = async ( req, res, next ) => {
+
+    const singleCustomerRecord = await CustomerCollection.findById( req.params.id );
+
     res.render(
-        "admin/manage/customers/view"
+        "admin/manage/customers/view",
+        {
+            singleCustomerRecord
+        }
     )
 }
 
