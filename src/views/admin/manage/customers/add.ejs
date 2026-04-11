@@ -144,6 +144,14 @@
         </div>
 
     </div>
+
+    <% if ( errorMessage ) { %>
+        <div class="dashboard__section">
+            <p class="alert alert-danger">
+                <%= errorMessage %>
+            </p>    
+        </div>
+    <% } %>
 </div>
 
 <%- include( "../../../partials/admin/footer" ) -%>
