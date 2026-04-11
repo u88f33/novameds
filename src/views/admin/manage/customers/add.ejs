@@ -71,6 +71,36 @@
                 <!-- Second Row -->
                 <div class="dashboard__secion-form-row">
                     
+                    <!-- Customer Password -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="Password" class="dashboard__secion-form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="customer_password" 
+                            class="dashboard__secion-form-input"
+                            required="true"
+                            maxlength="50"
+                        />
+                    </div>
+
+                    <!-- Customer Address -->
+                    <div class="dashboard__secion-form-group">
+                        <label for="confirmPassword" class="dashboard__secion-form-label">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="customer_confirm_password" 
+                            class="dashboard__secion-form-input"
+                            required="required"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- Third Row -->
+                <div class="dashboard__secion-form-row">
+                    
                     <!-- Customer Phone -->
                     <div class="dashboard__secion-form-group">
                         <label for="customerPhone" class="dashboard__secion-form-label">Customer Phone</label>
@@ -100,31 +130,33 @@
 
                 </div>
 
-                <!-- Third Row -->
+                <!-- Fourth Row -->
                 <div class="dashboard__secion-form-row">
                     
-                    <!-- Customer Password -->
+                    <!-- Customer City -->
                     <div class="dashboard__secion-form-group">
-                        <label for="Password" class="dashboard__secion-form-label">Password</label>
+                        <label for="customerCity" class="dashboard__secion-form-label">Customer City</label>
                         <input 
-                            type="password" 
-                            id="password" 
-                            name="customer_password" 
+                            type="text" 
+                            id="customerCity" 
+                            name="customer_city" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
+                            placeholder="Islamabad"
                         />
                     </div>
 
                     <!-- Customer Address -->
                     <div class="dashboard__secion-form-group">
-                        <label for="confirmPassword" class="dashboard__secion-form-label">Confirm Password</label>
+                        <label for="customer_country" class="dashboard__secion-form-label">Customer Country</label>
                         <input 
-                            type="password" 
-                            id="confirmPassword" 
-                            name="customer_confirm_password" 
+                            type="text" 
+                            id="customerCountry" 
+                            name="customer_country" 
                             class="dashboard__secion-form-input"
                             required="required"
+                            placeholder="Pakistan"
                         />
                     </div>
 

@@ -3,13 +3,18 @@ import bcrypt from "bcryptjs";
 
 const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
     try {
+        
+        console.log( req.body );
+
         const {
             customer_name,
             customer_email,
+            customer_password,
+            customer_confirm_password,
             customer_phone,
             customer_address,
-            customer_password,
-            customer_confirm_password
+            customer_city,
+            customer_country
         } = req.body;
 
         if ( customer_password != customer_confirm_password ) {
@@ -21,9 +26,11 @@ const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
         const customerRecord = {
             customerName: customer_name,
             customerEmail: customer_email,
+            customerPassword: hashedPassword,
             customerPhone: customer_phone,
             customerAddress: customer_address,
-            customerPassword: hashedPassword
+            customerCity: customer_city,
+            customerCountry: customer_country
         };
 
         const dataInsertedInMongoDB = await CustomersCollection.insertMany(

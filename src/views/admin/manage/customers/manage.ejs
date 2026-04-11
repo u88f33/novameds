@@ -55,104 +55,97 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ali Khan</td>
-                    <td>+92 301 2345678</td>
-                    <td>Islamabad, Pakistan</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
+                <% let i = 0; %>
+                <% CustomerRecordsArray.forEach(singleCustomerRecord => { %>
+                    <tr>
+                        <td><%= ++i %></td>
+                        <td><%= singleCustomerRecord.customerName %></td>
+                        <td><%= singleCustomerRecord.customerPhone %></td>
+                        <td><%= singleCustomerRecord.customerAddress %></td>
+                        <td>
+                            <div class="dashboard__section-cell-actions">
 
-                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
+                                <a href="/admin/manage/customers/view/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                    More Info
+                                </a>
 
-                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
+                                <a href="/admin/manage/customers/update/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                    Update
+                                </a>
 
-                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
+                                <a href="/admin/manage/customers/delete/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </a>
 
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Ahmed Raza</td>
-                    <td>+92 302 9876543</td>
-                    <td>Lahore, Pakistan</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Sara Malik</td>
-                    <td>+92 300 1122334</td>
-                    <td>Karachi, Pakistan</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                                <a href="/admin/manage/customers/login/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-arrow-right-to-bracket pe-2"></i>
+                                    Login
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
             </tbody>
         </table>
 
         <!-- Pagination -->
         <div class="dashboard__section-pagination">
 
-            <a href="#" class="pagination__btn">&laquo;</a>
+        <%# Move to Previous Page %>
+        <% let currentPage = CustomerRecordsPaginationInfo.page %>
+        <% if ( CustomerRecordsPaginationInfo.hasPrevPage ) { %>
+            <a 
+                href="/admin/manage/customers/?page=<%= currentPage - 1 %>" 
+                class="pagination__btn"
+            >
+                &laquo;
+            </a>
+        <% } %>
 
-            <div class="pagination__numbers">
-                <a href="#" class="pagination__btn">1</a>
-                <a href="#" class="pagination__btn">2</a>
-                <a href="#" class="pagination__btn">3</a>
-            </div>
+        <div class="pagination__numbers">
+            <% if ( CustomerRecordsPaginationInfo ) { %>
+                <% if ( CustomerRecordsPaginationInfo.prevPage ) { %>
+                    <a 
+                        href="/admin/manage/customers/?page=<%= CustomerRecordsPaginationInfo.prevPage %>" 
+                        class="pagination__btn"
+                    >
+                        <%= CustomerRecordsPaginationInfo.prevPage %>
+                    </a>
+                <% } %>
 
-            <a href="#" class="pagination__btn">&raquo;</a>
+                <a 
+                    href="/admin/manage/customers/?page=<%= CustomerRecordsPaginationInfo.page %>" 
+                    class="pagination__btn"
+                >
+                    <%= CustomerRecordsPaginationInfo.page  %>
+                </a>
+
+                <% if ( CustomerRecordsPaginationInfo.nextPage ) { %>
+                    <a 
+                        href="/admin/manage/customers/?page=<%= CustomerRecordsPaginationInfo.nextPage %>" 
+                        class="pagination__btn"
+                    >
+                        <%= CustomerRecordsPaginationInfo.nextPage %>
+                    </a>
+                <% } %>
+        <% } %>
+        </div>
+
+        <%# Move to Next Page %>
+        <% if ( CustomerRecordsPaginationInfo.hasNextPage ) { %>
+            <a 
+                href="/admin/manage/customers/?page=<%= currentPage + 1 %>" 
+                class="pagination__btn"
+            >
+                &raquo;
+            </a>
+        <% } %>
 
         </div>
 
-    </div>
 </div>
 
 <%- include( "../../../partials/admin/footer" ) -%>

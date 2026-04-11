@@ -13,6 +13,10 @@ const customerCollectionSchema = new mongoose.Schema({
         trim: true,
         maxlength: 100
     },
+    customerPassword: {
+        type: String,
+        required: true
+    },
     customerPhone: {
         type: String,
         required: true,
@@ -23,9 +27,15 @@ const customerCollectionSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    customerPassword: {
+    customerCity: {
         type: String,
-        required: true
+        required: true,
+        trim: true
+    },
+    customerCountry: {
+        type: String,
+        required: true,
+        trim: true
     }
 }, {
     timestamps: true
