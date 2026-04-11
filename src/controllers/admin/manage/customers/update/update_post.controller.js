@@ -13,6 +13,7 @@ const UpdateCustomerRecordCtrlPost = ( req, res, next ) => {
         customer_country
     } = req.body;
 
+    /** Date: April 11, 2026 at 5:44 PM */
     if ( customer_password == customer_confirm_password ) {
         
     }
