@@ -34,6 +34,7 @@
                     type="text" 
                     class="dashboard__section-search" 
                     placeholder="Search Specific Customer"
+                    oninput="searchCustomerRecordByAdmin( this.value )"
                 />
 
                 <a href="/admin/manage/customers/add" class="dashboard__section-add">
@@ -54,7 +55,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="customerRecordsTableBody">
                 <% let i = 0; %>
                 <% CustomerRecordsArray.forEach(singleCustomerRecord => { %>
                     <tr>
@@ -148,4 +149,5 @@
 
 </div>
 
+<script src="/js/scripts/customers/search_customers.js"></script>
 <%- include( "../../../partials/admin/footer" ) -%>

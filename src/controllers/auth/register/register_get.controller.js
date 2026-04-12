@@ -1,8 +1,8 @@
-import MedicineCollection from "../../../models/medicines.model.js";
+import medicineRecordsArray from "../../../utils/medicines/records.js";
 
 const RegisterGetCtrl = async ( req, res, next ) => {
 
-    const medicineRecords = await MedicineCollection.find();
+    const medicineRecords = await medicineRecordsArray()
     
 
     res.render(
