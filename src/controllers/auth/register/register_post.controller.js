@@ -16,7 +16,7 @@ const RegisterPostCtrl = async ( req, res, next ) => {
             user_address,
             user_city,
             user_country
-        } =  req.body;
+        } = req.body;
 
         if ( user_password != confirm_user_password ) {
             res.redirect( "/register/?errorMessage=Password do not match" );
