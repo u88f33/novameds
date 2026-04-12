@@ -8,7 +8,8 @@ const UpdateCustomerRecordCtrl = async ( req, res, next ) => {
     res.render(
         "admin/manage/customers/update",
         {
-            singleCustomerRecord
+            singleCustomerRecord,
+            errorMessage: req.query.errorMessage
         }
     )
 
