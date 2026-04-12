@@ -23,6 +23,8 @@
                             placeholder="Your name"
                             required="true"
                             maxlength="40"
+                            pattern="[A-Za-z ]+"
+                            title="Only Alphabets are allowed"
                             name="user_name"
                             autocomplete="off"
                         />
@@ -56,19 +58,31 @@
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="passwordInputRegister" class="form-label">Password</label>
-                        <input 
-                            type="password"
-                            class="form-control border border-dark"
-                            id="passwordInputRegister"
-                            placeholder="P@ssword123"
-                            required="true"
-                            min="8"
-                            maxlength="30"
-                            name="user_password"
-                            autocomplete="off"
-                        />
+                    <div class="form-group form-group--inline mb-3">
+                        <div class="form-group__field">
+                            <label for="passwordInputRegister" class="form-label">Password</label>
+                            <input 
+                                type="password"
+                                class="form-control border border-dark"
+                                id="passwordInputRegister"
+                                placeholder="Password"
+                                required="true"
+                                name="user_password"
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div class="form-group__field">
+                            <label for="confirmPasswordInputRegister" class="form-label">Confirm Password</label>
+                            <input 
+                                type="password"
+                                class="form-control border border-dark"
+                                id="confirmPasswordInputRegister"
+                                placeholder="Enter password again"
+                                required="true"
+                                name="confirm_user_password"
+                                autocomplete="off"
+                            />
+                        </div>
                     </div>
 
                     <div class="mb-3">
