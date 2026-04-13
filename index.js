@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -14,6 +15,18 @@ const DATABASE_NAME = process.env.DATABASE_NAME;  // novameds
 connectDB( MONGO_URI, DATABASE_NAME );
 
 const app = express();
+
+// Session Middleware
+app.use( session( 
+  {
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60
+    }
+  }
+) )
 
 // Fix __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
