@@ -8,7 +8,7 @@ const UserForgotPasswordCtrl = async ( req, res, next ) => {
         "auth/forgot_password/user/forgot_password.ejs",
         {
             medicineRecords,
-            errorMessage: ""
+            errorMessage: req.query.errorMessage
         }
     )
 }
