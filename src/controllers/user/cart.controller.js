@@ -6,7 +6,8 @@ const CartPageCtrl = async ( req, res, next ) => {
     res.render(
         "user/cart",
         {
-            medicineRecords
+            medicineRecords,
+            nameOfLoggedInUser: req.session.userLoginSession.userName
         }
     );
 }

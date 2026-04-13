@@ -1405,3 +1405,14 @@ th.customer-orders-history-header {
 #securityPanel {
     width: 50%;
 }
+
+.alert-box {
+    padding: 20px;
+    background-color: #ffb7b7;
+    color: #750000;
+    border: 1px solid #750000;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #750000;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}

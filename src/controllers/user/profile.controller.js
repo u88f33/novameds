@@ -26,7 +26,8 @@ const UserProfileCtrl = async ( req, res, next ) => {
         {
             MedicinesRecordsFromDB: medicinesRecordsPaginationInfo.docs,
             medicineRecords,
-            medicinesRecordsPaginationInfo
+            medicinesRecordsPaginationInfo,
+            nameOfLoggedInUser: req.session.userLoginSession.userName
         }
     );
 }

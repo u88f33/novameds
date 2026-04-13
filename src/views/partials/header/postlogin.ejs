@@ -93,7 +93,9 @@
                 <div class="navbar-dropdown">
                     <button class="navbar-dropdown-btn">
                         <i class="fa-solid fa-user"></i>
-                        <span>Muhammad Umar</span>
+                        <% if ( nameOfLoggedInUser ) { %>
+                            <%= nameOfLoggedInUser %>
+                        <% } %>
                     </button>
 
                     <div class="navbar-dropdown-menu-container">
@@ -105,7 +107,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#logout" class="navbar-dropdown-link">
+                                <a href="/user/logout" class="navbar-dropdown-link">
                                     <i class="fa-solid fa-right-from-bracket pe-3"></i>
                                     Logout
                                 </a>

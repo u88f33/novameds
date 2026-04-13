@@ -6,7 +6,8 @@ const LoginGetCtrl = async ( req, res, next ) => {
 
     res.render( "auth/login",
         { 
-            medicineRecords
+            medicineRecords,
+            errorMessage: req.query.errorMessage
         }
      );
 }

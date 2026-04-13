@@ -6,7 +6,8 @@ const SettingsPageUrl = async ( req, res, next ) => {
     res.render(
         "user/settings",
         {
-            medicineRecords
+            medicineRecords,
+            nameOfLoggedInUser: req.session.userLoginSession.userName
         }
     )
 }

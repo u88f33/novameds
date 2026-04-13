@@ -106,6 +106,12 @@
 
                     </div>
 
+                    <% if ( errorMessage ) { %>
+                        <div class="alert-box">
+                            <p class="mb-0"><b>Error</b>: <%= errorMessage %></p>
+                        </div>
+                    <% } %>
+
             </div>
 
             <div
@@ -114,8 +120,8 @@
                     src="/assets/images/login_page_image.jpg"
                 />
             </div>
-        </div>
-
+            </div>
+            </div>
         </div>
     </div>
 </div>
