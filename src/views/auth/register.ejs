@@ -3,7 +3,6 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-
             <div class="login-container">
                 <div class="login-container-left">
                     <h1 class="mb-4">REGISTER</h1>
@@ -13,6 +12,7 @@
                     class="form register-form"
                     action="/user-register"
                     method="POST">
+
 
                     <div class="mb-3">
                         <label for="nameInputRegister" class="form-label">Name</label>
@@ -129,10 +129,16 @@
 
                     <button type="submit" class="btn login-btn">Register</button>
 
-                        <div class="login-footer">
-                            <span class="login-text">Already have an account?</span>
-                            <a href="/login" class="login-link">Login here</a>
+                    <div class="login-footer">
+                        <span class="login-text">Already have an account?</span>
+                        <a href="/login" class="login-link">Login here</a>
+                    </div>
+
+                    <% if ( errorMessage ) { %>
+                        <div class="alert-box">
+                            <p class="mb-0"><%= errorMessage %></p>
                         </div>
+                    <% } %>
 
                     </form>
                 </div>
@@ -141,9 +147,10 @@
                     class="login-container-right">
                     <img 
                         src="/assets/images/login_page_image.jpg"
+                        style="display: block;"
                     />
                 </div>
-        </div>
+            </div>
 
         </div>
     </div>

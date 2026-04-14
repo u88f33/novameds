@@ -7,7 +7,10 @@ const RegisterGetCtrl = async ( req, res, next ) => {
 
     res.render(
         "auth/register",
-        { medicineRecords }
+        {
+            medicineRecords,
+            errorMessage: req.query.errorMessage
+        },
     )
 }
 
