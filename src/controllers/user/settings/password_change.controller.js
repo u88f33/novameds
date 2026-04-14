@@ -24,7 +24,7 @@ const ProfilePasswordChangeCtrlPost = async ( req, res, next ) => {
         return res.redirect( `/profile/settings/${ req.params.id }/?errorMessage=Both New passwords and Confirm New Password must be same.` );
     }
 
-    const newHashedPassword = await bcrypt.hash( user_old_password, 10 );
+    const newHashedPassword = await bcrypt.hash( user_new_password, 10 );
     loggedInUser.customerPassword = newHashedPassword;
 
     await loggedInUser.save();
