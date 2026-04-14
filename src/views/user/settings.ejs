@@ -14,19 +14,19 @@
 
             <!-- PROFILE SETTINGS FORM -->
             <div id="profilePanel" class="tab-panel active">
-                <form id="profileSettingForm" action="/profile/settings/profile-settings" method="POST">
+                <form id="profileSettingForm" action="/profile/settings/profile-settings/<%= loggedInUserId %>" method="POST">
 
                     <div class="form-group form-group--inline mb-3">
                         <div class="form-group__field">
                             <label class="form-label">Change Name</label>
                             <input type="text" class="form-control border border-dark" 
-                            name="user_name" value="Muhammad Umar">
+                            name="user_name" value="<%= loggedInUser.customerName %>">
                         </div>
 
                         <div class="form-group__field">
                             <label class="form-label">Change Email</label>
                             <input type="email" class="form-control border border-dark" 
-                            name="user_email" value="u99f22@gmail.com">
+                            name="user_email" value="<%= loggedInUser.customerEmail %>">
                         </div>
                     </div>
 
@@ -34,13 +34,13 @@
                         <div class="form-group__field">
                             <label class="form-label">Change Phone</label>
                             <input type="tel" class="form-control border border-dark" 
-                            name="user_phone" value="03391234567">
+                            name="user_phone" value="<%= loggedInUser.customerPhone %>">
                         </div>
 
                         <div class="form-group__field">
                             <label class="form-label">Change Address</label>
                             <input type="text" class="form-control border border-dark" 
-                            name="user_address" value="House# 105-C, Street# 18. G-6/4">
+                            name="user_address" value="<%= loggedInUser.customerAddress %>">
                         </div>
                     </div>
 
@@ -48,23 +48,26 @@
                         <div class="form-group__field">
                             <label class="form-label">Change City</label>
                             <input type="text" class="form-control border border-dark" 
-                            name="user_city" value="Islamabad">
+                            name="user_city" value="<%= loggedInUser.customerCity %>">
                         </div>
 
                         <div class="form-group__field">
                             <label class="form-label">Change Country</label>
                             <input type="text" class="form-control border border-dark" 
-                            name="user_country" value="Pakistan">
+                            name="user_country" value="<%= loggedInUser.customerCountry %>">
                         </div>
                     </div>
 
                     <button type="submit" class="btn login-btn">Save Changes</button>
+                    <div class="alert-box">
+                        <p class="mb-0"><b>Error: </b><%= errorMessage %></p>
+                    </div>
                 </form>
             </div>
 
             <!-- SECURITY FORM -->
             <div id="securityPanel" class="tab-panel">
-                <form id="changePasswordForm" action="/profile/settings/change-password" method="POST">
+                <form id="changePasswordForm" action="/profile/settings/change-password/<%= loggedInUserId %>" method="POST">
 
                     <div class="mb-3">
                         <label class="form-label">Old Password</label>

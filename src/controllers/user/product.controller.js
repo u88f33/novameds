@@ -13,7 +13,8 @@ const ProductPageCtrl = async ( req, res, next ) => {
         {
             medicineRecords,
             singleMedicineRecord,
-            nameOfLoggedInUser: req.session.userLoginSession.userName
+            nameOfLoggedInUser: req.session.userLoginSession.userName,
+            loggedInUserId: req.session.userLoginSession.userId
         }
     )
 }
