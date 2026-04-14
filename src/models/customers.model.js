@@ -36,6 +36,12 @@ const customerCollectionSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    resetToken: {
+        type: String,
+    },
+    resetTokenExpiry: {
+        type: Date
     }
 }, {
     timestamps: true
