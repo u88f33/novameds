@@ -29,7 +29,7 @@ const ProfilePageSettingCtrlPost = async ( req, res, next ) => {
         return res.redirect( `/profile/settings/${ req.params.id }/?errorMessage=Record not found` );
     }
 
-    res.redirect(`/profile/settings/${ req.params.id }`);
+    res.redirect(`/profile/settings/${ req.params.id }/?message=Profile updated successfully`);
 }
 
 export default ProfilePageSettingCtrlPost;

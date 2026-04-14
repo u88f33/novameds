@@ -1403,7 +1403,7 @@ th.customer-orders-history-header {
 }
 
 #securityPanel {
-    width: 50%;
+    width: 100%;
 }
 
 .alert-box {
@@ -1414,6 +1414,18 @@ th.customer-orders-history-header {
     border-radius: 5px;
     box-shadow: 3px 3px 10px #750000;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 40px;
+}
+
+.alert-box-normal {
+    padding: 20px;
+    background-color: #fffeb7;
+    color: #756900;
+    border: 1px solid #756900;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #756900;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+    margin-top: 40px;   
 }

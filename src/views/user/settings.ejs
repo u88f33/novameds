@@ -59,9 +59,17 @@
                     </div>
 
                     <button type="submit" class="btn login-btn">Save Changes</button>
-                    <div class="alert-box">
-                        <p class="mb-0"><b>Error: </b><%= errorMessage %></p>
-                    </div>
+                    <% if ( message ) { %>
+                        <div class="alert-box-normal">
+                            <p class="mb-0"><b><%= message %></b></p>
+                        </div>
+                    <% } %>
+
+                    <% if ( errorMessage ) { %>
+                        <div class="alert-box">
+                            <p class="mb-0"><b><%= errorMessage %></b></p>
+                        </div>
+                    <% } %>
                 </form>
             </div>
 
@@ -85,6 +93,11 @@
                     </div>
 
                     <button type="submit" class="btn login-btn">Change Password</button>
+                    <% if ( errorMessage ) { %>
+                        <div class="alert-box">
+                            <p class="mb-0"><%= errorMessage %></p>
+                        </div>
+                    <% } %>
                 </form>
             </div>
 

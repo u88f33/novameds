@@ -12,6 +12,7 @@ const SettingsPageUrl = async ( req, res, next ) => {
             nameOfLoggedInUser: req.session.userLoginSession.userName,
             loggedInUserId: req.session.userLoginSession.userId,
             loggedInUser,
+            message: req.query.message,
             errorMessage: req.query.errorMessage
         }
     )
