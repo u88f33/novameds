@@ -19,7 +19,7 @@ const RegisterPostCtrl = async ( req, res, next ) => {
         } = req.body;
 
         if ( user_password != confirm_user_password ) {
-            res.redirect( "/register/?errorMessage=Password do not match" );
+            res.redirect( "/register/?errorMessage=Password and Confirm Password do not match" );
         } else {
             hashedPassword = await bcrypt.hash( user_password, 10 );
         }
