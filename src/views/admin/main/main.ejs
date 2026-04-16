@@ -59,7 +59,7 @@
                 <i class="fa-solid fa-users"></i>
             </div>
             <div class="dashboard__stat-content">
-                <h2 class="dashboard__stat-number">300</h2>
+                <h2 class="dashboard__stat-number"><%= totalCustomerRecords %></h2>
                 <p class="dashboard__stat-label">Total Customers</p>
             </div>
         </div>
@@ -207,85 +207,39 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ali Khan</td>
-                    <td>+92 301 2345678</td>
-                    <td>Islamabad, Pakistan</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
+                <% let i = 0; %>
+                <% recentCustomers.forEach(singleCustomerRecord => { %>
+                    <tr>
+                        <td><%= ++i %></td>
+                        <td><%= singleCustomerRecord.customerName %></td>
+                        <td><%= singleCustomerRecord.customerPhone %></td>
+                        <td><%= singleCustomerRecord.customerAddress %></td>
+                        <td>
+                            <div class="dashboard__section-cell-actions">
 
-                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
+                                <a href="/admin/manage/customers/view/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                    More Info
+                                </a>
 
-                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
+                                <a href="/admin/manage/customers/update/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                    Update
+                                </a>
 
-                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
+                                <a href="/admin/manage/customers/delete/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </a>
 
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Ahmed Raza</td>
-                    <td>+92 302 9876543</td>
-                    <td>Lahore, Pakistan</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Sara Malik</td>
-                    <td>+92 300 1122334</td>
-                    <td>Karachi, Pakistan</td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-
-                            <a href="/admin/manage/customers/view/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-
-                            <a href="/admin/manage/customers/update/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Update
-                            </a>
-
-                            <a href="/admin/manage/customers/delete/customer_id_123" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                                <a href="/admin/manage/customers/login/<%= singleCustomerRecord._id %>" class="action-btn">
+                                    <i class="fa-solid fa-arrow-right-to-bracket pe-2"></i>
+                                    Login
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
             </tbody>
         </table>
     </div>

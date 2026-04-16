@@ -8,12 +8,16 @@ const AdminMainCtrl = async ( req, res, next ) => {
     const totalMedicineRecords = await MedicinesCollection.countDocuments();
     const totalCustomerRecords = await CustomersCollection.countDocuments();
 
+    const recentCustomers = 
+    await CustomersCollection.find().sort({ createdAt: -1 }).limit( 4 );
+
     res.render(
         "admin/main/main",
         {
             totalSupplierRecords,
             totalMedicineRecords,
-            totalCustomerRecords
+            totalCustomerRecords,
+            recentCustomers
         }
     )
 }
