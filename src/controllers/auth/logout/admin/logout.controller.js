@@ -5,6 +5,7 @@ const AdminLogoutGetCtrl = ( req, res, next ) => {
             console.log( `Error: ${ error }` );
         }
     })
+    res.redirect( "/login" );
 }
 
 export default AdminLogoutGetCtrl;
