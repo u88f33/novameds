@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get( "/login", LoginGetCtrl );
 router.post( "/user-login", UserLoginPostCtrl );
+
 router.post( "/admin-login", AdminLoginPostCtrl );
 
 export default router;
