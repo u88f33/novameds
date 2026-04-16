@@ -4,7 +4,6 @@ const AdminLogoutGetCtrl = ( req, res, next ) => {
             console.log( `Unable to destroy Session` );
             console.log( `Error: ${ error }` );
         }
-        res.redirect( "/login" );
     })
 }
 

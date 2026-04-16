@@ -9,8 +9,8 @@ const router = express.Router();
 
 router.use( "/", HomeRoute );
 router.use( "/", AuthRoute );
-router.use( "/", AdminLoginMiddleware, AdminRoute );
-router.use( "/", UserLoginMiddleware, UserRoute )
+router.use( "/admin", AdminLoginMiddleware, AdminRoute );
+router.use( "/profile", UserLoginMiddleware, UserRoute );
 
 export default router;
 

@@ -21,7 +21,7 @@ const AdminLoginPostCtrl = async ( req, res, next ) => {
         );
 
         if ( !compareAdminPassword ) {
-            res.redirect( "/login/?errorMessage=Admin Password is incorrect!!!" );
+            return res.redirect( "/login/?errorMessage=Admin Password is incorrect!!!" );
         }
 
         req.session.adminLoginSession = {

@@ -6,10 +6,10 @@ import express from "express"
 
 const router = express.Router();
 
-router.use( "/profile", UserProfilePageRoute );
-router.use( "/profile/product", ProfileProductPageRoute );
-router.use( "/profile/cart", ProfileCartPageRoute );
-router.use( "/profile/settings", ProfileSettingsPageRoute );
+router.use( "/", UserProfilePageRoute );
+router.use( "/product", ProfileProductPageRoute );
+router.use( "/cart", ProfileCartPageRoute );
+router.use( "/settings", ProfileSettingsPageRoute );
 
 
 export default router;

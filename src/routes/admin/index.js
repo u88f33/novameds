@@ -7,10 +7,10 @@ import OrdersMgmtByAdmin from "./manage/orders/index.js";
 
 const router = express.Router();
 
-router.use( "/admin", AdminMainRoute );
-router.use( "/admin", MedicinesMgmtByAdmin );
-router.use( "/admin", CustomersMgmtByAdmin );
-router.use( "/admin", SuppliersMgmtByAdmin );
-router.use( "/admin", OrdersMgmtByAdmin );
+router.use( "/", AdminMainRoute );
+router.use( "/", MedicinesMgmtByAdmin );
+router.use( "/", CustomersMgmtByAdmin );
+router.use( "/", SuppliersMgmtByAdmin );
+router.use( "/", OrdersMgmtByAdmin );
 
 export default router;
