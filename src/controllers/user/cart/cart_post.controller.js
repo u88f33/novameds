@@ -1,19 +1,42 @@
+import CartCollection from "../../../models/cart.model.js";
 import mongoose from "mongoose";
 
-const CartPageCtrlPost = ( req, res, next ) => {
+const CartPageCtrlPost = async ( req, res, next ) => {
     
-    let { medicineId, quantity } = req.body;
-    let customerId;
+    try {
+        let { medicineId, quantity } = req.body;
+        let customerId;
 
-    quantity = Number( quantity );
-    medicineId = new mongoose.Types.ObjectId(medicineId);
-    customerId = new mongoose.Types.ObjectId(req.session.userLoginSession.userId);
+        quantity = Number( quantity );
+        medicineId = new mongoose.Types.ObjectId(medicineId);
+        customerId = new mongoose.Types.ObjectId(req.session.userLoginSession.userId);
 
-    console.log( quantity );
-    console.log( medicineId );
-    console.log( customerId );
+        const productDetails = {
+            medicineId,
+            customerId,
+            quantity
+        };
 
-    res.send( { medicineId, quantity, customerId } );
+        const insertProductRecordinDB = await CartCollection.insertOne( productDetails );
+
+        if ( !insertProductRecordinDB ) {
+            return res.redirect(
+                `/profile/product/${ req.params.id }/?errorMessage=Something Wrong`
+            );
+        }
+
+        res.redirect(
+            `/profile/product/${ req.params.id }`
+        );
+
+
+    } catch ( error ) {
+        
+        console.log( `/src/controllers/user/cart/cart_post.controller.js` );
+        console.log( `Error: ${ error }` );           
+
+    }
+    
 }
 
 export default CartPageCtrlPost;

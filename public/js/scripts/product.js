@@ -18,14 +18,41 @@ minusBtn.addEventListener('click', () => {
     }
 });
 
-cartBtn.addEventListener('click', () => {
+cartBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
     inCart = !inCart;
+    form = document.getElementById( "postDataToCartForm" );
+    postUrl = form.action;
+
+    const medicineId = document.getElementById( "medicineId" ).value;
+    const medicineQuantity = document.getElementById( "quantity" ).value;
+
+    console.log( medicineId );
+    console.log( medicineQuantity );
 
     if (inCart) {
+        
+        try {
+            const postCartItemResponse = await fetch( postUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    medicineId,
+                    quantity
+                })
+            } );
+
+            const result = await postCartItemResponse.json();
+            console.log( result );
+
+        } catch ( error ) {
+
+        }
+
+    } else {
         cartBtn.textContent = "Remove from Cart";
         cartBtn.classList.add('product__cart-btn--active');
-    } else {
-        cartBtn.textContent = "Add to Cart";
-        cartBtn.classList.remove('product__cart-btn--active');
     }
 });

@@ -13,6 +13,7 @@ const ProductPageCtrl = async ( req, res, next ) => {
         {
             medicineRecords,
             singleMedicineRecord,
+            errorMessage: req.query.errorMessage,
             nameOfLoggedInUser: req.session.userLoginSession.userName,
             loggedInUserId: req.session.userLoginSession.userId
         }
