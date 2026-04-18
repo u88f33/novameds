@@ -25,6 +25,7 @@ const CartPageCtrlPost = async ( req, res, next ) => {
             );
         }
 
+        console.log( "Submitted using fetch" );
         res.redirect(
             `/profile/product/${ req.params.id }`
         );

@@ -33,6 +33,7 @@ cartBtn.addEventListener('click', async (e) => {
     if (inCart) {
         
         try {
+
             const postCartItemResponse = await fetch( postUrl, {
                 method: "POST",
                 headers: {
@@ -49,6 +50,8 @@ cartBtn.addEventListener('click', async (e) => {
 
         } catch ( error ) {
 
+            console.log( `Error while Adding Product to Cart: ${ error }` );
+            
         }
 
     } else {
