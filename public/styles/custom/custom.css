@@ -1215,6 +1215,7 @@ th.customer-orders-history-header {
     cursor: pointer;
     margin-bottom: 15px;
     border-radius: 50px;
+    width: 100%;
 }
 
 .product__cart-btn--active {

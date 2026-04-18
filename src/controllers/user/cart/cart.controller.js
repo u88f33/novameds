@@ -1,4 +1,4 @@
-import medicineRecordsArray from "../../utils/medicines/records.js"
+import medicineRecordsArray from "../../../utils/medicines/records.js"
 
 const CartPageCtrl = async ( req, res, next ) => {
     const medicineRecords = await medicineRecordsArray();
