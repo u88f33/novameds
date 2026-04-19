@@ -19,8 +19,6 @@ minusBtn.addEventListener('click', () => {
 });
 
 cartBtn.addEventListener('click', async (e) => {
-    let insertResult = null;
-    let deleteResult = null;
     e.preventDefault();
     inCart = !inCart;
     form = document.getElementById( "postDataToCartForm" );
@@ -52,10 +50,6 @@ cartBtn.addEventListener('click', async (e) => {
             
         }
         
-        deleteResult = null;
-        console.log( "insertResult: ", insertResult );
-        console.log( "deleteResult: ", deleteResult );
-        
     } else {
         
         const deleteCartItemResponse =  await fetch( `/profile/cart/delete/${insertResult._id}`, {
@@ -65,19 +59,8 @@ cartBtn.addEventListener('click', async (e) => {
         
         deleteResult = await deleteCartItemResponse.json();
 
-        insertResult = null;
-        console.log( "insertResult: ", insertResult );
-        console.log( "deleteResult: ", deleteResult );
-
     }
-
-    if ( deleteResult ) {
-        cartBtn.textContent = "Add to Cart";
-        cartBtn.classList.remove('product__cart-btn--active');
-    } else if ( insertResult ) {
-        cartBtn.textContent = "Remove from Cart";
-        cartBtn.classList.add('product__cart-btn--active');
-    }
+    
 });
 
 
