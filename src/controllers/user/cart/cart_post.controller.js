@@ -1,6 +1,8 @@
 import CartCollection from "../../../models/cart.model.js";
 import mongoose from "mongoose";
 
+export let inCart = false;
+
 const CartPageCtrlPost = async ( req, res, next ) => {
     
     try {
@@ -10,12 +12,20 @@ const CartPageCtrlPost = async ( req, res, next ) => {
         quantity = Number( quantity );
         medicineId = new mongoose.Types.ObjectId(medicineId);
         customerId = new mongoose.Types.ObjectId(req.session.userLoginSession.userId);
+        inCart = true;
 
         const productDetails = {
             medicineId,
             customerId,
             quantity
         };
+
+        const findSimilarProduct = 
+        await CartCollection.findOne( { medicineId, customerId } );
+        
+        if ( findSimilarProduct ) {
+            return;
+        }
 
         const insertProductRecordinDB = await CartCollection.insertOne( productDetails );
 
@@ -25,7 +35,6 @@ const CartPageCtrlPost = async ( req, res, next ) => {
             );
         }
 
-        console.log( "Submitted using fetch" );
         res.json(
             insertProductRecordinDB
         );

@@ -26,7 +26,6 @@ cartBtn.addEventListener('click', async (e) => {
     postUrl = form.action;
 
     const medicineId = document.getElementById( "medicineId" ).value;
-    const medicineQuantity = document.getElementById( "quantity" ).value;
 
     if (inCart) {
         
@@ -52,8 +51,8 @@ cartBtn.addEventListener('click', async (e) => {
             
         }
         
-        cartBtn.textContent = "Remove from Cart";
-        cartBtn.classList.add('product__cart-btn--active');
+        // cartBtn.textContent = "Remove from Cart";
+        // cartBtn.classList.add('product__cart-btn--active');
         
     } else {
         
@@ -61,8 +60,8 @@ cartBtn.addEventListener('click', async (e) => {
             method: 'DELETE',
         } )
         
-        cartBtn.textContent = "Add to Cart";
-        cartBtn.classList.remove('product__cart-btn--active');
+        // cartBtn.textContent = "Add to Cart";
+        // cartBtn.classList.remove('product__cart-btn--active');
 
     }
 });
