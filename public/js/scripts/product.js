@@ -51,14 +51,21 @@ cartBtn.addEventListener('click', async (e) => {
             
         }
         
+        console.log( "On Add to Cart: ", result );
+
         // cartBtn.textContent = "Remove from Cart";
         // cartBtn.classList.add('product__cart-btn--active');
         
     } else {
         
-        await fetch( `/profile/cart/delete/${result._id}`, {
+        const deleteCartItemResponse =  await fetch( `/profile/cart/delete/${result._id}`, {
             method: 'DELETE',
-        } )
+        } );
+
+        
+        result = await deleteCartItemResponse.json();
+
+        console.log( "On Removing from Cart: ", result );
         
         // cartBtn.textContent = "Add to Cart";
         // cartBtn.classList.remove('product__cart-btn--active');

@@ -1,7 +1,6 @@
 import CartCollection from "../../../models/cart.model.js";
 import mongoose from "mongoose";
 
-export let inCart = false;
 
 const CartPageCtrlPost = async ( req, res, next ) => {
     
@@ -12,14 +11,13 @@ const CartPageCtrlPost = async ( req, res, next ) => {
         quantity = Number( quantity );
         medicineId = new mongoose.Types.ObjectId(medicineId);
         customerId = new mongoose.Types.ObjectId(req.session.userLoginSession.userId);
-        inCart = true;
-
+        
         const productDetails = {
             medicineId,
             customerId,
             quantity
         };
-
+        
         const findSimilarProduct = 
         await CartCollection.findOne( { medicineId, customerId } );
         
@@ -27,8 +25,9 @@ const CartPageCtrlPost = async ( req, res, next ) => {
             return;
         }
 
+        
         const insertProductRecordinDB = await CartCollection.insertOne( productDetails );
-
+        
         if ( !insertProductRecordinDB ) {
             return res.redirect(
                 `/profile/product/${ req.params.id }/?errorMessage=Something Wrong`
