@@ -5,7 +5,6 @@ const cartBtn = document.querySelector('.product__cart-btn');
 
 let quantity = 1;
 let inCart = false;
-let result = null;
 
 plusBtn.addEventListener('click', () => {
     quantity++;
@@ -20,6 +19,8 @@ minusBtn.addEventListener('click', () => {
 });
 
 cartBtn.addEventListener('click', async (e) => {
+    let insertResult = null;
+    let deleteResult = null;
     e.preventDefault();
     inCart = !inCart;
     form = document.getElementById( "postDataToCartForm" );
@@ -42,7 +43,7 @@ cartBtn.addEventListener('click', async (e) => {
                 })
             } );
 
-            result = await postCartItemResponse.json();
+            insertResult = await postCartItemResponse.json();
             
             
         } catch ( error ) {
@@ -51,24 +52,33 @@ cartBtn.addEventListener('click', async (e) => {
             
         }
         
-        console.log( "On Add to Cart: ", result );
-
-        // cartBtn.textContent = "Remove from Cart";
-        // cartBtn.classList.add('product__cart-btn--active');
+        deleteResult = null;
+        console.log( "insertResult: ", insertResult );
+        console.log( "deleteResult: ", deleteResult );
         
     } else {
         
-        const deleteCartItemResponse =  await fetch( `/profile/cart/delete/${result._id}`, {
+        const deleteCartItemResponse =  await fetch( `/profile/cart/delete/${insertResult._id}`, {
             method: 'DELETE',
         } );
 
         
-        result = await deleteCartItemResponse.json();
+        deleteResult = await deleteCartItemResponse.json();
 
-        console.log( "On Removing from Cart: ", result );
-        
-        // cartBtn.textContent = "Add to Cart";
-        // cartBtn.classList.remove('product__cart-btn--active');
+        insertResult = null;
+        console.log( "insertResult: ", insertResult );
+        console.log( "deleteResult: ", deleteResult );
 
     }
+
+    if ( deleteResult ) {
+        cartBtn.textContent = "Add to Cart";
+        cartBtn.classList.remove('product__cart-btn--active');
+    } else if ( insertResult ) {
+        cartBtn.textContent = "Remove from Cart";
+        cartBtn.classList.add('product__cart-btn--active');
+    }
 });
+
+
+

@@ -31,7 +31,6 @@ const UserLoginPostCtrl = async ( req, res, next ) => {
             userName: findUser.customerName
         }
 
-        console.log( req.session );
         res.redirect('/profile');
         
     } catch ( error ) {
