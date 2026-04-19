@@ -5,6 +5,7 @@ const cartBtn = document.querySelector('.product__cart-btn');
 
 let quantity = 1;
 let inCart = false;
+let result = null;
 
 plusBtn.addEventListener('click', () => {
     quantity++;
@@ -41,7 +42,7 @@ cartBtn.addEventListener('click', async (e) => {
                 })
             } );
 
-            insertResult = await postCartItemResponse.json();
+            result = await postCartItemResponse.json();
             
             
         } catch ( error ) {
@@ -52,15 +53,16 @@ cartBtn.addEventListener('click', async (e) => {
         
     } else {
         
-        const deleteCartItemResponse =  await fetch( `/profile/cart/delete/${insertResult._id}`, {
+        const deleteCartItemResponse =  await fetch( `/profile/cart/delete/${result._id}`, {
             method: 'DELETE',
         } );
 
-        
-        deleteResult = await deleteCartItemResponse.json();
+        result = await deleteCartItemResponse.json();
 
     }
-    
+
+    console.log( result );
+
 });
 
 
