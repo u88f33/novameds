@@ -5,6 +5,7 @@ const cartBtn = document.querySelector('.product__cart-btn');
 
 let quantity = 1;
 let inCart = false;
+let result = null;
 
 plusBtn.addEventListener('click', () => {
     quantity++;
@@ -27,9 +28,6 @@ cartBtn.addEventListener('click', async (e) => {
     const medicineId = document.getElementById( "medicineId" ).value;
     const medicineQuantity = document.getElementById( "quantity" ).value;
 
-    console.log( medicineId );
-    console.log( medicineQuantity );
-
     if (inCart) {
         
         try {
@@ -45,17 +43,26 @@ cartBtn.addEventListener('click', async (e) => {
                 })
             } );
 
-            const result = await postCartItemResponse.json();
-            console.log( result );
-
+            result = await postCartItemResponse.json();
+            
+            
         } catch ( error ) {
 
             console.log( `Error while Adding Product to Cart: ${ error }` );
             
         }
-
-    } else {
+        
         cartBtn.textContent = "Remove from Cart";
         cartBtn.classList.add('product__cart-btn--active');
+        
+    } else {
+        
+        await fetch( `/profile/cart/delete/${result._id}`, {
+            method: 'DELETE',
+        } )
+        
+        cartBtn.textContent = "Add to Cart";
+        cartBtn.classList.remove('product__cart-btn--active');
+
     }
 });
