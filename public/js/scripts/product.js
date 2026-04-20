@@ -44,9 +44,12 @@ cartBtn.addEventListener('click', async (e) => {
     postUrl = form.action;
 
     const cartItemsArray = await AlreadyPresentInCart();
-    cartItemsArray.forEach(async (singleCartItem) => {
+    for ( singleCartItem of cartItemsArray ) {
         if ( medicineId == singleCartItem.medicineId ) {
             try {
+                console.log( singleCartItem );
+                console.log( medicineId );
+                console.log( userId );
                 const deletedItem = await fetch( `/profile/cart/delete/${ medicineId }`, {
                     method: "DELETE"
                 } );
@@ -58,12 +61,12 @@ cartBtn.addEventListener('click', async (e) => {
                 console.log( response );
 
                 inCart = !inCart;
-                return;
+                break;
             } catch ( error ) {
                 console.log( `Error while deleting cart Item: ${ error }` );
             }
         }
-    });
+    }
 
 
     if (inCart) {

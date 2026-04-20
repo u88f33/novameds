@@ -7,11 +7,10 @@ const CartItemDeleteCtrl = async ( req, res, next ) => {
 
     const deletedCartItem = 
     await CartCollection.findOneAndDelete({
-        _id: cartItemId,
+        medicineId: cartItemId,
         customerId: req.session.userLoginSession.userId,
     })
 
-    console.log( deletedCartItem );
     res.json( deletedCartItem );
     
 
