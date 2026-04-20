@@ -11,6 +11,7 @@ const CartItemDeleteCtrl = async ( req, res, next ) => {
         customerId: req.session.userLoginSession.userId,
     })
 
+    console.log( deletedCartItem );
     res.json( deletedCartItem );
     
 

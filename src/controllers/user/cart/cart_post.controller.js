@@ -22,7 +22,13 @@ const CartPageCtrlPost = async ( req, res, next ) => {
         await CartCollection.findOne( { medicineId, customerId } );
         
         if ( findSimilarProduct ) {
-            return;
+            return res.json( 
+                {
+                    inCart: true,
+                    message: "Product already in Cart",
+                    data: findSimilarProduct
+                }
+            )
         }
 
         
