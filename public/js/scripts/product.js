@@ -47,9 +47,9 @@ cartBtn.addEventListener('click', async (e) => {
     for ( singleCartItem of cartItemsArray ) {
         if ( medicineId == singleCartItem.medicineId ) {
             try {
-                console.log( singleCartItem );
-                console.log( medicineId );
-                console.log( userId );
+                // console.log( singleCartItem );
+                // console.log( medicineId );
+                // console.log( userId );
                 const deletedItem = await fetch( `/profile/cart/delete/${ medicineId }`, {
                     method: "DELETE"
                 } );
@@ -58,7 +58,7 @@ cartBtn.addEventListener('click', async (e) => {
                 cartBtn.textContent = "Add to Cart";
                 
                 let response = await deletedItem.json();
-                console.log( response );
+                // console.log( response );
 
                 inCart = !inCart;
                 break;
