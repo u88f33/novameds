@@ -12,7 +12,6 @@ const CartItemDeleteCtrl = async ( req, res, next ) => {
     })
 
     res.json( deletedCartItem );
-    
 
 }
 

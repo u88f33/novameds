@@ -1,6 +1,22 @@
 <footer class="footer">
     <p>&copy; 2026 Novameds. All Rights Reserved.</p>
 </footer>
+<script>
+    async function getTotalCartItems() {
+        const fetchCart = await fetch( "/profile/cart/api" );
+        let response = await fetchCart.json();
+        const totalCartItems = response.length;
+
+        let displayTotalCartItems = document.getElementById( "cart-text" );
+        if ( window.location.pathname.indexOf("/profile") < 0 ) {
+            displayTotalCartItems.innerText = 0;
+        } else {
+            displayTotalCartItems.innerText = totalCartItems;
+        }
+    }
+
+    getTotalCartItems();
+</script>
 <script src="/styles/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

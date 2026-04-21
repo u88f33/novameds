@@ -6,6 +6,8 @@ const cartBtn = document.querySelector('.product__cart-btn');
 let quantity = 1;
 let inCart = false;
 let result = null;
+let totalCartItems;
+let cartItemsArray = null;
 
 async function AlreadyPresentInCart() {
     const userCartItems = await fetch( "/profile/cart/api" );
@@ -21,12 +23,20 @@ async function AlreadyPresentInCart() {
     return cartItemsArray;
 }
 
-// Is the Medicine baught is already Present in a Cart or not???
+/**
+ * Is the Medicine is already Present in a Cart than "Add to Cart" changes 
+ * to "Remove from Cart" on page reload.
+*/
 AlreadyPresentInCart();
 
 plusBtn.addEventListener('click', () => {
     quantity++;
     input.value = quantity;
+
+    let newPrice;
+    newPrice = Number( quantity ) * Number( medicinePrice )
+
+    document.getElementById( "product-price" ).innerText = newPrice;
 });
 
 
@@ -34,6 +44,11 @@ minusBtn.addEventListener('click', () => {
     if (quantity > 1) {
         quantity--;
         input.value = quantity;
+
+        let newPrice;
+        newPrice = Number( quantity ) * Number( medicinePrice )
+
+        document.getElementById( "product-price" ).innerText = newPrice;
     }
 });
 
@@ -42,26 +57,24 @@ cartBtn.addEventListener('click', async (e) => {
     inCart = !inCart;
     form = document.getElementById( "postDataToCartForm" );
     postUrl = form.action;
+    let displayTotalCartItems = document.getElementById( "cart-text" );
 
-    const cartItemsArray = await AlreadyPresentInCart();
+    cartItemsArray = await AlreadyPresentInCart();
+
     for ( singleCartItem of cartItemsArray ) {
         if ( medicineId == singleCartItem.medicineId ) {
             try {
-                // console.log( singleCartItem );
-                // console.log( medicineId );
-                // console.log( userId );
                 const deletedItem = await fetch( `/profile/cart/delete/${ medicineId }`, {
                     method: "DELETE"
                 } );
 
                 cartBtn.classList.remove( "product__cart-btn--active" );
                 cartBtn.textContent = "Add to Cart";
+                result = await deletedItem.json();
                 
-                let response = await deletedItem.json();
-                // console.log( response );
-
                 inCart = !inCart;
                 break;
+
             } catch ( error ) {
                 console.log( `Error while deleting cart Item: ${ error }` );
             }
@@ -85,12 +98,17 @@ cartBtn.addEventListener('click', async (e) => {
             result = await postCartItemResponse.json();
             cartBtn.classList.add( "product__cart-btn--active" );
             cartBtn.textContent = "Remove from Cart";
+            
             inCart = !inCart;
-              
+
         } catch ( error ) {
             console.log( `Error while Adding Product to Cart: ${ error }` );
         }
     }
+    
+    cartItemsArray = await AlreadyPresentInCart();
+    totalCartItems = cartItemsArray.length;
+    displayTotalCartItems.innerText = totalCartItems;
 
 });
 
