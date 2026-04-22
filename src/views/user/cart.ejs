@@ -41,6 +41,7 @@
                                             <h1>Rs. <%= singleCartItem.price %></h1>
                                             <button 
                                                 class="btn btn-danger shopping-cart__delete-btn"
+                                                onclick="deleteItemFromCart( '<%= singleCartItem.medicineId._id %>' )"
                                                 >
                                                 <i class="fa-solid fa-trash-can"></i>
                                                 <span>Remove</span>
@@ -79,6 +80,6 @@
     </div>
 </div>
 
-
+<script src="/js/scripts/cart/cart.js"></script>
 <script src="/js/scripts/home/postlogin/search_medicine.js"></script>
 <%- include( "../partials/footer/footer" ) -%>
