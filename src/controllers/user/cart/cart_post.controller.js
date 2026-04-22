@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 const CartPageCtrlPost = async ( req, res, next ) => {
     
     try {
-        let { medicineId, quantity } = req.body;
+        let { medicineId, quantity, price } = req.body;
         let customerId;
 
         quantity = Number( quantity );
@@ -15,7 +15,8 @@ const CartPageCtrlPost = async ( req, res, next ) => {
         const productDetails = {
             medicineId,
             customerId,
-            quantity
+            quantity,
+            price
         };
         
         const findSimilarProduct = 

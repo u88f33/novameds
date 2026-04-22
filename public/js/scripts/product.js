@@ -49,6 +49,7 @@ minusBtn.addEventListener('click', () => {
         newPrice = Number( quantity ) * Number( medicinePrice )
 
         document.getElementById( "product-price" ).innerText = newPrice;
+        
     }
 });
 
@@ -58,6 +59,7 @@ cartBtn.addEventListener('click', async (e) => {
     form = document.getElementById( "postDataToCartForm" );
     postUrl = form.action;
     let displayTotalCartItems = document.getElementById( "cart-text" );
+    let price = Number( document.getElementById( "product-price" ).innerText );
 
     cartItemsArray = await AlreadyPresentInCart();
 
@@ -91,7 +93,8 @@ cartBtn.addEventListener('click', async (e) => {
                 },
                 body: JSON.stringify({
                     medicineId,
-                    quantity
+                    quantity,
+                    price
                 })
             } );
 

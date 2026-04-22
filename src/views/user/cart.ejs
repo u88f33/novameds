@@ -18,87 +18,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="shopping-cart__product-details-container">
-                                        <div class="shopping-cart__product-image-container">
-                                            <img 
-                                                src="/assets/images/no-image.jpg" 
-                                                alt="Product Image"
-                                                class="shopping-cart__product-image"
-                                            />
+                            <% cartRecords.forEach(singleCartItem => { %>
+                                <tr>
+                                    <td>
+                                        <div class="shopping-cart__product-details-container">
+                                            <div class="shopping-cart__product-image-container">
+                                                <img 
+                                                    src="/uploads/medicines/<%= singleCartItem.medicineId.medicineImage %>" 
+                                                    alt="Product Image"
+                                                    class="shopping-cart__product-image"
+                                                />
+                                            </div>
+                                            <div class="shopping-cart__product-body">
+                                                <h3 class="shopping-cart__product-details-title"><%= singleCartItem.medicineId.medicineName %></h3>
+                                                <h3 class="shopping-cart__product-details-subtitle mb-4"><%= singleCartItem.medicineId.medicineCategory %></h3>
+                                                <h3 class="shopping-cart__product-details-subtitle">Qty: <%= singleCartItem.quantity %></h3>
+                                            </div>
                                         </div>
-                                        <div class="shopping-cart__product-body">
-                                            <h3 class="shopping-cart__product-details-title">Brufen</h3>
-                                            <h3 class="shopping-cart__product-details-subtitle mb-4">Pain</h3>
-                                            <h3 class="shopping-cart__product-details-subtitle">Qty: 3</h3>
+                                    </td>
+                                    <td>
+                                        <div class="shopping-cart__product-price-container">
+                                            <h1>Rs. <%= singleCartItem.price %></h1>
+                                            <button 
+                                                class="btn btn-danger shopping-cart__delete-btn"
+                                                >
+                                                <i class="fa-solid fa-trash-can"></i>
+                                                <span>Remove</span>
+                                            </button>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="shopping-cart__product-price-container">
-                                        <h1>Rs. 220</h1>
-                                        <button class="btn btn-danger shopping-cart__delete-btn">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <span>Delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="shopping-cart__product-details-container">
-                                        <div class="shopping-cart__product-image-container">
-                                            <img 
-                                                src="/assets/images/no-image.jpg" 
-                                                alt="Product Image"
-                                                class="shopping-cart__product-image"
-                                            />
-                                        </div>
-                                        <div class="shopping-cart__product-body">
-                                            <h3 class="shopping-cart__product-details-title">Paracetamol Tablets</h3>
-                                            <h3 class="shopping-cart__product-details-subtitle mb-4">Fever and pain</h3>
-                                            <h3 class="shopping-cart__product-details-subtitle">Qty: 2</h3>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="shopping-cart__product-price-container">
-                                        <h1>Rs. 180</h1>
-                                        <button class="btn btn-danger shopping-cart__delete-btn">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <span>Delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="shopping-cart__product-details-container">
-                                        <div class="shopping-cart__product-image-container">
-                                            <img 
-                                                src="/assets/images/no-image.jpg" 
-                                                alt="Product Image"
-                                                class="shopping-cart__product-image"
-                                            />
-                                        </div>
-                                        <div class="shopping-cart__product-body">
-                                            <h3 class="shopping-cart__product-details-title">Panadol</h3>
-                                            <h3 class="shopping-cart__product-details-subtitle mb-4">Fever</h3>
-                                            <h3 class="shopping-cart__product-details-subtitle">Qty: 2</h3>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="shopping-cart__product-price-container">
-                                        <h1>Rs. 220</h1>
-                                        <button class="btn btn-danger shopping-cart__delete-btn">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <span>Delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>
@@ -108,11 +58,13 @@
                         <h3 class="shopping-cart__order-title">Order Summary</h3>
                         <div class="shopping-cart__order-details-row">
                             <p>Total Amount</p>
-                            <p><b>620</b></p>
+                            <p>
+                                <b><%= totalAmount %></b>
+                            </p>
                         </div>
                         <div class="shopping-cart__order-details-row">
                             <p>Items</p>
-                            <p><b>4</b></p>
+                            <p><b><%= totalCartItems %></b></p>
                         </div>
                     </div>
 
