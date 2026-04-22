@@ -1276,9 +1276,10 @@ th.customer-orders-history-header {
 }
 
 .shopping-cart__product-image-container {
-    width: 60px;
+    width: 120px;
     overflow: hidden;
     margin-right: 20px;
+    border: 1px solid #aaa;
 }
 
 .shopping-cart__product-image {

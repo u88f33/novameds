@@ -8,6 +8,7 @@ let inCart = false;
 let result = null;
 let totalCartItems;
 let cartItemsArray = null;
+let newPrice = 0;
 
 async function AlreadyPresentInCart() {
     const userCartItems = await fetch( "/profile/cart/api" );
@@ -33,7 +34,6 @@ plusBtn.addEventListener('click', () => {
     quantity++;
     input.value = quantity;
 
-    let newPrice;
     newPrice = Number( quantity ) * Number( medicinePrice )
 
     document.getElementById( "product-price" ).innerText = newPrice;
@@ -45,7 +45,6 @@ minusBtn.addEventListener('click', () => {
         quantity--;
         input.value = quantity;
 
-        let newPrice;
         newPrice = Number( quantity ) * Number( medicinePrice )
 
         document.getElementById( "product-price" ).innerText = newPrice;
@@ -59,7 +58,7 @@ cartBtn.addEventListener('click', async (e) => {
     form = document.getElementById( "postDataToCartForm" );
     postUrl = form.action;
     let displayTotalCartItems = document.getElementById( "cart-text" );
-    let price = Number( document.getElementById( "product-price" ).innerText );
+    let price = Number( newPrice );
 
     cartItemsArray = await AlreadyPresentInCart();
 
