@@ -111,6 +111,7 @@ cartBtn.addEventListener('click', async (e) => {
     cartItemsArray = await AlreadyPresentInCart();
     totalCartItems = cartItemsArray.length;
     displayTotalCartItems.innerText = totalCartItems;
+    
 
 });
 
