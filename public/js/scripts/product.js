@@ -8,7 +8,7 @@ let inCart = false;
 let result = null;
 let totalCartItems;
 let cartItemsArray = null;
-let newPrice = 0;
+let newPrice = Number( medicinePrice );
 
 async function AlreadyPresentInCart() {
     const userCartItems = await fetch( "/profile/cart/api" );
