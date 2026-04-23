@@ -3,55 +3,15 @@
 <div class="container">
     <div class="row">
 
-        <div class="shopping-cart">
-            <div class="shopping-cart__heading-container">
-                <h1 class="shopping-cart__heading">Shopping Cart</h1>
+        <div class="order-confirmation">
+            <div class="order-confirmation__heading-container">
+                <h1 class="order-confirm__heading">Place an Order</h1>
             </div>
 
-            <div class="shopping-cart__body-container">
-                <div class="shopping-cart__items-list">
-                    <table class="shopping-cart__list-table">
-                        <thead>
-                            <tr>
-                                <th class="shopping-cart__product-col">Product</th>
-                                <th class="shopping-cart__price-col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% cartRecords.forEach(singleCartItem => { %>
-                                <tr>
-                                    <td>
-                                        <div class="shopping-cart__product-details-container">
-                                            <div class="shopping-cart__product-image-container">
-                                                <img 
-                                                    src="/uploads/medicines/<%= singleCartItem.medicineId.medicineImage %>" 
-                                                    alt="Product Image"
-                                                    class="shopping-cart__product-image"
-                                                />
-                                            </div>
-                                            <div class="shopping-cart__product-body">
-                                                <h3 class="shopping-cart__product-details-title"><%= singleCartItem.medicineId.medicineName %></h3>
-                                                <h3 class="shopping-cart__product-details-subtitle mb-4"><%= singleCartItem.medicineId.medicineCategory %></h3>
-                                                <h3 class="shopping-cart__product-details-subtitle">Qty: <%= singleCartItem.quantity %></h3>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="shopping-cart__product-price-container">
-                                            <h1>Rs. <%= singleCartItem.price %></h1>
-                                            <button 
-                                                class="btn btn-danger shopping-cart__delete-btn"
-                                                onclick="deleteItemFromCart( '<%= singleCartItem.medicineId._id %>' )"
-                                                >
-                                                <i class="fa-solid fa-trash-can"></i>
-                                                <span>Remove</span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
+            <div class="order-confirmation__body-container">
+                <div class="order-confirmation__info">
+                    <h4>Payment Method</h4>
+                    <hr />
                 </div>
 
                 <div class="shopping-cart__order-container">

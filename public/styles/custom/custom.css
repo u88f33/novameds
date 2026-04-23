@@ -1430,3 +1430,29 @@ th.customer-orders-history-header {
     font-size: 16px;
     margin-top: 40px;   
 }
+
+.order-confirmation {
+    min-height: 90vh;
+}
+
+.order-confirmation__items-list {
+    width: 70%;
+}
+
+.order-confirmation__body-container {
+    display: flex;
+    gap: 40px;
+}
+
+.order-confirmation__heading-container {
+    margin: 60px 0;
+}
+
+.order-confirmation__heading {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+}
+
+.order-confirmation__info {
+    width: 70%;
+}
