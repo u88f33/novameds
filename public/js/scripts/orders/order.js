@@ -7,8 +7,13 @@ async function fetchCustomerAddress( userId ) {
     const getUserAddress = await fetch( `/apis/api/customer/address/${ userId }` );
     const response = await getUserAddress.json();
 
-    console.log( response );
     return response;
+}
+
+async function fillShippingForm( userId, inputId, inputValue ) {
+    const user = await fetchCustomerAddress( userId );
+
+    document.getElementById( inputId ).value = user[inputValue];
 }
 
 radios.forEach( radio => {
@@ -16,7 +21,6 @@ radios.forEach( radio => {
         boxes.forEach( box => {
             
             box.style.display = "none";
-
 
             // show selected one
             const selectedBox = document.getElementById(radio.value);
@@ -28,4 +32,16 @@ radios.forEach( radio => {
     } )
 } );
 
-fetchCustomerAddress( userId );
+fillShippingForm( userId, "perm_address", "customerAddress" );
+fillShippingForm( userId, "perm_city", "customerCity" );
+fillShippingForm( userId, "perm_state", "customerCountry" );
+
+document.getElementById( "same_address" ).addEventListener( "change", function() {
+    if ( this.checked ) {
+        fillShippingForm( userId, "perm_address", "customerAddress" );
+        fillShippingForm( userId, "perm_city", "customerCity" );
+        fillShippingForm( userId, "perm_state", "customerCountry" );
+    } else {
+
+    }
+})
