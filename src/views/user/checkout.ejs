@@ -19,19 +19,8 @@
                                     id="cod_opt" 
                                     type="radio" 
                                     name="payment_method"
-                                    onclick="showPaymentInfo(1)"
-                                    value="cash on delivery"
+                                    value="cod"
                                     checked="checked" /> Cash On Delivery
-                            </label>
-                        </div>
-                        <div>
-                            <label for="bank_transfer_opt">
-                                <input 
-                                    id="bank_transfer_opt" 
-                                    type="radio" 
-                                    onclick="showPaymentInfo(2)"
-                                    name="payment_method"
-                                    value="bank transfer" /> Bank Transfer
                             </label>
                         </div>
                         <div>
@@ -39,64 +28,40 @@
                                 <input 
                                     id="easypaisa_opt" 
                                     type="radio"
-                                    onclick="showPaymentInfo(3)"
                                     name="payment_method" 
                                     value="easypaisa" /> Easypaisa
                             </label>
-                        </div>
-                        <div>
-                            <label for="jazzcash_opt">
-                            <input 
-                                id="jazzcash_opt" 
-                                type="radio"
-                                onclick="showPaymentInfo(4)"
-                                name="payment_method" 
-                                value="jazzcash" /> JazzCash
-                            </label>                                
                         </div>
                     </form>
 
                     <div class="payment-box__container">
 
-                        <div class="payment-box__info">
+                        <!-- COD -->
+                        <div id="cod" class="payment-box__info">
                             <p>No details required. Pay on delivery.</p>
                         </div>
 
-                        <div class="payment-box__info">
+                        <!-- Easypaisa -->
+                        <div id="easypaisa" class="payment-box__info">
                             <div class="payment-box__image-container w-100">
                                 <img 
                                     src="/assets/images/easypaisa.jpg"
-                                    class="payment-box__image"
+                                    class="payment-box__image mb-4"
                                     style="width: 300px; border-radius: 20px;"
                                 />
                             </div>
-                            <div class="payment-box__input-container">
-                                <label for="easypaisa_account" class="d-block">Account Name: </label>
-                                <input type="text" id="easypaisa_account" placeholder="Enter your Easypaisa Account Name" />
-                            </div>
-                            <div class="payment-box__input-container">
-                                <label for="easypaisa_phone" class="d-block">Phone number: </label>
-                                <input type="text" id="easypaisa_phone" placeholder="Enter your Easypaisa phone number" />
-                            </div>
-                            <div class="payment-box__submit-btn w-100">
-                                <button onclick="">Payment Done</button>
-                            </div>
-                        </div>
-
-                        <div class="payment-box__info">
-                            <div class="payment-box__input-container">
-                                <label for="jazzcash_account" class="d-block">Account Name: </label>
-                                <input type="text" id="jazzcash_account" placeholder="Enter your JazzCash Account Name" />
-                            </div>
-                            <div class="payment-box__input-container">
-                                <label for="jazzcash_phone" class="d-block">Phone number: </label>
-                                <input type="text" id="jazzcash_phone" placeholder="Enter your JazzCash phone number" />
-                            </div>
-                            <div class="payment-box__submit-btn w-100">
-                                <button onclick="">Payment Done</button>
+                            <div class="payment-box__admin-account-info">
+                                    <h3>Easypaisa account info</h3>
+                                    <p>Send your payments to</p>
+                                    <p><b>Account name: </b>Muhammad Umar Farooq</p>
+                                    <p><b>Phone number: </b>03185043662</p>
+                                    <br /><br />
+                                    <p>
+                                        After completion of payment, your payment status will be
+                                        updated by admin. 
+                                    </p>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
@@ -135,6 +100,7 @@
     </div>
 </div>
 
+<script src="/js/scripts/orders/payments.js"></script>
 <script src="/js/scripts/cart/cart.js"></script>
 <script src="/js/scripts/home/postlogin/search_medicine.js"></script>
 <%- include( "../partials/footer/footer" ) -%>
