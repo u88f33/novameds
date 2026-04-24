@@ -1,5 +1,5 @@
-import medicineRecordsArray from "../../../utils/medicines/records.js"
-import cartRecordsArray from "../../../utils/cart/record.js"
+import medicineRecordsArray from "../../../../utils/medicines/records.js"
+import cartRecordsArray from "../../../../utils/cart/record.js"
 
 
 const CartPageCtrl = async ( req, res, next ) => {

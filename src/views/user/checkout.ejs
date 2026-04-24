@@ -5,13 +5,27 @@
 
         <div class="order-confirmation">
             <div class="order-confirmation__heading-container">
-                <h1 class="order-confirm__heading">Place an Order</h1>
+                <h1 class="order-confirmation__heading">Place an Order</h1>
             </div>
 
             <div class="order-confirmation__body-container">
                 <div class="order-confirmation__info">
                     <h4>Payment Method</h4>
                     <hr />
+                    <form action="/profile/cart/checkout" method="POST">
+                        <div>
+                            <input id="cod_opt" type="radio" name="payment_medhot" selected="selected" />
+                            <label for="cod_opt">Cash On Delivery</label>
+                        </div>
+                        <div>
+                            <input id="easypaisa_opt" type="radio" name="payment_medhot" />
+                            <label for="easypaisa_opt">Easypaisa</label>
+                        </div>
+                        <div>
+                            <input id="jazzcash_opt" type="radio" name="payment_medhot" />
+                            <label for="jazzcash_opt">JazzCash</label>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="shopping-cart__order-container">
@@ -38,8 +52,8 @@
                     </div>
 
                     <div class="shopping-cart__order-actions">
-                        <a href="/profile/cart/checkout" class="btn btn-dark w-100 rounded rounded-5">
-                            Proceed to Checkout
+                        <a href="/profile/cart/checkout" class="btn btn-dark w-100 fs-5 rounded rounded-5">
+                            <b>Confirm Order</b>
                         </a>
                     </div>
                 </div>
