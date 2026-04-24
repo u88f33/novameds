@@ -3,8 +3,13 @@ const boxes = document.querySelectorAll( ".payment-box__info" );
 
 boxes[0].style.display = "block";
 
-console.log( radios );
-console.log( boxes );
+async function fetchCustomerAddress( userId ) {
+    const getUserAddress = await fetch( `/apis/api/customer/address/${ userId }` );
+    const response = await getUserAddress.json();
+
+    console.log( response );
+    return response;
+}
 
 radios.forEach( radio => {
     radio.addEventListener( "change", () => {
@@ -21,4 +26,6 @@ radios.forEach( radio => {
 
         });
     } )
-} )
+} );
+
+fetchCustomerAddress( userId );
