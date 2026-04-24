@@ -1512,3 +1512,28 @@ th.customer-orders-history-header {
 .payment-box__info {
     display: none;
 }
+
+.shipping-form__row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.shipping-form__field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-form__input {
+    padding: 8px;
+}
+
+.shipping-form__field label {
+    margin-bottom: 10px;
+}
+
+.shipping-form__field input {
+    border-radius: 5px;
+    border: 1px solid #666;
+}
