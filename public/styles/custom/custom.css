@@ -9,6 +9,10 @@ body {
     flex-direction: column;
 }
 
+p {
+    margin-bottom: 0;
+}
+
 :root {
     --primary-blue: #006eb9;
     --primary-green: #9cc500;
@@ -1455,4 +1459,52 @@ th.customer-orders-history-header {
 
 .order-confirmation__info {
     width: 70%;
+}
+
+.payment-box__info {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    background-color: #ccc;
+    margin: 20px 0 20px;
+    border-radius: 5px;
+    padding: 30px;
+    font-size: 18px;
+}
+
+.payment-box__input-container {
+    width: 48%;
+}
+
+.payment-box__input-container label {
+    margin-bottom: 10px;
+}
+
+.payment-box__input-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.payment-box__submit-btn {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    flex: 1 0 100%;
+}
+
+.payment-box__submit-btn button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #000;
+    margin-left: auto;
+    display: inline-block;
+    color: white;   
+}
+
+.payment-box__submit-btn button:hover {
+    background-color: #202020;
 }
