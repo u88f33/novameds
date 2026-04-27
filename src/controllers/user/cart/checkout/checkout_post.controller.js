@@ -1,5 +1,8 @@
 const CheckoutPageCtrlPost = ( req, res, next ) => {
-    res.send( req.body );
+    console.log( "------------------------------------------------" );
+    console.log( "------------- Order Form -----------------------" );
+    console.log( req.body );
+    console.log( "------------------------------------------------" );
 }
 
 export default CheckoutPageCtrlPost;
