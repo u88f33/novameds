@@ -1,25 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
-const addressSchema = new mongoose.Schema({
-        address: {
-            type: String,
-            required: true
-        },
-        city: {
-            type: String,
-            required: true
-        },
-        country: {
-            type: String,
-            required: true
-        },
-        postalCode: {
-            type: String,
-            required: true
-        }
-}, { _id: false });
-
 const orderCollectionSchema = new mongoose.Schema({
 
     customerId: {
@@ -47,8 +28,24 @@ const orderCollectionSchema = new mongoose.Schema({
             }
         }
     ],
-    permanentAddress: addressSchema,
-    shippingAddress: addressSchema,
+    shippingAddress: {
+        address: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            required: true
+        },
+        postalCode: {
+            type: String,
+            required: true
+        }
+    },
     orderStatus: {
         type: String,
         required: true,
