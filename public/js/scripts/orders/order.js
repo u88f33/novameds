@@ -3,9 +3,9 @@ const boxes = document.querySelectorAll( ".payment-box__info" );
 
 boxes[0].style.display = "block";
 
-async function fetchCustomerAddress( userId ) {
+async function fetchCustomerAddress() {
     try {
-        const getUserAddress = await fetch( `/apis/api/customer/address/${ userId }` );
+        const getUserAddress = await fetch( `/apis/api/customer/address` );
         const response = await getUserAddress.json();
 
         return response;
@@ -14,9 +14,10 @@ async function fetchCustomerAddress( userId ) {
     }
 }
 
-async function fillShippingAddress( userId = "", inputId = "", inputValue = "" ) {
+async function fillShippingAddress( inputId = "", inputValue = "" ) {
     try {
-        const user = await fetchCustomerAddress( userId );
+
+        const user = await fetchCustomerAddress();
 
         if ( inputValue ) {
             document.getElementById( inputId ).value = user[inputValue];
@@ -45,18 +46,18 @@ radios.forEach( radio => {
     } )
 } );
 
-fillShippingAddress( userId, "perm_address", "customerAddress" );
-fillShippingAddress( userId, "perm_city", "customerCity" );
-fillShippingAddress( userId, "perm_state", "customerCountry" );
+fillShippingAddress( "perm_address", "customerAddress" );
+fillShippingAddress( "perm_city", "customerCity" );
+fillShippingAddress( "perm_state", "customerCountry" );
 
 document.getElementById( "same_address" ).addEventListener( "change", function() {
     if ( this.checked ) {
-        fillShippingAddress( userId, "ship_address", "customerAddress" );
-        fillShippingAddress( userId, "ship_city", "customerCity" );
-        fillShippingAddress( userId, "ship_state", "customerCountry" );
+        fillShippingAddress( "ship_address", "customerAddress" );
+        fillShippingAddress( "ship_city", "customerCity" );
+        fillShippingAddress( "ship_state", "customerCountry" );
     } else {
-        fillShippingAddress( userId, "ship_address", "" );
-        fillShippingAddress( userId, "ship_city", "" );
-        fillShippingAddress( userId, "ship_state", "" );   
+        fillShippingAddress( "ship_address", "" );
+        fillShippingAddress( "ship_city", "" );
+        fillShippingAddress( "ship_state", "" );   
     }
 })

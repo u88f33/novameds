@@ -2,7 +2,8 @@ import CustomersCollection from "../../models/customers.model.js";
 
 const SingleCustomerAddressCtrl = async ( req, res, next ) => {
     
-    const findUser = await CustomersCollection.findById( req.params.id );
+    let userId = req.session.userLoginSession.userId;
+    const findUser = await CustomersCollection.findById( userId );
 
     const {
         customerName,
@@ -10,6 +11,7 @@ const SingleCustomerAddressCtrl = async ( req, res, next ) => {
         customerCity,
         customerCountry
     } = findUser;
+
 
     res.json(
         {
