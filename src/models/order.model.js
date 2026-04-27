@@ -52,14 +52,8 @@ const orderCollectionSchema = new mongoose.Schema({
     orderStatus: {
         type: String,
         required: true,
-        enum: [ "Pending", "Confirmed", "Delivered", "Cancelled" ],
+        enum: [ "Pending", "Delivered", "Cancelled" ],
         default: "Pending"
-    },
-    paymentMethod: {
-        type: String,
-        required: true,
-        enum: [ "COD", "Easypaisa" ],
-        default: "COD"
     },
     totalAmount: {
         type: Number,
