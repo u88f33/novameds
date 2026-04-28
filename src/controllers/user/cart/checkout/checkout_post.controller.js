@@ -26,14 +26,15 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
                 quantity: 1
             }
         );
-
+        let totalItems = items.length;
+        
         const permanentAddress = {
             address: perm_address,
             city: perm_city,
             country: perm_state,
             postalCode: perm_postal
         }
-
+        
         const shippingAddress = {
             address: ship_address,
             city: ship_city,
@@ -41,7 +42,10 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             postalCode: ship_postal
         }
 
-        let totalItems = items.length;
+        if ( totalItems <= 0 ) {
+           return res.redirect( '/profile/cart/checkout/?emptyCartMsg=Cart is Empty' );
+        }
+
         let totalAmount = 0;
         for ( let i = 0; i < totalItems; ++i ) {
             totalAmount += items[i].price;
@@ -67,9 +71,8 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
              } )
         }
 
-        res.send(
-            orderData
-        );
+       res.redirect( '/profile/cart/checkout' );
+
     } catch ( error ) {
         console.log( "File: /src/controllers/user/cart/checkout/checkout_post.controller.js" );
         console.log( `Error: ${ error }` );

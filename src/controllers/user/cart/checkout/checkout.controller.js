@@ -6,6 +6,7 @@ const CartPageCtrl = async ( req, res, next ) => {
     const customerId = req.session.userLoginSession.userId;
     const medicineRecords = await medicineRecordsArray();
     const cartRecords = await cartRecordsArray( customerId );
+    const emptyCartMsg = req.query.emptyCartMsg || "";
 
     let totalCartItems = cartRecords.length;
     let totalAmount = 0;
@@ -22,7 +23,8 @@ const CartPageCtrl = async ( req, res, next ) => {
             totalCartItems,
             totalAmount,
             nameOfLoggedInUser: req.session.userLoginSession.userName,
-            loggedInUserId: customerId
+            loggedInUserId: customerId,
+            emptyCartMsg
         }
     );
 }
