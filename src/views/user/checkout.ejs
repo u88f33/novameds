@@ -69,6 +69,69 @@
                         </div>
 
                         <div class="shipping-form">
+
+                            <!-- Shipping Address -->
+                            <h4 class="mt-5">Shipping Address</h4>
+                            <hr />
+                            
+                            <!-- Shipping Address Section -->
+                            <div class="shipping-form__section">
+
+                                <!-- Bottom Block -->
+                                <div class="shipping-form__group">
+
+                                    <!-- Row 1 -->
+                                    <div class="shipping-form__row">
+                                        <div class="shipping-form__field">
+                                            <label for="ship_address">Shipping Address</label>
+                                            <input 
+                                                type="text" 
+                                                name="ship_address"
+                                                id="ship_address"
+                                                class="shipping-form__input"
+                                                required="required" />
+                                        </div>
+
+                                        <div class="shipping-form__field">
+                                            <label for="ship_city">City</label>
+                                            <input type="text" 
+                                                name="ship_city"
+                                                id="ship_city"
+                                                class="shipping-form__input"
+                                                required="required" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="shipping-form__row">
+                                        <div class="shipping-form__field">
+                                            <label for="ship_state">State</label>
+                                            <input type="text" 
+                                                name="ship_state" 
+                                                id="ship_state" 
+                                                class="shipping-form__input"
+                                                required="required" />
+                                        </div>
+
+                                        <div class="shipping-form__field">
+                                            <label for="ship_postal">Postal Code</label>
+                                            <input type="text" 
+                                                name="ship_postal" 
+                                                id="ship_postal" 
+                                                class="shipping-form__input" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Checkbox -->
+                                <div class="shipping-form__checkbox">
+                                    <label for="same_address">
+                                        <input type="checkbox" id="same_address" />
+                                        Same as Permanent Address
+                                    </label>
+                                </div>
+                            </div>
                             
                             <!-- Permanent Address -->
                             <h4 class="mt-5">Permanent Address</h4>
@@ -85,15 +148,19 @@
                                         <div class="shipping-form__field">
                                             <label for="perm_address">Permanent Address</label>
                                             <input type="text" 
+                                                name="perm_address" 
                                                 id="perm_address" 
-                                                class="shipping-form__input" />
+                                                class="shipping-form__input" 
+                                                required="required" />
                                         </div>
 
                                         <div class="shipping-form__field">
                                             <label for="perm_city">City</label>
                                             <input type="text" 
+                                                name="perm_city" 
                                                 id="perm_city" 
-                                                class="shipping-form__input" />
+                                                class="shipping-form__input" 
+                                                required="required" />
                                         </div>
                                     </div>
 
@@ -102,74 +169,22 @@
                                         <div class="shipping-form__field">
                                             <label for="perm_state">State</label>
                                             <input type="text" 
+                                                name="perm_state" 
                                                 id="perm_state" 
-                                                class="shipping-form__input" />
+                                                class="shipping-form__input" 
+                                                required="required" />
                                         </div>
 
                                         <div class="shipping-form__field">
                                             <label for="perm_postal">Postal Code</label>
                                             <input type="text" 
+                                                name="perm_postal" 
                                                 id="perm_postal" 
                                                 class="shipping-form__input" />
                                         </div>
                                     </div>
 
                                 </div>
-                            </div>
-
-                            <!-- Shipping Address -->
-                            <h4 class="mt-5">Shipping Address</h4>
-                            <hr />
-                            <!-- Shipping Address Section -->
-                            <div class="shipping-form__section">
-
-                                <!-- Bottom Block -->
-                                <div class="shipping-form__group">
-
-                                    <!-- Row 1 -->
-                                    <div class="shipping-form__row">
-                                        <div class="shipping-form__field">
-                                            <label for="ship_address">Shipping Address</label>
-                                            <input 
-                                                type="text" 
-                                                id="ship_address" 
-                                                class="shipping-form__input" />
-                                        </div>
-
-                                        <div class="shipping-form__field">
-                                            <label for="ship_city">City</label>
-                                            <input type="text" 
-                                                id="ship_city" 
-                                                class="shipping-form__input" />
-                                        </div>
-                                    </div>
-
-                                    <!-- Row 2 -->
-                                    <div class="shipping-form__row">
-                                        <div class="shipping-form__field">
-                                            <label for="ship_state">State</label>
-                                            <input type="text" 
-                                                id="ship_state" 
-                                                class="shipping-form__input" />
-                                        </div>
-
-                                        <div class="shipping-form__field">
-                                            <label for="ship_postal">Postal Code</label>
-                                            <input type="text" 
-                                                id="ship_postal" 
-                                                class="shipping-form__input" />
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- Checkbox -->
-                            <div class="shipping-form__checkbox">
-                                <label for="same_address">
-                                    <input type="checkbox" id="same_address" />
-                                    Same as Permanent Address
-                                </label>
                             </div>
 
                         </div>

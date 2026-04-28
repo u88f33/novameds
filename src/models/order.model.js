@@ -1,6 +1,25 @@
 import mongoose from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
+const addressSchema = new monggose.Schema({
+    address: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    postalCode: {
+        type: String,
+        required: true
+    }
+});
+
 const orderCollectionSchema = new mongoose.Schema({
 
     customerId: {
@@ -28,24 +47,8 @@ const orderCollectionSchema = new mongoose.Schema({
             }
         }
     ],
-    shippingAddress: {
-        address: {
-            type: String,
-            required: true
-        },
-        city: {
-            type: String,
-            required: true
-        },
-        country: {
-            type: String,
-            required: true
-        },
-        postalCode: {
-            type: String,
-            required: true
-        }
-    },
+    permanentAddress: addressSchema,
+    shippingAddress: addressSchema,
     orderStatus: {
         type: String,
         required: true,
@@ -56,6 +59,7 @@ const orderCollectionSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
+
 }, { 
     timestamps: true 
 });
