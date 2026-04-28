@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
-const addressSchema = new monggose.Schema({
+const addressSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
@@ -16,7 +16,6 @@ const addressSchema = new monggose.Schema({
     },
     postalCode: {
         type: String,
-        required: true
     }
 });
 
