@@ -17,7 +17,7 @@ const addressSchema = new mongoose.Schema({
     postalCode: {
         type: String,
     }
-});
+}, { _id: false });
 
 const orderCollectionSchema = new mongoose.Schema({
 
