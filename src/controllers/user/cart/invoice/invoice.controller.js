@@ -6,17 +6,18 @@ const GenerateInvoiceCtrl = async ( req, res, next ) => {
     const confirmedOrderDetails = await OrderCollection.findById( req.params.id )
     .populate( "items.medicineId" );
 
-    // const customerOrd
-
     const customerId = req.session.userLoginSession.userId;
     const medicineRecords = await medicineRecordsArray();
 
-    console.log( confirmedOrderDetails );
+    const customerOrders = await OrderCollection.find( { customerId } ).sort( { createdAt: -1 } );
+
+    console.log( customerOrders );
 
     res.render(
         "user/invoice",
         {
             confirmedOrderDetails,
+            customerOrders,
             medicineRecords,
             nameOfLoggedInUser: req.session.userLoginSession.userName,
             loggedInUserId: customerId,

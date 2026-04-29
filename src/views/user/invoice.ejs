@@ -11,13 +11,18 @@
             <form action="/profile/cart/checkout" method="POST">
                 <div class="order-confirmation__body-container">
                     <div class="order-confirmation__info">
-                        <h4>Your Invoices</h4>
-                        <hr />
 
-                        <ul>
-                            <% confirmedOrderDetails.items.forEach(singleOrder => { %>
-                                
-                            <% }); %>
+                        <h4>Previous Invoices</h4>
+                        <hr />
+                        <ul type="1">
+                            <% for ( let i = 1; i < customerOrders.length; ++i ) { %>
+                                <li>
+                                    <a href="/assets/invoices/order_<%= customerOrders[i]._id %>.pdf" target="_blank">                            
+                                    <% let date = new Date(customerOrders[i].createdAt); %>
+                                        Order on <%= `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}` %>
+                                    </a>
+                                </li>
+                            <% } %>
                         </ul>
                     </div>
                     
