@@ -6,6 +6,7 @@ import CartItemsApiCtrl from "../../controllers/user/cart/cart_api.controller.js
 import CheckoutPageCtrl from "../../controllers/user/cart/checkout/checkout.controller.js";
 import CheckoutPageCtrlPost from "../../controllers/user/cart/checkout/checkout_post.controller.js";
 import GenerateInvoiceCtrl from "../../controllers/user/cart/invoice/invoice.controller.js";
+import InvoicePdfCtrl from "../../controllers/user/cart/invoice/invoice_pdf.controller.js";
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.get( "/api", CartItemsApiCtrl );
 
 router.get( "/checkout", CheckoutPageCtrl )
 router.get( "/checkout/order/:id", GenerateInvoiceCtrl );
+router.get( "/checkout/invoice/pdf/:id", InvoicePdfCtrl );
 router.post( "/checkout", CheckoutPageCtrlPost );
 
 export default router;

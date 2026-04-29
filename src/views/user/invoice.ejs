@@ -61,9 +61,13 @@
                         </div>
 
                         <div class="shopping-cart__order-actions">
-                            <button type="submit" href="/profile/cart/checkout" class="btn btn-danger w-100 fs-5 rounded rounded-5">
+                            <a 
+                                target="_blank" 
+                                type="submit" 
+                                href="/profile/cart/checkout/invoice/pdf/<%= confirmedOrderDetails._id %>" 
+                                class="btn btn-danger w-100 fs-5 rounded rounded-5">
                                 Generate Invoice
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
