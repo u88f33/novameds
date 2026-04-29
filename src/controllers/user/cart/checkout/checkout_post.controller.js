@@ -71,7 +71,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
              } )
         }
 
-       res.redirect( '/profile/cart/checkout' );
+       res.redirect( `/profile/cart/checkout/order/${ insertDataInMongoDB._id }` );
 
     } catch ( error ) {
         console.log( "File: /src/controllers/user/cart/checkout/checkout_post.controller.js" );
