@@ -11,29 +11,14 @@
             <form action="/profile/cart/checkout" method="POST">
                 <div class="order-confirmation__body-container">
                     <div class="order-confirmation__info">
-                        <h4>Ordered Medicines</h4>
+                        <h4>Your Invoices</h4>
                         <hr />
 
-                        <% let i = 0; %>
-                        <table>
-                            <thead>
-                                <th>No.</th>
-                                <th>Medicine Name</th>
-                                <th>Medicine Category</th>
-                                <th>Medicine Price</th>
-                            </thead>
-                            <tbody>
-                                <% confirmedOrderDetails.items.forEach( medicine => { %>
-                                    <tr>
-                                        <td><%= ++i %></td>
-                                        <td><%= medicine.medicineId.medicineName %></td>
-                                        <td><%= medicine.medicineId.medicineCategory %></td>
-                                        <td><%= medicine.medicineId.medicinePrice %></td>
-                                    </tr>
-                                <% }); %>
-                            </tbody>
-                        </table>
-
+                        <ul>
+                            <% confirmedOrderDetails.items.forEach(singleOrder => { %>
+                                
+                            <% }); %>
+                        </ul>
                     </div>
                     
 
