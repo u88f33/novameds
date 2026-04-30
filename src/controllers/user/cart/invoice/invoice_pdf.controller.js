@@ -55,7 +55,7 @@ const InvoicePdfCtrl = async ( req, res, next ) => {
             `Shipping Address: ${confirmedOrderDetails.shippingAddress.address}`
         );
         doc.text(`City: ${confirmedOrderDetails.shippingAddress.city}`);
-        doc.text(`Payment Address: ${confirmedOrderDetails.shippingAddress.country}`);
+        doc.text(`Country: ${confirmedOrderDetails.shippingAddress.country}`);
         doc.moveDown();
 
         // Table Header
