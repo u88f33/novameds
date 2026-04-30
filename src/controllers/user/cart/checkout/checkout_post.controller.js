@@ -1,5 +1,6 @@
 import CartCollection from "../../../../models/cart.model.js";
 import OrderCollection from "../../../../models/order.model.js";
+import MedicineCollection from "../../../../models/medicines.model.js";
 
 const CheckoutPageCtrlPost = async ( req, res, next ) => {
     try {
@@ -26,7 +27,32 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
                 quantity: 1
             }
         );
+
         let totalItems = items.length;
+
+        /**
+         * Iterate throught the "items" array containing cart items and Update
+         * the medicine stock in the Database
+         */
+        for ( let i = 0; i < totalItems; ++i ) {
+            // Fetch the medicine by its _id.
+            let medicineDetails = 
+            await MedicineCollection.findById( items[i].medicineId );
+
+            // Update the Medicines stock in the database.
+            let updatedStock = medicineDetails.medicineStock - items[i].quantity;
+            
+            // Update stock on Confirming Order by Customer.
+            if ( medicineDetails ) {
+                await MedicineCollection.updateOne(
+                    { _id: items[i].medicineId },
+                    {
+                        $set: { medicineStock: updatedStock }
+                    }
+                )
+            }
+        }
+
         
         const permanentAddress = {
             address: perm_address,

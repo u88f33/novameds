@@ -11,7 +11,6 @@ const GenerateInvoiceCtrl = async ( req, res, next ) => {
 
     const customerOrders = await OrderCollection.find( { customerId } ).sort( { createdAt: -1 } );
 
-    console.log( customerOrders );
 
     res.render(
         "user/invoice",
