@@ -14,7 +14,6 @@ const ManageMedicineRecordsCtrl = async ( req, res, next ) => {
     );
 
     const MedicineRecordsArray = MedicineRecordsPaginationInfo.docs;
-    console.log( MedicineRecordsPaginationInfo );
 
     res.render(
         "admin/manage/medicines/manage",

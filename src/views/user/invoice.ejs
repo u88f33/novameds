@@ -1,0 +1,70 @@
+<%- include( "../partials/header/postlogin" ) -%>
+
+<div class="container">
+    <div class="row">
+
+        <div class="order-confirmation">
+            <div class="order-confirmation__heading-container">
+                <h1 class="order-confirmation__heading text-danger">Thanks for Shopping with us!!! &#128722;</h1>
+            </div>
+
+            <form action="/profile/cart/checkout" method="POST">
+                <div class="order-confirmation__body-container">
+                    <div class="order-confirmation__info">
+
+                        <h4>Previous Invoices</h4>
+                        <hr />
+                        <ul type="1">
+                            <% for ( let i = 1; i < customerOrders.length; ++i ) { %>
+                                <li>
+                                    <a href="/assets/invoices/order_<%= customerOrders[i]._id %>.pdf" target="_blank">                            
+                                    <% let date = new Date(customerOrders[i].createdAt); %>
+                                        Order on <%= `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}` %>
+                                    </a>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="shopping-cart__order-container">
+                        <div class="shopping-cart__order-details">
+                            <h3 class="shopping-cart__order-title text-danger">Order details</h3>
+                            <div class="shopping-cart__order-details-row">
+                                <p>Subtotal</p>
+                                <p>
+                                    <i>Rs.</i><%= totalAmount %>
+                                </p>
+                            </div>
+                            <div class="shopping-cart__order-details-row">
+                                <p>Delivery Charges</p>
+                                <p><i>Rs.</i>300</p>
+                            </div>
+                            <div class="shopping-cart__order-details-row">
+                                <p>Total</p>
+                                <p>Rs.<%= (totalAmount + 300) %></p>
+                            </div>
+                            <div class="shopping-cart__order-details-row">
+                                <p><b>Status</b></p>
+                                <p><%= orderStatus %></p>
+                            </div>
+                        </div>
+
+                        <div class="shopping-cart__order-actions">
+                            <a 
+                                target="_blank" 
+                                type="submit" 
+                                href="/profile/cart/checkout/invoice/pdf/<%= confirmedOrderDetails._id %>" 
+                                class="btn btn-danger w-100 fs-5 rounded rounded-5">
+                                Generate Invoice
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/scripts/home/postlogin/search_medicine.js"></script>
+<%- include( "../partials/footer/footer" ) -%>
