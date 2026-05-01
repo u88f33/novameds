@@ -45,8 +45,8 @@
                 <tr>
                     <th>No.</th>
                     <th>Customer Name</th>
+                    <th>Address</th>
                     <th>Total Amount</th>
-                    <th>Payment Method</th>
                     <th>Order Date</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -58,23 +58,29 @@
                     <tr>
                         <td><%= index + 1 %></td>
                         <td><%= singleOrder.customerId.customerName %></td>
-                        <td><%= singleOrder.totalAmount %></td>
-                        <td>COD</td>
-                        <% const date = new Date() %>
-                        <td><%= `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` %></td>
                         <td>
-                            <select class="order-status" data-order-id="order_id_101">
-                                <option value="Pending" selected>Pending</option>
-                                <option value="Processing">Processing</option>
-                                <option value="Delivered">Delivered</option>
-                                <option value="Cancelled">Cancelled</option>
-                            </select>
+                            <%= `${singleOrder.shippingAddress.address}, ${singleOrder.shippingAddress.city}, ${ singleOrder.shippingAddress.country }` %>
+                        </td>
+                        <td><%= singleOrder.totalAmount %></td>
+                        <td>
+                            <%
+                                const date = new Date();
+                                const months = [ 
+                                                "January", "February", "March", 
+                                                "April", "May", "June",
+                                                "July", "August", "September",
+                                                "October", "November", "December" 
+                                            ];
+                            %>
+                            <%= `${months[date.getMonth()]} ${date.getDay()}, ${date.getFullYear()}` %>
+                        </td>
+                        <td>
+                            Pending
                         </td>
                         <td>
                             <div class="dashboard__section-cell-actions">
                                 <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                    <i class="fa-solid fa-eye"></i>
-                                    More Info
+                                    View or Manage
                                 </a>
                             </div>
                         </td>
@@ -86,15 +92,37 @@
         <!-- Pagination -->
         <div class="dashboard__section-pagination">
 
-            <a href="#" class="pagination__btn">&laquo;</a>
+            <% if ( hasPrevPage ) { %>
+                <a href="/admin/manage/orders/?page=<%= prevPage %>" class="pagination__btn">&laquo;</a>
+            <% } %>
 
             <div class="pagination__numbers">
-                <a href="#" class="pagination__btn">1</a>
-                <a href="#" class="pagination__btn">2</a>
-                <a href="#" class="pagination__btn">3</a>
+                <% if ( customersOrder ) { %>
+
+                    <% if ( prevPage ) { %>
+                        <a href="/admin/manage/orders/?page=<%= prevPage %>" class="pagination__btn">
+                            <%= prevPage %>
+                        </a>
+                    <% } %>
+
+                    <% if ( currentPage ) { %>
+                        <a href="/admin/manage/orders/?page=<%= currentPage %>" class="pagination__btn">
+                            <%= currentPage %>
+                        </a>
+                    <% } %>
+
+                    <% if ( nextPage ) { %>
+                        <a href="/admin/manage/orders/?page=<%= nextPage %>" class="pagination__btn">
+                            <%= nextPage %>
+                        </a>
+                    <% } %>
+
+                <% } %>
             </div>
 
-            <a href="#" class="pagination__btn">&raquo;</a>
+            <% if ( hasNextPage ) { %>
+                <a href="/admin/manage/orders/?page=<%= nextPage %>" class="pagination__btn">&raquo;</a>
+            <% } %>
 
         </div>
 
