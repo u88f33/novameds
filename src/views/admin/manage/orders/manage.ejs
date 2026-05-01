@@ -54,77 +54,32 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ali Khan</td>
-                    <td>Rs. 280</td>
-                    <td>Cash</td>
-                    <td>2026-03-26</td>
-                    <td>
-                        <select class="order-status" data-order-id="order_id_101">
-                            <option value="Pending" selected>Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Ahmed Raza</td>
-                    <td>Rs. 1,200</td>
-                    <td>Card</td>
-                    <td>2026-03-29</td>
-                    <td>
-                        <select class="order-status" data-order-id="order_id_102">
-                            <option value="Pending">Pending</option>
-                            <option value="Processing" selected>Processing</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Sara Ahmed</td>
-                    <td>Rs. 3,800</td>
-                    <td>Cash</td>
-                    <td>2026-03-28</td>
-                    <td>
-                        <select class="order-status" data-order-id="order_id_103">
-                            <option value="Pending">Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Delivered" selected>Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                <% customersOrder.forEach(( singleOrder, index ) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= singleOrder.customerId.customerName %></td>
+                        <td><%= singleOrder.totalAmount %></td>
+                        <td>COD</td>
+                        <% const date = new Date() %>
+                        <td><%= `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` %></td>
+                        <td>
+                            <select class="order-status" data-order-id="order_id_101">
+                                <option value="Pending" selected>Pending</option>
+                                <option value="Processing">Processing</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="dashboard__section-cell-actions">
+                                <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
+                                    <i class="fa-solid fa-eye"></i>
+                                    More Info
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
             </tbody>
         </table>
 
