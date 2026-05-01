@@ -3,9 +3,9 @@ import OrdersCollection from "../../../../models/order.model.js";
 const ManageOrderRecordsCtrl = async ( req, res, next ) => {
 
     const page = req.query.page || 1;
-    const limit = req.query.limit || 5;
+    const limit = req.query.limit || 10;
 
-    const customersOrder = await OrdersCollection.paginate(
+    const customersOrders = await OrdersCollection.paginate(
         {},
         {
             page,
@@ -14,18 +14,18 @@ const ManageOrderRecordsCtrl = async ( req, res, next ) => {
         }
     )
     
-    console.log( customersOrder );
+    console.log( customersOrders );
 
     res.render(
         "admin/manage/orders/manage",
         {
-            customersOrder: customersOrder.docs,
-            totalPages: customersOrder.totalPages,
-            currentPage: customersOrder.page,
-            hasPrevPage: customersOrder.hasPrevPage,
-            hasNextPage: customersOrder.hasNextPage,
-            prevPage: customersOrder.prevPage,
-            nextPage: customersOrder.nextPage
+            customersOrders: customersOrders.docs,
+            totalPages: customersOrders.totalPages,
+            currentPage: customersOrders.page,
+            hasPrevPage: customersOrders.hasPrevPage,
+            hasNextPage: customersOrders.hasNextPage,
+            prevPage: customersOrders.prevPage,
+            nextPage: customersOrders.nextPage
         }
     )
 }

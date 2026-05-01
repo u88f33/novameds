@@ -54,7 +54,7 @@
             </thead>
 
             <tbody>
-                <% customersOrder.forEach(( singleOrder, index ) => { %>
+                <% customersOrders.forEach(( singleOrder, index ) => { %>
                     <tr>
                         <td><%= index + 1 %></td>
                         <td><%= singleOrder.customerId.customerName %></td>
@@ -97,7 +97,7 @@
             <% } %>
 
             <div class="pagination__numbers">
-                <% if ( customersOrder ) { %>
+                <% if ( customersOrders ) { %>
 
                     <% if ( prevPage ) { %>
                         <a href="/admin/manage/orders/?page=<%= prevPage %>" class="pagination__btn">
