@@ -1,9 +1,9 @@
 import express from "express";
-import customersOrderApi 
+import searchOrderApiCtrl 
 from "../../../../controllers/admin/manage/orders/search.controller.js";
 
 const router = express.Router();
 
-router.get( "/", customersOrderApi );
+router.get( "/", searchOrderApiCtrl );
 
 export default router;

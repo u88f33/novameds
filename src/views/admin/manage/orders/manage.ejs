@@ -35,6 +35,7 @@
                     style="width: 100% !important;"
                     class="dashboard__section-search" 
                     placeholder="Search Specific Order"
+                    oninput="searchOrder( this.value )"
                 />
             </div>
         </div>
@@ -53,7 +54,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="orderTableBody">
                 <% customersOrders.forEach(( singleOrder, index ) => { %>
                     <tr>
                         <td><%= index + 1 %></td>
@@ -129,4 +130,5 @@
     </div>
 </div>
 
+<script src="/js/scripts/orders/search_order.js"></script>
 <%- include( "../../../partials/admin/footer" ) -%>
