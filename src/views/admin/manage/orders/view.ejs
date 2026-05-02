@@ -31,11 +31,23 @@
             <div class="section-row__col-2 mt-4">
                 <div class="section__col section__col-1">
                     <form class="payment-status__form" method="POST" action="/admin/manage/orders/update/payment/status/<%= customerOrder._id %>">
-                        <h2>Payment Status</h2>
+                        <h2>
+                            Payment Status 
+                            <span class="payment-display <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
+                                <%= customerOrder.paymentStatus %>
+                            </span>
+                        </h2>
                         <select name="payment_status">
-                            <option value="Unpaid">Unpaid</option>
-                            <option value="Paid">Paid</option>
-                            <option value="COD">Pay on Delivery</option>
+                            <% paymentStatuses.forEach(paymentStatus => { %>
+                                <% if ( paymentStatus == customerOrder.paymentStatus ) { %>
+                                    <option value="<%= paymentStatus %>" selected="selected">
+                                        <%= paymentStatus %>
+                                    </option>
+                                <% } %>
+                                <option value="<%= paymentStatus %>">
+                                    <%= paymentStatus %>
+                                </option>
+                            <% }); %>
                         </select>
                         <button type="submit">Confirm</button>
                     </form>
@@ -113,7 +125,9 @@
                         </tr>
                         <tr>
                             <th>Payment</th>
-                            <td><%= customerOrder.paymentStatus %></td>
+                            <td class="<%= (customerOrder.paymentStatus == "Unpaid")? "text-danger" : "text-success" %>">
+                                <b><%= customerOrder.paymentStatus %></b>
+                            </td>
                         </tr>
                         <tr>
                             <th>Status</th>

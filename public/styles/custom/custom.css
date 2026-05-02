@@ -1545,7 +1545,7 @@ th.customer-orders-history-header {
 }
 
 .section__col {
-    background-color: var(--primary-blue);
+    background-color: #aaa;
     padding: 20px;
     width: 50%;
 }
@@ -1591,4 +1591,17 @@ th.customer-orders-history-header {
 .payment-status__form button[type="submit"]:hover
 .order-status__form button[type="submit"]:hover {
     background-color: #ddd;
+}
+
+.payment-display {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    font-weight: light;
+    padding: 5px 28px;
+    border-radius: 10px;
+}
+
+.bg-success {
+    background-color: #128f07 !important;
 }
