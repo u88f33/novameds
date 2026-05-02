@@ -1537,3 +1537,75 @@ th.customer-orders-history-header {
     border-radius: 5px;
     border: 1px solid #666;
 }
+
+.section-row__col-2 {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.section__col {
+    background-color: #aaa;
+    padding: 20px;
+    width: 50%;
+}
+
+.section__col-1 {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.section__col-2 {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.payment-status__form h2, 
+.order-status__form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.payment-status__form select, 
+.order-status__form select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.payment-status__form button[type="submit"],
+.order-status__form button[type="submit"] {
+    width: 30%;
+    margin-left: auto;
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.payment-status__form button[type="submit"]:hover
+.order-status__form button[type="submit"]:hover {
+    background-color: #ddd;
+}
+
+.highlighter {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    font-weight: light;
+    padding: 5px 28px;
+    border-radius: 10px;
+}
+
+.bg-success {
+    background-color: #128f07 !important;
+}
+
+.bg-warning{
+    color: #000 !important;
+}

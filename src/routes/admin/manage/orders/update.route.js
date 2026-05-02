@@ -1,9 +1,13 @@
 import express from "express";
-import UpdateOrderRecordsCtrl 
-from "../../../../controllers/admin/manage/orders/update/update_get.controller.js"
+import UpdatePaymentStatusCtrl from
+"../../../../controllers/admin/manage/orders/update/payment_update.controller.js"
+
+import UpdateOrderStatusCtrl from
+"../../../../controllers/admin/manage/orders/update/order_update.controller.js";
 
 const router = express.Router();
 
-router.get( "/:id", UpdateOrderRecordsCtrl );
+router.post( "/payment/status/:id", UpdatePaymentStatusCtrl );
+router.post( "/order/status/:id", UpdateOrderStatusCtrl );
 
 export default router;

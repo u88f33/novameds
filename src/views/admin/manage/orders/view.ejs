@@ -26,59 +26,149 @@
     <div class="dashboard__section">
 
         <div class="dashboard__section-main">
-            <h3 class="dashboard__section-title mb-0">Order Details: </h3>
+            <h3 class="dashboard__section-title mb-0">Update Order: </h3>
             
+            <div class="section-row__col-2 mt-4">
+                <div class="section__col section__col-1">
+                    <form class="payment-status__form" method="POST" action="/admin/manage/orders/update/payment/status/<%= customerOrder._id %>">
+                        <h2>
+                            Payment Status 
+                            <span class="highlighter <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
+                                <%= customerOrder.paymentStatus %>
+                            </span>
+                        </h2>
+                        <select name="payment_status">
+                            <% paymentStatuses.forEach(paymentStatus => { %>
+                                <% if ( paymentStatus == customerOrder.paymentStatus ) { %>
+                                    <option value="<%= paymentStatus %>" selected="selected">
+                                        <%= paymentStatus %>
+                                    </option>
+                                <% } else { %>
+                                    <option value="<%= paymentStatus %>">
+                                        <%= paymentStatus %>
+                                    </option>
+                                <% } %>
+                            <% }); %>
+                        </select>
+                        <button type="submit">Confirm</button>
+                    </form>
+                </div>
+
+                <div class=" section__col section__col-2">
+                    <form class="order-status__form" method="POST" action="/admin/manage/orders/update/order/status/<%= customerOrder._id %>">
+                        <h2>
+                            <%
+                                let bgColor = "";
+
+                                switch ( customerOrder.orderStatus ) {
+                                    case "Pending": {
+                                        bgColor = "bg-danger";
+                                        break;
+                                    }
+                                    case "Delivered": {
+                                        bgColor = "bg-success";
+                                        break;
+                                    }
+                                    case "Cancelled": {
+                                        bgColor = "bg-warning";
+                                    }
+                                }
+                            %>
+                            Order Status
+                            <span class="highlighter <%= bgColor %>">
+                                <%= customerOrder.orderStatus %>
+                            </span>
+                        </h2>
+                        <select name="order_status">
+                            <% orderStatuses.forEach(orderStatus => { %>
+                                <% if ( orderStatus == customerOrder.orderStatus ) { %>
+                                    <option value="<%= orderStatus %>" selected="selected">
+                                        <%= orderStatus %>
+                                    </option>
+                                <% } else { %>
+                                    <option value="<%= orderStatus %>">
+                                        <%= orderStatus %>
+                                    </option>
+                                <% } %>
+                            <% }); %>
+                        </select>
+                        <button type="submit">Confirm</button>
+                    </form>
+                </div>
+            </div>
+
+            <h3 class="dashboard__section-title mb-0">Order Details: </h3>            
             <div class="mt-4">
 
                 <table class="dashboard__section-view-table">
                     <tbody>
                         <tr>
-                            <th>Order#</th>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <th>Status</th>
-                            <td>Pending</td>
-                        </tr>
-                        <tr>
                             <th>Customer Name</th>
-                            <td>Ali Khan</td>
+                            <td><%= customerOrder.customerId.customerName %></td>
                         </tr>
 
                         <tr>
                             <th>Customer Email</th>
-                            <td>ak@gmail.com</td>
+                            <td><%= customerOrder.customerId.customerEmail %></td>
                         </tr>
 
                         <tr>
                             <th>Customer Phone</th>
-                            <td>+923012345678</td>
+                            <td><%= customerOrder.customerId.customerPhone %></td>
                         </tr>
 
                         <tr>
                             <th>Customer Address</th>
-                            <td>Islamabad, Pakistan</td>
+                            <td>
+                                <%= customerOrder.customerId.customerAddress %>,
+                                <%= customerOrder.customerId.customerCity %>,                                
+                                <%= customerOrder.customerId.customerCountry %>                                
+                            </td>
                         </tr>
 
                         <tr>
+                            <% 
+                                let date = new Date( customerOrder.createdAt );
+                                let monthNames = [
+                                    "January", "Feburary", "March", "April", "May",
+                                    "June", "July", "August", "September",
+                                    "October", "November", "December"
+                                ];
+                                let dayNames = [
+                                    "Sunday", "Monday", "Tuesday", "Wednesday",
+                                    "Thursday", "Friday", "Saturday",
+                                ]
+                            %>
                             <th>Date</th>
-                            <td>March 26, 2026</td>
+                            <td>
+                                <%= dayNames[ date.getDay() ] %>,
+                                <%= monthNames[date.getMonth()] %> 
+                                <%= date.getDate() %>,
+                                <%= date.getFullYear() %>
+                            </td>
                         </tr>
+                        
                         <tr>
                             <th>Time</th>
-                            <td>03:30 PM</td>
+                            <td>
+                                <%= date.getHours()  %>:<%= date.getMinutes() %>
+                            </td>
                         </tr>
                         <tr>
-                            <th>Payment Method</th>
-                            <td>Cash</td>
+                            <th>Payment</th>
+                            <td class="text-light <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
+                                <b><%= customerOrder.paymentStatus %></b>
+                            </td>
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td>Pending</td>
+                            <td class="text-light <%= bgColor %>">
+                                <b><%= customerOrder.orderStatus %></b>
+                            </td>
                         </tr>
                         <tr>
                             <th>Total Amount</th>
-                            <td>Rs. 280</td>
+                            <td>Rs. <%= customerOrder.totalAmount %></td>
                         </tr>
                     </tbody>
                 </table>
@@ -100,76 +190,37 @@
                             <th>#</th>
                             <th>Medicine Name</th>
                             <th>Category</th>
-                            <th>Price</th>
+                            <th>Single Medicine Price</th>
+                            <th>quantity</th>
+                            <th>Total Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Panadol</td>
-                            <td>Pain Relief</td>
-                            <td>Rs 50</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
+                        
+                        <% customerOrder.items.forEach((singleMedicineRecord, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= singleMedicineRecord.medicineId.medicineName %></td>
+                                <td><%= singleMedicineRecord.medicineId.medicineCategory %></td>
+                                <td><%= singleMedicineRecord.medicineId.medicinePrice %></td>
+                                <td><%= singleMedicineRecord.quantity %></td>
+                                <td><%= singleMedicineRecord.price %></td>
+                                <td>
+                                    <div class="dashboard__section-cell-actions">
+    
+                                        <a href="/admin/manage/medicines/view/<%= singleMedicineRecord.medicineId._id %>" class="action-btn">
+                                            <i class="fa-solid fa-eye"></i>
+                                            More Info
+                                        </a>
+                                        
+                                    </div>
+                                </td>
+                            </tr>                            
+                        <% }); %>
 
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Disprin</td>
-                            <td>Pain Relief</td>
-                            <td>Rs 30</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Augmentin</td>
-                            <td>Antibiotic</td>
-                            <td>Rs 200</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <!-- Pagination -->
-            <div class="dashboard__section-pagination">
-
-                <a href="#" class="pagination__btn">&laquo;</a>
-
-                <div class="pagination__numbers">
-                    <a href="#" class="pagination__btn">1</a>
-                    <a href="#" class="pagination__btn">2</a>
-                    <a href="#" class="pagination__btn">3</a>
-                </div>
-
-                <a href="#" class="pagination__btn">&raquo;</a>
-
             </div>
 
             <div class="dashboard__secion-actions">
