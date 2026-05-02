@@ -13,8 +13,7 @@ const ManageOrderRecordsCtrl = async ( req, res, next ) => {
             populate: "customerId"
         }
     )
-    
-    console.log( customersOrders );
+
 
     res.render(
         "admin/manage/orders/manage",

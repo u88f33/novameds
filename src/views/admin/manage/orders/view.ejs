@@ -26,8 +26,35 @@
     <div class="dashboard__section">
 
         <div class="dashboard__section-main">
-            <h3 class="dashboard__section-title mb-0">Order Details: </h3>
+            <h3 class="dashboard__section-title mb-0">Update Order: </h3>
             
+            <div class="section-row__col-2 mt-4">
+                <div class="section__col section__col-1">
+                    <form class="payment-status__form" method="POST" action="/admin/manage/orders/update/payment/status/<%= customerOrder._id %>">
+                        <h2>Payment Status</h2>
+                        <select name="payment_status">
+                            <option value="Unpaid">Unpaid</option>
+                            <option value="Paid">Paid</option>
+                            <option value="COD">Pay on Delivery</option>
+                        </select>
+                        <button type="submit">Confirm</button>
+                    </form>
+                </div>
+
+                <div class=" section__col section__col-2">
+                    <form class="order-status__form" method="POST" action="/admin/manage/orders/update/order/status/<%= customerOrder._id %>">
+                        <h2>Order Status</h2>
+                        <select name="order_status">
+                            <option value="Pending">Pending</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                        <button type="submit">Confirm</button>
+                    </form>
+                </div>
+            </div>
+
+            <h3 class="dashboard__section-title mb-0">Order Details: </h3>            
             <div class="mt-4">
 
                 <table class="dashboard__section-view-table">
@@ -85,8 +112,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Payment Method</th>
-                            <td>Cash</td>
+                            <th>Payment</th>
+                            <td><%= customerOrder.paymentStatus %></td>
                         </tr>
                         <tr>
                             <th>Status</th>
@@ -116,76 +143,37 @@
                             <th>#</th>
                             <th>Medicine Name</th>
                             <th>Category</th>
-                            <th>Price</th>
+                            <th>Single Medicine Price</th>
+                            <th>quantity</th>
+                            <th>Total Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><%= customerOrder.items[0].medicineId.medicineName %></td>
-                            <td><%= customerOrder.items[0].medicineId.medicineCategory %></td>
-                            <td>Rs 50</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
+                        
+                        <% customerOrder.items.forEach((singleMedicineRecord, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= singleMedicineRecord.medicineId.medicineName %></td>
+                                <td><%= singleMedicineRecord.medicineId.medicineCategory %></td>
+                                <td><%= singleMedicineRecord.medicineId.medicinePrice %></td>
+                                <td><%= singleMedicineRecord.quantity %></td>
+                                <td><%= singleMedicineRecord.price %></td>
+                                <td>
+                                    <div class="dashboard__section-cell-actions">
+    
+                                        <a href="/admin/manage/medicines/view/<%= singleMedicineRecord.medicineId._id %>" class="action-btn">
+                                            <i class="fa-solid fa-eye"></i>
+                                            More Info
+                                        </a>
+                                        
+                                    </div>
+                                </td>
+                            </tr>                            
+                        <% }); %>
 
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Disprin</td>
-                            <td>Pain Relief</td>
-                            <td>Rs 30</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Augmentin</td>
-                            <td>Antibiotic</td>
-                            <td>Rs 200</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-
-                                    <a href="/admin/manage/medicines/view/medicine_id_123" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <!-- Pagination -->
-            <div class="dashboard__section-pagination">
-
-                <a href="#" class="pagination__btn">&laquo;</a>
-
-                <div class="pagination__numbers">
-                    <a href="#" class="pagination__btn">1</a>
-                    <a href="#" class="pagination__btn">2</a>
-                    <a href="#" class="pagination__btn">3</a>
-                </div>
-
-                <a href="#" class="pagination__btn">&raquo;</a>
-
             </div>
 
             <div class="dashboard__secion-actions">

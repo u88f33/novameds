@@ -6,7 +6,7 @@ const ViewOrderRecordCtrl = async ( req, res, next ) => {
     .populate( "customerId" )
     .populate( "items.medicineId" );
 
-    console.log( customerOrder );
+
 
     res.render(
         "admin/manage/orders/view",
