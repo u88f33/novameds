@@ -33,40 +33,56 @@
                 <table class="dashboard__section-view-table">
                     <tbody>
                         <tr>
-                            <th>Order#</th>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <th>Status</th>
-                            <td>Pending</td>
-                        </tr>
-                        <tr>
                             <th>Customer Name</th>
-                            <td>Ali Khan</td>
+                            <td><%= customerOrder.customerId.customerName %></td>
                         </tr>
 
                         <tr>
                             <th>Customer Email</th>
-                            <td>ak@gmail.com</td>
+                            <td><%= customerOrder.customerId.customerEmail %></td>
                         </tr>
 
                         <tr>
                             <th>Customer Phone</th>
-                            <td>+923012345678</td>
+                            <td><%= customerOrder.customerId.customerPhone %></td>
                         </tr>
 
                         <tr>
                             <th>Customer Address</th>
-                            <td>Islamabad, Pakistan</td>
+                            <td>
+                                <%= customerOrder.customerId.customerAddress %>,
+                                <%= customerOrder.customerId.customerCity %>,                                
+                                <%= customerOrder.customerId.customerCountry %>                                
+                            </td>
                         </tr>
 
                         <tr>
+                            <% 
+                                let date = new Date( customerOrder.createdAt );
+                                let monthNames = [
+                                    "January", "Feburary", "March", "April", "May",
+                                    "June", "July", "August", "September",
+                                    "October", "November", "December"
+                                ];
+                                let dayNames = [
+                                    "Sunday", "Monday", "Tuesday", "Wednesday",
+                                    "Thursday", "Friday", "Saturday",
+                                ]
+                            %>
                             <th>Date</th>
-                            <td>March 26, 2026</td>
+                            <td>
+                                <%= dayNames[ date.getDay() ] %>,
+                                <%= monthNames[date.getMonth()] %> 
+                                <%= date.getDate() %>,
+                                <%= date.getFullYear() %>
+                            </td>
                         </tr>
+                        
                         <tr>
                             <th>Time</th>
-                            <td>03:30 PM</td>
+                            <td>
+                                <%= date.getHours()  %>:<%= date.getMinutes() %>
+                            </td>
                         </tr>
                         <tr>
                             <th>Payment Method</th>
@@ -74,11 +90,11 @@
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td>Pending</td>
+                            <td><%= customerOrder.orderStatus %></td>
                         </tr>
                         <tr>
                             <th>Total Amount</th>
-                            <td>Rs. 280</td>
+                            <td>Rs. <%= customerOrder.totalAmount %></td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,8 +123,8 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Panadol</td>
-                            <td>Pain Relief</td>
+                            <td><%= customerOrder.items[0].medicineId.medicineName %></td>
+                            <td><%= customerOrder.items[0].medicineId.medicineCategory %></td>
                             <td>Rs 50</td>
                             <td>
                                 <div class="dashboard__section-cell-actions">
