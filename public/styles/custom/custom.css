@@ -1593,7 +1593,7 @@ th.customer-orders-history-header {
     background-color: #ddd;
 }
 
-.payment-display {
+.highlighter {
     background-color: red;
     color: white;
     font-size: 18px;
@@ -1604,4 +1604,8 @@ th.customer-orders-history-header {
 
 .bg-success {
     background-color: #128f07 !important;
+}
+
+.bg-warning{
+    color: #000 !important;
 }

@@ -48,7 +48,7 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="dashboard__stat-content">
-                <h2 class="dashboard__stat-number">45</h2>
+                <h2 class="dashboard__stat-number"><%= totalOrderRecords %></h2>
                 <p class="dashboard__stat-label">Pending Orders</p>
             </div>
         </div>
@@ -106,85 +106,69 @@
                     <th>No.</th>
                     <th>Customer Name</th>
                     <th>Total Amount</th>
-                    <th>Payment Method</th>
-                    <th>Order Date</th>
+                    <th>Date</th>
+                    <th>Time</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Ali Khan</td>
-                    <td>Rs. 280</td>
-                    <td>Cash</td>
-                    <td>2026-03-26</td>
-                    <td>
-                        <select class="order-status" data-order-id="order_id_101">
-                            <option value="Pending" selected>Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                <% recentOrders.forEach((singleOrder, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= singleOrder.customerId.customerName %></td>
+                        <td><%= singleOrder.totalAmount %></td>
+                        <% 
+                            let date = new Date( singleOrder.createdAt );
+                            let monthNames = [
+                                "January", "Feburary", "March", "April", "May",
+                                "June", "July", "August", "September",
+                                "October", "November", "December"
+                            ];
+                            let dayNames = [
+                                "Sunday", "Monday", "Tuesday", "Wednesday",
+                                "Thursday", "Friday", "Saturday",
+                            ]
+                        %>
+                        <td>
+                            <%= dayNames[ date.getDay() ] %>,
+                            <%= monthNames[date.getMonth()] %> 
+                            <%= date.getDate() %>,
+                            <%= date.getFullYear() %>
+                        </td>
+                        <%
+                            let bgColor = "";
 
-                <tr>
-                    <td>2</td>
-                    <td>Ahmed Raza</td>
-                    <td>Rs. 1,200</td>
-                    <td>Card</td>
-                    <td>2026-03-29</td>
-                    <td>
-                        <select class="order-status" data-order-id="order_id_102">
-                            <option value="Pending">Pending</option>
-                            <option value="Processing" selected>Processing</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Sara Ahmed</td>
-                    <td>Rs. 3,800</td>
-                    <td>Cash</td>
-                    <td>2026-03-28</td>
-                    <td>
-                        <select class="order-status" data-order-id="order_id_103">
-                            <option value="Pending">Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Delivered" selected>Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="dashboard__section-cell-actions">
-                            <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
-                                <i class="fa-solid fa-eye"></i>
-                                More Info
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                            switch ( singleOrder.orderStatus ) {
+                                case "Pending": {
+                                    bgColor = "bg-danger";
+                                    break;
+                                }
+                                case "Delivered": {
+                                    bgColor = "bg-success";
+                                    break;
+                                }
+                                case "Cancelled": {
+                                    bgColor = "bg-warning";
+                                }
+                            }
+                        %>
+                        <td>
+                            <%= `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` %>
+                        </td>
+                        <td class="text-light <%= bgColor %>">
+                            <%= singleOrder.orderStatus %>
+                        </td>
+                        <td>
+                            <div class="dashboard__section-cell-actions">
+                                <a href="/admin/manage/orders/view/<%= singleOrder._id %>" class="action-btn">
+                                    View or Manage
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
             </tbody>
     </table>
 

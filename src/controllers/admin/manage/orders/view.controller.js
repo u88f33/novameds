@@ -7,12 +7,14 @@ const ViewOrderRecordCtrl = async ( req, res, next ) => {
     .populate( "items.medicineId" );
 
     const paymentStatuses = OrderCollection.schema.path( "paymentStatus" ).enumValues;
+    const orderStatuses = OrderCollection.schema.path( "orderStatus" ).enumValues;
 
     res.render(
         "admin/manage/orders/view",
         {
             customerOrder,
-            paymentStatuses
+            paymentStatuses,
+            orderStatuses
         }
     )
 }

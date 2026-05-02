@@ -33,7 +33,7 @@
                     <form class="payment-status__form" method="POST" action="/admin/manage/orders/update/payment/status/<%= customerOrder._id %>">
                         <h2>
                             Payment Status 
-                            <span class="payment-display <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
+                            <span class="highlighter <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
                                 <%= customerOrder.paymentStatus %>
                             </span>
                         </h2>
@@ -43,10 +43,11 @@
                                     <option value="<%= paymentStatus %>" selected="selected">
                                         <%= paymentStatus %>
                                     </option>
+                                <% } else { %>
+                                    <option value="<%= paymentStatus %>">
+                                        <%= paymentStatus %>
+                                    </option>
                                 <% } %>
-                                <option value="<%= paymentStatus %>">
-                                    <%= paymentStatus %>
-                                </option>
                             <% }); %>
                         </select>
                         <button type="submit">Confirm</button>
@@ -55,11 +56,41 @@
 
                 <div class=" section__col section__col-2">
                     <form class="order-status__form" method="POST" action="/admin/manage/orders/update/order/status/<%= customerOrder._id %>">
-                        <h2>Order Status</h2>
+                        <h2>
+                            <%
+                                let bgColor = "";
+
+                                switch ( customerOrder.orderStatus ) {
+                                    case "Pending": {
+                                        bgColor = "bg-danger";
+                                        break;
+                                    }
+                                    case "Delivered": {
+                                        bgColor = "bg-success";
+                                        break;
+                                    }
+                                    case "Cancelled": {
+                                        bgColor = "bg-warning";
+                                    }
+                                }
+                            %>
+                            Order Status
+                            <span class="highlighter <%= bgColor %>">
+                                <%= customerOrder.orderStatus %>
+                            </span>
+                        </h2>
                         <select name="order_status">
-                            <option value="Pending">Pending</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
+                            <% orderStatuses.forEach(orderStatus => { %>
+                                <% if ( orderStatus == customerOrder.orderStatus ) { %>
+                                    <option value="<%= orderStatus %>" selected="selected">
+                                        <%= orderStatus %>
+                                    </option>
+                                <% } else { %>
+                                    <option value="<%= orderStatus %>">
+                                        <%= orderStatus %>
+                                    </option>
+                                <% } %>
+                            <% }); %>
                         </select>
                         <button type="submit">Confirm</button>
                     </form>
@@ -125,13 +156,15 @@
                         </tr>
                         <tr>
                             <th>Payment</th>
-                            <td class="<%= (customerOrder.paymentStatus == "Unpaid")? "text-danger" : "text-success" %>">
+                            <td class="text-light <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
                                 <b><%= customerOrder.paymentStatus %></b>
                             </td>
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td><%= customerOrder.orderStatus %></td>
+                            <td class="text-light <%= bgColor %>">
+                                <b><%= customerOrder.orderStatus %></b>
+                            </td>
                         </tr>
                         <tr>
                             <th>Total Amount</th>

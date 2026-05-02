@@ -12,7 +12,7 @@ const ManageOrderRecordsCtrl = async ( req, res, next ) => {
             limit,
             populate: "customerId"
         }
-    )
+    );
 
 
     res.render(

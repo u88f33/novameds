@@ -6,10 +6,10 @@ const UpdatePaymentStatusCtrl = async ( req, res, next ) => {
         payment_status
     } = req.body;
 
-    const updateOrder = await OrderCollection.findByIdAndUpdate(
+    const updatedPayment = await OrderCollection.findByIdAndUpdate(
         req.params.id,
         { paymentStatus: payment_status },
-        { new: true }
+        { returnDocument: "new" }
     );
 
     res.redirect( `/admin/manage/orders/view/${req.params.id}` );

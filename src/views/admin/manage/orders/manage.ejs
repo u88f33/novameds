@@ -75,8 +75,25 @@
                             %>
                             <%= `${months[date.getMonth()]} ${date.getDay()}, ${date.getFullYear()}` %>
                         </td>
-                        <td>
-                            Pending
+                            <%
+                                let bgColor = "";
+
+                                switch ( singleOrder.orderStatus ) {
+                                    case "Pending": {
+                                        bgColor = "bg-danger";
+                                        break;
+                                    }
+                                    case "Delivered": {
+                                        bgColor = "bg-success";
+                                        break;
+                                    }
+                                    case "Cancelled": {
+                                        bgColor = "bg-warning";
+                                    }
+                                }
+                            %>
+                        <td class="text-light <%= bgColor %>">
+                            <%= singleOrder.orderStatus %>
                         </td>
                         <td>
                             <div class="dashboard__section-cell-actions">
