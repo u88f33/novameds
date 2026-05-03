@@ -2,6 +2,7 @@ import CartCollection from "../../../../models/cart.model.js";
 import OrderCollection from "../../../../models/order.model.js";
 import MedicineCollection from "../../../../models/medicines.model.js";
 import PDFDocument from "pdfkit";
+import generateInvoice from "../../../../utils/invoice/pdfGenerator.js";
 import path from "path";
 import fs from "fs";
 
@@ -105,67 +106,9 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             } );
             
             const orderId = insertDataInMongoDB._id;
+            const orderDetails = confirmedOrderDetails;
 
-            // 3. File Path
-            const invoiceName = `order_${orderId}.pdf`;
-            const invoicePath = path.join(
-                "public",
-                "assets",
-                "invoices",
-                invoiceName
-            );
-
-            // 4. Create PDF
-            const doc = new PDFDocument();
-
-            // Save file
-            const writeStream = fs.createWriteStream(invoicePath);
-            doc.pipe(writeStream);
-
-            // Also send to browser
-            res.setHeader("Content-Type", "application/pdf");
-            res.setHeader(
-                "Content-Disposition",
-                `inline; filename="${invoiceName}"`
-            );
-            doc.pipe(res);
-
-
-
-            doc.fontSize(20).text("Invoice", { align: "center" });
-            doc.moveDown();
-
-            doc.fontSize(12).text(`Order ID: ${confirmedOrderDetails._id}`);
-            doc.text(`Customer Name: ${confirmedOrderDetails.customerId.customerName}`);
-            doc.text(`Total Amount: Rs ${confirmedOrderDetails.totalAmount}`);
-            doc.text(`Order Status: ${confirmedOrderDetails.orderStatus}`);
-            doc.moveDown();
-
-            doc.text(
-                `Shipping Address: ${confirmedOrderDetails.shippingAddress.address}`
-            );
-            doc.text(`City: ${confirmedOrderDetails.shippingAddress.city}`);
-            doc.text(`Country: ${confirmedOrderDetails.shippingAddress.country}`);
-            doc.moveDown();
-
-            // Table Header
-            doc.fontSize(14).text("Ordered Medicines:");
-            doc.moveDown();
-
-            confirmedOrderDetails.items.forEach((item, index) => {
-                doc.fontSize(12).text(
-                    `${index + 1}. ${item.medicineId.medicineName} (Qty: ${item.quantity}) ---------------------------------------- Price: Rs ${item.price}`
-                );
-            });
-
-            doc.moveDown();
-            doc.moveDown();
-            doc.moveDown();
-            doc.fontSize(20).text(`Total: Rs ${confirmedOrderDetails.totalAmount}`, {
-                align: "right",
-            });
-
-            doc.end();
+            generateInvoice( orderId, res, orderDetails );
         }
 
        res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
