@@ -31,17 +31,14 @@ const UpdateOrderStatusCtrl = async ( req, res, next ) => {
                             `order_${updatedOrderStatus._id}.pdf`
                         );
         
+        let orderId = updatedOrderStatus._id;
+        let orderDetails = updatedOrderStatus;
+        
         if ( fs.existsSync( filePath ) ) {
-            let deletePDF = fs.unlink( filePath );
-
-            const orderId = updatedOrderStatus._id;
-            const orderDetails = updatedOrderStatus;
-            console.log( orderId );
-            console.log( orderDetails );
-            generateInvoice( orderId, res, orderDetails );
+            fs.unlinkSync( filePath );
         }
-
-
+                
+        generateInvoice( orderId, res, orderDetails );
         res.redirect( `/admin/manage/orders/view/${req.params.id}` );
 
     } catch ( error ) {

@@ -7,7 +7,6 @@ const OrdersHistoryCtrl = async ( req, res, next ) => {
     const medicineRecords = await medicineRecordsArray();
 
     const customerOrders = await OrderCollection.find( { customerId } ).sort( { createdAt: -1 } );
-    console.log( customerOrders );
 
     res.render(
         "user/ordersHistory",
