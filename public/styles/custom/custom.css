@@ -835,19 +835,19 @@ nav {
 }
 
 
-.dashboard__section-view-table {
+.user__section-view-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 16px;
 }
 
 
-.dashboard__section-view-table tr {
+.user__section-view-table tr {
     border-bottom: 1px solid #dee2e6;
 }
 
 
-.dashboard__section-view-table th {
+.user__section-view-table th {
     text-align: left;
     padding: 12px;
     width: 20%;
@@ -858,7 +858,7 @@ nav {
 }
 
 
-.dashboard__section-view-table td {
+.user__section-view-table td {
     padding: 12px;
     color: #495057;
     border: 1px solid #999;
@@ -866,20 +866,20 @@ nav {
 }
 
 
-.dashboard__section-view-table tr:hover {
+.user__section-view-table tr:hover {
     background-color: #f1f3f5;
 }
 
 
 @media (max-width: 768px) {
-    .dashboard__section-view-table th,
-    .mdashboard__section-view-table td {
+    .user__section-view-table th,
+    .user__section-view-table td {
         display: block;
         border: 1px solid #999;
         width: 100%;
     }
 
-    .dashboard__section-view-table tr {
+    .user__section-view-table tr {
         margin-bottom: 10px;
         display: block;
         border: 1px solid #dee2e6;
@@ -1609,3 +1609,4 @@ th.customer-orders-history-header {
 .bg-warning{
     color: #000 !important;
 }
+

@@ -15,9 +15,9 @@
                         <h4>Previous Invoices</h4>
                         <hr />
                         <ul type="1">
-                            <% for ( let i = 1; i < customerOrders.length; ++i ) { %>
+                            <% for ( let i = 0; i < customerOrders.length; ++i ) { %>
                                 <li>
-                                    <a href="/assets/invoices/order_<%= customerOrders[i]._id %>.pdf" target="_blank">                            
+                                    <a href="/profile/cart/order/confirm/<%= customerOrders[i]._id %>">                            
                                     <% let date = new Date(customerOrders[i].createdAt); %>
                                         Order on <%= `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` %>
                                     </a>

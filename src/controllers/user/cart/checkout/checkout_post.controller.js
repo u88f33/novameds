@@ -168,7 +168,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             doc.end();
         }
 
-       res.redirect( `/profile/cart/order/confirm` );
+       res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
 
     } catch ( error ) {
         console.log( "File: /src/controllers/user/cart/checkout/checkout_post.controller.js" );

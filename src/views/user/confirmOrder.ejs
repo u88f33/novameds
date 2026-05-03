@@ -11,6 +11,91 @@
             <form action="/profile/cart/checkout" method="POST">
                 <div class="order-confirmation__body-container">
                     <div class="order-confirmation__info">
+                        <h4 class="mb-4">Your Order Info</h4>
+
+                        <table class="user__section-view-table">
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <td><%= customerOrder.customerId.customerName %></td>
+                                </tr>
+
+                                <tr>
+                                    <th>Customer Email</th>
+                                    <td><%= customerOrder.customerId.customerEmail %></td>
+                                </tr>
+
+                                <tr>
+                                    <th>Customer Phone</th>
+                                    <td><%= customerOrder.customerId.customerPhone %></td>
+                                </tr>
+
+                                <tr>
+                                    <th>Shipping Address</th>
+                                    <td>
+                                        <%= customerOrder.shippingAddress.address %>,
+                                        <%= customerOrder.shippingAddress.city %>,                                
+                                        <%= customerOrder.shippingAddress.country %>                                
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <% 
+                                        let date = new Date( customerOrder.createdAt );
+                                        let monthNames = [
+                                            "January", "Feburary", "March", "April", "May",
+                                            "June", "July", "August", "September",
+                                            "October", "November", "December"
+                                        ];
+                                        let dayNames = [
+                                            "Sunday", "Monday", "Tuesday", "Wednesday",
+                                            "Thursday", "Friday", "Saturday",
+                                        ]
+                                    %>
+                                    <th>Date</th>
+                                    <td>
+                                        <%= dayNames[ date.getDay() ] %>,
+                                        <%= monthNames[date.getMonth()] %> 
+                                        <%= date.getDate() %>,
+                                        <%= date.getFullYear() %>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <th>Time</th>
+                                    <td>
+                                        <%= date.getHours()  %>:<%= date.getMinutes() %>:<%= date.getSeconds() %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Payment</th>
+                                    <td>
+                                        <b><%= customerOrder.paymentStatus %></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>
+                                        <b><%= customerOrder.orderStatus %></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Total Amount</th>
+                                    <td>Rs. <%= customerOrder.totalAmount %></td>
+                                </tr>
+                                <tr>
+                                    <th>Invoice</th>
+                                    <td>
+                                        <a 
+                                            href="/assets/invoices/order_<%= customerOrder._id %>.pdf"
+                                            target="_blank"
+                                        >
+                                            Click to View or Download                                            
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>                  
                     </div>
                 </div>
             </form>

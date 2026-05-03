@@ -18,7 +18,7 @@ router.get( "/api", CartItemsApiCtrl );
 
 router.get( "/checkout", CheckoutPageCtrl )
 router.get( "/orders/history", OrdersHistoryCtrl );
-router.get( "/order/confirm", OrderConfirmationCtrl );
+router.get( "/order/confirm/:id", OrderConfirmationCtrl );
 router.get( "/checkout/invoice/pdf/:id", InvoicePdfCtrl );
 router.post( "/checkout", CheckoutPageCtrlPost );
 
