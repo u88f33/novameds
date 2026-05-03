@@ -5,8 +5,9 @@ import CartItemDeleteCtrl from "../../controllers/user/cart/cart_delete.controll
 import CartItemsApiCtrl from "../../controllers/user/cart/cart_api.controller.js";
 import CheckoutPageCtrl from "../../controllers/user/cart/checkout/checkout.controller.js";
 import CheckoutPageCtrlPost from "../../controllers/user/cart/checkout/checkout_post.controller.js";
-import GenerateInvoiceCtrl from "../../controllers/user/cart/invoice/invoice.controller.js";
+import OrdersHistoryCtrl from "../../controllers/user/cart/orders_history.controller.js";
 import InvoicePdfCtrl from "../../controllers/user/cart/invoice/invoice_pdf.controller.js";
+import OrderConfirmationCtrl from "../../controllers/user/cart/order_confirmation.controller.js";
 
 const router = express.Router();
 
@@ -16,7 +17,8 @@ router.delete( "/delete/:id", CartItemDeleteCtrl );
 router.get( "/api", CartItemsApiCtrl );
 
 router.get( "/checkout", CheckoutPageCtrl )
-router.get( "/checkout/order/:id", GenerateInvoiceCtrl );
+router.get( "/orders/history", OrdersHistoryCtrl );
+router.get( "/order/confirm", OrderConfirmationCtrl );
 router.get( "/checkout/invoice/pdf/:id", InvoicePdfCtrl );
 router.post( "/checkout", CheckoutPageCtrlPost );
 
