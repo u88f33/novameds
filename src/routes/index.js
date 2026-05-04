@@ -11,7 +11,7 @@ const router = express.Router();
 router.use( "/", HomeRoute );
 router.use( "/", AuthRoute );
 router.use( "/", ApiRoutes );
-router.use( "/admin", AdminLoginMiddleware, AdminRoute );
+router.use( "/admin", AdminRoute );
 router.use( "/profile", UserLoginMiddleware, UserRoute );
 
 export default router;
