@@ -227,10 +227,24 @@
                 <a href="/admin/manage/orders" class="dashboard__secion-action-button">
                     Go Back
                 </a>
+                <a onclick="deleteOrderConfirmation( '<%= customerOrder._id %>' )" class="dashboard__secion-action-button ms-2 bg-danger border border-danger">
+                    Delete
+                </a>
             </div>
 
         </div>
     </div>
 </div>
 
+<script>
+
+function deleteOrderConfirmation( orderId ) {
+    const confirmDeletion = window.confirm( `Deleting Order# ${orderId}` );
+    
+    if ( confirmDeletion ) {
+        window.location.replace( `/admin/manage/orders/delete/${ orderId }` );
+    }
+}
+
+</script>
 <%- include( "../../../partials/admin/footer" ) -%>
