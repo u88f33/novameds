@@ -27,21 +27,35 @@
 
         <!-- Top Section -->
         <div class="dashboard__section-top">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-4">
                 <h3 class="dashboard__section-title">Daily Sales Reports:</h3>
 
             </div>
 
-            <table>
+            <table class="dashboard__section-table" style="font-size: 18px !important;">
                 <tr>
                     <th>No.</th>
-                    <th>Reports</th>
+                    <th>Daily Sales Report</th>
                     <th>File</th>
                 </tr>
                 <% pdfSalesReportsArray.forEach((singleDailySalesReport, idx) => { %>
                     <tr>
-                        <td><%= idx %></td>
-                        <td>Sales Report of <%= singleDailySalesReport %></td>
+                        <%
+                            let monthNamesArray =  [
+                                "January", "February", "March", "April", 
+                                "May", "June", "July", "August", "September", 
+                                "October", "November", "December"
+                            ];
+
+                            let salesReportDate = new Date( datesOfSalesReport[idx] );
+                        %>
+                        <td><%= idx + 1 %></td>
+                        <td>
+                            Sales Report of 
+                            <%= monthNamesArray[salesReportDate.getMonth()] %>
+                            <%= salesReportDate.getDate() %>,
+                            <%= salesReportDate.getFullYear() %>
+                        </td>
                         <td>
                             <a 
                                 href="/assets/reports/dailySales/<%= singleDailySalesReport %>" 

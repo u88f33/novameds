@@ -18,7 +18,7 @@ function formatDate( date ) {
     return `${month}${day}${year}`;
 }
 
-async function generatePDF( startingDate, endingDate, response ) {
+async function generatePDF( startingDate, endingDate ) {
 
     let monthNamesArray =  [
                             "January", "February", "March", "April", 

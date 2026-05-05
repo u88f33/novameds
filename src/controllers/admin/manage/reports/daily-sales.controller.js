@@ -34,19 +34,26 @@ const DailySalesReportCtrl = async ( req, res, next ) => {
     const pdfSalesReportsArray = fs.readdirSync( readSalesReportFiles );
 
     let startingDate, endingDate;
+    let datesOfSalesReport = [];
+
     customersOrders.forEach( doc => {
         let date = doc._id;
+        datesOfSalesReport.push( new Date(date) );
+
         startingDate = new Date( date );
         endingDate = new Date( date );
         endingDate.setDate( endingDate.getDate() + 1 );
 
-        generatePDF( startingDate, endingDate, res );
+        generatePDF( startingDate, endingDate );
     } );
+
+    datesOfSalesReport = datesOfSalesReport.sort( ( a, b ) => a - b );
 
     res.render(
         "admin/manage/reports/dailySales",
         {
-            pdfSalesReportsArray
+            pdfSalesReportsArray,
+            datesOfSalesReport
         }
     )
 }
