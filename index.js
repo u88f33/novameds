@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import connectDB from "./src/config/database.connection.js";
 import Routes from "./src/routes/index.js";
+import generatePDF from "./src/utils/salesReport/generatePdf.js"
 
 // Initializing Environment variables from ".env" file
 dotenv.config();
@@ -27,6 +28,14 @@ app.use( session(
     }
   }
 ) )
+
+/************************************************************************ */
+/**-------------------- Generate Daily Sales Function --------------------*/
+
+generatePDF();
+
+/**-------------------------------------------------------------------*/
+/********************************************************************* */
 
 // Fix __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
