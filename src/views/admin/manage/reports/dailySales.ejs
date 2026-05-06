@@ -1,0 +1,76 @@
+<%- include( "../../../partials/admin/sidebar" ) -%>
+
+<div class="dashboard">
+    <header class="dashboard__header">
+
+        <nav class="dashboard__nav">
+            <div class="dashboard__nav-title">
+                <h1>Dashboard</h1>
+            </div>
+
+            <a href="/admin" class="dashboard__profile">
+
+                <div class="dashboard__profile-image-wrapper">
+                    <img src="/assets/images/admin.png" class="dashboard__profile-image" />
+                </div>
+
+                <div class="dashboard__profile-text">
+                    Admin
+                </div>
+
+            </a>
+        </nav> 
+        
+    </header>
+
+    <div class="dashboard__section">
+
+        <!-- Top Section -->
+        <div class="dashboard__section-top">
+            <div class="d-flex justify-content-between mb-4">
+                <h3 class="dashboard__section-title">Daily Sales Reports:</h3>
+
+            </div>
+
+            <table class="dashboard__section-table" style="font-size: 18px !important;">
+                <tr>
+                    <th>No.</th>
+                    <th>Daily Sales Report</th>
+                    <th>File</th>
+                </tr>
+                <% pdfSalesReportsArray.forEach((singleDailySalesReport, idx) => { %>
+                    <tr>
+                        <%
+                            let monthNamesArray =  [
+                                "January", "February", "March", "April", 
+                                "May", "June", "July", "August", "September", 
+                                "October", "November", "December"
+                            ];
+
+                            let salesReportDate = new Date( datesOfSalesReport[idx] );
+                        %>
+                        <td><%= idx + 1 %></td>
+                        <td>
+                            Sales Report of 
+                            <%= monthNamesArray[salesReportDate.getMonth()] %>
+                            <%= salesReportDate.getDate() %>,
+                            <%= salesReportDate.getFullYear() %>
+                        </td>
+                        <td>
+                            <a 
+                                href="/assets/reports/dailySales/<%= singleDailySalesReport %>" 
+                                target="_blank">
+                                <%= singleDailySalesReport %>
+                            </a>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/scripts/orders/search_order.js"></script>
+<%- include( "../../../partials/admin/footer" ) -%>

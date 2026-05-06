@@ -1,6 +1,10 @@
 import CartCollection from "../../../../models/cart.model.js";
 import OrderCollection from "../../../../models/order.model.js";
 import MedicineCollection from "../../../../models/medicines.model.js";
+import PDFDocument from "pdfkit";
+import generateInvoice from "../../../../utils/invoice/pdfGenerator.js";
+import path from "path";
+import fs from "fs";
 
 const CheckoutPageCtrlPost = async ( req, res, next ) => {
     try {
@@ -91,13 +95,23 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
 
         const insertDataInMongoDB = await OrderCollection.insertOne( orderData );
 
+        const confirmedOrderDetails = await OrderCollection.findById(
+            insertDataInMongoDB._id
+        ).populate( "customerId" ).populate( "items.medicineId" );
+
         if ( insertDataInMongoDB ) {
+            
             const deleteCustomerCartItems = await CartCollection.deleteMany( { 
                 customerId
-             } )
+            } );
+            
+            const orderId = insertDataInMongoDB._id;
+            const orderDetails = confirmedOrderDetails;
+
+            generateInvoice( orderId, res, orderDetails );
         }
 
-       res.redirect( `/profile/cart/checkout/order/${ insertDataInMongoDB._id }` );
+       res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
 
     } catch ( error ) {
         console.log( "File: /src/controllers/user/cart/checkout/checkout_post.controller.js" );

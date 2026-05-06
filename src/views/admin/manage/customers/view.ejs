@@ -30,7 +30,7 @@
             
             <div class="mt-4">
 
-                <table class="dashboard__section-view-table">
+                <table class="user__section-view-table">
                     <tbody>
                         <tr>
                             <th>Customer Name</th>
@@ -81,67 +81,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>March 26, 2026 (Thursday)</td>
-                            <td>03:30 PM</td>
-                            <td>550</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-                                    <a href="/admin/manage/orders/view/orders_id_789" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        <% customerOrdersRecordInDB.forEach((customerOrderHistory, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td>
+                                    <% 
+                                        let monthNames = [
+                                         "January", "February", "March", "April",
+                                         "May", "June", "July", "August", 
+                                         "September", "October", "November", 
+                                         "December"
+                                        ];
+                                        let dayNames = ["Sunday", "Monday", 
+                                        "Tuesday", "Wednesday", "Thursday", 
+                                        "Friday", "Saturday"];
 
-                        <tr>
-                            <td>2</td>
-                            <td>March 27, 2026 (Friday)</td>
-                            <td>12:30 PM</td>
-                            <td>750</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-                                    <a href="/admin/manage/orders/view/orders_id_789" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                                        let orderDate = new Date( customerOrderHistory.createdAt );
+                                        let date = orderDate.getDate();
+                                        let month = monthNames[ orderDate.getMonth() ];
+                                        let year = orderDate.getFullYear();
+                                        let weekDay = dayNames[orderDate.getDay()];
+                                        let hour = orderDate.getHours().toString().padStart( 2, "0" )
+                                        let minute = orderDate.getMinutes().toString().padStart( 2, "0" )
+                                        let second = orderDate.getSeconds().toString().padStart( 2, "0" )
+                                    %>
+                                    <%= `${weekDay}, ${month} ${date}, ${year}` %>
+                                </td>
+                                <td>
+                                    <%= `${hour}:${minute}:${second}` %>
+                                </td>
+                                <td>
+                                    <%= customerOrderHistory.totalAmount %>
+                                </td>
+                                <td>
+                                    <div class="dashboard__section-cell-actions">
+                                        <a href="/admin/manage/orders/view/<%= customerOrderHistory._id %>" class="action-btn">
+                                            <i class="fa-solid fa-eye"></i>
+                                            More Info
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }); %>
 
-                        <tr>
-                            <td>3</td>
-                            <td>March 28, 2026 (Saturday)</td>
-                            <td>04:30 PM</td>
-                            <td>850</td>
-                            <td>
-                                <div class="dashboard__section-cell-actions">
-                                    <a href="/admin/manage/orders/view/orders_id_789" class="action-btn">
-                                        <i class="fa-solid fa-eye"></i>
-                                        More Info
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <!-- Pagination -->
-            <div class="dashboard__section-pagination">
-
-                <a href="#" class="pagination__btn">&laquo;</a>
-
-                <div class="pagination__numbers">
-                    <a href="#" class="pagination__btn">1</a>
-                    <a href="#" class="pagination__btn">2</a>
-                    <a href="#" class="pagination__btn">3</a>
-                </div>
-
-                <a href="#" class="pagination__btn">&raquo;</a>
-
             </div>
 
             <div class="dashboard__secion-actions">
