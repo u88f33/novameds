@@ -9,9 +9,4 @@ let cities = [
     { name: "Chakwal", coords: [32.9329, 72.8558] }
 ];
 
-let options = ``;
-cities.forEach(city => {
-    options += `<option value="${city.name}">${ city.name }</option>`;
-});
-
-document.getElementById( "user_city" ).innerHTML = options;
+export { cities };

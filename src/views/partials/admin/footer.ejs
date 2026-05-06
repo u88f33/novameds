@@ -4,37 +4,9 @@
 <!-- Chart.js -->
 <script src="/js/chart.min.js"></script>
 
+<script type="module" src="/js/scripts/userCityInfo/userCityOnMap.js"></script>
+
 <script>
-/* ================= MAP ================= */
-
-// Initialize map centered on Pakistan
-var map = L.map('map').setView([30.3753, 69.3451], 4);
-
-// Tile layer (styled later)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: ''
-}).addTo(map);
-
-// Example customer cities (dummy data)
-var cities = [
-    { name: "Lahore", coords: [31.5204, 74.3587] },
-    { name: "Karachi", coords: [24.8607, 67.0011] },
-    { name: "Islamabad", coords: [33.6844, 73.0479] },
-    { name: "Peshawar", coords: [34.0151, 71.5249] }
-];
-
-// Add markers
-cities.forEach(city => {
-    L.circleMarker(city.coords, {
-        color: "#006eb9",
-        fillColor: "#006eb9",
-        fillOpacity: 0.9,
-        radius: 5
-    })
-    .addTo(map)
-    .bindPopup(city.name);
-});
-
 
 /* ================= CHART ================= */
 
