@@ -33,6 +33,14 @@ const StockAvailablityReportPdfCtrl = async ( req, res, next ) => {
         ],
         [
             {
+                text: `Total Available Medicines: ${ medicinesRecords.length }`,
+                colSpan: "3",
+                padding: "1em",
+                align: { x: "center", y: "center" }
+            }
+        ],
+        [
+            {
                 text: "Medicine Name",
                 backgroundColor: "#777",
                 textColor: "#fff",
