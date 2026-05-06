@@ -16,6 +16,8 @@ const AdminMainCtrl = async ( req, res, next ) => {
     const recentOrders = 
     await OrdersCollection.find().populate("customerId").sort({ createdAt: -1 }).limit( 10 );
 
+    console.log( recentCustomers );
+
     res.render(
         "admin/main/main",
         {

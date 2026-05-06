@@ -101,18 +101,23 @@
                     </div>
 
                     <div class="form-group form-group--inline mb-3">
+
                         <div class="form-group__field">
                             <label for="addressCityRegister" class="form-label">City</label>
-                            <input 
-                                type="text"
-                                class="form-control border border-dark"
-                                id="addressCityRegister"
-                                placeholder="Your City"
-                                required="true"
+                            <select
+                                class="form-select border border-dark"
                                 name="user_city"
-                                autocomplete="off"
-                            />
+                                id="user_city"
+                                required="true"
+                            >
+                                <option value="Rawalpindi">Rawalpindi</option>
+                                <option value="Peshawar">Peshawar</option>
+                                <option value="Lahore">Lahore</option>
+                                <option value="Karachi">Karachi</option>
+                            </select>
                         </div>
+
+
                         <div class="form-group__field">
                             <label for="addressCountryRegister" class="form-label">Country</label>
                             <input 
@@ -123,6 +128,8 @@
                                 required="true"
                                 name="user_country"
                                 autocomplete="off"
+                                value="Pakistan"
+                                readonly="readonly"
                             />
                         </div>
                     </div>
@@ -157,5 +164,6 @@
 </div>
 
 
+<script src="/js/scripts/userCityOnMap/userCityOnMap.js"></script>
 <script src="/js/scripts/home/prelogin/search_medicine.js"></script>
 <%- include( "../partials/footer/footer" ) -%>
