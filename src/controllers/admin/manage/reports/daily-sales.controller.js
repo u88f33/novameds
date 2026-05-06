@@ -36,8 +36,9 @@ const DailySalesReportCtrl = async ( req, res, next ) => {
     let startingDate, endingDate;
     let datesOfSalesReport = [];
 
+    let date;
     customersOrders.forEach( doc => {
-        let date = doc._id;
+        date = doc._id;
         datesOfSalesReport.push( new Date(date) );
 
         startingDate = new Date( date );
@@ -48,6 +49,7 @@ const DailySalesReportCtrl = async ( req, res, next ) => {
     } );
 
     datesOfSalesReport = datesOfSalesReport.sort( ( a, b ) => a - b );
+    
 
     res.render(
         "admin/manage/reports/dailySales",
