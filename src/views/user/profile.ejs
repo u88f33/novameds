@@ -1,7 +1,82 @@
 <%- include( "../partials/header/postlogin" ) -%>
+<div class="banner">
+        <div class="header-top__search-container" style="width: 1200px;">
+            <div class="header-top__search-input-bar">
+                <label for="searchBarInputLabel"><i class="fa-solid fa-magnifying-glass"></i></label>
+                <input
+                    type="text"
+                    id="searchBarInputLabel"
+                    placeholder="Search Medicines"
+                    onclick="openSearchBox()"                  
+                    oninput="( this.value == '' )? window.location.replace( `/profile/?page=1` ) : searchMedicineByUser(this.value)"
+                />
+            </div>
+        </div>
+</div>
+
+<%# Full Page search Box for searching Medicines %>
+<%# Full page search Box for searching Medicines %>
+<%# Full Page search Box for searching Medicines %>
+
+<div class="medicines-list-search__container-background">
+
+    <%# Display "X" icons for closing medicines search list  %>
+    <div id="closeMedicinesListContainer" class="medicines-list-search__container-close">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <%# Medicines List having search input on top and shows medicines list on typeing medicine name %>
+    <div class="medicines-list-search__container">
+
+        <%# HTML Form input for searching medicines  %>
+        <div class="medicines-list-search__input-container">
+            <label for="medicinesListInputLabel">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+            <input
+                type="text"
+                id="medicinesListInputLabel"
+                placeholder="Search Medicines"     
+                oninput= "showMedicinesList(this.value)"
+            />
+        </div>
+
+        <div class="medicines-list-display__container">
+            <ul>
+                <li>
+                    <a href="#medicines-list" class="medicine-list-item-link__container">
+                        <div class="medicine-list-item-info__container">
+                            <div class="medicine-list-item__image-container">
+                                <img 
+                                    src="/assets/images/login_page_image.jpg"
+                                    class="medicine-list-item__image"
+                                />
+                            </div>
+                            <div class="medicine-list-item__info">
+                                <p class="medicine-list-item__title">Panadol</p>
+                                <p class="medicine-list-item__category">Analgesics</p>
+                            </div>
+                        </div>
+                        <div class="medicine-list-item-price__container">
+                            <p class="medicine-list-item-price">Rs.250</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+<%# Full page search Box for searching Medicines %>
+<%# Full page search Box for searching Medicines %>
+<%# Full page search Box for searching Medicines %>
 
 <div class="container">
     <div class="row d-flex justify-content-center">
+
+        </div>
 
         <div id="profilePageCardContainer" class="card-container">
 
@@ -17,16 +92,19 @@
                             </div>
 
                             <div class="card-body">
-                                <h3 class="card-title">
-                                    <%= singleMedicineRecord.medicineName %>
-                                </h3>
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="card-title">
+                                        <%= singleMedicineRecord.medicineName %>
+                                    </h3>
+
+                                    <span class="price">
+                                        Rs. <%= singleMedicineRecord.medicinePrice %>
+                                    </span>
+                                </div>
 
                                 <div class="card-info">
                                     <span class="category">
                                         <%= singleMedicineRecord.medicineCategory %>
-                                    </span>
-                                    <span class="price">
-                                        Rs. <%= singleMedicineRecord.medicinePrice %>
                                     </span>
                                 </div>
 

@@ -17,14 +17,17 @@
                         </div>
 
                         <div class="card-body">
-                        <h3 class="card-title"><%= singleMedicineRecord.medicineName %></h3>
+                            <div class="d-flex justify-content-between">
+                                <h3 class="card-title"><%= singleMedicineRecord.medicineName %></h3>
+
+                                <span class="price">
+                                    Rs. <%= singleMedicineRecord.medicinePrice %>
+                                </span>
+                            </div>
 
                         <div class="card-info">
                             <span class="category">
                                 <%= singleMedicineRecord.medicineCategory %>
-                            </span>
-                            <span class="price">
-                                Rs. <%= singleMedicineRecord.medicinePrice %>
                             </span>
                         </div>
 

@@ -13,6 +13,12 @@ p {
     margin-bottom: 0;
 }
 
+.container {
+    min-height: 100vh !important;
+    display: flex;
+    justify-content: center;
+}
+
 :root {
     --primary-blue: #006eb9;
     --primary-green: #9cc500;
@@ -76,7 +82,7 @@ nav {
     padding-left: 30px !important;
 }
 
-/* Cards Container */
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -88,10 +94,10 @@ nav {
   width: 1200px;
 }
 
-/* Card */
+
 .card {
   border: 1px solid #757575;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   background: #fff;
   box-shadow: 2px 2px 10px #999;
@@ -101,7 +107,7 @@ nav {
     padding: 0;
 }
 
-/* Header Image */
+
 .card-header img {
   width: 100%;
   height: 230px;
@@ -109,60 +115,55 @@ nav {
   padding: 0;
 }
 
-/* Body */
+
 .card-body {
   padding: 15px;
 }
 
-/* Title */
+
 .card-title {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 22px;
 }
 
-/* Info Row */
+
 .card-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
-/* Category & Price */
+
 .category {
-  color: #000;
+  color: var(--primary-blue);
   border-radius: 50px;
   font-size: 14px;
+  font-weight: bolder;
 }
 
 .price {
-  background-color: var(--primary-blue);
-  color: white;
-  padding: 4px 10px;
-  font-size: 14px;
-  border-radius: 20px;
+    font-size: 18px;
+    border-radius: 20px;
+    font-weight: bold;
 }
 
 /* Button */
 .add-to-cart-btn {
   width: 100%;
   padding: 4px;
-  border-radius: 50px;
-  border: 1px solid #000;
-  background: #f5f5f5;
-  color: #000;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background: #212529;
+  color: #fff;
   text-align: center;
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .add-to-cart-btn:hover {
-    background-color: #212529;
+    background-color: #006eb9;
     color: #fff;
-}
-
-.card-info {
-  margin-top: 10px;
 }
 
 .add-to-cart-btn {
@@ -713,16 +714,16 @@ nav {
 
 .pagination__btn {
     background-color: #fff;
-    border: 1px solid #006eb9;
-    color: #006eb9;
+    border: 1px solid #212529;
+    color: #212529;
     padding: 8px 12px;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 5px;
     transition: 0.3s;
 }
 
 .pagination__btn:hover {
-    background-color: #006eb9;
+    background-color: #212529;
     color: #fff;
 }
 
@@ -953,6 +954,20 @@ th.customer-orders-history-header {
     position: relative;
 }
 
+.banner {
+    background-color: black; 
+    width: 100%; 
+    height: 40vh; 
+    display: flex; 
+    justify-content: 
+    center; 
+    align-items: center;
+    background:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("/assets/images/login_page_image.jpg") center/cover no-repeat;
+    background-attachment: fixed;
+}
+
 .header-top-container {
     max-width: 100%;
     display: flex;
@@ -988,19 +1003,20 @@ th.customer-orders-history-header {
 }
 
 .header-top__search-input-bar > label {
-    width: 5%;
+    width: 3%;
     padding-left: 14px;
 }
 
 .header-top__search-input-bar > label > i {
     color: #006eb9;
+    font-size: 18px;
     display: inline-block;
 }
 
 .header-top__search-input-bar > input {
     width: 94%;
     border: none;
-    padding: 8px;
+    padding: 14px;
 }
 
 .header-top__search-input-bar > input:focus {
@@ -1648,3 +1664,130 @@ th.customer-orders-history-header {
     color: #000 !important;
 }
 
+.medicines-list-search__container-background {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 3000;
+}
+
+.medicines-list-search__container-close {
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+    margin-left: auto;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.medicines-list-search__container-close > i {
+    color: #ffffff;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.medicines-list-search__container {
+    width: 60%;
+    border-radius: 5px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.medicines-list-search__input-container {
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.medicines-list-search__input-container > input {
+    width: 94%;
+    border: none;
+}
+
+.medicines-list-search__input-container > input:focus {
+    outline: none;
+    border: none;
+}
+
+.medicines-list-display__container ul {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.medicine-list-item-link__container {
+    display: flex;
+    text-decoration: none;
+    color: #000;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.medicines-list-display__container {
+
+}
+
+.medicine-list-item-info__container {
+    display: flex;
+    align-items: center;
+}
+
+.medicine-list-item__image-container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.medicine-list-item__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.medicine-list-item__info {
+    padding-left: 10px;
+}
+
+.medicine-list-item__title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.medicine-list-item__category {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.medicine-list-item-price__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.medicine-list-item-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 30px;
+    font-size: 30px;
+    color: #003f69;
+}
