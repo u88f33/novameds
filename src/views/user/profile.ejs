@@ -7,7 +7,8 @@
                     type="text"
                     id="searchBarInputLabel"
                     placeholder="Search Medicines"
-                    onclick="openSearchBox()"                  
+                    onclick="openSearchBox()" 
+                    autocomplete="off"            
                     oninput="( this.value == '' )? window.location.replace( `/profile/?page=1` ) : searchMedicineByUser(this.value)"
                 />
             </div>
@@ -15,10 +16,8 @@
 </div>
 
 <%# Full Page search Box for searching Medicines %>
-<%# Full page search Box for searching Medicines %>
-<%# Full Page search Box for searching Medicines %>
 
-<div class="medicines-list-search__container-background">
+<div id="medicineListSearchContainer" class="medicines-list-search__container-background">
 
     <%# Display "X" icons for closing medicines search list  %>
     <div id="closeMedicinesListContainer" class="medicines-list-search__container-close">
@@ -42,26 +41,8 @@
         </div>
 
         <div class="medicines-list-display__container">
-            <ul>
-                <li>
-                    <a href="#medicines-list" class="medicine-list-item-link__container">
-                        <div class="medicine-list-item-info__container">
-                            <div class="medicine-list-item__image-container">
-                                <img 
-                                    src="/assets/images/login_page_image.jpg"
-                                    class="medicine-list-item__image"
-                                />
-                            </div>
-                            <div class="medicine-list-item__info">
-                                <p class="medicine-list-item__title">Panadol</p>
-                                <p class="medicine-list-item__category">Analgesics</p>
-                            </div>
-                        </div>
-                        <div class="medicine-list-item-price__container">
-                            <p class="medicine-list-item-price">Rs.250</p>
-                        </div>
-                    </a>
-                </li>
+            <ul id="medicinesListDisplayOnSearch">
+
             </ul>
         </div>
     </div>
@@ -69,8 +50,6 @@
 
 </div>
 
-<%# Full page search Box for searching Medicines %>
-<%# Full page search Box for searching Medicines %>
 <%# Full page search Box for searching Medicines %>
 
 <div class="container">
