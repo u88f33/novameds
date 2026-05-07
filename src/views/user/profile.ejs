@@ -1,56 +1,9 @@
 <%- include( "../partials/header/postlogin" ) -%>
-<div class="banner">
-        <div class="header-top__search-container" style="width: 1200px;">
-            <div class="header-top__search-input-bar">
-                <label for="searchBarInputLabel"><i class="fa-solid fa-magnifying-glass"></i></label>
-                <input
-                    type="text"
-                    id="searchBarInputLabel"
-                    placeholder="Search Medicines"
-                    onclick="openSearchBox()" 
-                    autocomplete="off"            
-                    oninput="( this.value == '' )? window.location.replace( `/profile/?page=1` ) : searchMedicineByUser(this.value)"
-                />
-            </div>
-        </div>
-</div>
-
-<%# Full Page search Box for searching Medicines %>
-
-<div id="medicineListSearchContainer" class="medicines-list-search__container-background">
-
-    <%# Display "X" icons for closing medicines search list  %>
-    <div id="closeMedicinesListContainer" class="medicines-list-search__container-close">
-        <i class="fa-solid fa-xmark"></i>
-    </div>
-
-    <%# Medicines List having search input on top and shows medicines list on typeing medicine name %>
-    <div class="medicines-list-search__container">
-
-        <%# HTML Form input for searching medicines  %>
-        <div class="medicines-list-search__input-container">
-            <label for="medicinesListInputLabel">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </label>
-            <input
-                type="text"
-                id="medicinesListInputLabel"
-                placeholder="Search Medicines"     
-                oninput= "showMedicinesList(this.value)"
-            />
-        </div>
-
-        <div class="medicines-list-display__container">
-            <ul id="medicinesListDisplayOnSearch">
-
-            </ul>
-        </div>
-    </div>
+<%- include( "../partials/banner/banner" ) -%>
+<%- include( "../partials/banner/fullPageSearchList" ) -%>
 
 
-</div>
 
-<%# Full page search Box for searching Medicines %>
 
 <div class="container">
     <div class="row d-flex justify-content-center">

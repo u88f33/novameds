@@ -11,10 +11,6 @@ function showMedicinesList(inputValue) {
             let data = await res.json();
 
             const medicinesListDisplayOnSearch = document.getElementById("medicinesListDisplayOnSearch");
-
-            if ( profilePageCardContainer == null ) {
-                window.location.assign( "/profile" );
-            }
             
             medicinesListDisplayOnSearch.innerHTML = "";
 
