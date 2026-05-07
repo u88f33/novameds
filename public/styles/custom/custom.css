@@ -1759,10 +1759,6 @@ th.customer-orders-history-header {
     border-radius: 5px;
 }
 
-.medicines-list-display__container {
-
-}
-
 .medicine-list-item-info__container {
     display: flex;
     align-items: center;
