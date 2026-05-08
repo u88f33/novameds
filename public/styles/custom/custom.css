@@ -14,7 +14,7 @@ p {
 }
 
 .container {
-    min-height: 100vh !important;
+    min-height: 80vh !important;
 }
 
 :root {
@@ -236,7 +236,7 @@ nav {
     display: flex;
     align-items: center;
     box-shadow: 2px 2px 15px #212121;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .login-container-right > img {
@@ -1448,28 +1448,30 @@ th.customer-orders-history-header {
 
 .profile-sidebar {
     width: 30%;
-    background: #ccc;
-    border-radius: 50px;
+    background: #212529;
+    border-radius: 5px;
     padding: 40px 20px;
     margin: 50px 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    color: #fff;
 }
 
 .profile-tab {
     padding: 15px;
-    border-radius: 30px;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .profile-tab:hover {
-    background: #ccc;
+    background: rgba(255, 255, 255, 0.329);
+    color: #fff;
 }
 
 .profile-tab.active {
-    background: #212529;
+    background: #006eb9;
     color: #fff;
 }
 
