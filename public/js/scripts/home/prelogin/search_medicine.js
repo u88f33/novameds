@@ -63,4 +63,6 @@ document.querySelector( "#closeMedicinesListContainer" ).addEventListener(
 function openSearchBox() {
     document.getElementById( "medicineListSearchContainer" ).style.display = 
     "block";
+
+    document.getElementById( 'medicinesListInputLabel' ).focus()
 }
