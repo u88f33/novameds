@@ -1,0 +1,106 @@
+<%- include( "../partials/header/prelogin" ) -%>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+
+        <div id="homePageCardContainer" class="card-container">
+
+            <%# Print Card with data from `MedicinesRecordsFromDB` in "home.controller.js" %>
+            <% if ( MedicinesRecordsFromDB ) { %>
+                <% MedicinesRecordsFromDB.forEach(singleMedicineRecord => { %>
+                    <%#-- Card --%>
+                    <div class="card">
+                        <div class="card-header">
+                        <img 
+                            src="/uploads/medicines/<%= singleMedicineRecord.medicineImage %>" 
+                            alt="Medicine">
+                        </div>
+
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h3 class="card-title"><%= singleMedicineRecord.medicineName %></h3>
+
+                                <span class="price">
+                                    Rs. <%= singleMedicineRecord.medicinePrice %>
+                                </span>
+                            </div>
+
+                        <div class="card-info">
+                            <span class="category">
+                                <%= singleMedicineRecord.medicineCategory %>
+                            </span>
+                        </div>
+
+                        <button class="add-to-cart-btn" onclick="window.location.replace('/login')">
+                            Add to Cart
+                        </button>
+                        </div>
+                    </div> 
+                <% }); %>
+            <% } %>
+            <%# End of Loop %>
+
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="dashboard__section-pagination">
+
+        <%# Move to Previous Page %>
+        <% let currentPage = medicinesRecordsPaginationInfo.page %>
+        <% if ( medicinesRecordsPaginationInfo.hasPrevPage ) { %>
+            <a 
+                href="/browse/medicines/?page=<%= currentPage - 1 %>" 
+                class="pagination__btn"
+            >
+                &laquo;
+            </a>
+        <% } %>
+
+        <div class="pagination__numbers">
+            <% if ( medicinesRecordsPaginationInfo ) { %>
+                <% if ( medicinesRecordsPaginationInfo.prevPage ) { %>
+                    <a 
+                        href="/browse/medicines/?page=<%= medicinesRecordsPaginationInfo.prevPage %>" 
+                        class="pagination__btn"
+                    >
+                        <%= medicinesRecordsPaginationInfo.prevPage %>
+                    </a>
+                <% } %>
+
+                <a 
+                    href="/browse/medicines/?page=<%= medicinesRecordsPaginationInfo.page %>" 
+                    class="pagination__btn"
+                >
+                    <%= medicinesRecordsPaginationInfo.page  %>
+                </a>
+
+                <% if ( medicinesRecordsPaginationInfo.nextPage ) { %>
+                    <a 
+                        href="/browse/medicines/?page=<%= medicinesRecordsPaginationInfo.nextPage %>" 
+                        class="pagination__btn"
+                    >
+                        <%= medicinesRecordsPaginationInfo.nextPage %>
+                    </a>
+                <% } %>
+        <% } %>
+        </div>
+
+        <%# Move to Next Page %>
+        <% if ( medicinesRecordsPaginationInfo.hasNextPage ) { %>
+            <a 
+                href="/browse/medicines/?page=<%= currentPage + 1 %>" 
+                class="pagination__btn"
+            >
+                &raquo;
+            </a>
+        <% } %>
+
+
+    </div>
+
+    
+
+</div>
+
+<%- include( "../partials/footer/footer" ) -%>
