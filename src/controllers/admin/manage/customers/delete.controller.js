@@ -1,9 +1,18 @@
 import CustomerCollections from "../../../../models/customers.model.js";
+import OrdersCollections from "../../../../models/order.model.js"
 
 const DeleteCustomerRecordCtrl = async ( req, res, next ) => {
     
+    const customerId = req.params.id;
+
     const deleteCustomerRecord = 
-    await CustomerCollections.findByIdAndDelete( req.params.id );
+    await CustomerCollections.findByIdAndDelete( customerId );
+
+    /* When an Admin deletes a Customer Record is deleted, delete 
+    all his/her orders also. */
+    const deletedCustomerOrders =
+    await OrdersCollections.deleteMany( { customerId } );
+
 
     res.redirect( "/admin/manage/customers" )
 }
