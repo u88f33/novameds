@@ -635,6 +635,18 @@ nav {
     opacity: 0.9;
 }
 
+.supplier_update_table th {
+    width: 15%;
+    text-align: left !important;
+    padding-left: 10px;
+}
+
+.supplier_update_table td {
+    width: 85%;    
+    text-align: left !important;
+    padding-left: 10px;
+}
+
 .dashboard__section-table {
     width: 100%;
     border-collapse: collapse;
