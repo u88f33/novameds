@@ -54,6 +54,11 @@ const orderCollectionSchema = new mongoose.Schema({
         enum: [ "Pending", "Delivered", "Cancelled" ],
         default: "Pending"
     },
+    paymentMethod: {
+        type: String,
+        required: true,
+        default: "Cash on Delivery"
+    },
     paymentStatus: {
         type: String,
         required: true,

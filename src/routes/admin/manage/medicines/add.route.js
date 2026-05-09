@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+import fs from "fs";
 import path from "path";
 import AddMedicineRecordCtrl 
 from "../../../../controllers/admin/manage/medicines/add/add_get.controller.js"
@@ -9,9 +10,18 @@ from "../../../../controllers/admin/manage/medicines/add/add_post.controller.js"
 
 const router = express.Router();
 
+let medicineImageUploadPath = './public/uploads/medicines';
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/uploads/medicines')
+    
+    // Check whether the medicines folder in uploads folder exists.
+    // If not, then create it
+    if ( !fs.existsSync( medicineImageUploadPath ) ) {
+      fs.mkdirSync( medicineImageUploadPath );
+    }
+
+    cb(null, medicineImageUploadPath)
   },
   filename: function (req, file, cb) {
     const uniqueMedicineName = 
