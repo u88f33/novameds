@@ -39,6 +39,29 @@
                             value="<%= singleMedicineRecord._id %>" 
                         />
 
+                        <div class="medicine-safety">
+                            <h5>Safety Information</h5>
+
+                            <ul type="a">
+                                <li>
+                                    <i class="fa-solid fa-snowflake d-inline-block me-1"></i>
+                                    Store in a cool and dry place.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-child-reaching d-inline-block me-1"></i>
+                                    Keep out of reach of children.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-user-doctor d-inline-block me-1"></i>
+                                    Use as directed by physician/pharmacist.
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-calendar-days d-inline-block me-1"></i>
+                                    Do not use after expiry date.
+                                </li>
+                            </ul>
+                        </div>
+
                         <div class="product__details-footer">
                             <div class="product__quantity">
                                 <button type="button" class="product__btn product__btn--minus">-</button>
@@ -46,6 +69,7 @@
                                 <button type="button" class="product__btn product__btn--plus">+</button>
                             </div>
                         </div>
+
 
                         <button 
                             type="submit"

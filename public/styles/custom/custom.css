@@ -1064,8 +1064,8 @@ th.customer-orders-history-header {
 }
 
 .cart-link {
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     background: #fff;
     border-radius: 50%;
     color: #fff;
@@ -1088,8 +1088,8 @@ th.customer-orders-history-header {
     position: absolute;
     top: -12px;
     right: -10px;
-    width: 24px;
-    height: 24px;
+    min-width: 25px;
+    min-height: 24px;
     background-color: #ff2d55;
     color: #fff;
     border-radius: 50%;
@@ -1098,7 +1098,6 @@ th.customer-orders-history-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #fff;
 }
 
 .cart-link i {
@@ -1205,15 +1204,17 @@ th.customer-orders-history-header {
 }
 
 .product {
-    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 50px;
 }
 
 .product__container {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     max-width: 1200px;
     gap: 40px;
@@ -1229,7 +1230,7 @@ th.customer-orders-history-header {
     height: 100%;
     object-fit: contain;
     border-radius: 10px;
-    border: 1px solid var(--primary-blue);
+    border: 1px solid #212529;
 }
 
 .product__details {
@@ -1241,11 +1242,11 @@ th.customer-orders-history-header {
 }
 
 .product__category {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .product__title {
-    font-size: 32px;
+    font-size: 42px;
     margin-bottom: 10px;
 }
 
@@ -1254,37 +1255,53 @@ th.customer-orders-history-header {
 }
 
 .product__details-header-bottom {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .product__details-header-bottom {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.medicine-safety {
+    margin-bottom: 50px;
+}
+
+.medicine-safety ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .product__price {
-    color: #006eb9;
-    font-size: 26px;
+    color: #212529;
+    font-size: 22px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .product__quantity {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    margin-left: aut;
+    margin-left: auto;
+    justify-content: flex-start;
     width: 100%;
 }
 
 .product__btn {
-    background-color: #006eb9;
+    background-color: #212529;
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     font-size: 26px;
-    padding: 5px 30px;
-    border-radius: 50px;
+    width: 40px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product__input {
@@ -1292,21 +1309,22 @@ th.customer-orders-history-header {
     padding: 5px;
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 50px;
+    border-radius: 5px;
     font-size: 26px;
     width: 20%;
+    height: 42px;
     border: 1px solid #666;
     margin-top: 0;
 }
 
 .product__cart-btn {
-    padding: 12px;
-    background-color: #006eb9;
+    padding: 4px;
+    background-color: #212529;
     color: #fff;
     border: none;
     cursor: pointer;
     margin-bottom: 15px;
-    border-radius: 50px;
+    border-radius: 5px;
     width: 100%;
 }
 
@@ -1399,7 +1417,7 @@ th.customer-orders-history-header {
 
 .shopping-cart__delete-btn {
     padding: 2px 20px !important;
-    border-radius: 50px;
+    border-radius: 5px;
     font-size: 12px;
     margin-bottom: auto !important;
 }
@@ -1408,7 +1426,7 @@ th.customer-orders-history-header {
     width: 30%;
     height: 450px;
     background-color: #ddd;
-    border-radius: 30px;
+    border-radius: 5px;
     padding: 30px;
     display: flex;
     flex-direction: column;
