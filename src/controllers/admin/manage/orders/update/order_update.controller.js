@@ -5,6 +5,9 @@ import generateInvoice from "../../../../../utils/invoice/pdfGenerator.js";
 import OrderCollection from
 "../../../../../models/order.model.js";
 
+import MedicinesCollection from 
+"../../../../../models/medicines.model.js";
+
 const UpdateOrderStatusCtrl = async ( req, res, next ) => {
     
     try {
@@ -35,6 +38,40 @@ const UpdateOrderStatusCtrl = async ( req, res, next ) => {
         
         let orderId = updatedOrderStatus._id;
         let orderDetails = updatedOrderStatus;
+        
+        // If an order is cancelled by an admin, Put the ordered medicines back in the stock.
+        let updatedOrderStatusValue = updatedOrderStatus.orderStatus;
+        
+        if ( updatedOrderStatusValue == "Cancelled" ) {
+            for (const singleItem of updatedOrderStatus.items) {
+
+                // Put the ordered Medicines back in the stock.
+                let a = await MedicinesCollection.findByIdAndUpdate(
+                    singleItem.medicineId._id,
+                    {
+                        $inc: {
+                            medicineStock: singleItem.quantity
+                        }
+                    }
+                );
+
+                /* After putting ordered Medicines back in the stock, change
+                    the quantity of each ordered item to 0. 
+                */
+                await OrderCollection.findOneAndUpdate(
+                    {
+                        _id: updatedOrderStatus._id,
+                        "items.medicineId": singleItem.medicineId._id
+                    },
+                    {
+                        $set: {
+                            "items.$.quantity": 0
+                        }
+                    }
+                );
+
+            }
+        }
         
         if ( fs.existsSync( filePath ) ) {
             fs.unlinkSync( filePath );
