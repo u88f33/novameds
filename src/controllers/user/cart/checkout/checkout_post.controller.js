@@ -8,6 +8,7 @@ import fs from "fs";
 
 const CheckoutPageCtrlPost = async ( req, res, next ) => {
     try {
+
         const {
             payment_method,
             perm_address,
@@ -89,6 +90,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             items,
             permanentAddress,
             shippingAddress,
+            paymentMethod: payment_method,
             orderStatus: "Pending",
             totalAmount        
         };
