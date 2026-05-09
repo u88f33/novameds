@@ -101,11 +101,9 @@
             </a>
 
             <div class="pagination__numbers">
-                <% for ( let i = 1; i < 3; ++i ) { %>
-                    <a href="/admin/manage/suppliers?page=<%= i %>" class="pagination__btn">
-                        <%= i %>
-                    </a>            
-                <% } %>
+                <a href="/admin/manage/suppliers?page=<%= i %>" class="pagination__btn">
+                    <%= page %>
+                </a>     
             </div>
 
             <a 
