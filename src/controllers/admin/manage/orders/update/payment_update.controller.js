@@ -15,7 +15,9 @@ const UpdatePaymentStatusCtrl = async ( req, res, next ) => {
             req.params.id,
             { paymentStatus: payment_status },
             { returnDocument: "after" }
-        );
+        )
+        .populate( "customerId" )
+        .populate( "items.medicineId" );
 
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
