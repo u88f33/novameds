@@ -3,6 +3,19 @@ import fs from "fs";
 import PDFDocument from "pdfkit";
 
 function generateInvoice(orderId, response, orderDetails) {
+
+            const invoiceDirectoryPath = path.join(
+                "public",
+                "assets",
+                "invoices"
+            );
+            
+            // Check whether the invoice folder exist or not.
+            // If not exist, then create it.
+            if ( !fs.existsSync( invoiceDirectoryPath ) ) {
+                fs.mkdirSync( invoiceDirectoryPath, { recursive: true } );
+            }
+
             // 3. File Path
             const invoiceName = `order_${orderId}.pdf`;
             const invoicePath = path.join(
