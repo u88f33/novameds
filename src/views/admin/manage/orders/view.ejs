@@ -160,7 +160,7 @@
                         <tr>
                             <th>Time</th>
                             <td>
-                                <%= date.getHours()  %>:<%= date.getMinutes() %>
+                                <%= date.getHours()  %>:<%= date.getMinutes().toString().padStart( 2, "0" ) %>
                             </td>
                         </tr>
                         <tr>
