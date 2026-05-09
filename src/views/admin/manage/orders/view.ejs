@@ -127,6 +127,15 @@
                         </tr>
 
                         <tr>
+                            <th>Shipping Address</th>
+                            <td>
+                                <%= customerOrder.shippingAddress.address %>,                         
+                                <%= customerOrder.shippingAddress.city %>                         
+                                <%= customerOrder.shippingAddress.country %>                         
+                            </td>
+                        </tr>
+
+                        <tr>
                             <% 
                                 let date = new Date( customerOrder.createdAt );
                                 let monthNames = [

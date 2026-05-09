@@ -1181,6 +1181,10 @@ th.customer-orders-history-header {
     box-shadow: 2px 2px 20px #23282c;
 }
 
+.navbar-user-profile-drowdown {
+    left: 950px;
+}
+
 .navbar-dropdown-menu {
     color: #fff;
     list-style-type: none;
