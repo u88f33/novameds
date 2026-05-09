@@ -15,6 +15,8 @@ function generateInvoice(orderId, response, orderDetails) {
             // 4. Create PDF
             const doc = new PDFDocument();
 
+            doc.lineGap(8);
+
             // Save file
             const writeStream = fs.createWriteStream(invoicePath);
             doc.pipe(writeStream);
@@ -28,8 +30,9 @@ function generateInvoice(orderId, response, orderDetails) {
             doc.pipe(response);
 
 
-
-            doc.fontSize(20).text("Invoice", { align: "center" });
+            const imagePath = path.resolve( invoicePath, "../../logo/Logo.png" );
+            doc.fontSize(24).text("Invoice", { align: "left" });
+            doc.image(imagePath, {width: 100, align: "right", valign: "top"});
             doc.moveDown();
 
             doc.fontSize(12).text(`Order ID: ${orderDetails._id}`);
@@ -39,6 +42,10 @@ function generateInvoice(orderId, response, orderDetails) {
             doc.text(`Payment Status: ${orderDetails.paymentStatus}`);
             doc.moveDown();
 
+            doc.font('Helvetica-Bold')
+            .text('Shipping Address:');
+
+            doc.font('Helvetica');
             doc.text(
                 `Shipping Address: ${orderDetails.shippingAddress.address}`
             );
@@ -46,9 +53,10 @@ function generateInvoice(orderId, response, orderDetails) {
             doc.text(`Country: ${orderDetails.shippingAddress.country}`);
             doc.moveDown();
 
-            // Table Header
-            doc.fontSize(14).text("Ordered Medicines:");
-            doc.moveDown();
+            doc.font('Helvetica-Bold')
+            .text('Ordered Medicines:');
+
+            doc.font('Helvetica');
 
             orderDetails.items.forEach((item, index) => {
                 doc.fontSize(12).text(
@@ -56,8 +64,6 @@ function generateInvoice(orderId, response, orderDetails) {
                 );
             });
 
-            doc.moveDown();
-            doc.moveDown();
             doc.moveDown();
             doc.fontSize(20).text(`Total: Rs ${orderDetails.totalAmount}`, {
                 align: "right",

@@ -11,7 +11,8 @@ const customerCollectionSchema = new mongoose.Schema({
     customerEmail: {
         type: String,
         trim: true,
-        maxlength: 100
+        maxlength: 100,
+        unique: true
     },
     customerPassword: {
         type: String,

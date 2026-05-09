@@ -1,0 +1,37 @@
+<%# Full Page search Box for searching Medicines %>
+
+<div id="medicineListSearchContainer" class="medicines-list-search__container-background">
+
+    <%# Display "X" icons for closing medicines search list  %>
+    <div id="closeMedicinesListContainer" class="medicines-list-search__container-close">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <%# Medicines List having search input on top and shows medicines list on typeing medicine name %>
+    <div class="medicines-list-search__container">
+
+        <%# HTML Form input for searching medicines  %>
+        <div class="medicines-list-search__input-container">
+            <label for="medicinesListInputLabel">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+            <input
+                type="text"
+                id="medicinesListInputLabel"
+                placeholder="Search Medicines"     
+                oninput= "showMedicinesList(this.value)"
+                autocomplete="off"
+            />
+        </div>
+
+        <div class="medicines-list-display__container">
+            <ul id="medicinesListDisplayOnSearch">
+
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+<%# Full page search Box for searching Medicines %>

@@ -1,0 +1,35 @@
+<div class="banner">
+    <div class="banner-left">
+        <div class="banner-left__content">
+            <div class="banner-left__search-container">
+                <div class="banner-left__search-input-bar">
+                    <label for="searchBarInputLabel"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input
+                        type="text"
+                        id="searchBarInputLabel"
+                        placeholder="Search Medicines"
+                        onclick="openSearchBox()" 
+                        autocomplete="off"
+                        readonly="readonly"
+                        class="ps-0"
+                        oninput="( this.value == '' )? window.location.replace( `/profile/?page=1` ) : searchMedicineByUser(this.value)"
+                    />
+                </div>
+            </div>
+            <div class="banner-left__browse-link-container">
+                <button 
+                    class="banner-left__browse-link" 
+                    onclick=
+                    "(window.location.pathname.indexOf('profile') < 0)? 
+                    window.location.replace('/browse/medicines') : 
+                    window.location.replace('/profile/browse/medicines')"
+                >
+                    Browse Medicines
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="banner-right">
+        <%# Have Background image %>
+    </div>
+</div>

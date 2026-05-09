@@ -24,17 +24,7 @@
             </a>
         </div>
 
-        <div class="header-top__search-container">
-            <div class="header-top__search-input-bar">
-                <label for="searchBarInputLabel"><i class="fa-solid fa-magnifying-glass"></i></label>
-                <input 
-                    type="text"
-                    id="searchBarInputLabel"
-                    placeholder="Search Medicines"                    
-                    oninput="( this.value == '' )? window.location.replace( `/profile/?page=1` ) : searchMedicineByUser(this.value)"
-                />
-            </div>
-        </div>
+
 
         <div class="header-top__cart-button">
             <div class="cart-container">
@@ -57,6 +47,9 @@
                 <a href="/profile">Home</a>
             </li>
             <li>
+                <a href="/profile/browse/medicines">Browse Medicines</a>
+            </li>
+            <li>
                 <div class="navbar-dropdown">
                     <button class="navbar-dropdown-btn">
                         <span>Categories</span>
@@ -74,7 +67,7 @@
                             %>
                             <% for ( let category of categories ) { %>
                                 <li>
-                                    <a href="/profile/?category=<%= category %>" 
+                                    <a href="/profile/browse/medicines/?category=<%= category %>" 
                                         class="navbar-dropdown-link category-dropdown-link"
                                         id="navbarDropdownLink"
                                     >
@@ -92,7 +85,7 @@
             <li>
                 <div class="navbar-dropdown">
                     <button class="navbar-dropdown-btn">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user d-inline-block pe-3"></i>
                         <% if ( nameOfLoggedInUser ) { %>
                             <%= nameOfLoggedInUser %>
                         <% } %>

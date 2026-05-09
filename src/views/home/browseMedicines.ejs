@@ -1,6 +1,4 @@
 <%- include( "../partials/header/prelogin" ) -%>
-<%- include( "../partials/banner/banner" ) -%>
-<%- include( "../partials/banner/fullPageSearchList" ) -%>
 
 <div class="container">
     <div class="row d-flex justify-content-center">
@@ -52,7 +50,7 @@
         <% let currentPage = medicinesRecordsPaginationInfo.page %>
         <% if ( medicinesRecordsPaginationInfo.hasPrevPage ) { %>
             <a 
-                href="/?page=<%= currentPage - 1 %>" 
+                href="/browse/medicines/?page=<%= currentPage - 1 %>" 
                 class="pagination__btn"
             >
                 &laquo;
@@ -63,7 +61,7 @@
             <% if ( medicinesRecordsPaginationInfo ) { %>
                 <% if ( medicinesRecordsPaginationInfo.prevPage ) { %>
                     <a 
-                        href="/?page=<%= medicinesRecordsPaginationInfo.prevPage %>" 
+                        href="/browse/medicines/?page=<%= medicinesRecordsPaginationInfo.prevPage %>" 
                         class="pagination__btn"
                     >
                         <%= medicinesRecordsPaginationInfo.prevPage %>
@@ -71,7 +69,7 @@
                 <% } %>
 
                 <a 
-                    href="/?page=<%= medicinesRecordsPaginationInfo.page %>" 
+                    href="/browse/medicines/?page=<%= medicinesRecordsPaginationInfo.page %>" 
                     class="pagination__btn"
                 >
                     <%= medicinesRecordsPaginationInfo.page  %>
@@ -79,7 +77,7 @@
 
                 <% if ( medicinesRecordsPaginationInfo.nextPage ) { %>
                     <a 
-                        href="/?page=<%= medicinesRecordsPaginationInfo.nextPage %>" 
+                        href="/browse/medicines/?page=<%= medicinesRecordsPaginationInfo.nextPage %>" 
                         class="pagination__btn"
                     >
                         <%= medicinesRecordsPaginationInfo.nextPage %>
@@ -91,7 +89,7 @@
         <%# Move to Next Page %>
         <% if ( medicinesRecordsPaginationInfo.hasNextPage ) { %>
             <a 
-                href="/?page=<%= currentPage + 1 %>" 
+                href="/browse/medicines/?page=<%= currentPage + 1 %>" 
                 class="pagination__btn"
             >
                 &raquo;
@@ -105,6 +103,4 @@
 
 </div>
 
-
-<script src="/js/scripts/home/prelogin/search_medicine.js"></script>
 <%- include( "../partials/footer/footer" ) -%>

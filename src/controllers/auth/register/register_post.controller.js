@@ -46,6 +46,7 @@ const RegisterPostCtrl = async ( req, res, next ) => {
     } catch ( error ) {
         console.log( "/src/controllers/auth/register/register_post" );
         console.log( `Error: ${ error }` );
+        res.redirect( "/register/?errorMessage=Email already present in database" );
     }
 
 }
