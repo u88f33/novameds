@@ -155,7 +155,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Payment</th>
+                            <th>Pay Method</th>
+                            <td><%= customerOrder.paymentMethod %></td>
+                        </tr>
+                        <tr>
+                            <th>Payment Status</th>
                             <td class="text-light <%= (customerOrder.paymentStatus == "Paid")? "bg-success" : "bg-danger" %>">
                                 <b><%= customerOrder.paymentStatus %></b>
                             </td>
