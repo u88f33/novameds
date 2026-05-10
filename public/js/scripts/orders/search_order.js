@@ -14,7 +14,24 @@ async function searchOrder( inputValue ) {
 
         const ordersTable = document.getElementById( "orderTableBody" );
         ordersTable.innerHTML = "";
+        let orderStatusBackgroundClass = "";
         response.forEach(( singleOrder, index ) => {
+            
+            switch ( singleOrder.orderStatus ) {
+                case "Pending": {
+                    orderStatusBackgroundClass = "bg-danger text-light";
+                    break;
+                };
+                case "Delivered": {
+                    orderStatusBackgroundClass = "bg-success text-light";
+                    break;
+                };
+                case "Cancelled": {
+                    orderStatusBackgroundClass = "bg-warning";
+                    break;
+                }
+            }
+
             ordersTable.innerHTML += `<tr>
                             <td>${ index + 1 }</td>
                             <td>${ singleOrder.customerId.customerName }</td>
@@ -22,15 +39,12 @@ async function searchOrder( inputValue ) {
                                 ${singleOrder.shippingAddress.address}, ${singleOrder.shippingAddress.city}, ${ singleOrder.shippingAddress.country }
                             </td>
                             <td>${ singleOrder.totalAmount }</td>
-                            <td>
-                                ${months[date.getMonth()]} ${date.getDay()}, ${date.getFullYear()}
-                            </td>
-                            <td>
-                                Pending
+                            <td class="${orderStatusBackgroundClass}">
+                                ${ singleOrder.orderStatus }
                             </td>
                             <td>
                                 <div class="dashboard__section-cell-actions">
-                                    <a href="/admin/manage/orders/view/order_id_789" class="action-btn">
+                                    <a href="/admin/manage/orders/view/${singleOrder._id}" class="action-btn">
                                         View or Manage
                                     </a>
                                 </div>
