@@ -105,9 +105,8 @@
                 <tr>
                     <th>No.</th>
                     <th>Customer Name</th>
-                    <th>Total Amount</th>
-                    <th>Date</th>
-                    <th>Time</th>
+                    <th>Shipping Address</th>
+                    <th>Total</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -118,25 +117,12 @@
                     <tr>
                         <td><%= index + 1 %></td>
                         <td><%= singleOrder.customerId.customerName %></td>
-                        <td><%= singleOrder.totalAmount %></td>
-                        <% 
-                            let date = new Date( singleOrder.createdAt );
-                            let monthNames = [
-                                "January", "Feburary", "March", "April", "May",
-                                "June", "July", "August", "September",
-                                "October", "November", "December"
-                            ];
-                            let dayNames = [
-                                "Sunday", "Monday", "Tuesday", "Wednesday",
-                                "Thursday", "Friday", "Saturday",
-                            ]
-                        %>
                         <td>
-                            <%= dayNames[ date.getDay() ] %>,
-                            <%= monthNames[date.getMonth()] %> 
-                            <%= date.getDate() %>,
-                            <%= date.getFullYear() %>
+                            <%= singleOrder.shippingAddress.address %>,
+                            <%= singleOrder.shippingAddress.city %>,
+                            <%= singleOrder.shippingAddress.country %>
                         </td>
+                        <td><%= singleOrder.totalAmount %></td>
                         <%
                             let bgColor = "";
 
@@ -154,16 +140,13 @@
                                 }
                             }
                         %>
-                        <td>
-                            <%= `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}` %>
-                        </td>
                         <td class="text-light <%= bgColor %>">
                             <%= singleOrder.orderStatus %>
                         </td>
                         <td>
                             <div class="dashboard__section-cell-actions">
                                 <a href="/admin/manage/orders/view/<%= singleOrder._id %>" class="action-btn">
-                                    View or Manage
+                                    Manage
                                 </a>
                             </div>
                         </td>

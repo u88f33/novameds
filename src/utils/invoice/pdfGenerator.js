@@ -50,7 +50,7 @@ function generateInvoice(orderId, response, orderDetails) {
 
             doc.fontSize(12).text(`Order ID: ${orderDetails._id}`);
             doc.text(`Customer Name: ${orderDetails.customerId.customerName}`);
-            doc.text(`Total Amount: Rs ${orderDetails.totalAmount}`);
+
             doc.text(`Order Status: ${orderDetails.orderStatus}`);
             doc.text(`Payment Status: ${orderDetails.paymentStatus}`);
             doc.moveDown();
