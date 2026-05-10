@@ -10,7 +10,8 @@ const ManageOrderRecordsCtrl = async ( req, res, next ) => {
         {
             page,
             limit,
-            populate: "customerId"
+            populate: "customerId",
+            sort: {createdAt: -1}
         }
     );
 

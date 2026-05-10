@@ -47,8 +47,7 @@
                     <th>No.</th>
                     <th>Customer Name</th>
                     <th>Shipping Address</th>
-                    <th>Total Amount</th>
-                    <th>Order Date</th>
+                    <th>Total</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -63,7 +62,7 @@
                             <%= `${singleOrder.shippingAddress.address}, ${singleOrder.shippingAddress.city}, ${ singleOrder.shippingAddress.country }` %>
                         </td>
                         <td><%= singleOrder.totalAmount %></td>
-                        <td>
+                        <!-- <td>
                             <%
                                 const date = new Date();
                                 const months = [ 
@@ -74,7 +73,7 @@
                                             ];
                             %>
                             <%= `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}` %>
-                        </td>
+                        </td> -->
                             <%
                                 let bgColor = "";
 
@@ -98,7 +97,7 @@
                         <td>
                             <div class="dashboard__section-cell-actions">
                                 <a href="/admin/manage/orders/view/<%= singleOrder._id %>" class="action-btn">
-                                    View or Manage
+                                    Manage
                                 </a>
                             </div>
                         </td>
