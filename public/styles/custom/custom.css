@@ -121,7 +121,7 @@ nav {
 
 
 .card-title {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 
@@ -136,13 +136,11 @@ nav {
   color: var(--primary-blue);
   border-radius: 50px;
   font-size: 14px;
-  font-weight: bolder;
 }
 
 .price {
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 20px;
-    font-weight: bold;
 }
 
 /* Button */
