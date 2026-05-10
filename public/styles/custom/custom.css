@@ -1015,7 +1015,7 @@ th.customer-orders-history-header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: -20px -110px;
     transform: rotate(-8deg) scale(1.1);
 }
 
