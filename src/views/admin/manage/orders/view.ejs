@@ -79,7 +79,7 @@
                                 <%= customerOrder.orderStatus %>
                             </span>
                         </h2>
-                        <select name="order_status">
+                        <select name="order_status" id="order-status-id">
                             <% orderStatuses.forEach(orderStatus => { %>
                                 <% if ( orderStatus == customerOrder.orderStatus ) { %>
                                     <option value="<%= orderStatus %>" selected="selected">
@@ -253,7 +253,16 @@
 
 function deleteOrderConfirmation( orderId ) {
     const confirmDeletion = window.confirm( `Deleting Order# ${orderId}` );
+
+    const selectedOrderStatus = document.getElementById( "order-status-id" );
     
+    // Only "Delivered" or "Cancelled" orders can be deleted.
+    // Pending Orders cannot be deleted.
+    if ( selectedOrderStatus.value == "Pending" ) {
+        window.alert( "Order must be Delivered or Cancelled before deletion." );
+        return;
+    }
+
     if ( confirmDeletion ) {
         window.location.replace( `/admin/manage/orders/delete/${ orderId }` );
     }
