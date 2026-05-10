@@ -19,7 +19,8 @@
                                 <li>
                                     <a href="/profile/cart/order/confirm/<%= customerOrders[i]._id %>">                            
                                     <% let date = new Date(customerOrders[i].createdAt); %>
-                                        Order on <%= `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` %>
+                                        Order on <%= `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} 
+                                        at ${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart( 2, "0" )}` %>
                                     </a>
                                 </li>
                             <% } %>
