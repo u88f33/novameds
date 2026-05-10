@@ -8,10 +8,14 @@ const DeleteCustomerRecordCtrl = async ( req, res, next ) => {
     const deleteCustomerRecord = 
     await CustomerCollections.findByIdAndDelete( customerId );
 
-    /* When an Admin deletes a Customer Record is deleted, delete 
-    all his/her orders also. */
+    /* 
+        When an Admin deletes a Customer Record, delete 
+        all his/her orders also. 
+    */
     const deletedCustomerOrders =
     await OrdersCollections.deleteMany( { customerId } );
+
+    console.log( deletedCustomerOrders );
 
 
     res.redirect( "/admin/manage/customers" )
