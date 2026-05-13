@@ -20,9 +20,21 @@
                             <div class="d-flex flex-column">
                                 <h3 class="card-title"><%= singleMedicineRecord.medicineName %></h3>
 
-                                <span class="price">
-                                    Rs. <%= singleMedicineRecord.medicinePrice %>
-                                </span>
+                                <div class="card-subtitle">
+                                    <div class="cart-subtitle-col">
+                                        <span class="price">
+                                            Rs. <%= singleMedicineRecord.medicinePrice %>
+                                        </span>
+                                    </div>
+                                    <div class="cart-subtitle-col">
+                                        <span class="stock">
+                                            <% if (Number(singleMedicineRecord.medicineStock)  == 0) { %>
+                                                <i class="fa-solid fa-circle-exclamation"></i>
+                                                Out of stock
+                                            <% } %>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
 
                         <div class="card-info">

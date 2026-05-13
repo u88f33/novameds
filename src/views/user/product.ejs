@@ -18,7 +18,18 @@
                         </div>
 
                         <div class="product__details-header-bottom">
-                            <p class="product__category"><%= singleMedicineRecord.medicineCategory %></p>
+                            <div class="product__subtitle d-flex justify-content-between">
+                                <p class="product__category">
+                                    <%= singleMedicineRecord.medicineCategory %>
+                                </p>
+
+                                <p class="product__stock">
+                                    <% if ( singleMedicineRecord.medicineStock == 0 ) { %>
+                                        <i class="fa-solid fa-circle-exclamation"></i>
+                                        Out of Stock
+                                    <% } %>
+                                </p>
+                            </div>                            
                             <p class="product__price">
                                 Rs. <span id="product-price">
                                     <%= singleMedicineRecord.medicinePrice %>
@@ -36,6 +47,7 @@
                         <input 
                             type="hidden" 
                             id="medicineId"
+                            name="medicineId"
                             value="<%= singleMedicineRecord._id %>" 
                         />
 
@@ -73,10 +85,15 @@
 
                         <button 
                             type="submit"
-                            class="product__cart-btn"
+                            class="product__cart-btn <%= (singleMedicineRecord.medicineStock == 0)? "disabled" : "" %>"
                             id="submitBtn"
                         >
-                            Add to Cart
+                            <% if ( singleMedicineRecord.medicineStock == 0 ) { %>
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                Out of Stock
+                            <% } else { %>
+                                Add to Cart
+                            <% } %>
                         </button>
 
                         <% if ( errorMessage ) { %>
@@ -99,6 +116,7 @@
     const userId = "<%= loggedInUserId %>";
     const medicineId = document.getElementById( "medicineId" ).value;
     let medicinePrice = Number("<%= singleMedicineRecord.medicinePrice %>");
+    let medicineStock = Number( "<%= singleMedicineRecord.medicineStock %>" );
 
 </script>
 <script src="/js/scripts/product.js"></script>

@@ -1252,6 +1252,10 @@ th.customer-orders-history-header {
     border: 1px solid #212529;
 }
 
+.product__subtitle {
+    width: 100%;
+}
+
 .product__details {
     flex: 1;
     display: flex;
@@ -1262,6 +1266,11 @@ th.customer-orders-history-header {
 
 .product__category {
     font-size: 22px;
+}
+
+.product__stock {
+    font-size: 22px;
+    color: #c50000;
 }
 
 .product__title {
@@ -1888,3 +1897,20 @@ th.customer-orders-history-header {
     border-radius: 5px;
     text-decoration: none;
 }
+
+.card-subtitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stock {
+    color: #c50000;
+    font-weight: bold;
+}
+
+.disabled {
+    background-color: #c50000;
+    color: white;
+    cursor: not-allowed !important;
+}
+

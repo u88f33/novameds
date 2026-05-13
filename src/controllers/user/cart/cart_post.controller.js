@@ -5,13 +5,23 @@ import mongoose from "mongoose";
 const CartPageCtrlPost = async ( req, res, next ) => {
     
     try {
-        let { medicineId, quantity, price } = req.body;
+        let { medicineId, quantity, price, medicineStock } = req.body;
+        
+        if ( medicineStock == 0 ) {
+            res.json({
+                message: "Currently out of stock"
+            })
+            return;
+        }
+
+
         let customerId;
 
         quantity = Number( quantity );
         medicineId = new mongoose.Types.ObjectId(medicineId);
         customerId = new mongoose.Types.ObjectId(req.session.userLoginSession.userId);
         
+
         const productDetails = {
             medicineId,
             customerId,

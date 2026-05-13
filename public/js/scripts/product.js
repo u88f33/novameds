@@ -93,7 +93,8 @@ cartBtn.addEventListener('click', async (e) => {
                 body: JSON.stringify({
                     medicineId,
                     quantity,
-                    price
+                    price,
+                    medicineStock
                 })
             } );
 
