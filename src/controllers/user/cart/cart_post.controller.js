@@ -9,7 +9,8 @@ const CartPageCtrlPost = async ( req, res, next ) => {
         
         if ( medicineStock == 0 ) {
             res.json({
-                message: "Currently out of stock"
+                message: "Currently out of stock",
+                medicineStock
             })
             return;
         }

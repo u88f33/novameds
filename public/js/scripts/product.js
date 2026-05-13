@@ -98,7 +98,12 @@ cartBtn.addEventListener('click', async (e) => {
                 })
             } );
 
+            
             result = await postCartItemResponse.json();
+            if ( result.medicineStock == 0 ) {
+                return;
+            }
+            
             cartBtn.classList.add( "product__cart-btn--active" );
             cartBtn.textContent = "Remove from Cart";
             
