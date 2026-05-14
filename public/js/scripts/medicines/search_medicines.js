@@ -35,7 +35,7 @@ function searchMedicineRecord(inputValue) {
                                         Update
                                     </a>
 
-                                    <a href="/admin/manage/medicines/delete/${ medicineRecord._id }" class="action-btn">
+                                    <a href="/admin/manage/medicines/delete/${ medicineRecord._id }" class="action-btn" style="background-color: #c50000;">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete
                                     </a>
