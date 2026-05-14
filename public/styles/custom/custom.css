@@ -1914,3 +1914,109 @@ th.customer-orders-history-header {
     cursor: not-allowed !important;
 }
 
+.delete-confirmation__container-overlay {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.delete-confirmation__container {
+    background-color: #fff;
+    width: 30%;
+    min-height: 400px;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.delete-confirmation__header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.delete-confirmation__text h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    color: #c50000;
+}
+
+.delete-confirmation__icon-container {
+    background-color: #ffd9d9;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-confirmation__icon-container i {
+    color: #c50000;
+    font-size: 60px;
+}
+
+.delete-confirmation__body {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.delete-confirmation__footer {
+    padding: 0 40px;
+}
+
+.delete-confirmation__text {
+    text-align: center;
+}
+
+.delete-confirmation__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-confirmation__input input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #c50000;
+    padding-left: 10px;
+}
+
+.delete-confirmation__btn-container {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-confirmation__btn-container button,
+.delete-confirmation__btn-container a {
+    padding: 5px 20px;
+    border: 1px solid #c50000;
+    border-radius: 5px;
+    width: 50%;
+    color: #c50000;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.5s;
+}
+
+
+.delete-confirmation__btn-container button:hover {
+    background-color: #c50000;
+    color: #fff;
+}
+
+.delete-confirmation__btn-cancel {
+    margin-right: 5px;
+}
