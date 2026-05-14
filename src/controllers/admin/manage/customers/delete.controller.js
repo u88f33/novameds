@@ -1,6 +1,7 @@
 import { fileURLToPath } from "url";
 import CustomerCollections from "../../../../models/customers.model.js";
 import OrdersCollections from "../../../../models/order.model.js";
+import MedicinesCollection from "../../../../models/medicines.model.js";
 import fs from "fs";
 import path from "path";
 
@@ -8,6 +9,8 @@ const DeleteCustomerRecordCtrl = async ( req, res, next ) => {
     
     try {
         const customerId = req.params.id;
+
+        let getAllOrdersByCustomer = await OrdersCollections.find( { customerId } );
 
         const deleteCustomerRecord = 
         await CustomerCollections.findByIdAndDelete( customerId );
@@ -27,9 +30,27 @@ const DeleteCustomerRecordCtrl = async ( req, res, next ) => {
             "invoices"
         );
 
-        let getAllOrdersByCustomer = await OrdersCollections.find( { customerId } );
 
         for ( let i = 0; i < getAllOrdersByCustomer.length; ++i ) {
+
+            /*
+             * When a Customer record is deleted, all the medicines in all of his
+             * orders are added back in the Medicines stock.
+             */
+            for ( let item of getAllOrdersByCustomer[i].items ){
+                console.log( "------------------------------------------" );
+                console.log( item );
+
+                let singleMedicineRecord = 
+                await MedicinesCollection.findByIdAndUpdate(
+                    item.medicineId,
+                    { $inc: { medicineStock: item.quantity } },
+                    { returnDocument: "after" }
+                );
+                console.log( singleMedicineRecord ); 
+                console.log( "------------------------------------------" );
+            }
+
             let invoice = path.join(
                 invoicesPath, `order_${getAllOrdersByCustomer[i]._id}.pdf`
             );

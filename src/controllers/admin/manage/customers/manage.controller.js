@@ -20,7 +20,8 @@ const ManageCustomerRecordsCtrl = async ( req, res, next ) => {
         "admin/manage/customers/manage",
         {
             CustomerRecordsArray,
-            CustomerRecordsPaginationInfo
+            CustomerRecordsPaginationInfo,
+            errorMessage: req.query.errorMessage
         }
     );
 }
