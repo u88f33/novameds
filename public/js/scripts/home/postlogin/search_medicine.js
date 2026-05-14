@@ -14,33 +14,46 @@ function showMedicinesList(inputValue) {
             
             medicinesListDisplayOnSearch.innerHTML = "";
 
-
+            
             data.forEach((medicineRecord, index) => {
+            
+                /**
+                 * If the Medicine is out of stock then do not show Add to Cart 
+                 * button on the right side of search box. Show "Out of Stock"
+                 * instead.
+                 * */
+                let addToCartBtn = ``;
+                if ( medicineRecord.medicineStock == 0 ) {
+                    addToCartBtn = `<span class='stock'><i class="fa-solid fa-circle-exclamation d-inline-block pe-3"></i>
+                    Out of Stock</span>`;
+                } else {
+                    addToCartBtn = `<a
+                                    href="/profile/product/${medicineRecord._id}"
+                                    class="medicine-list-item-cart-add__link">
+                                    Add to Cart
+                                </a>`;
+                }
+
                 medicinesListDisplayOnSearch.innerHTML += `
-                    <li>
-                        <div class="medicine-list-item-info__container">
-                            <div class="medicine-list-item__image-container">
-                                <img 
-                                    src="/uploads/medicines/${medicineRecord.medicineImage}"
-                                    class="medicine-list-item__image"
-                                />
+                        <li>
+                            <div class="medicine-list-item-info__container">
+                                <div class="medicine-list-item__image-container">
+                                    <img 
+                                        src="/uploads/medicines/${medicineRecord.medicineImage}"
+                                        class="medicine-list-item__image"
+                                    />
+                                </div>
+                                <div class="medicine-list-item__info">
+                                    <p class="medicine-list-item__title">${medicineRecord.medicineName}</p>
+                                    <p class="medicine-list-item__category">${medicineRecord.medicineCategory}</p>
+                                    <p class="medicine-list-item__price">Rs. ${medicineRecord.medicinePrice}</p>
+                                </div>
                             </div>
-                            <div class="medicine-list-item__info">
-                                <p class="medicine-list-item__title">${medicineRecord.medicineName}</p>
-                                <p class="medicine-list-item__category">${medicineRecord.medicineCategory}</p>
-                                <p class="medicine-list-item__price">Rs. ${medicineRecord.medicinePrice}</p>
+                            <div class="medicine-list-item-cart-add__container">
+                                ${addToCartBtn}
                             </div>
-                        </div>
-                        <div class="medicine-list-item-cart-add__container">
-                            <a
-                                href="/profile/product/${medicineRecord._id}"
-                                class="medicine-list-item-cart-add__link"
-                            >
-                                Add to Cart
-                            </a>
-                        </div>
-                    </li>
-                `
+                        </li>
+                    `
             });
 
         } catch (error) {

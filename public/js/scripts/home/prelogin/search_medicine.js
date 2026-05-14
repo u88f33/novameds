@@ -17,6 +17,19 @@ function showMedicinesList(inputValue) {
 
 
             data.forEach((medicineRecord, index) => {
+
+                let addToCartBtn = ``;
+                if ( medicineRecord.medicineStock == 0 ) {
+                    addToCartBtn = `<span class='stock'><i class="fa-solid fa-circle-exclamation d-inline-block pe-3"></i>
+                    Out of Stock</span>`;
+                } else {
+                    addToCartBtn = `<a
+                                    href="/profile/product/${medicineRecord._id}"
+                                    class="medicine-list-item-cart-add__link">
+                                    Add to Cart
+                                </a>`;
+                };
+
                 medicinesListDisplayOnSearch.innerHTML += `
                     <li>
                         <div class="medicine-list-item-info__container">
@@ -33,12 +46,7 @@ function showMedicinesList(inputValue) {
                             </div>
                         </div>
                         <div class="medicine-list-item-cart-add__container">
-                            <a
-                                href="/login"
-                                class="medicine-list-item-cart-add__link"
-                            >
-                                Add to Cart
-                            </a>
+                            ${ addToCartBtn }
                         </div>
                     </li>
                 `
