@@ -86,7 +86,12 @@
                                         Update
                                     </a>
 
-                                    <a href="/admin/manage/medicines/delete/<%= singleMedicineRecord._id %>" class="action-btn" style="background-color: #c50000;">
+                                    <a 
+                                        href="#"
+                                        onclick="openDeleteConfirmationBox(this)"
+                                        data-medicine-id = "<%= singleMedicineRecord._id %>"
+                                        class="action-btn" 
+                                        style="background-color: #c50000;">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete
                                     </a>
@@ -99,7 +104,7 @@
             </tbody>
         </table>
 
-        <!-- <div id="deleteConfirmationContainerOverlay" class="delete-confirmation__container-overlay">
+        <div id="deleteConfirmationContainerBg" class="delete-confirmation__container-background">
             <div id="deleteConfirmationContainer" class="delete-confirmation__container">
                 
                 <div class="delete-confirmation__header">
@@ -131,7 +136,7 @@
                             <i class="fa-solid fa-x"></i>
                             Cancel
                         </button>
-                        <button class="delete-confirmation__btn-delete" onclick="deleteRecord()">
+                        <button class="delete-confirmation__btn-delete" onclick="deleteItemRecord()">
                             <i class="fa-solid fa-trash-can"></i>
                             Delete
                         </button>
@@ -139,7 +144,7 @@
                 </div>
             
             </div>
-        </div> -->
+        </div>
 
         <!-- Pagination -->
         <div class="dashboard__section-pagination">
@@ -202,6 +207,27 @@
 
 <script>
 
+    
+let medicineId = "";
+function openDeleteConfirmationBox(element) {
+    medicineId = element.dataset.medicineId; 
+    let background = document.getElementById( "deleteConfirmationContainerBg" );
+    background.style.display = "flex";
+}
+
+function cancelDeleteContainer() {
+    let background = document.getElementById( "deleteConfirmationContainerBg" );
+    background.style.display = "none";
+}
+
+function deleteItemRecord() {
+    let background = document.getElementById( "deleteConfirmationContainerBg" );
+    let confirmDeleteInput = document.getElementById( "deleteConfirmationInput" ).value;
+    if ( confirmDeleteInput.toLowerCase() == "yes" ) {
+        window.location.replace( `/admin/manage/medicines/delete/${medicineId}` );
+        window.location.reload();
+    }
+}
 
 
 </script>
