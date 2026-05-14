@@ -11,7 +11,7 @@ const router = express.Router();
 router.use( "/", HomeRoute );
 router.use( "/", AuthRoute );
 router.use( "/", ApiRoutes );
-router.use( "/admin", AdminRoute ); // AdminLoginMiddleware removed temporarily May 14, 2026
+router.use( "/admin", AdminLoginMiddleware, AdminRoute );
 router.use( "/profile", UserLoginMiddleware, UserRoute );
 
 export default router;
