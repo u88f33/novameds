@@ -1,0 +1,40 @@
+<div id="deleteConfirmationContainerBg" class="delete-confirmation__container-background">
+    <div id="deleteConfirmationContainer" class="delete-confirmation__container">
+        
+        <div class="delete-confirmation__header">
+            <div class="delete-confirmation__icon-container">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+        </div>
+
+        <div class="delete-confirmation__body">
+            <div class="delete-confirmation__text">
+                <h3>Confirm Delete</h3>
+                <p>Do you really want to delete this item. This action can not be undone.</p>
+            </div>
+        </div>
+
+        <div class="delete-confirmation__footer">
+            <div class="delete-confirmation__input">
+                <input 
+                    type="text"
+                    id="deleteConfirmationInput"
+                    class="delete-confirmation__input"
+                    placeholder="Type 'yes' and click Delete below"
+                />
+            </div>
+
+            <div class="delete-confirmation__btn-container">
+                <button class="delete-confirmation__btn-cancel" onclick="cancelDeleteContainer()">
+                    <i class="fa-solid fa-x"></i>
+                    Cancel
+                </button>
+                <button class="delete-confirmation__btn-delete" onclick="deleteItemRecord()">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    
+    </div>
+</div>

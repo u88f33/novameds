@@ -34,7 +34,13 @@ function searchCustomerRecordByAdmin(inputValue) {
                                     Update
                                 </a>
 
-                                <a href="/admin/manage/customers/delete/${ customerRecord._id }" class="action-btn">
+                                <a 
+                                    href="#"
+                                    onclick="openDeleteConfirmationBox(this)"
+                                    data-record-id = ${customerRecord._id}
+                                    data-record-name = "customers"
+                                    class="action-btn" 
+                                    style="background-color: #c50000;">
                                     <i class="fa-solid fa-trash"></i>
                                     Delete
                                 </a>

@@ -31,9 +31,15 @@ function searchSupplierRecord(inputValue) {
                                 Update
                                 </a>
 
-                                <a href="/admin/manage/suppliers/delete/${supplier._id}" class="action-btn">
-                                <i class="fa-solid fa-trash"></i>
-                                Delete
+                                <a 
+                                    href="#"
+                                    onclick="openDeleteConfirmationBox(this)"
+                                    data-record-id = ${supplier._id}
+                                    data-record-name = "suppliers"
+                                    class="action-btn" 
+                                    style="background-color: #c50000;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
                                 </a>
                             </div>
                         </td>

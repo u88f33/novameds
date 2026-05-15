@@ -77,7 +77,13 @@
                                     Update
                                 </a>
 
-                                <a href="/admin/manage/suppliers/delete/<%= singleSupplierRecord._id %>" class="action-btn">
+                                <a 
+                                    href="#"
+                                    onclick="openDeleteConfirmationBox(this)"
+                                    data-record-id = "<%= singleSupplierRecord._id %>"
+                                    data-record-name = "suppliers"
+                                    class="action-btn" 
+                                    style="background-color: #c50000;">
                                     <i class="fa-solid fa-trash"></i>
                                     Delete
                                 </a>
@@ -89,6 +95,8 @@
             </tbody>
         </table>
 
+<%- include( "../../../partials/admin/deleteConfirmation/deleteConfirmation" ) -%>
+        
         <!-- Pagination -->
         <div class="dashboard__section-pagination">
 
@@ -118,5 +126,6 @@
     </div>
 </div>
 
+<script src="/js/scripts/confirmDelete/confirmDelete.js"></script>
 <script src="/js/scripts/suppliers/search_suppliers.js"></script>
 <%- include( "../../../partials/admin/footer" ) -%>

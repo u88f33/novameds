@@ -36,10 +36,10 @@ function searchMedicineRecord(inputValue) {
                                     </a>
 
                                     <a 
-                                        href="#" 
-                                        id="itemDeleteLink" 
+                                        href="#"
                                         onclick="openDeleteConfirmationBox(this)"
-                                        data-medicine-id = "${ medicineRecord._id }"
+                                        data-record-id = ${medicineRecord._id}
+                                        data-record-name = "medicines"
                                         class="action-btn" 
                                         style="background-color: #c50000;">
                                         <i class="fa-solid fa-trash"></i>
