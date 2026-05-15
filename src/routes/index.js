@@ -12,8 +12,8 @@ router.use( "/", HomeRoute );
 router.use( "/", AuthRoute );
 router.use( "/", ApiRoutes );
 
-// Temporarily removed AdminLoginMiddleware on May 14, 2026
-router.use( "/admin", AdminRoute );
+
+router.use( "/admin", AdminLoginMiddleware, AdminRoute );
 
 
 router.use( "/profile", UserLoginMiddleware, UserRoute );
