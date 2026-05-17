@@ -19,4 +19,3 @@ router.use( "/admin", AdminLoginMiddleware, AdminRoute );
 router.use( "/profile", UserLoginMiddleware, UserRoute );
 
 export default router;
-
