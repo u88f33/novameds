@@ -9,9 +9,7 @@ const RegisterPostCtrl = async ( req, res, next ) => {
         let errors = validationResult( req );
 
         if ( !errors.isEmpty() ) {
-            console.log( errors );
             req.session.errors = errors.errors;
-            console.log( req.session );
             return res.redirect("/register");
         }
 

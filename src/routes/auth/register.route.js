@@ -9,10 +9,10 @@ const router = express.Router();
 let validateRegistration = [
     body("user_name")
     .trim()
+    .notEmpty()
+    .withMessage( "Name is required" )
     .isLength({ min: 3 })
     .withMessage("Full name must be at least 3 characters"),
-
-
 ]
 
 router.get( "/register", RegisterGetCtrl );
