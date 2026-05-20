@@ -2021,3 +2021,8 @@ th.customer-orders-history-header {
 .delete-confirmation__btn-cancel {
     margin-right: 5px;
 }
+
+.error-message {
+    font-size: 12px;
+    margin-top: 4px;
+}

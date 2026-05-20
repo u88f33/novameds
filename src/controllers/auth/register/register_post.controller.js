@@ -1,9 +1,19 @@
 import CustomerCollections from "../../../models/customers.model.js";
+import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 
 const RegisterPostCtrl = async ( req, res, next ) => {
 
     try {
+
+        let errors = validationResult( req );
+
+        if ( !errors.isEmpty() ) {
+            console.log( errors );
+            req.session.errors = errors.errors;
+            console.log( req.session );
+            return res.redirect("/register");
+        }
 
         let hashedPassword;
 
