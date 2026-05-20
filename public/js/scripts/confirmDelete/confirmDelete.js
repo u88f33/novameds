@@ -17,6 +17,5 @@ function deleteItemRecord() {
     let confirmDeleteInput = document.getElementById( "deleteConfirmationInput" ).value;
     if ( confirmDeleteInput.toLowerCase() == "yes" ) {
         window.location.replace( `/admin/manage/${recordName}/delete/${recordId}` );
-        window.location.reload();
     }
 }
