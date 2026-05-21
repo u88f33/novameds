@@ -10,9 +10,12 @@ let validateRegistration = [
     body("user_name")
     .trim()
     .notEmpty()
+    .escape()
     .withMessage( "Name is required" )
-    .isLength({ min: 3 })
-    .withMessage("Full name must be at least 3 characters"),
+    .isLength({ min: 3, max: 40 })
+    .withMessage( "Minimum 3 and maximum 40 characters are allowed" )
+    .matches(/^[A-Za-z\s]+$/)
+    .withMessage( "Only Alphabets and Spaces are allowed" )
 ]
 
 router.get( "/register", RegisterGetCtrl );
