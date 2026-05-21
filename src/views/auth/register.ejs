@@ -1,5 +1,10 @@
 <%- include( "../partials/header/prelogin" ) -%>
 
+<% 
+    const user_name = "user_name";
+    const user_email = "user_email";
+%>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -25,15 +30,19 @@
                             maxlength="40"
                             pattern="[A-Za-z ]+"
                             title="Only Alphabets are allowed"
-                            name="user_name"
+                            name="<%= user_name %>"
                             autocomplete="off"
                         />
                         
                         
                         <div class="error-message">
                             <% validateRegistrationErrors.forEach(error => { %>
-                                <% if ( error.path == "user_name" ) { %>
-                                    <span class="text-danger">
+                                <% if ( error.path == user_name ) { %>
+                                    <span class="text-danger d-block">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none">
                                         &#128204; <%= error.msg %>
                                     </span>
                                 <% } %>
@@ -49,7 +58,7 @@
                             id="emailInputRegister"
                             placeholder="username@gmail.com"
                             required="true"
-                            maxlength="60"
+                            maxlength="70"
                             name="user_email"
                             autocomplete="off"
                         />
