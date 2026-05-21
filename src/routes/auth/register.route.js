@@ -7,6 +7,9 @@ import RegisterAdminCtrl from "../../controllers/auth/register/admin/register_ge
 const router = express.Router();
 
 let validateRegistration = [
+
+    // Customer name validation
+    // Error messages are displaying on "register.ejs"
     body("user_name")
     .trim()
     .notEmpty()
@@ -22,7 +25,19 @@ let validateRegistration = [
         .split(" ")
         .map( word => word.charAt(0).toUpperCase() + word.slice(1) )
         .join(" ");
-    } )
+    } ),
+
+
+    body( "user_email" )
+    .trim()
+    .escape()
+    .isLength({ max: 60 })
+    .withMessage( "Maximum 60 characters are allowed" )
+    .notEmpty()
+    .withMessage( "Email is required" )
+    .isEmail()
+    .withMessage("Not a valid Email address")
+    .normalizeEmail()
 ]
 
 router.get( "/register", RegisterGetCtrl );
