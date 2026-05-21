@@ -2026,6 +2026,5 @@ th.customer-orders-history-header {
     font-size: 14px;
     margin-top: 4px;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 }

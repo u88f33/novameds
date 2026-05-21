@@ -3,6 +3,9 @@
 <% 
     const user_name = "user_name";
     const user_email = "user_email";
+    const user_phone = "user_phone";
+    const user_password = "user_password";
+    const user_address = "user_address";
 %>
 
 <div class="container">
@@ -34,15 +37,15 @@
                             autocomplete="off"
                         />
                         
-                        
+                        <%# Display Customer name validation Errors %>
                         <div class="error-message">
                             <% validateRegistrationErrors.forEach(error => { %>
                                 <% if ( error.path == user_name ) { %>
-                                    <span class="text-danger d-block">
+                                    <span class="text-danger d-block me-3">
                                         &#128204; <%= error.msg %>
                                     </span>
                                 <% } else { %>
-                                    <span class="text-danger d-none">
+                                    <span class="text-danger d-none me-3">
                                         &#128204; <%= error.msg %>
                                     </span>
                                 <% } %>
@@ -59,18 +62,19 @@
                             placeholder="username@gmail.com"
                             required="true"
                             maxlength="70"
-                            name="user_email"
+                            name="<%= user_email %>"
                             autocomplete="off"
                         />
                         
+                        <%# Display Email Validation Errors %>
                         <div class="error-message">
                             <% validateRegistrationErrors.forEach(error => { %>
                                 <% if ( error.path == user_email ) { %>
-                                    <span class="text-danger d-block">
+                                    <span class="text-danger d-block me-3">
                                         &#128204; <%= error.msg %>
                                     </span>
                                 <% } else { %>
-                                    <span class="text-danger d-none">
+                                    <span class="text-danger d-none me-3">
                                         &#128204; <%= error.msg %>
                                     </span>
                                 <% } %>
@@ -87,9 +91,24 @@
                             placeholder="+923331234567"
                             required="true"
                             maxlength="20"
-                            name="user_phone"
+                            name="<%= user_phone %>"
                             autocomplete="off"
                         />
+
+                        <%# Display Mobile Phone Errors %>
+                        <div class="error-message">
+                            <% validateRegistrationErrors.forEach(error => { %>
+                                <% if ( error.path == user_phone ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <div class="form-group form-group--inline">
@@ -101,7 +120,7 @@
                                 id="passwordInputRegister"
                                 placeholder="Password"
                                 required="true"
-                                name="user_password"
+                                name="<%= user_password %>"
                                 autocomplete="off"
                             />
                         </div>
@@ -120,8 +139,20 @@
                             />
                         </div>
                     </div>
-                    <div class="error-message mb-3">
-                        <span class="text-danger">* Password should contain 1 upper case, 1 lower case and 1 special character.</span>
+
+                    <%# Display Password Validation Error %>
+                    <div class="error-message">
+                        <% validateRegistrationErrors.forEach(error => { %>
+                            <% if ( error.path == user_password ) { %>
+                                <span class="text-danger d-block me-3">
+                                    &#128204; <%= error.msg %>
+                                </span>
+                            <% } else { %>
+                                <span class="text-danger d-none me-3">
+                                    &#128204; <%= error.msg %>
+                                </span>
+                            <% } %>
+                        <% }); %>
                     </div>
 
                     <div class="mb-3">
@@ -134,9 +165,24 @@
                             required="true"
                             min="8"
                             maxlength="200"
-                            name="user_address"
+                            name="<%= user_address %>"
                             autocomplete="off"
                         />
+                    </div>
+
+                    <%# Display Customer Address Validation Error %>
+                    <div class="error-message">
+                        <% validateRegistrationErrors.forEach(error => { %>
+                            <% if ( error.path == user_address ) { %>
+                                <span class="text-danger d-block me-3">
+                                    &#128204; <%= error.msg %>
+                                </span>
+                            <% } else { %>
+                                <span class="text-danger d-none me-3">
+                                    &#128204; <%= error.msg %>
+                                </span>
+                            <% } %>
+                        <% }); %>
                     </div>
 
                     <div class="form-group form-group--inline mb-3">

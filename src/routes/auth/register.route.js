@@ -28,16 +28,46 @@ let validateRegistration = [
     } ),
 
 
+    // Validating Customer Email
     body( "user_email" )
     .trim()
+    .notEmpty()
+    .withMessage( "Email is required" )
     .escape()
     .isLength({ max: 60 })
     .withMessage( "Maximum 60 characters are allowed" )
-    .notEmpty()
-    .withMessage( "Email is required" )
     .isEmail()
     .withMessage("Not a valid Email address")
-    .normalizeEmail()
+    .normalizeEmail(),
+
+
+    // Validating Customer Mobile Phone
+    body( "user_phone" )
+    .trim()
+    .notEmpty()
+    .withMessage( "Phone number is required" )
+    .matches(/^\+?(92\d{10}|^03\d{9})/)
+    .withMessage( "Not a valid Phone number" ),
+
+    // Validating Customer Password
+    body( "user_password" )
+    .notEmpty()
+    .withMessage( "Password is required" )
+    .isLength({ min: 8, max: 40 })
+    .withMessage( "Password must be between 8 to 40 characters" )
+    .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/)
+    .withMessage("Password must contain 1 uppercase, 1 lowercase, 1 number and 1 special character"),
+
+    // Validating Customer Address
+    body( "user_address" )
+    .trim()
+    .notEmpty()
+    .withMessage( "Address is required" )
+    .isLength({ min: 10, max: 200 })
+    .withMessage("Address must be between 10 and 200 characters")
+    .matches(/^[A-Za-z0-9\s,./#\-()]+$/)
+    .withMessage("Not valid Address")
+
 ]
 
 router.get( "/register", RegisterGetCtrl );
