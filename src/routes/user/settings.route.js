@@ -67,6 +67,7 @@ router.post(
     ProfilePageSettingCtrlPost 
 );
 
+let validateChangedPassword = [];
 
 router.post( "/change-password/:id",  ProfilePasswordChangeCtrlPost );
 
