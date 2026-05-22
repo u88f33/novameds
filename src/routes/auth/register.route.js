@@ -78,8 +78,7 @@ let validateRegistration = [
     body( "user_country" )
     .trim()
     .equals("Pakistan")
-    .withMessage( "Invalid Country name" ),
-
+    .withMessage( "Invalid Country name" )
 
 ]
 

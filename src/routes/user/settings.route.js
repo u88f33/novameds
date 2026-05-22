@@ -2,6 +2,7 @@ import express from "express";
 import SettingsPageCtrl from "../../controllers/user/settings/settings.controller.js";
 import ProfilePageSettingCtrlPost from "../../controllers/user/settings/profile_setting.controller.js";
 import ProfilePasswordChangeCtrlPost from "../../controllers/user/settings/password_change.controller.js";
+import userCitiesList from "../../utils/userCityInfo/citiesList.js";
 import { body } from "express-validator";
 const router = express.Router();
 
@@ -57,8 +58,18 @@ let validateProfileSettings = [
     .isLength({ min: 10, max: 200 })
     .withMessage("Address must be between 10 and 200 characters")
     .matches(/^[A-Za-z0-9\s,./#\-()]+$/)
-    .withMessage("Not valid Address")
+    .withMessage("Not valid Address"),
 
+    body( "user_city" )
+    .trim()
+    .escape()
+    .isIn(userCitiesList())
+    .withMessage( "Invalid City Name" ),
+
+    body( "user_country" )
+    .trim()
+    .equals("Pakistan")
+    .withMessage( "Invalid Country name" )
 ];
 
 router.post( 
