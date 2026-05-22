@@ -1,5 +1,9 @@
 <%- include( "../partials/header/postlogin" ) -%>
 
+<%
+    let user_name = "user_name";
+%>
+
 <div class="profile-main-container">
     <div class="profile-inner-container">
 
@@ -21,6 +25,22 @@
                             <label class="form-label">Change Name</label>
                             <input type="text" class="form-control border border-dark" 
                             name="user_name" value="<%= loggedInUser.customerName %>">
+
+                            <%# Display Customer name validation Errors %>
+                            <div class="error-message">
+                                <% validateProfileSettings.forEach(error => { %>
+                                    <% if ( error.path == user_name ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+                            
                         </div>
 
                         <div class="form-group__field">

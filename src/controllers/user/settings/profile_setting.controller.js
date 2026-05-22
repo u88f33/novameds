@@ -1,6 +1,14 @@
 import CustomersCollection from "../../../models/customers.model.js"
+import { validationResult } from "express-validator";
 
 const ProfilePageSettingCtrlPost = async ( req, res, next ) => {
+
+    let errors = validationResult( req );
+
+    if ( !errors.isEmpty() ) {
+        req.session.profileSettingErrors = errors.errors;
+        return res.redirect(`/profile/settings/${ req.params.id }`);
+    }
 
     const {
         user_name,
