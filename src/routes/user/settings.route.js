@@ -67,8 +67,21 @@ router.post(
     ProfilePageSettingCtrlPost 
 );
 
-let validateChangedPassword = [];
+let validateChangedPassword = [
+    // Validating Customer Password
+    body( "user_new_password" )
+    .notEmpty()
+    .withMessage( "Password is required" )
+    .isLength({ min: 8, max: 40 })
+    .withMessage( "Password must be between 8 to 40 characters" )
+    .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/)
+    .withMessage("Password must contain 1 uppercase, 1 lowercase, 1 number and 1 special character"),
+];
 
-router.post( "/change-password/:id",  ProfilePasswordChangeCtrlPost );
+router.post( 
+    "/change-password/:id", 
+    validateChangedPassword,
+    ProfilePasswordChangeCtrlPost
+);
 
 export default router;

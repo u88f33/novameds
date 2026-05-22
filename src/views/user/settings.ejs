@@ -4,6 +4,7 @@
     const user_name  = "user_name";
     const user_email = "user_email";
     const user_phone = "user_phone";
+    const user_new_password = "user_new_password";
     const user_address = "user_address";
 %>
 
@@ -73,7 +74,7 @@
                         <div class="form-group__field">
                             <label class="form-label">Change Phone</label>
                             <input type="tel" class="form-control border border-dark" 
-                            name="user_phone" value="<%= loggedInUser.customerPhone %>">
+                            name="<%= user_phone %>" value="<%= loggedInUser.customerPhone %>">
 
                             <%# Display Mobile Phone Errors %>
                             <div class="error-message">
@@ -94,7 +95,7 @@
                         <div class="form-group__field">
                             <label class="form-label">Change Address</label>
                             <input type="text" class="form-control border border-dark" 
-                            name="user_address" value="<%= loggedInUser.customerAddress %>">
+                            name="<%= user_address %>" value="<%= loggedInUser.customerAddress %>">
 
                             <%# Display Customer Address Validation Error %>
                             <div class="error-message">
@@ -140,8 +141,8 @@
                     <% } %>
 
                     <% if ( errorMessage ) { %>
-                        <div class="alert-box">
-                            <p class="mb-0"><b><%= errorMessage %></b></p>
+                        <div class="alert-box w-100">
+                            <p class="mb-0"><%= errorMessage %></p>
                         </div>
                     <% } %>
                 </form>
@@ -158,17 +159,33 @@
 
                     <div class="mb-3">
                         <label class="form-label">New Password</label>
-                        <input type="password" class="form-control border border-dark" name="user_new_password">
+                        <input type="password" class="form-control border border-dark" name="<%= user_new_password %>">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Confirm New Password</label>
                         <input type="password" class="form-control border border-dark" name="confirm_new_password">
+                    
+                        <%# Display Customer Password validation Errors %>
+                        <div class="error-message">
+                            <% validateProfileSettings.forEach(error => { %>
+                                <% if ( error.path == user_new_password ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
+                        
                     </div>
 
                     <button type="submit" class="btn login-btn">Change Password</button>
                     <% if ( errorMessage ) { %>
-                        <div class="alert-box">
+                        <div class="alert-box w-100">
                             <p class="mb-0"><%= errorMessage %></p>
                         </div>
                     <% } %>
