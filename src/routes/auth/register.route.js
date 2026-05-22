@@ -73,7 +73,13 @@ let validateRegistration = [
     .trim()
     .escape()
     .isIn(userCitiesList())
-    .withMessage( "Invalid City Name" )
+    .withMessage( "Invalid City Name" ),
+
+    body( "user_country" )
+    .trim()
+    .equals("Pakistan")
+    .withMessage( "Invalid Country name" ),
+
 
 ]
 

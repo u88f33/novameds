@@ -7,6 +7,7 @@
     const user_password = "user_password";
     const user_address = "user_address";
     const user_city = "user_city";
+    const user_country = "user_country";
 %>
 
 <div class="container">
@@ -233,12 +234,30 @@
                                 id="addressCountryRegister"
                                 placeholder="Your Country"
                                 required="true"
-                                name="user_country"
+                                name="<%= user_country %>"
                                 autocomplete="off"
                                 value="Pakistan"
                                 readonly="readonly"
                             />
+
+                            <%# Display Customer Country Validation Error %>
+                            <div class="error-message">
+                                <% validateRegistrationErrors.forEach(error => { %>
+                                    <% if ( error.path == user_country ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+
                         </div>
+
+
                     </div>
 
                     <button type="submit" class="btn login-btn">Register</button>
