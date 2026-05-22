@@ -3,6 +3,7 @@ import { body } from "express-validator";
 import RegisterGetCtrl from "../../controllers/auth/register/register_get.controller.js"
 import RegisterPostCtrl  from "../../controllers/auth/register/register_post.controller.js"
 import RegisterAdminCtrl from "../../controllers/auth/register/admin/register_get.controller.js"
+import userCitiesList from "../../utils/userCityInfo/citiesList.js";
 
 const router = express.Router();
 
@@ -66,7 +67,13 @@ let validateRegistration = [
     .isLength({ min: 10, max: 200 })
     .withMessage("Address must be between 10 and 200 characters")
     .matches(/^[A-Za-z0-9\s,./#\-()]+$/)
-    .withMessage("Not valid Address")
+    .withMessage("Not valid Address"),
+
+    body( "user_city" )
+    .trim()
+    .escape()
+    .isIn(userCitiesList())
+    .withMessage( "Invalid City Name" )
 
 ]
 

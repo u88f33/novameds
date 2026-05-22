@@ -6,6 +6,7 @@
     const user_phone = "user_phone";
     const user_password = "user_password";
     const user_address = "user_address";
+    const user_city = "user_city";
 %>
 
 <div class="container">
@@ -202,10 +203,25 @@
                             <select
                                 class="form-select border border-dark"
                                 name="user_city"
-                                id="user_city"
+                                id="<%= user_city %>"
                                 required="true"
                             >
                             </select>
+
+                            <%# Display Customer City Validation Error %>
+                            <div class="error-message">
+                                <% validateRegistrationErrors.forEach(error => { %>
+                                    <% if ( error.path == user_city ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
                         </div>
 
 
