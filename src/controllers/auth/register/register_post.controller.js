@@ -10,7 +10,7 @@ const RegisterPostCtrl = async ( req, res, next ) => {
 
         if ( !errors.isEmpty() ) {
             req.session.errors = errors.errors;
-            return res.redirect("/register");
+            return res.redirect("/register/?errorMessage=Unable to Submit Form");
         }
 
         let hashedPassword;
