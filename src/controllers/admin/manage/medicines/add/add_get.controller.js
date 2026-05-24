@@ -11,12 +11,14 @@ const AddMedicineRecordCtrl = async ( req, res, next ) => {
      * "supplierRecords[]._id" as its "value" attribute.
      */
     const suppliersRecords = await SuppliersCollection.find();
+    const medicineRecordsErrors = req.session.medicineRecordsErrors || [];
 
     res.render(
         "admin/manage/medicines/add",
         {
             successMessage: req.query.message,
-            suppliersRecords
+            suppliersRecords,
+            medicineRecordsErrors
         }
     )
 }

@@ -2,6 +2,7 @@ import { validationResult } from "express-validator";
 import MedicinesCollection from "../../../../../models/medicines.model.js";
 import SuppliersCollection from "../../../../../models/suppliers.model.js";
 
+
 const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
 
     try {
@@ -9,7 +10,7 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
         let errors = validationResult( req );
 
         if ( !errors.isEmpty() ) {
-            console.log( errors.errors );
+            req.session.medicineRecordsErrors = errors.errors;
             return res.redirect(`/admin/manage/medicines/add`);
         }
 

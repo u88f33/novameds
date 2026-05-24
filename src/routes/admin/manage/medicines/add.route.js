@@ -2,7 +2,8 @@ import express from "express";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
-import { body } from "express-validator"
+import { body } from "express-validator";
+import SuppliersCollection from "../../../../models/suppliers.model.js";
 import AddMedicineRecordCtrl 
 from "../../../../controllers/admin/manage/medicines/add/add_get.controller.js"
 
@@ -24,8 +25,38 @@ const valideteMedicineRecord = [
   .withMessage( "Medicine name is required" )
   .escape()
   .matches(/^[A-Za-z0-9., ]+$/i)
-  .withMessage("Invalid characters found in Medicine name")
+  .withMessage("Invalid characters found in Medicine Name"),
+
+  body("medicine_category")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine Category is required" )
+  .escape()
+  .matches(/^[A-Za-z., ]+$/i)
+  .withMessage("Only Alphabets and Spaces are allowed"),
+
+  body("medicine_price")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine price is required" )
+  .escape()
+  .matches(/^[0-9.]+$/i)
+  .withMessage("Only digits are allowed")
+  .isFloat({ min: 1, max: 5000000000 })
+  .withMessage("Price must be Decimal number"),
+
+  body("medicine_stock")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine stock is required" )
+  .escape()
+  .matches(/^[0-9]+$/i)
+  .withMessage("Only digits are allowed")
+  .isInt( { min: 1, max: 500000000 } )
+  .withMessage( "Stock Quantity must be integer" ),
 ];
+
+
 
 /**
  * Program for uploading file using "Multer" package
