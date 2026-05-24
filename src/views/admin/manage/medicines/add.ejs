@@ -51,6 +51,14 @@
                             maxlength="50"
                             placeholder="e.g. Panadol"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Name %>
+                        <div class="error-message">
+                            <p class="text-danger">
+                                &#128204; Invalid Medicine name
+                            </p>
+                        </div>
+
                     </div>
 
                     <!-- Medicine Category -->
@@ -65,7 +73,16 @@
                             maxlength="50"
                             placeholder="e.g. Pain Killer"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Category %>
+                        <div class="error-message">
+                            <p class="text-danger">
+                                &#128204; Invalid Medicine Category
+                            </p>
+                        </div>
+
                     </div>
+
 
                 </div>
 
@@ -84,6 +101,13 @@
                             maxlength="50"
                             placeholder="e.g. Rs 50"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Price %>
+                        <div class="error-message">
+                            <p class="text-danger">
+                                &#128204; Invalid Medicine Price
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Stock Quantity -->
@@ -97,6 +121,14 @@
                             required="required"
                             placeholder="e.g. 400"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Category %>
+                        <div class="error-message">
+                            <p class="text-danger">
+                                &#128204; Invalid Medicine Category
+                            </p>
+                        </div>
+                    
                     </div>
 
                 </div>
@@ -118,6 +150,13 @@
                                 </option>
                             <% }); %>
                         </select>
+
+                        <%# Display Error Messages on entering Invalid Medicine Supplier %>
+                        <div class="error-message">
+                            <p class="text-danger">
+                                &#128204; Invalid Supplier Record
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Upload Medicine Image -->

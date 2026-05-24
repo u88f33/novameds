@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
+import { body } from "express-validator"
 import AddMedicineRecordCtrl 
 from "../../../../controllers/admin/manage/medicines/add/add_get.controller.js"
 
@@ -12,6 +13,23 @@ const router = express.Router();
 
 let medicineImageUploadPath = './public/uploads/medicines';
 
+/**
+ * Validating Medicine records using "express-validator"
+*/
+
+const valideteMedicineRecord = [
+  body("medicine_name")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine name is required" )
+  .escape()
+  .matches(/^[A-Za-z0-9., ]+$/i)
+  .withMessage("Invalid characters found in Medicine name")
+];
+
+/**
+ * Program for uploading file using "Multer" package
+*/
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     
@@ -56,7 +74,8 @@ router.get( "/", AddMedicineRecordCtrl );
 
 router.post( 
     "/", 
-    upload.single( "medicine_image" ), 
+    upload.single( "medicine_image" ),
+    valideteMedicineRecord,
     AddMedicineRecortCtrlPost 
 );
 

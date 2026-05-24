@@ -1,9 +1,17 @@
+import { validationResult } from "express-validator";
 import MedicinesCollection from "../../../../../models/medicines.model.js";
 import SuppliersCollection from "../../../../../models/suppliers.model.js";
 
 const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
 
     try {
+
+        let errors = validationResult( req );
+
+        if ( !errors.isEmpty() ) {
+            console.log( errors.errors );
+            return res.redirect(`/admin/manage/medicines/add`);
+        }
 
         // Values received from a form in "/views/admin/manage/medicines/add.ejs"
         const {
