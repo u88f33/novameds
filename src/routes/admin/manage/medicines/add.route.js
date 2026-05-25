@@ -23,16 +23,17 @@ const valideteMedicineRecord = [
   .trim()
   .notEmpty()
   .withMessage( "Medicine name is required" )
-  .escape()
-  .matches(/^[A-Za-z0-9., ]+$/i)
+  .isLength({ min: 2, max: 100 })
+  .withMessage( "Medicine name must contain 2 to 100 characters" )
+  .matches(/^[A-Za-z0-9\s\-\.\(\)\/]+$/i)
   .withMessage("Invalid characters found in Medicine Name"),
 
   body("medicine_category")
   .trim()
   .notEmpty()
   .withMessage( "Medicine Category is required" )
-  .escape()
-  .matches(/^[A-Za-z., ]+$/i)
+  .isLength( { min: 2, max: 100 } )
+  .matches(/^[A-Za-z\s\-\/]+$/i)
   .withMessage("Only Alphabets and Spaces are allowed"),
 
   body("medicine_price")
@@ -40,10 +41,11 @@ const valideteMedicineRecord = [
   .notEmpty()
   .withMessage( "Medicine price is required" )
   .escape()
-  .matches(/^[0-9.]+$/i)
+  .matches(/^[0-9\.]+$/i)
   .withMessage("Only digits are allowed")
-  .isFloat({ min: 1, max: 5000000000 })
-  .withMessage("Price must be Decimal number"),
+  .isFloat({ min: 0 })
+  .withMessage("Price must be a number")
+  .toFloat(),
 
   body("medicine_stock")
   .trim()
@@ -52,16 +54,27 @@ const valideteMedicineRecord = [
   .escape()
   .matches(/^[0-9]+$/i)
   .withMessage("Only digits are allowed")
-  .isInt( { min: 1, max: 500000000 } )
-  .withMessage( "Stock Quantity must be integer" ),
-];
+  .isInt( { min: 0 } )
+  .withMessage( "Stock Quantity must be an Integer" )
+  .toInt(),
 
+  body("supplier_id")
+  .trim()
+  .notEmpty()
+  .withMessage("Supplier name is required")
+  .isMongoId()
+  .withMessage("Invalid supplier ID"),
+
+  body("medicine_image")
+  .optional({ checkFalsy: true })
+];
 
 
 /**
  * Program for uploading file using "Multer" package
 */
 const storage = multer.diskStorage({
+
   destination: function (req, file, cb) {
     
     // Check whether the medicines folder in uploads folder exists.
@@ -72,6 +85,7 @@ const storage = multer.diskStorage({
 
     cb(null, medicineImageUploadPath)
   },
+
   filename: function (req, file, cb) {
     const uniqueMedicineName = 
     Date.now() + '-' + file.originalname.slice( 0, file.originalname.indexOf('.') ) +
@@ -79,6 +93,7 @@ const storage = multer.diskStorage({
     
     cb( null, uniqueMedicineName );
   }
+
 });
 
 const limits = {

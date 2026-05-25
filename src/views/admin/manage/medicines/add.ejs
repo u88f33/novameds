@@ -5,6 +5,8 @@
     const medicine_category = "medicine_category";
     const medicine_price = "medicine_price";
     const medicine_stock = "medicine_stock";
+    const supplier_id = "supplier_id";
+    const medicine_image = "medicine_image";
 %>
 
 <div class="dashboard">
@@ -41,189 +43,195 @@
                     method="POST"
                     class="dashboard__secion-form"
                     enctype="multipart/form-data"
-                    >
+                >
 
-                <!-- First Row -->
-                <div class="dashboard__secion-form-row">
-                    
-                    <!-- Medicine Name -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="medicineName" class="dashboard__secion-form-label">Medicine Name</label>
-                        <input 
-                            type="text" 
-                            id="medicineName" 
-                            name="<%= medicine_name %>" 
-                            class="dashboard__secion-form-input"
-                            required="true"
-                            maxlength="50"
-                            placeholder="e.g. Panadol"
-                        />
+                    <!-- First Row -->
+                    <div class="dashboard__secion-form-row">
+                        
+                        <!-- Medicine Name -->
+                        <div class="dashboard__secion-form-group">
+                            <label for="medicineName" class="dashboard__secion-form-label">Medicine Name</label>
+                            <input 
+                                type="text" 
+                                id="medicineName" 
+                                name="<%= medicine_name %>" 
+                                class="dashboard__secion-form-input"
+                                required="true"
+                                maxlength="50"
+                                placeholder="e.g. Panadol"
+                            />
 
-                        <%# Display Error Messages on entering Invalid Medicine Name %>
-                        <div class="error-message">
-                            <% medicineRecordsErrors.forEach(error => { %>
-                                <% if ( error.path == medicine_name ) { %>
-                                    <span class="text-danger d-block me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } else { %>
-                                    <span class="text-danger d-none me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } %>
-                            <% }); %>
+                            <%# Display Error Messages on entering Invalid Medicine Name %>
+                            <div class="error-message">
+                                <% medicineRecordsErrors.forEach(error => { %>
+                                    <% if ( error.path == medicine_name ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+
+                        </div>
+
+                        <!-- Medicine Category -->
+                        <div class="dashboard__secion-form-group">
+                            <label for="medicineCategory" class="dashboard__secion-form-label">Medicine Category</label>
+                            <input 
+                                type="text" 
+                                id="medicineCategory" 
+                                name="<%= medicine_category %>" 
+                                class="dashboard__secion-form-input"
+                                required="true"
+                                maxlength="50"
+                                placeholder="e.g. Pain Killer"
+                            />
+
+                            <%# Display Error Messages on entering Invalid Medicine Category %>
+                            <div class="error-message">
+                                <% medicineRecordsErrors.forEach(error => { %>
+                                    <% if ( error.path == medicine_category ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- Second Row -->
+                    <div class="dashboard__secion-form-row">
+                        
+                        <!-- Medicine Price -->
+                        <div class="dashboard__secion-form-group">
+                            <label for="medicinePrice" class="dashboard__secion-form-label">Medicine Price</label>
+                            <input 
+                                type="text" 
+                                id="medicinePrice" 
+                                name="<%= medicine_price %>" 
+                                class="dashboard__secion-form-input"
+                                required="true"
+                                maxlength="50"
+                                placeholder="e.g. Rs 50"
+                            />
+
+                            <%# Display Error Messages on entering Invalid Medicine Price %>
+                            <div class="error-message">
+                                <% medicineRecordsErrors.forEach(error => { %>
+                                    <% if ( error.path == medicine_price ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+
+                        <!-- Stock Quantity -->
+                        <div class="dashboard__secion-form-group">
+                            <label for="stockQuantity" class="dashboard__secion-form-label">Stock Quantity</label>
+                            <input 
+                                type="text" 
+                                id="stockQuantity" 
+                                name="<%= medicine_stock %>" 
+                                class="dashboard__secion-form-input"
+                                required="required"
+                                placeholder="e.g. 400"
+                            />
+
+                            <%# Display Error Messages on entering Invalid Medicine Stock %>
+                            <div class="error-message">
+                                <% medicineRecordsErrors.forEach(error => { %>
+                                    <% if ( error.path == medicine_stock ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Third Row -->
+                    <div class="dashboard__secion-form-row">
+                        
+                        <!-- Supplier Name -->
+                        <div class="dashboard__secion-form-group">
+                            <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
+                            <select 
+                                id="supplierName" 
+                                name="<%= supplier_id %>" 
+                                class="dashboard__secion-form-select"
+                            >
+                                <% suppliersRecords.forEach(singleSupplierRecord => { %>
+                                    <option value="<%= singleSupplierRecord._id %>">
+                                        <%= singleSupplierRecord.supplierName %>
+                                    </option>
+                                <% }); %>
+                            </select>
+
+                            <%# Display Error Messages on entering Invalid Supplier ID %>
+                            <div class="error-message">
+                                <% medicineRecordsErrors.forEach(error => { %>
+                                    <% if ( error.path == supplier_id ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+
+                        <!-- Upload Medicine Image -->
+                        <div class="dashboard__secion-form-group">
+                            <label for="medicineImage" class="dashboard__secion-form-label">Upload Medicine Image</label>
+                            <input 
+                                type="file" 
+                                id="medicineImage" 
+                                name="<%= medicine_image %>" 
+                                class="dashboard__secion-form-file"
+                            />
                         </div>
 
                     </div>
 
-                    <!-- Medicine Category -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="medicineCategory" class="dashboard__secion-form-label">Medicine Category</label>
-                        <input 
-                            type="text" 
-                            id="medicineCategory" 
-                            name="<%= medicine_category %>" 
-                            class="dashboard__secion-form-input"
-                            required="true"
-                            maxlength="50"
-                            placeholder="e.g. Pain Killer"
-                        />
-
-                        <%# Display Error Messages on entering Invalid Medicine Category %>
-                        <div class="error-message">
-                            <% medicineRecordsErrors.forEach(error => { %>
-                                <% if ( error.path == medicine_category ) { %>
-                                    <span class="text-danger d-block me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } else { %>
-                                    <span class="text-danger d-none me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } %>
-                            <% }); %>
-                        </div>
-
+                    <div class="dashboard__secion-form-actions">
+                        <button type="submit" class="dashboard__secion-form-button">
+                            Add Medicine Record
+                        </button>
+                        <a href="/admin/manage/medicines" class="dashboard__secion-action-button">
+                            Go Back
+                        </a>
                     </div>
 
-
-                </div>
-
-                <!-- Second Row -->
-                <div class="dashboard__secion-form-row">
-                    
-                    <!-- Medicine Price -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="medicinePrice" class="dashboard__secion-form-label">Medicine Price</label>
-                        <input 
-                            type="text" 
-                            id="medicinePrice" 
-                            name="<%= medicine_price %>" 
-                            class="dashboard__secion-form-input"
-                            required="true"
-                            maxlength="50"
-                            placeholder="e.g. Rs 50"
-                        />
-
-                        <%# Display Error Messages on entering Invalid Medicine Price %>
-                        <div class="error-message">
-                            <% medicineRecordsErrors.forEach(error => { %>
-                                <% if ( error.path == medicine_price ) { %>
-                                    <span class="text-danger d-block me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } else { %>
-                                    <span class="text-danger d-none me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } %>
-                            <% }); %>
-                        </div>
-                    </div>
-
-                    <!-- Stock Quantity -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="stockQuantity" class="dashboard__secion-form-label">Stock Quantity</label>
-                        <input 
-                            type="text" 
-                            id="stockQuantity" 
-                            name="<%= medicine_stock %>" 
-                            class="dashboard__secion-form-input"
-                            required="required"
-                            placeholder="e.g. 400"
-                        />
-
-                        <%# Display Error Messages on entering Invalid Medicine Stock %>
-                        <div class="error-message">
-                            <% medicineRecordsErrors.forEach(error => { %>
-                                <% if ( error.path == medicine_stock ) { %>
-                                    <span class="text-danger d-block me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } else { %>
-                                    <span class="text-danger d-none me-3">
-                                        &#128204; <%= error.msg %>
-                                    </span>
-                                <% } %>
-                            <% }); %>
-                        </div>
-                    </div>
-                    
-                    </div>
-
-                </div>
-
-                <!-- Third Row -->
-                <div class="dashboard__secion-form-row">
-                    
-                    <!-- Supplier Name -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
-                        <select 
-                            id="supplierName" 
-                            name="supplier_id" 
-                            class="dashboard__secion-form-select"
-                        >
-                            <% suppliersRecords.forEach(singleSupplierRecord => { %>
-                                <option value="<%= singleSupplierRecord._id %>">
-                                    <%= singleSupplierRecord.supplierName %>
-                                </option>
-                            <% }); %>
-                        </select>
-
-                        <%# Display Error Messages on entering Invalid Medicine Supplier %>
-                        <div class="error-message">
-                            <p class="text-danger">
-                                &#128204; Invalid Supplier Record
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Upload Medicine Image -->
-                    <div class="dashboard__secion-form-group">
-                        <label for="medicineImage" class="dashboard__secion-form-label">Upload Medicine Image</label>
-                        <input 
-                            type="file" 
-                            id="medicineImage" 
-                            name="medicine_image" 
-                            class="dashboard__secion-form-file"
-                        />
-                    </div>
-
-                </div>
-
-                <div class="dashboard__secion-form-actions">
-                    <button type="submit" class="dashboard__secion-form-button">
-                        Add Medicine Record
-                    </button>
-                    <a href="/admin/manage/medicines" class="dashboard__secion-action-button">
-                        Go Back
-                    </a>
-                </div>
-
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 
         <% if ( successMessage ) { %>
             <div class="dashboard__section-main mt-5">
