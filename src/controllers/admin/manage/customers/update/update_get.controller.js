@@ -4,11 +4,16 @@ const UpdateCustomerRecordCtrl = async ( req, res, next ) => {
 
     const singleCustomerRecord =
     await CustomerCollection.findById( req.params.id );
+
+    const customerRecordsErrors = req.session.customerRecordsErrors || [];
+
+    req.session.customerRecordsErrors = null;
     
     res.render(
         "admin/manage/customers/update",
         {
             singleCustomerRecord,
+            customerRecordsErrors,
             errorMessage: req.query.errorMessage
         }
     )
