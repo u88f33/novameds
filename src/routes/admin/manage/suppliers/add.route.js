@@ -40,7 +40,7 @@ const validateData = [
     .notEmpty().withMessage("Phone is required")
     .matches(/^(03\d{9}|0\d{2,3}\d{7})$/).withMessage("Invalid phone number"),
 
-    // Validating Customer Address
+    // Validating Supplier Address
     body( "supplier_address" )
     .trim()
     .notEmpty()
@@ -49,7 +49,7 @@ const validateData = [
     .withMessage("Address must be between 10 and 200 characters")
     .matches(/^[A-Za-z0-9\s,./#\-\(\)\\]+$/)
     .withMessage("Not valid Address"),
-]
+];
 
 router.get( 
     "/", 
