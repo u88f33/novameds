@@ -13,6 +13,9 @@ const AddMedicineRecordCtrl = async ( req, res, next ) => {
     const suppliersRecords = await SuppliersCollection.find();
     const medicineRecordsErrors = req.session.medicineRecordsErrors || [];
 
+    // Clearing errors after storing in "medicineRecordsErros";
+    req.session.medicineRecordsErrors = null;
+
     res.render(
         "admin/manage/medicines/add",
         {

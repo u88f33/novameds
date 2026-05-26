@@ -13,6 +13,9 @@ const UpdateMedicineRecordCtrl = async ( req, res, next ) => {
     .findById( req.params.id )
     .populate("supplierId");
 
+    // Clearing errors after storing in "medicineRecordsErros";
+    req.session.medicineRecordsErrors = null;
+
     res.render(
         "admin/manage/medicines/update",
         {
