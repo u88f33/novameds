@@ -1,10 +1,16 @@
 import CustomersCollection  from "../../../../../models/customers.model.js";
 import bcrypt from "bcryptjs";
+import { validationResult } from 'express-validator';
 
 const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
     try {
         
-        console.log( req.body );
+        let errors = validationResult( req );
+
+        if ( !errors.isEmpty() ) {
+            req.session.customerRecordsErrors = errors.errors;
+            return res.redirect(`/admin/manage/customers/add`);
+        }
 
         const {
             customer_name,

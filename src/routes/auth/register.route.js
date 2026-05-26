@@ -82,8 +82,10 @@ let validateRegistration = [
 
 ]
 
-router.get( "/register", RegisterGetCtrl );
-
+router.get( 
+    "/register", 
+    RegisterGetCtrl 
+);
 
 router.post( 
     "/user-register",
@@ -91,6 +93,9 @@ router.post(
     RegisterPostCtrl
 );
 
-router.get( "/admin-register", RegisterAdminCtrl );
+router.get( 
+    "/admin-register", 
+    RegisterAdminCtrl 
+);
 
 export default router;
