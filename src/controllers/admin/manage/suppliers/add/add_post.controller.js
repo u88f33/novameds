@@ -15,46 +15,13 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
          
         */
 
-        // Validating Supplier's phone number using "express-validator"
-        const validationErrors = validationResult( req );
-    
-        /**
-         * If "validationErrors" is not empty then store error messages and 
-         * error values in arrays and send them to "src/views/admin/manage/suppliers/add.ejs"  
-         * */ 
-        if ( !validationErrors.isEmpty() ) {
+        let errors = validationResult( req );
 
-            // Stores Error messages in validationErrors.errors.msg
-            let arrayOfErrorMessages = [];
-
-            // Stores Error values in validationErrors.errors.value
-            let arrayOfErrorValues = [];
-            
-            // Storing Error Messages "validationErrors.errors.msg" in "ArrayOfError"
-            for ( let error of validationErrors.errors ) {
-                arrayOfErrorMessages.push( error.msg );
-                arrayOfErrorValues.push( error.value );
-            }
-
-            /**
-             * "ArrayOfErrorMessages" object contains error messages stored in 
-             * "validationErrors.errors.msg"
-             * 
-             * 
-             * "ArrayOfErrorsValues" object contains errors stored messages
-             * stored in "validationErrors.errors.value"
-             */
-
-            res.render(
-                "admin/manage/suppliers/add",
-                {
-                    arrayOfErrorMessages,
-                    arrayOfErrorValues
-                }
-            )
-            
-            return false;
+        if ( !errors.isEmpty() ) {
+            req.session.supplierRecordsErrors = errors.errors;
+            return res.redirect(`/admin/manage/suppliers/add`);
         }
+
 
         /* 
         * The data recieved in "req.body" is stored in individual variables using

@@ -1,5 +1,14 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
+<% 
+
+const supplier_name = "supplier_name";
+const supplier_email = "supplier_email";
+const supplier_phone = "supplier_phone";
+const supplier_address = "supplier_address";
+
+%>
+
 <div class="dashboard">
     <header class="dashboard__header">
 
@@ -44,12 +53,27 @@
                         <input 
                             type="text" 
                             id="supplierName" 
-                            name="supplier_name" 
+                            name="<%= supplier_name %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             placeholder="Enter Supplier Name"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Name %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_name ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Supplier Email -->
@@ -58,12 +82,27 @@
                         <input 
                             type="email" 
                             id="supplierEmail" 
-                            name="supplier_email" 
+                            name="<%= supplier_email %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             placeholder="supplier_email@example.com"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_email ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>
@@ -77,12 +116,27 @@
                         <input 
                             type="text" 
                             id="supplierPhone" 
-                            name="supplier_phone" 
+                            name="<%= supplier_phone %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             placeholder="03331234567"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_phone ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Customer Address -->
@@ -91,11 +145,26 @@
                         <input 
                             type="text" 
                             id="supplierAddress" 
-                            name="supplier_address" 
+                            name="<%= supplier_address %>" 
                             class="dashboard__secion-form-input"
                             required="required"
                             placeholder="I-8 Islamabad"
                         />
+                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_address ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
+
                     </div>
 
                 </div>
@@ -112,36 +181,7 @@
                 </form>
             </div>
 
-            <%# 
-                # If Array containing Error Messages is not empty then show
-                Error messages on page at route "/admin/manage/suppliers/add".
-            %>
-            <% if ( arrayOfErrorMessages.length != 0 ) { %>
-                <%# 
-                    # "for" loop to iterate over the "arrayOfErrorMessages" array.
-                    
-                    # Length of both "arrayOfErrorMessages" and
-                    "arrayOfErrorValues" is same.
-                %>
-                <% for (let index = 0; index < arrayOfErrorMessages.length; index++) { %>
 
-                    <%# 
-                        # "div" container containing Error messages appears the 
-                        same number of time as the length of the "arrayOfErrorMessages"
-                        messages.
-                    %>
-                    <div class="alert alert-danger mt-4">
-                        <p class="mb-0">
-                            <b><%= arrayOfErrorMessages[0] %>: </b>
-                            <%= arrayOfErrorValues[0] %>
-                        </p>
-                    </div>
-
-                <%# End of "for" loop %>
-                <% } %>
-
-            <%# End of "if" block %>
-            <% } %>
         </div>
 
     </div>

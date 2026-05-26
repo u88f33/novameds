@@ -9,24 +9,56 @@ from "../../../../controllers/admin/manage/suppliers/add/add_post.controller.js"
 
 const router = express.Router();
 
-router.get( "/", AddSupplierRecordsCtrl );
+const validateData = [
+
+    // Validating Supplier Name
+    body("supplier_name")
+    .trim()
+    .notEmpty()
+    .withMessage( "Supplier name is required" )
+    .escape()
+    .isLength({ min: 3, max: 40 })
+    .withMessage( "Minimum 3 and maximum 40 characters are allowed" )
+    .matches(/^[A-Za-z0-9\s]+$/)
+    .withMessage( "Only Alphabets and Spaces are allowed" ),
+
+    // Validating Supplier Email
+    body( "supplier_email" )
+    .trim()
+    .notEmpty()
+    .withMessage( "Email is required" )
+    .escape()
+    .isLength({ max: 60 })
+    .withMessage( "Maximum 60 characters are allowed" )
+    .isEmail()
+    .withMessage("Not a valid Email address")
+    .normalizeEmail(),
+
+    // Validating Supplier Phone number
+    body("supplier_phone")
+    .trim()
+    .notEmpty().withMessage("Phone is required")
+    .matches(/^(03\d{9}|0\d{2,3}\d{7})$/).withMessage("Invalid phone number"),
+
+    // Validating Customer Address
+    body( "supplier_address" )
+    .trim()
+    .notEmpty()
+    .withMessage( "Address is required" )
+    .isLength({ min: 10, max: 200 })
+    .withMessage("Address must be between 10 and 200 characters")
+    .matches(/^[A-Za-z0-9\s,./#\-\(\)\\]+$/)
+    .withMessage("Not valid Address"),
+]
+
+router.get( 
+    "/", 
+    AddSupplierRecordsCtrl
+);
 
 router.post( 
     "/",
-    /**
-     * Here i have used the body("field_name") function of "express-validator"
-     * 1) Trim the phone number from left and right
-     * 2) If a Phone number field "supplier_phone" is empty, a message 
-     *    "Phone is required" appears on screen.
-     * 3) matches(regex) function match the contact number with Pakistan phone
-     *    number.
-     */
-    [
-        body("supplier_phone")
-            .trim()
-            .notEmpty().withMessage("Phone is required")
-            .matches(/^(03\d{9}|0\d{2,3}\d{7})$/).withMessage("Invalid phone number")
-    ],
+    validateData,
     AddSupplierRecordsCtrlPost
 );
 
