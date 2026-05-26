@@ -54,8 +54,7 @@ let validateData = [
 
     // Validating Customer Password
     body( "customer_password" )
-    .notEmpty()
-    .withMessage( "Password is required" )
+    .optional( { checkFalsy: true } )
     .isLength({ min: 8, max: 40 })
     .withMessage( "Password must be between 8 to 40 characters" )
     .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/)
