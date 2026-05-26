@@ -1,5 +1,14 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
+<% 
+    const medicine_name = "medicine_name";
+    const medicine_category = "medicine_category";
+    const medicine_price = "medicine_price";
+    const medicine_stock = "medicine_stock";
+    const supplier_id = "supplier_id";
+    const medicine_image = "medicine_image";
+%>
+
 <div class="dashboard">
     <header class="dashboard__header">
 
@@ -47,10 +56,25 @@
                         <input 
                             type="text" 
                             id="medicineName" 
-                            name="medicine_name" 
+                            name="<%= medicine_name %>" 
                             class="dashboard__secion-form-input"
                             value="<%= medicineRecordFromDB.medicineName %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Name %>
+                        <div class="error-message">
+                            <% medicineRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == medicine_name ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Medicine Category -->
@@ -59,10 +83,26 @@
                         <input 
                             type="text" 
                             id="medicineCategory" 
-                            name="medicine_category" 
+                            name="<%= medicine_category %>" 
                             class="dashboard__secion-form-input"
                             value="<%= medicineRecordFromDB.medicineCategory %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Category %>
+                        <div class="error-message">
+                            <% medicineRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == medicine_category ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
+
                     </div>
 
                 </div>
@@ -76,10 +116,26 @@
                         <input 
                             type="text" 
                             id="medicinePrice" 
-                            name="medicine_price" 
+                            name="<%= medicine_price %>" 
                             class="dashboard__secion-form-input"
                             value="<%= medicineRecordFromDB.medicinePrice %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Price %>
+                        <div class="error-message">
+                            <% medicineRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == medicine_price ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
+
                     </div>
 
                     <!-- Stock Quantity -->
@@ -88,10 +144,25 @@
                         <input 
                             type="text" 
                             id="stockQuantity" 
-                            name="medicine_stock" 
+                            name="<%= medicine_stock %>" 
                             class="dashboard__secion-form-input"
                             value="<%= medicineRecordFromDB.medicineStock %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Medicine Stock %>
+                        <div class="error-message">
+                            <% medicineRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == medicine_stock ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>
@@ -104,7 +175,7 @@
                         <label for="supplierName" class="dashboard__secion-form-label">Supplier Name</label>
                         <select 
                             id="supplierName" 
-                            name="supplier_id" 
+                            name="<%= supplier_id %>" 
                             class="dashboard__secion-form-select"
                         >
                             <% if ( suppliersRecordsFromDB ) { %>
@@ -126,6 +197,21 @@
                                 <% }); %>
                             <% } %>
                         </select>
+
+                        <%# Display Error Messages on entering Invalid Supplier ID %>
+                        <div class="error-message">
+                            <% medicineRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_id ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Upload Medicine Image -->
@@ -134,9 +220,24 @@
                         <input 
                             type="file" 
                             id="medicineImage" 
-                            name="medicine_image" 
+                            name="<%= medicine_image %>" 
                             class="dashboard__secion-form-file"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier ID %>
+                        <div class="error-message">
+                            <% medicineRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == medicine_image ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>

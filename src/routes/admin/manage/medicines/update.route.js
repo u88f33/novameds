@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
+import { body } from "express-validator";
 import UpdateMedicineRecordCtrl 
 from "../../../../controllers/admin/manage/medicines/update/update_get.controller.js";
 
@@ -8,6 +9,65 @@ import UpdateMedicineRecordCtrlPost
 from "../../../../controllers/admin/manage/medicines/update/update_post.controller.js";
 
 const router = express.Router();
+
+/**
+ * Validating Medicine records using "express-validator"
+*/
+
+const valideteMedicineRecord = [
+  body("medicine_name")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine name is required" )
+  .isLength({ min: 2, max: 100 })
+  .withMessage( "Medicine name must contain 2 to 100 characters" )
+  .matches(/^[A-Za-z0-9\s\-\.\(\)\/]+$/i)
+  .withMessage("Invalid characters found in Medicine Name"),
+
+  body("medicine_category")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine Category is required" )
+  .isLength( { min: 2, max: 100 } )
+  .matches(/^[A-Za-z\s\-\/]+$/i)
+  .withMessage("Only Alphabets and Spaces are allowed"),
+
+  body("medicine_price")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine price is required" )
+  .escape()
+  .matches(/^[0-9\.]+$/i)
+  .withMessage("Only digits are allowed")
+  .isFloat({ min: 0 })
+  .withMessage("Price must be a number")
+  .toFloat(),
+
+  body("medicine_stock")
+  .trim()
+  .notEmpty()
+  .withMessage( "Medicine stock is required" )
+  .escape()
+  .matches(/^[0-9]+$/i)
+  .withMessage("Only digits are allowed")
+  .isInt( { min: 0 } )
+  .withMessage( "Stock Quantity must be an Integer" )
+  .toInt(),
+
+  body("supplier_id")
+  .trim()
+  .notEmpty()
+  .withMessage("Supplier name is required")
+  .isMongoId()
+  .withMessage("Invalid supplier ID"),
+
+  body("medicine_image")
+  .optional({ checkFalsy: true })
+];
+
+/**
+ * Program for uploading file using "Multer" package
+*/
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -36,19 +96,23 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer(
     { 
-        storage,
-        limits,
-        fileFilter
+      storage,
+      limits,
+      fileFilter
     }
 );
 
 
-router.get( "/:id", UpdateMedicineRecordCtrl );
+router.get( 
+  "/:id", 
+  UpdateMedicineRecordCtrl 
+);
 
 
 router.post( 
     "/:id",
     upload.single( "medicine_image" ),
+    valideteMedicineRecord,
     UpdateMedicineRecordCtrlPost 
 );
 

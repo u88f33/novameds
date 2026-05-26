@@ -216,6 +216,21 @@
                                 name="<%= medicine_image %>" 
                                 class="dashboard__secion-form-file"
                             />
+
+                            <%# Display Error Messages on entering Invalid Supplier ID %>
+                            <div class="error-message">
+                                <% medicineRecordsErrors.forEach(error => { %>
+                                    <% if ( error.path == medicine_image ) { %>
+                                        <span class="text-danger d-block me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } else { %>
+                                        <span class="text-danger d-none me-3">
+                                            &#128204; <%= error.msg %>
+                                        </span>
+                                    <% } %>
+                                <% }); %>
+                            </div>
                         </div>
 
                     </div>

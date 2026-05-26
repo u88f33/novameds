@@ -1,11 +1,20 @@
 import MedicinesCollection from "../../../../../models/medicines.model.js";
 import fs from "fs";
 import path from "path";
+import { validationResult } from 'express-validator';
 
 const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
     
+    let errors = validationResult( req );
+
+    if ( !errors.isEmpty() ) {
+        req.session.medicineRecordsErrors = errors.errors;
+        return res.redirect(`/admin/manage/medicines/update/${req.params.id}`);
+    }
+    
     const oldMedicineRecordInDB = await MedicinesCollection
     .findById( req.params.id );
+
     
     const {
         medicine_name,
@@ -37,18 +46,20 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
         updatedMedicineRecord.medicineImage = req.file.filename;
     }
 
+    console.log( `Current Working Directory: ${ process.cwd() }` );
 
 
-    const updatedMedicineRecordInDB = await MedicinesCollection
-    .findByIdAndUpdate( 
-        req.params.id, 
-        updatedMedicineRecord,
-        { returnDocument: "after" }
-    );
 
-    if ( !updatedMedicineRecordInDB ) {
-        console.log( "Unable to update Medicine record in Database" );
-    }
+    // const updatedMedicineRecordInDB = await MedicinesCollection
+    // .findByIdAndUpdate( 
+    //     req.params.id, 
+    //     updatedMedicineRecord,
+    //     { returnDocument: "after" }
+    // );
+
+    // if ( !updatedMedicineRecordInDB ) {
+    //     console.log( "Unable to update Medicine record in Database" );
+    // }
 
     console.log( "Medicine Record in Database updated successfully" );
 
