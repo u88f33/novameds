@@ -11,7 +11,7 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
         req.session.medicineRecordsErrors = errors.errors;
         return res.redirect(`/admin/manage/medicines/update/${req.params.id}`);
     }
-    
+
     const oldMedicineRecordInDB = await MedicinesCollection
     .findById( req.params.id );
 
@@ -50,16 +50,16 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
 
 
 
-    // const updatedMedicineRecordInDB = await MedicinesCollection
-    // .findByIdAndUpdate( 
-    //     req.params.id, 
-    //     updatedMedicineRecord,
-    //     { returnDocument: "after" }
-    // );
+    const updatedMedicineRecordInDB = await MedicinesCollection
+    .findByIdAndUpdate( 
+        req.params.id, 
+        updatedMedicineRecord,
+        { returnDocument: "after" }
+    );
 
-    // if ( !updatedMedicineRecordInDB ) {
-    //     console.log( "Unable to update Medicine record in Database" );
-    // }
+    if ( !updatedMedicineRecordInDB ) {
+        console.log( "Unable to update Medicine record in Database" );
+    }
 
     console.log( "Medicine Record in Database updated successfully" );
 
