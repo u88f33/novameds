@@ -9,7 +9,7 @@ from "../../../../controllers/admin/manage/customers/add/add_post.controller.js"
 
 const router = express.Router();
 
-let validateRegistration = [
+let validateData = [
 
     // Customer name validation
     // Error messages are displaying on "register.ejs"
@@ -91,7 +91,7 @@ router.get(
 
 router.post( 
     "/", 
-    validateRegistration,
+    validateData,
     AddCustomerRecordCtrlPost 
 );
 

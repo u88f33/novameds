@@ -1,5 +1,17 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
+<%
+
+const customer_name = "customer_name";
+const customer_email = "customer_email";
+const customer_password = "customer_password";
+const customer_phone = "customer_phone";
+const customer_address = "customer_address";
+const customer_city = "customer_city";
+const customer_country = "customer_country";
+
+%>
+
 <div class="dashboard">
     <header class="dashboard__header">
 
@@ -44,12 +56,27 @@
                         <input 
                             type="text" 
                             id="customerName" 
-                            name="customer_name" 
+                            name="<%= customer_name %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleCustomerRecord.customerName %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer Name %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_name ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Customer Email -->
@@ -58,12 +85,27 @@
                         <input 
                             type="email" 
                             id="customerEmail" 
-                            name="customer_email" 
+                            name="<%= customer_email %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleCustomerRecord.customerEmail %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer Email %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_email ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>
@@ -77,13 +119,28 @@
                         <input 
                             type="password" 
                             id="password" 
-                            name="customer_password" 
+                            name="<%= customer_password %>" 
                             class="dashboard__secion-form-input"
                             maxlength="50"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer Password %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_password ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
-                    <!-- Customer Address -->
+                    <!-- Confirm Password -->
                     <div class="dashboard__secion-form-group">
                         <label for="confirmPassword" class="dashboard__secion-form-label">Confirm Password</label>
                         <input 
@@ -105,12 +162,27 @@
                         <input 
                             type="text" 
                             id="customerPhone" 
-                            name="customer_phone" 
+                            name="<%= customer_phone %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleCustomerRecord.customerPhone %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer Phone %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_phone ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Customer Address -->
@@ -119,11 +191,26 @@
                         <input 
                             type="text" 
                             id="customerAddress" 
-                            name="customer_address" 
+                            name="<%= customer_address %>" 
                             class="dashboard__secion-form-input"
                             required="required"
                             value="<%= singleCustomerRecord.customerAddress %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer Address %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_address ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>
@@ -137,12 +224,27 @@
                         <input 
                             type="text" 
                             id="customerCity" 
-                            name="customer_city" 
+                            name="<%= customer_city %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleCustomerRecord.customerCity %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer City %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_city ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Customer Address -->
@@ -151,11 +253,26 @@
                         <input 
                             type="text" 
                             id="customerCountry" 
-                            name="customer_country" 
+                            name="<%= customer_country %>" 
                             class="dashboard__secion-form-input"
                             required="required"
                             value="<%= singleCustomerRecord.customerCountry %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Customer Country %>
+                        <div class="error-message">
+                            <% customerRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == customer_country ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>

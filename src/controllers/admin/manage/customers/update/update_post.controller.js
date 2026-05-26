@@ -1,8 +1,17 @@
 import CustomerCollection from "../../../../../models/customers.model.js";
+import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 
 const UpdateCustomerRecordCtrlPost = async ( req, res, next ) => {
     try {
+
+        let errors = validationResult( req );
+
+        if ( !errors.isEmpty() ) {
+            req.session.customerRecordsErrors = errors.errors;
+            return res.redirect(`/admin/manage/customers/update/${ req.params.id }`);
+        }
+
         let singleCustomerRecord = 
         await CustomerCollection.findById( req.params.id );
 
