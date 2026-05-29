@@ -17,6 +17,10 @@ import SuppliersCollection from "../../../../../models/suppliers.model.js";
 const UpdateSupplierRecordsCtrl = async ( req, res, next ) => {
     try {
 
+        const supplierRecordsErrors = req.session.supplierRecordsErrors || [];
+
+        req.session.supplierRecordsErrors = null;
+
         /**
          * Fetch a supplier record by ID from the database.
          * If a matching record is found, store it in `singleSupplierRecordInDB`.
@@ -42,8 +46,8 @@ const UpdateSupplierRecordsCtrl = async ( req, res, next ) => {
         res.render(
             "admin/manage/suppliers/update",
             {
-                updatedSupplierRecord : {},
-                singleSupplierRecordInDB
+                singleSupplierRecordInDB,
+                supplierRecordsErrors
             }
         );
 

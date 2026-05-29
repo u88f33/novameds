@@ -1,5 +1,14 @@
 <%- include( "../../../partials/admin/sidebar" ) -%>
 
+<% 
+
+const supplier_name = "supplier_name";
+const supplier_email = "supplier_email";
+const supplier_phone = "supplier_phone";
+const supplier_address = "supplier_address";
+
+%>
+
 <div class="dashboard">
     <header class="dashboard__header">
 
@@ -44,12 +53,27 @@
                         <input 
                             type="text" 
                             id="supplierName" 
-                            name="supplier_name" 
+                            name="<%= supplier_name %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleSupplierRecordInDB.supplierName %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Name %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_name ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Supplier Email -->
@@ -58,12 +82,27 @@
                         <input 
                             type="email" 
                             id="supplierEmail" 
-                            name="supplier_email" 
+                            name="<%= supplier_email %>" 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleSupplierRecordInDB.supplierEmail %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_email ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>
@@ -77,12 +116,27 @@
                         <input 
                             type="text" 
                             id="supplierPhone" 
-                            name="supplier_phone" 
+                            name="<%= supplier_phone %> " 
                             class="dashboard__secion-form-input"
                             required="true"
                             maxlength="50"
                             value="<%= singleSupplierRecordInDB.supplierPhone %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_phone ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                     <!-- Supplier Address -->
@@ -91,11 +145,26 @@
                         <input 
                             type="text" 
                             id="supplierAddress" 
-                            name="supplier_address" 
+                            name="<%= supplier_address %>" 
                             class="dashboard__secion-form-input"
                             required="required"
                             value="<%= singleSupplierRecordInDB.supplierAddress %>"
                         />
+
+                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <div class="error-message">
+                            <% supplierRecordsErrors.forEach(error => { %>
+                                <% if ( error.path == supplier_address ) { %>
+                                    <span class="text-danger d-block me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } else { %>
+                                    <span class="text-danger d-none me-3">
+                                        &#128204; <%= error.msg %>
+                                    </span>
+                                <% } %>
+                            <% }); %>
+                        </div>
                     </div>
 
                 </div>
@@ -112,33 +181,6 @@
                 </form>
             </div>
         </div>
-
-        <% if ( Object.keys( updatedSupplierRecord ).length != 0 ) { %>
-            <div class="dashboard__section-main mt-5">
-                <p class="alert alert-primary mt-5 mb-4 border border-primary">Supplier record Updated successfully</p>
-                <h3 class="dashboard__section-title mt-3 mb-3">Updated Record:</h3>
-                <table class="dashboard__section-table supplier_update_table">
-                    <tbody>
-                        <tr>
-                            <th>Supplier Name</th>
-                            <td><%= updatedSupplierRecord.supplierName %></td>
-                        </tr>
-                        <tr>
-                            <th>Supplier Email</th>
-                            <td><%= updatedSupplierRecord.supplierEmail %></td>
-                        </tr>
-                        <tr>
-                            <th>Supplier Contact</th>
-                            <td><%= updatedSupplierRecord.supplierPhone %></td>
-                        </tr>
-                        <tr>
-                            <th>Supplier Address</th>
-                            <td><%= updatedSupplierRecord.supplierAddress %></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        <% } %>
 
     </div>
 </div>

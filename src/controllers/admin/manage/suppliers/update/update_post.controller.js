@@ -1,4 +1,5 @@
 import SuppliersCollection from "../../../../../models/suppliers.model.js";
+import { validationResult } from "express-validator";
 
 /**
  * Developer: Muhammad Umar Farooq
@@ -18,6 +19,15 @@ import SuppliersCollection from "../../../../../models/suppliers.model.js";
 const UpdateSupplierRecordsCtrlPost = async ( req, res, next ) => {
 
     try {
+
+        let errors = validationResult( req );
+
+        if ( !errors.isEmpty() ) {
+            req.session.supplierRecordsErrors = errors.errors;
+            return res.redirect(
+                `/admin/manage/suppliers/update/${ req.params.id }` 
+            );
+        }
 
         /**
          * Extract data from form field
@@ -62,12 +72,8 @@ const UpdateSupplierRecordsCtrlPost = async ( req, res, next ) => {
          * - Used in "update_get.controller.js" having old record
          * of a supplier in a database. 
          */
-        res.render(
-            `admin/manage/suppliers/update`,
-            {
-                singleSupplierRecordInDB: {},
-                updatedSupplierRecord
-            }
+        res.redirect(
+            `admin/manage/suppliers/update/?message=Supplier record updated successfully`
         );
 
     } catch ( error ) {
