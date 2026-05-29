@@ -19,7 +19,7 @@ const AddMedicineRecordCtrl = async ( req, res, next ) => {
     res.render(
         "admin/manage/medicines/add",
         {
-            successMessage: req.query.message,
+            message: req.query.message,
             suppliersRecords,
             medicineRecordsErrors
         }
