@@ -151,7 +151,7 @@ const supplier_address = "supplier_address";
                             value="<%= singleSupplierRecordInDB.supplierAddress %>"
                         />
 
-                        <%# Display Error Messages on entering Invalid Supplier Email %>
+                        <%# Display Error Messages on entering Invalid Supplier Address %>
                         <div class="error-message">
                             <% supplierRecordsErrors.forEach(error => { %>
                                 <% if ( error.path == supplier_address ) { %>
