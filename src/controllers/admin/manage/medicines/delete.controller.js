@@ -13,21 +13,23 @@ const DeleteMedicineRecordCtrl = async ( req, res, next ) => {
     */
    if ( totalMedicineRecordsInDb <= 20 ) {
        return res.redirect( 
-           `/admin/manage/medicines/?message=This Demo Project must contains at least 20 records. Add more records to delete` 
+           `/admin/manage/medicines/?errorMessage=This Demo Project must contains at least 20 records. Add more records to delete` 
         );
     }
 
     const deletedMedicineRecordFromDB = 
     await MedicinesCollection.findByIdAndDelete( req.params.id );
     
-    fs.unlink( 
-        path.join(
-            process.cwd(), "public", "uploads", "medicines", deletedMedicineRecordFromDB.medicineImage
-        ),
-        err => {
-            ( err )? console.log( `Error: ${err}` ) : console.log( `Image ${deletedMedicineRecordFromDB.medicineImage} deleted successfully` )
-        }
-    );
+    if ( !deletedMedicineRecordFromDB.medicineImage.includes("no-image") ) {
+        fs.unlink( 
+            path.join(
+                process.cwd(), "public", "uploads", "medicines", deletedMedicineRecordFromDB.medicineImage
+            ),
+            err => {
+                ( err )? console.log( `Error: ${err}` ) : console.log( `Image ${deletedMedicineRecordFromDB.medicineImage} deleted successfully` )
+            }
+        );
+    }
 
     if ( !deletedMedicineRecordFromDB ) {
         console.log( "Medicine Record not found" );

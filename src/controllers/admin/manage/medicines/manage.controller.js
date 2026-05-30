@@ -19,6 +19,7 @@ const ManageMedicineRecordsCtrl = async ( req, res, next ) => {
         "admin/manage/medicines/manage",
         {
             message: req.query.message,
+            errorMessage: req.query.errorMessage,
             MedicineRecordsPaginationInfo,
             MedicineRecordsArray
         }

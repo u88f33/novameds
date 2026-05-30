@@ -20,6 +20,7 @@ const AddMedicineRecordCtrl = async ( req, res, next ) => {
         "admin/manage/medicines/add",
         {
             message: req.query.message,
+            errorMessage: req.query.errorMessage,
             suppliersRecords,
             medicineRecordsErrors
         }

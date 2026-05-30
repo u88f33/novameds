@@ -19,7 +19,7 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
         // Admin can not add more than 50 Medicine records in Database.
         if ( totalMedicineRecordsInDb >= 50 ) {
             return res.redirect( 
-                "/admin/manage/medicines/add?message=You cannot add more than 50 Medicine Records in this Node.JS Demo Project"
+                "/admin/manage/medicines/add?errorMessage=You cannot add more than 50 Medicine Records in this Node.JS Demo Project"
             ); 
         }
 
@@ -62,7 +62,7 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
 
     } catch ( error ) {
         res.redirect(
-            `/admin/manage/medicines/add?message=${error}`
+            `/admin/manage/medicines/add?errorMessage=${error}`
         );
 
         console.log( 
