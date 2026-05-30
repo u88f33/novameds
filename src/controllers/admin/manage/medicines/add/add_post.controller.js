@@ -14,6 +14,15 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
             return res.redirect(`/admin/manage/medicines/add`);
         }
 
+        const totalMedicineRecordsInDb = await MedicinesCollection.countDocuments();
+        
+        // Admin can not add more than 50 Medicine records in Database.
+        if ( totalMedicineRecordsInDb >= 50 ) {
+            return res.redirect( 
+                "/admin/manage/medicines/add?message=Maximam 50 records are allowed. Delete some of the medicines to add more."
+            ); 
+        }
+
         // Values received from a form in "/views/admin/manage/medicines/add.ejs"
         const {
             medicine_name,
@@ -47,14 +56,22 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
             message = "Failed to insert record in Database"
         }
 
-        const suppliersRecords = await SuppliersCollection.find();
-        res.redirect( "/admin/manage/medicines/add?message=New Medicine Record added successfully" );
+        res.redirect( 
+            "/admin/manage/medicines/add?message=New Medicine Record added successfully" 
+        );
 
     } catch ( error ) {
+        res.redirect(
+            `/admin/manage/medicines/add?message=${error}`
+        );
+
         console.log( 
             "/src/controllers/admin/manage/medicines/add/add_post.controllers.js" 
         );
-        console.log( `Error: ${ error }` );
+
+        console.log( 
+            `Error: ${ error }` 
+        );
     }
 
 }
