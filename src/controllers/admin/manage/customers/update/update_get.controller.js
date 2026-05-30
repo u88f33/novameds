@@ -14,6 +14,7 @@ const UpdateCustomerRecordCtrl = async ( req, res, next ) => {
         {
             singleCustomerRecord,
             customerRecordsErrors,
+            message: req.query.message,
             errorMessage: req.query.errorMessage
         }
     )
