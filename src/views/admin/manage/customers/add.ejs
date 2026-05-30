@@ -294,9 +294,17 @@ const customer_country = "customer_country";
 
     </div>
 
+    <% if ( message ) { %>
+        <div class="dashboard__section">
+            <p class="alert alert-primary border border-primary">
+                <%= message %>
+            </p>    
+        </div>
+    <% } %>
+
     <% if ( errorMessage ) { %>
         <div class="dashboard__section">
-            <p class="alert alert-danger">
+            <p class="alert alert-danger border border-danger">
                 <%= errorMessage %>
             </p>    
         </div>

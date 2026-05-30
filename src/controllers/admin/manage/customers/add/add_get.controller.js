@@ -1,5 +1,6 @@
 const AddCustomerRecordCtrl = ( req, res, next ) => {
-    const errorMessage = req.query.error || "";
+    const message = req.query.message || "";
+    const errorMessage = req.query.errorMessage || "";
 
     const customerRecordsErrors = req.session.customerRecordsErrors || [];
 
@@ -8,6 +9,7 @@ const AddCustomerRecordCtrl = ( req, res, next ) => {
     res.render(
         "admin/manage/customers/add",
         {
+            message,
             errorMessage,
             customerRecordsErrors
         }

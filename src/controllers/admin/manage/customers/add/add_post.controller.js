@@ -12,6 +12,15 @@ const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
             return res.redirect(`/admin/manage/customers/add`);
         }
 
+        // Admin cannot insert more than 10 Customer Records in the database
+        const totalCustomerRecordsInDb = await CustomersCollection.countDocuments();
+        console.log( totalCustomerRecordsInDb );
+        if ( totalCustomerRecordsInDb >= 20 ) {
+            return res.redirect( 
+                "/admin/manage/customers/add/?errorMessage=You can only add maximam 20 customer records in this demo project. To add more, delete some records to make sure there must be only 20 customer records"
+            )
+        }
+
         const {
             customer_name,
             customer_email,
@@ -24,7 +33,7 @@ const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
         } = req.body;
 
         if ( customer_password != customer_confirm_password ) {
-            return res.redirect( "/admin/manage/customers/add/?error=Password do not match" )
+            return res.redirect( "/admin/manage/customers/add/?errorMessage=Password do not match" )
         }
         
         const hashedPassword = await bcrypt.hash( customer_password, 10 );
@@ -39,7 +48,7 @@ const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
             customerCountry: customer_country
         };
 
-        const dataInsertedInMongoDB = await CustomersCollection.insertMany(
+        const dataInsertedInMongoDB = await CustomersCollection.insertOne(
             customerRecord
         );
 
@@ -47,10 +56,15 @@ const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
             console.log( "Data cannot be inserted in MongoDB" );
         }
         
-        res.redirect( "/admin/manage/customers/add" );
+        res.redirect( `/admin/manage/customers/add/?message=New Customer Record added successfully` );
     } catch ( error ) {
         console.log( "/src/controllers/admin/manage/customers/add/add_post.controller.js" );
         console.log( `Data cannot be inserted in MongoDB: ${ error }` );
+        
+        res.redirect( 
+            `/admin/manage/customers/add/?errorMessage=${error}`
+        );
+
     }
 }
 
