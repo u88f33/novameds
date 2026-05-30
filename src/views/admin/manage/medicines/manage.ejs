@@ -162,8 +162,17 @@
 
 
         </div>
-
+        
+        <% if ( message ) { %>
+            <div class="dashboard__section-main mt-5">
+                <p class="alert alert-secondary mt-5 mb-4 border border-primary text-primary">
+                    <%= message  %>
+                </p>
+            </div>
+        <% } %>
+        
     </div>
+
 </div>
 
 <script src="/js/scripts/confirmDelete/confirmDelete.js"></script>
