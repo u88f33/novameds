@@ -22,6 +22,12 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
             return res.redirect(`/admin/manage/suppliers/add`);
         }
 
+        let totalSupplierRecords = await SuppliersCollection.countDocuments();
+        
+        if ( totalSupplierRecords >= 30 ) {
+            return res.redirect(`/admin/manage/suppliers/add/?errorMessage=Only 30 records are allowed. Delete some records to add more!!!`);
+        }
+
 
         /* 
         * The data recieved in "req.body" is stored in individual variables using
@@ -62,15 +68,21 @@ const AddSupplierRecordsCtrlPost = async ( req, res, next ) => {
             console.log( "Failed to insert Supplier Record in Database" );
         }
 
+        
+        res.redirect( `/admin/manage/suppliers/add/?message=Supplier Record Added successfully` );
+
     } catch ( error ) {
+
+        res.redirect(
+            `/admin/manage/suppliers/add/?errorMessage=${ error }`
+        );
+
+
         console.log( 
             `File path: src/controllers/admin/manage/suppliers/add/add_post.controller.js` 
         );
         console.log( `Error: ${ error }` );
     }
-    
-
-    res.redirect( "/admin/manage/suppliers/add" );
 }
 
 export default AddSupplierRecordsCtrlPost;

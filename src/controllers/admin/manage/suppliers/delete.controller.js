@@ -4,15 +4,18 @@ const DeleteSupplierRecordCtrl = async ( req, res, next ) => {
 
     try {
 
+        let totalSupplierRecords = await SuppliersCollection.countDocuments();
+        
+        if ( totalSupplierRecords <= 15 ) {
+            return res.redirect(`/admin/manage/suppliers/?errorMessage=This Demo Project must contains at least 15 supplier records.`);
+        }
+
         const deletedSupplierRecord = 
         await SuppliersCollection.findByIdAndDelete( req.params.id );
 
         if ( !deletedSupplierRecord ) {
             console.log( "Supplier Record not found." );
         }
-
-        console.log( "Supplier Record deleted successfully" );
-        console.log( deletedSupplierRecord );
         
         res.redirect( "/admin/manage/suppliers" );
 

@@ -5,6 +5,8 @@ const ManageSupplierRecordsCtrl = async ( req, res, next ) => {
 
     try {
 
+        let message = req.query.message || "";
+        let errorMessage = req.query.errorMessage || "";
         const page = Number.parseInt(req.query.page) || 1;
         const limit = Number.parseInt(req.query.limit) || 5;
         const skip = ( page - 1 ) * limit;
@@ -25,7 +27,9 @@ const ManageSupplierRecordsCtrl = async ( req, res, next ) => {
             {
                 suppliersRecordsInDatabase,
                 currentPage: page,
-                totalPages
+                totalPages,
+                message,
+                errorMessage
             }
         );
 
