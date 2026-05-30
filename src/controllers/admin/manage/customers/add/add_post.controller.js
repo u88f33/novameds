@@ -14,7 +14,7 @@ const AddCustomerRecordCtrlPost = async ( req, res, next ) => {
 
         // Admin cannot insert more than 10 Customer Records in the database
         const totalCustomerRecordsInDb = await CustomersCollection.countDocuments();
-        console.log( totalCustomerRecordsInDb );
+        
         if ( totalCustomerRecordsInDb >= 20 ) {
             return res.redirect( 
                 "/admin/manage/customers/add/?errorMessage=You can only add maximam 20 customer records in this demo project. To add more, delete some records to make sure there must be only 20 customer records"

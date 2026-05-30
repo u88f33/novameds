@@ -223,15 +223,13 @@ const customer_country = "customer_country";
                     <!-- Customer City -->
                     <div class="dashboard__secion-form-group">
                         <label for="customerCity" class="dashboard__secion-form-label">Customer City</label>
-                        <input 
-                            type="text" 
+                        <select
                             id="customerCity" 
                             name="<%= customer_city %>" 
-                            class="dashboard__secion-form-input"
+                            class="dashboard__secion-form-select"
                             required="true"
-                            maxlength="50"
-                            placeholder="Islamabad"
-                        />
+                        >
+                        </select>
 
                         <%# Display Error Messages on entering Invalid Customer City %>
                         <div class="error-message">
@@ -311,4 +309,8 @@ const customer_country = "customer_country";
     <% } %>
 </div>
 
+<script>
+    let citySelectedByCustomer = "";
+</script>
+<script type="module" src="/js/scripts/userCityInfo/addCustomerCityByAdmin.js"></script>
 <%- include( "../../../partials/admin/footer" ) -%>
