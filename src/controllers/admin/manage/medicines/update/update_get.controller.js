@@ -14,6 +14,12 @@ const UpdateMedicineRecordCtrl = async ( req, res, next ) => {
     .findById( req.params.id )
     .populate("supplierId");
 
+    
+    if ( medicineRecordFromDB.supplierId == null ) {
+        medicineRecordFromDB.supplierId == "Supplier Record of this mediicine deleted";
+        console.log( `Supplier Record: S400: ${ medicineRecordFromDB }` );
+    }
+
     // Clearing errors after storing in "medicineRecordsErros";
     req.session.medicineRecordsErrors = null;
 
