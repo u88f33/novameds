@@ -22,7 +22,7 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
                 "/admin/manage/medicines/add?errorMessage=You cannot add more than 50 Medicine Records in this Node.JS Demo Project"
             ); 
         }
-
+        
         // Values received from a form in "/views/admin/manage/medicines/add.ejs"
         const {
             medicine_name,
@@ -31,7 +31,10 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
             medicine_stock,
             supplier_id
         } = req.body;
+        
 
+        let supplierRecord = await SuppliersCollection.findById( supplier_id );
+        
         // Defining an object storing keys map with Medicines Collection Schema.
         const medicineRecord = {
             medicineName: medicine_name,
@@ -39,6 +42,12 @@ const AddMedicineRecortCtrlPost = async ( req, res, next ) => {
             medicinePrice: medicine_price,
             medicineStock: medicine_stock,
             supplierId: supplier_id,
+            supplierDetails: {
+                supplierName: supplierRecord.supplierName,
+                supplierEmail: supplierRecord.supplierEmail,
+                supplierPhone: supplierRecord.supplierPhone,
+                supplierAddress: supplierRecord.supplierAddress
+            },
             medicineImage: "no-image.jpg"
         }
 

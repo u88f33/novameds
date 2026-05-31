@@ -1,4 +1,5 @@
 import MedicinesCollection from "../../../../../models/medicines.model.js";
+import SuppliersCollection from "../../../../../models/suppliers.model.js";
 import fs from "fs";
 import path from "path";
 import { validationResult } from 'express-validator';
@@ -24,12 +25,20 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
         supplier_id
     } = req.body;
 
+    const supplierRecord = await SuppliersCollection.findById( supplier_id )
+
     const updatedMedicineRecord = {
         medicineName: medicine_name,
         medicineCategory: medicine_category,
         medicinePrice: medicine_price,
         medicineStock: medicine_stock,
         supplierId: supplier_id,
+        supplierDetails: {
+            supplierName: supplierRecord.supplierName,
+            supplierEmail: supplierRecord.supplierEmail,
+            supplierPhone: supplierRecord.supplierPhone,
+            supplierAddress: supplierRecord.supplierAddress
+        },
         medicineImage: oldMedicineRecordInDB.medicineImage
     }
 
@@ -46,10 +55,7 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
         updatedMedicineRecord.medicineImage = req.file.filename;
     }
 
-    console.log( `Current Working Directory: ${ process.cwd() }` );
-
-
-
+    
     const updatedMedicineRecordInDB = await MedicinesCollection
     .findByIdAndUpdate( 
         req.params.id, 
@@ -59,11 +65,9 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
 
     if ( !updatedMedicineRecordInDB ) {
         console.log( "Unable to update Medicine record in Database" );
-    }
+    }    
 
-    console.log( "Medicine Record in Database updated successfully" );
-
-    res.redirect( `/admin/manage/medicines/update/${req.params.id}` );
+    res.redirect( `/admin/manage/medicines/update/${req.params.id}/?message=Medicine record Updated successfully` );
 }
 
 export default UpdateMedicineRecordCtrlPost;

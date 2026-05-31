@@ -5,6 +5,7 @@ import MedicinesCollection from "../../../../../models/medicines.model.js";
 const UpdateMedicineRecordCtrl = async ( req, res, next ) => {
 
     const medicineRecordsErrors = req.session.medicineRecordsErrors || [];
+    let message = req.query.message || "";
 
     const suppliersRecordsFromDB = await SuppliersCollection
     .find();
@@ -21,7 +22,8 @@ const UpdateMedicineRecordCtrl = async ( req, res, next ) => {
         {
             suppliersRecordsFromDB,
             medicineRecordsErrors,
-            medicineRecordFromDB
+            medicineRecordFromDB,
+            message
         }
     )
 }

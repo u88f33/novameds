@@ -33,7 +33,7 @@ const valideteMedicineRecord = [
   .notEmpty()
   .withMessage( "Medicine Category is required" )
   .isLength( { min: 2, max: 100 } )
-  .matches(/^[A-Za-z\s\-\/]+$/i)
+  .matches(/^[A-Za-z\s\-\/\.,]+$/i)
   .withMessage("Only Alphabets and Spaces are allowed"),
 
   body("medicine_price")
