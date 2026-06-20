@@ -22,16 +22,20 @@ const UserLoginPostCtrl = async ( req, res, next ) => {
             )
         }
 
-        const matchUserPassword = await bcrypt.compare( user_password, findUser.customerPassword );
+        const matchUserPassword = 
+        await bcrypt.compare( 
+            user_password, 
+            findUser.customerPassword 
+        );
 
         if ( !matchUserPassword ) {
             console.log( "Password do not matched" );
             return res.redirect( "/login/?errorMessage=Password do not matched" );
         }
 
-        // Token implementation on Login using "jsonwebtoken"
+        // Token implementation for User on Login using "jsonwebtoken"
         const payload = {
-            userId: findUser.customerName,
+            userId: findUser._id,
             role: "User"
         };
 
@@ -44,19 +48,20 @@ const UserLoginPostCtrl = async ( req, res, next ) => {
             options
         );
 
-        res.cookie( 
-            "userToken", 
-            token,
-            {
-                
-            }
-        );
-
         // Session
         req.session.userLoginSession = {
             userId: findUser._id,
             userName: findUser.customerName
         }
+
+        res.cookie( 
+            "userToken", 
+            token,
+            {
+                maxAge: 1000 * 60 * 60,
+                httpOnly: true
+            }
+        );
 
         res.redirect('/profile');
         
