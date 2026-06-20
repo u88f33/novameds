@@ -1,5 +1,9 @@
 import CustomerCollections from "../../../../models/customers.model.js";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+
+dotenv.config();
 
 const UserLoginPostCtrl = async ( req, res, next ) => {
 
@@ -24,6 +28,29 @@ const UserLoginPostCtrl = async ( req, res, next ) => {
             console.log( "Password do not matched" );
             return res.redirect( "/login/?errorMessage=Password do not matched" );
         }
+
+        // Token implementation on Login using "jsonwebtoken"
+        const payload = {
+            userId: findUser.customerName,
+            role: "User"
+        };
+
+        const jwt_secret = process.env.JWT_SECRET_KEY;
+        const options = { expiresIn: "1h" };
+
+        const token = jwt.sign(
+            payload,
+            jwt_secret,
+            options
+        );
+
+        res.cookie( 
+            "userToken", 
+            token,
+            {
+                
+            }
+        );
 
         // Session
         req.session.userLoginSession = {

@@ -13,7 +13,7 @@ router.use( "/", AuthRoute );
 router.use( "/", ApiRoutes );
 
 
-router.use( "/admin", AdminRoute );
+router.use( "/admin", AdminLoginMiddleware, AdminRoute );
 
 
 router.use( "/profile", UserLoginMiddleware, UserRoute );

@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
 import path from "path";
+import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import connectDB from "./src/config/database.connection.js";
@@ -16,6 +17,10 @@ const DATABASE_NAME = process.env.DATABASE_NAME;  // novameds
 connectDB( MONGO_URI, DATABASE_NAME );
 
 const app = express();
+
+app.use(
+  cookieParser()
+);
 
 // Session Middleware
 app.use( session( 
