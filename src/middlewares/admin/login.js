@@ -15,8 +15,6 @@ const AdminLoginMiddleware = ( req, res, next ) => {
             res.redirect( "/login" );
         }
 
-        console.log( verification );
-        console.log( req.cookies );
         next();
 
     } catch ( err ) {

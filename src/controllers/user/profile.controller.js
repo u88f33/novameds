@@ -21,6 +21,16 @@ const UserProfileCtrl = async ( req, res, next ) => {
         limit
     });
 
+    /* 
+        If an admin tries to access the "/profile" route, then first check
+        whether the value of "req.session.userLoginSession" is set, then
+        opens the "user/profile.ejs". Otherwise redirect to "/login" route.
+    */
+    if ( !req.session.userLoginSession ) {
+        return res.redirect( "/login" )
+    }
+    
+
     res.render(
         "user/profile",
         {
