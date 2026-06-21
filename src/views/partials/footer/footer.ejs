@@ -3,16 +3,25 @@
 </footer>
 <script>
     async function getTotalCartItems() {
-        const fetchCart = await fetch( "/profile/cart/api" );
-        let response = await fetchCart.json();
-        const totalCartItems = response.length;
+        
+        try {
 
-        let displayTotalCartItems = document.getElementById( "cart-text" );
-        if ( window.location.pathname.indexOf("/profile") < 0 ) {
-            displayTotalCartItems.innerText = 0;
-        } else {
-            displayTotalCartItems.innerText = totalCartItems;
+            const fetchCart = await fetch( "/profile/cart/api" );
+            let response = await fetchCart.json();
+            const totalCartItems = response.length;
+
+            let displayTotalCartItems = document.getElementById( "cart-text" );
+            if ( window.location.pathname.indexOf("/profile") < 0 ) {
+                displayTotalCartItems.innerText = 0;
+            } else {
+                displayTotalCartItems.innerText = totalCartItems;
+            }
+
+        } catch ( err ) {
+            console.log( `Error while fetching Cart items` );
+            console.log( `Error Message: ${ err.message }` );
         }
+
     }
 
     getTotalCartItems();

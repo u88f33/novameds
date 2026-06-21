@@ -60,7 +60,8 @@ const UserLoginPostCtrl = async ( req, res, next ) => {
             {
                 maxAge: 1000 * 60 * 60,
                 httpOnly: true,
-                secure: false
+                secure: false,
+                path: "/"
             }
         );
 
