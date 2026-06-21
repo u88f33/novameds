@@ -14,20 +14,23 @@ const UserLogoutGetCtrl = ( req, res, next ) => {
             process.env.JWT_SECRET_KEY
         )
 
-        if ( decodeAdminToken.role == "Admin" ) {
+        if ( decodeAdminToken ) {
             return res.redirect( "/admin/manage/customers" );
         } 
 
     } catch ( err ) {
         
-        res.clearCookie( "userToken", {
-            httpOnly: true,
-            secure: false
-        });
-        
-        res.redirect( "/login" );
+        console.log( `Error: ${ err }` );
+        res.redirect( "/admin/manage/customers" );
 
     }
+
+    res.clearCookie( "userToken", {
+        httpOnly: true,
+        secure: false
+    });
+    
+    res.redirect( "/login" );
 
 }
 
