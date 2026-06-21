@@ -1,7 +1,8 @@
 const UserLogoutGetCtrl = ( req, res, next ) => {
 
     res.clearCookie( "userToken", {
-        httpOnly: true
+        httpOnly: true,
+        secure: false
     });
     
     res.redirect( "/login" );

@@ -1,8 +1,26 @@
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const AdminLoginMiddleware = ( req, res, next ) => {
-    if ( req.session.adminLoginSession ) {
+    try {
+
+        const verification = jwt.verify(
+            req.cookies.adminToken,
+            process.env.JWT_SECRET_KEY
+        );
+
+        if ( !verification ) {
+            res.redirect( "/login" );
+        }
+
+        console.log( verification );
+        console.log( req.cookies );
         next();
-    } else {
-        res.redirect( "/login" );
+
+    } catch ( err ) {
+       res.redirect('/login');
     }
 }
 

@@ -1,5 +1,9 @@
 import AdminCollection from "../../../../models/admin.model.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import bcrypt from "bcryptjs";
+
+dotenv.config();
 
 const AdminLoginPostCtrl = async ( req, res, next ) => {
 
@@ -27,6 +31,27 @@ const AdminLoginPostCtrl = async ( req, res, next ) => {
         req.session.adminLoginSession = {
             adminCredentials: findAdminByEmail
         }
+
+        const payload = {
+            adminId: findAdminByEmail._id,
+            role: "Admin"
+        }
+
+        const jwt_secret = process.env.JWT_SECRET_KEY || undefined;
+        const options = {
+            "expiresIn": "1h"
+        };
+
+        const token = jwt.sign(
+            payload, jwt_secret, options
+        );
+
+        res.cookie("adminToken", token, {
+            maxAge: 1000 * 60 * 60,
+            httpOnly: true,
+            secure: false
+        });
+        
 
         res.redirect( "/admin" );
 

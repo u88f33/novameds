@@ -59,7 +59,8 @@ const UserLoginPostCtrl = async ( req, res, next ) => {
             token,
             {
                 maxAge: 1000 * 60 * 60,
-                httpOnly: true
+                httpOnly: true,
+                secure: false
             }
         );
 
