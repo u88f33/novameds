@@ -3,30 +3,41 @@ import MedicinesCollection from "../../models/medicines.model.js";
 
 
 const BrowseMedicinesByLoggedInUserCtrl = async ( req, res ,next ) => {
-    const medicineRecords = await medicineRecordsArray();
 
-    const page = req.query.page || 1;
-    const limit = req.query.limit || 12;
-    const medicineCategory = req.query.category || "";
+    try {
 
-    const search = ( medicineCategory != "" )? { medicineCategory } : {};
+        const medicineRecords = await medicineRecordsArray();
 
-    const medicinesRecordsPaginationInfo = 
-    await MedicinesCollection.paginate( search, {
-        page,
-        limit
-    });
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 12;
+        const medicineCategory = req.query.category || "";
 
-    res.render(
-        "user/browseMedicines.ejs",
-        {
-            MedicinesRecordsFromDB: medicinesRecordsPaginationInfo.docs,
-            medicineRecords,
-            medicinesRecordsPaginationInfo,
-            nameOfLoggedInUser: req.session.userLoginSession.userName,
-            loggedInUserId: req.session.userLoginSession.userId
-        }
-    );
+        const search = ( medicineCategory != "" )? { medicineCategory } : {};
+
+        const medicinesRecordsPaginationInfo = 
+        await MedicinesCollection.paginate( search, {
+            page,
+            limit
+        });
+
+        res.render(
+            "user/browseMedicines.ejs",
+            {
+                MedicinesRecordsFromDB: medicinesRecordsPaginationInfo.docs,
+                medicineRecords,
+                medicinesRecordsPaginationInfo,
+                nameOfLoggedInUser: req.session.userLoginSession.userName,
+                loggedInUserId: req.session.userLoginSession.userId
+            }
+        );
+
+    } catch ( err ) {
+
+        console.log( "/src/controllers/user/browse-medicines.controller.js" );
+        console.log( `Error: ${ err }` );
+
+    }
+
 }
 
 export default BrowseMedicinesByLoggedInUserCtrl;

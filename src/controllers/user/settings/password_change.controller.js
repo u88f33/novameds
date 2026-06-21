@@ -38,6 +38,11 @@ const ProfilePasswordChangeCtrlPost = async ( req, res, next ) => {
 
     await loggedInUser.save();
 
+    res.clearCookie( "userToken", {
+        httpOnly: true,
+        secure: false
+    } );
+
     req.session.destroy( () => {
         res.redirect( "/login" );
     } )
