@@ -3,10 +3,6 @@ import MedicineCollection from "../../../models/medicines.model.js";
 const LoginGetCtrl = async ( req, res, next ) => {
 
     try {
-        console.log( "**************************************" );
-        console.log( "Cookies on Login Page" );
-        console.log( "**************************************" );
-        console.log( req.cookies );
 
         const medicineRecords = await MedicineCollection.find();
 
@@ -16,7 +12,6 @@ const LoginGetCtrl = async ( req, res, next ) => {
                 errorMessage: req.query.errorMessage
             }
         );
-
 
     } catch ( err ) {
 
