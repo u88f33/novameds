@@ -43,14 +43,16 @@ const UpdateMedicineRecordCtrlPost = async ( req, res, next ) => {
     }
 
     if ( req.file ) {
-        fs.unlink( 
-            path.join(
-                process.cwd(), "public", "uploads", "medicines", oldMedicineRecordInDB.medicineImage
-            ),
-            err => {
-                ( err )? console.log( `Error: ${err}` ) : console.log( `Image ${oldMedicineRecordInDB.medicineImage} deleted successfully` )
-            }
-        );
+        if ( oldMedicineRecordInDB.medicineImage != "no-image.jpg" ) {
+            fs.unlink( 
+                path.join(
+                    process.cwd(), "public", "uploads", "medicines", oldMedicineRecordInDB.medicineImage
+                ),
+                err => {
+                    ( err )? console.log( `Error: ${err}` ) : console.log( `Image ${oldMedicineRecordInDB.medicineImage} deleted successfully` )
+                }
+            );
+        }
 
         updatedMedicineRecord.medicineImage = req.file.filename;
     }
