@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import connectDB from "./src/config/database.connection.js";
 import Routes from "./src/routes/index.js";
 import generatePDF from "./src/utils/salesReport/generatePdf.js"
+import MongoStore from "connect-mongo";
 
 // Initializing Environment variables from ".env" file
 dotenv.config();
@@ -28,11 +29,15 @@ app.use( session(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: `${MONGO_URI}/${DATABASE_NAME}`
+    }),
     cookie: {
       maxAge: 1000 * 60 * 60
     }
   }
 ) )
+
 
 /************************************************************************ */
 /**-------------------- Generate Daily Sales Function --------------------*/
@@ -61,7 +66,6 @@ app.use( express.urlencoded( { extended: false } ) );
 app.use( express.json() );
 
 app.use( "/", Routes );
-
 
 const PORT = process.env.PORT;
 app.listen( PORT, () => {

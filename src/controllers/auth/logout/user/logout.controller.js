@@ -13,6 +13,10 @@ const UserLogoutGetCtrl = ( req, res, next ) => {
         }
 
         if ( userToken ) {
+            req.session.destroy( () => {
+                console.log( "Session destroyed!!!" );
+            } );
+
             res.clearCookie( "userToken", {
                 httpOnly: true,
                 secure: false,
