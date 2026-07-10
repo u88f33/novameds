@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
 import path from "path";
+import passport from "passport";
 import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -8,6 +9,7 @@ import connectDB from "./src/config/database.connection.js";
 import Routes from "./src/routes/index.js";
 import generatePDF from "./src/utils/salesReport/generatePdf.js"
 import MongoStore from "connect-mongo";
+import "./src/utils/passport/google.js";
 
 // Initializing Environment variables from ".env" file
 dotenv.config();
@@ -38,7 +40,8 @@ app.use( session(
   }
 ) )
 
-
+app.use( passport.initialize() );
+app.use( passport.session() );
 
 
 // Fix __dirname in ES modules
