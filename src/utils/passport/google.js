@@ -17,11 +17,27 @@ passport.use(new GoogleStrategy({
   async function(accessToken, refreshToken, profile, cb) {
     try {
 
-      let findUser = await CustomersColl.findOne( {} )
+      let findUser = await CustomersColl.findOne({
+        $or: [
+          { customerEmail: profile.emails[0].value },
+          { googleId: profile.id }
+        ]
+      });
+
+      let newUser;
+      if ( !findUser ) {
+        newUser = new CustomersColl();
+        newUser.customerName = profile.displayName;
+        newUser.customerEmail = profile.emails[0].value;
+        newUser.provider = 'google';
+        newUser.googleId = profile.id;
+        await newUser.save();  
+      }
+      return cb( null, newUser );
 
     } catch ( err ) {
       console.log( "Error while adding Google OAUTH data." );
-      profile( err, null )
+      cb( err, null )
     }
   }
 ));
