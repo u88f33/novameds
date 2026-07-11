@@ -14,12 +14,15 @@ passport.use(new GoogleStrategy({
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: GOOGLE_CALLBACK
   },
-  function(accessToken, refreshToken, profile, cb) {
-    console.log( "---------------------------------------------------" );
-    console.log( "GOOGLE STRATEGY" );
-    console.log( profile );
-    console.log( "---------------------------------------------------" );
-    return cb( null, profile );
+  async function(accessToken, refreshToken, profile, cb) {
+    try {
+
+      let findUser = await CustomersColl.findOne( {} )
+
+    } catch ( err ) {
+      console.log( "Error while adding Google OAUTH data." );
+      profile( err, null )
+    }
   }
 ));
 
