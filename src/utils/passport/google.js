@@ -24,16 +24,19 @@ passport.use(new GoogleStrategy({
         ]
       });
 
-      let newUser;
+
       if ( !findUser ) {
+        let newUser;
         newUser = new CustomersColl();
         newUser.customerName = profile.displayName;
         newUser.customerEmail = profile.emails[0].value;
         newUser.provider = 'google';
         newUser.googleId = profile.id;
         await newUser.save();  
+        return cb( null, newUser );
+      } else {
+        return cb( null, findUser );
       }
-      return cb( null, newUser );
 
     } catch ( err ) {
       console.log( "Error while adding Google OAUTH data." );
