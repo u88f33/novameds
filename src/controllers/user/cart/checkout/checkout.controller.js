@@ -15,6 +15,8 @@ const CartPageCtrl = async ( req, res, next ) => {
         totalAmount += cartRecords[i].price;
     }
 
+    const shippingInfoErrors = req.session.shippingInfoErrors || [];
+
     res.render(
         "user/checkout",
         {
@@ -24,7 +26,8 @@ const CartPageCtrl = async ( req, res, next ) => {
             totalAmount,
             nameOfLoggedInUser: req.session.userLoginSession.userName,
             loggedInUserId: customerId,
-            emptyCartMsg
+            emptyCartMsg,
+            shippingInfoErrors
         }
     );
 }

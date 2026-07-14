@@ -14,7 +14,7 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    postalCode: {
+    phoneNumber: {
         type: String,
     }
 }, { _id: false });

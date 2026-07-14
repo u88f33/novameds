@@ -14,12 +14,6 @@ const UserLogoutGetCtrl = async ( req, res, next ) => {
         }
 
         if ( userToken ) {
-            try {
-
-            } catch ( error ) {
-                console.log( "/src/controllers/auth/logout/user/logout.controller.js" );
-                console.log( `Error: ${ err }` )
-            }
 
             req.session.destroy( () => {
                 console.log( "Session destroyed!!!" );

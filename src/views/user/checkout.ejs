@@ -1,5 +1,12 @@
 <%- include( "../partials/header/postlogin" ) -%>
 
+<%
+const ship_address = "ship_address";
+const ship_city = "ship_city";
+const ship_state = "ship_state";
+const ship_phone = "ship_phone";
+%>
+
 <div class="container">
     <div class="row">
 
@@ -86,22 +93,47 @@
                                             <label for="ship_address">Shipping Address</label>
                                             <input 
                                                 type="text" 
-                                                name="ship_address"
-                                                id="ship_address"
+                                                name=<%= ship_address %>
+                                                id=<%= ship_address %>
                                                 class="shipping-form__input"
                                                 required="required" />
-                                                <div style="color:red;">
-                                                    * Error: Not found
+                                                <%# Display Shipping Address validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_address ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
                                                 </div>
                                         </div>
 
                                         <div class="shipping-form__field">
                                             <label for="ship_city">City</label>
                                             <input type="text" 
-                                                name="ship_city"
-                                                id="ship_city"
+                                                name=<%= ship_city %>
+                                                id=<%= ship_city %>
                                                 class="shipping-form__input"
                                                 required="required" />
+                                                <%# Display Shipping City validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_city ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
                                     </div>
 
@@ -110,19 +142,49 @@
                                         <div class="shipping-form__field">
                                             <label for="ship_state">State</label>
                                             <input type="text" 
-                                                name="ship_state" 
-                                                id="ship_state" 
+                                                name=<%= ship_state %> 
+                                                id=<%= ship_state %>
+                                                value="Pakistan"
                                                 class="shipping-form__input"
-                                                required="required" />
+                                                required="required"
+                                                readonly="true" />
+                                                <%# Display Shipping State validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_state ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
 
                                         <div class="shipping-form__field">
                                             <label for="ship_phone">Mobile number</label>
                                             <input type="text" 
-                                                name="ship_phone" 
-                                                id="ship_phone"
+                                                name=<%= ship_phone %> 
+                                                id=<%= ship_phone %>
                                                 required="required"
                                                 class="shipping-form__input" />
+                                                <%# Display Shipping City validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_phone ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
                                     </div>
 

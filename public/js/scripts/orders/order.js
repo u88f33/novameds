@@ -17,10 +17,10 @@ async function fetchCustomerAddress() {
 async function fillShippingAddress( inputId = "", inputValue = "" ) {
     try {
 
-        const user = await fetchCustomerAddress();
+        const userAddress = await fetchCustomerAddress();
 
         if ( inputValue ) {
-            document.getElementById( inputId ).value = user[inputValue];
+            document.getElementById( inputId ).value = userAddress[inputValue];
         } else {
             document.getElementById( inputId ).value = ""
         }
