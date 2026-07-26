@@ -28,9 +28,6 @@ const CartPageCtrl = async ( req, res, next ) => {
         "https://novameds.de/profile/cart/checkout/?paymentError=Payment is Cancelled"
     );
 
-    console.log( "newOrder get" );
-    console.log( newOrder );
-
     res.render(
         "user/checkout",
         {
