@@ -19,9 +19,10 @@ const CartPageCtrl = async ( req, res, next ) => {
     }
 
     const shippingInfoErrors = req.session.shippingInfoErrors || [];
-    
+
+    // Generate Safepay URL to show on checkout page
     const safpayRedirectUrl = await generateSafepayUrl(
-        totalAmount,
+        (totalAmount + 300),
         'PKR',
         newOrder._id.toString(),
         "https://novameds.de/profile/cart/checkout/?paymentSuccess=Payment is completed successfully",
