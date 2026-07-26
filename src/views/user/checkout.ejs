@@ -40,7 +40,7 @@ const ship_phone = "ship_phone";
                                     id="paywithcard_opt" 
                                     type="radio"
                                     name="payment_method" 
-                                    value="PayWithCard" /> Pay with Credit/Debit Card
+                                    value="Card" /> Pay with Credit/Debit Card
                             </label>
                         </div>
 
@@ -63,7 +63,7 @@ const ship_phone = "ship_phone";
                             </div>
 
                             <!-- PayWithCard -->
-                            <div id="PayWithCard" class="payment-box__info">
+                            <div id="Card" class="payment-box__info">
                                 <div class="payment-box__image-container w-100">
                                     <img 
                                         src="/assets/images/debit-card.png"
@@ -73,9 +73,20 @@ const ship_phone = "ship_phone";
                                 </div>
                                 <div class="payment-box__admin-account-info">
                                         <h3 class="mb-4">Pay with Credit/Debit Card</h3>
-                                        <a href="#" class="btn btn-danger">
+                                        <a href="<%= safpayRedirectUrl %>" target="_blank" class="btn btn-danger mb-3">
                                             Pay with Credit/Debit Card
                                         </a>
+                                        <% if ( paymentSuccess ) { %>
+                                            <div class="bg-success text-light rounded round-3 p-3">
+                                                <b>Your Payment was successfull</b>
+                                            </div>  
+                                        <% } %>
+
+                                        <% if ( paymentError ) { %>
+                                            <div class="bg-danger text-light rounded round-3 p-3">
+                                                <b>Error: Your Payment is Failed (Please try again)</b>
+                                            </div>  
+                                        <% } %>
                                 </div>
                             </div>
 

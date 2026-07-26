@@ -1,6 +1,9 @@
 import medicineRecordsArray from "../../../../utils/medicines/records.js"
 import cartRecordsArray from "../../../../utils/cart/record.js"
+import generateSafepayUrl from "../../../../utils/safepay/safepay.js";
+import OrderCollection from "../../../../models/order.model.js";
 
+let newOrder = new OrderCollection();
 
 const CartPageCtrl = async ( req, res, next ) => {
     const customerId = req.session.userLoginSession.userId;
@@ -16,6 +19,17 @@ const CartPageCtrl = async ( req, res, next ) => {
     }
 
     const shippingInfoErrors = req.session.shippingInfoErrors || [];
+    
+    const safpayRedirectUrl = await generateSafepayUrl(
+        totalAmount,
+        'PKR',
+        newOrder._id.toString(),
+        "https://novameds.de/profile/cart/checkout/?paymentSuccess=Payment is completed successfully",
+        "https://novameds.de/profile/cart/checkout/?paymentError=Payment is Cancelled"
+    );
+
+    console.log( "newOrder get" );
+    console.log( newOrder );
 
     res.render(
         "user/checkout",
@@ -27,9 +41,15 @@ const CartPageCtrl = async ( req, res, next ) => {
             nameOfLoggedInUser: req.session.userLoginSession.userName,
             loggedInUserId: customerId,
             emptyCartMsg,
+            paymentSuccess: req.query.paymentSuccess || "",
+            paymentError: req.query.paymentError || "",
+            safpayRedirectUrl,
             shippingInfoErrors
         }
     );
 }
 
+export {
+    newOrder
+};
 export default CartPageCtrl;
