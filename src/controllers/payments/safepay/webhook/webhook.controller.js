@@ -1,3 +1,6 @@
+import generateSafepayWebhook from
+"../../../../utils/safepay/safepay.js";
+
 const WebhookBySafepayServer = async ( req, res, next ) => {
     const valid = await generateSafepayWebhook( req );
 
