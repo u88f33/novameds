@@ -33,9 +33,12 @@ async function generateSafepayUrl(
 }
 
 async function generateSafepayWebhook( request ) {
-    const valid = await safepay.verify.webhook( request );
+    const valid = await safepay.verify.webhook(request)
 
     return valid;
 }
 
+export { 
+    generateSafepayWebhook 
+};
 export default generateSafepayUrl;
