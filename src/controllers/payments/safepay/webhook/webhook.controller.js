@@ -10,12 +10,6 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
 
 
         if ( valid ) {
-            const updateOrderPayment = await OrdersCollection.updateOne(
-                orderId,
-                {
-                    paymentStatus: "Paid"
-                }
-            );
             console.log( "req.body" );
             console.log( "------------------------------------------------" );
             console.log( orderId );
