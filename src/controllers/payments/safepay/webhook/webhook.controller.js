@@ -6,10 +6,9 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
 
         const valid = await generateSafepayWebhook( req );
 
-        console.log( "Webhook response by Safepay" )
-        console.log( "------------------------------------------------------" );
-        console.log( valid );
-        console.log( "------------------------------------------------------" );
+        if ( valid ) {
+            
+        }
 
     } catch ( err ) {
         console.log( "Error in controllers/payments/safepay/webhook/webhook.controller.js" );

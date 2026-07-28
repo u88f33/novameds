@@ -15,10 +15,24 @@ const ship_phone = "ship_phone";
                 <h1 class="order-confirmation__heading">Place an Order</h1>
             </div>
 
+            
             <form action="/profile/cart/checkout" method="POST">
                 <div class="order-confirmation__body-container">
                     <div class="order-confirmation__info">
-                        <h4>Payment Method</h4>
+                        <div class="d-flex">
+                            <h4>Payment Method</h4>
+                            <% if ( paymentSuccess ) { %>
+                                <div class="bg-success text-light rounded round-3 ps-5 pe-5 p-2 ms-auto">
+                                    <b>Your Payment was successfull</b>
+                                </div>  
+                            <% } %>
+
+                            <% if ( paymentError ) { %>
+                                <div class="bg-danger text-light rounded round-3 ps-5 pe-5 p-2 ms-auto">
+                                    <b>Error: Your Payment is Failed (Please try again)</b>
+                                </div>  
+                            <% } %>
+                        </div>
                         <hr />
                         
 
@@ -73,20 +87,9 @@ const ship_phone = "ship_phone";
                                 </div>
                                 <div class="payment-box__admin-account-info">
                                         <h3 class="mb-4">Pay with Credit/Debit Card</h3>
-                                        <a href="<%= safpayRedirectUrl %>" target="_blank" class="btn btn-danger mb-3">
+                                        <a href="<%= safpayRedirectUrl %>" class="btn btn-danger mb-3">
                                             Pay with Credit/Debit Card
                                         </a>
-                                        <% if ( paymentSuccess ) { %>
-                                            <div class="bg-success text-light rounded round-3 p-3">
-                                                <b>Your Payment was successfull</b>
-                                            </div>  
-                                        <% } %>
-
-                                        <% if ( paymentError ) { %>
-                                            <div class="bg-danger text-light rounded round-3 p-3">
-                                                <b>Error: Your Payment is Failed (Please try again)</b>
-                                            </div>  
-                                        <% } %>
                                 </div>
                             </div>
 
