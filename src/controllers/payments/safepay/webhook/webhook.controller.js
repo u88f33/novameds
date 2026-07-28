@@ -13,7 +13,6 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
             console.log( "req.body" );
             console.log( "------------------------------------------------" );
             console.log( orderId );
-            console.log(  )
             console.log( "------------------------------------------------" );
         }
 
