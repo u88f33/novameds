@@ -40,6 +40,9 @@ radios.forEach( radio => {
             const selectedBox = document.getElementById(radio.value);
             if (selectedBox) {
                 selectedBox.style.display = 'block';
+                if ( radio.id == "paywithcard_opt" ) {
+                    console.log( radio.id );
+                }
             }
 
         });
