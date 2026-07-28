@@ -69,7 +69,7 @@ orderForm.addEventListener( "submit", function( event ) {
 
     if ( clickedButton.id == "payWithCardAndSubmit" ) {
         event.preventDefault();
-        window.location.href = safepayUrl
+        window.location.href = safepayUrl;
         return;
     }
     
