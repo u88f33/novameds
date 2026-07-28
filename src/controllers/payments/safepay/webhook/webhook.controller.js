@@ -5,9 +5,12 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
     try {
 
         const valid = await generateSafepayWebhook( req );
+        console.log( req.body );
 
         if ( valid ) {
-            
+            console.log( "req.body" );
+            console.log( "------------------------------------------------" );
+            console.log( "------------------------------------------------" );
         }
 
     } catch ( err ) {
