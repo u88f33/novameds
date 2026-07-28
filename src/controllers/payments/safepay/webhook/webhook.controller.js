@@ -6,14 +6,13 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
     try {
 
         const valid = await generateSafepayWebhook( req );
-        
+        const orderId = req.body.data.notification.metadata.order_id;
+
+
         if ( valid ) {
-            let customerOrder = await OrdersCollection.findById(
-                req.body.data.notification.metadata.order_id
-            );
             console.log( "req.body" );
-            console.log( customerOrder );
             console.log( "------------------------------------------------" );
+            console.log( orderId );
             console.log( "------------------------------------------------" );
         }
 
