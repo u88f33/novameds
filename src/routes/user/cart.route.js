@@ -8,6 +8,7 @@ import CheckoutPageCtrlPost from "../../controllers/user/cart/checkout/checkout_
 import OrdersHistoryCtrl from "../../controllers/user/cart/orders_history.controller.js";
 import InvoicePdfCtrl from "../../controllers/user/cart/invoice/invoice_pdf.controller.js";
 import OrderConfirmationCtrl from "../../controllers/user/cart/order_confirmation.controller.js";
+import paymentSuccessCtrl from "../../controllers/user/cart/payment/payment_success.controller.js"
 import { body } from "express-validator";
 import userCitiesList from "../../utils/userCityInfo/citiesList.js";
 
@@ -50,7 +51,8 @@ router.post( "/add/:id", CartItemAddCtrl );
 router.delete( "/delete/:id", CartItemDeleteCtrl );
 router.get( "/api", CartItemsApiCtrl );
 
-router.get( "/checkout", CheckoutPageCtrl )
+router.get( "/checkout", CheckoutPageCtrl );
+router.get( "/checkout/paymentSuccessfull", paymentSuccessCtrl );
 router.get( "/orders/history", OrdersHistoryCtrl );
 router.get( "/order/confirm/:id", OrderConfirmationCtrl );
 

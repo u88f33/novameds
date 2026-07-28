@@ -25,7 +25,7 @@ const CartPageCtrl = async ( req, res, next ) => {
         (totalAmount + 300),
         'PKR',
         newOrder._id.toString(),
-        "https://novameds.de/profile/cart/checkout/?paymentSuccess=Payment is completed successfully",
+        "https://novameds.de/profile/cart/checkout/paymentSuccessfull",
         "https://novameds.de/profile/cart/checkout/?paymentError=Payment is Cancelled"
     );
 
