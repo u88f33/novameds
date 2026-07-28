@@ -61,3 +61,15 @@ document.getElementById( "same_address" ).addEventListener( "change", function()
         fillShippingAddress( "ship_state", "" );   
     }
 })
+
+const orderForm = document.getElementById( "confirmOrderForm" );
+
+orderForm.addEventListener( "submit", function( event ) {
+    const clickedButton = event.submitter;
+
+    if ( clickedButton.id == "payWithCardAndSubmit" ) {
+        event.preventDefault();
+        window.location.replace( safepayUrl );
+    }
+    
+} )

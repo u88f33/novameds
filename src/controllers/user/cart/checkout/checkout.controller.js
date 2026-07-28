@@ -21,7 +21,7 @@ const CartPageCtrl = async ( req, res, next ) => {
     const shippingInfoErrors = req.session.shippingInfoErrors || [];
 
     // Generate Safepay URL to show on checkout page
-    const safpayRedirectUrl = await generateSafepayUrl(
+    const safepayRedirectUrl = await generateSafepayUrl(
         (totalAmount + 300),
         'PKR',
         newOrder._id.toString(),
@@ -41,7 +41,7 @@ const CartPageCtrl = async ( req, res, next ) => {
             emptyCartMsg,
             paymentSuccess: req.query.paymentSuccess || "",
             paymentError: req.query.paymentError || "",
-            safpayRedirectUrl,
+            safepayRedirectUrl,
             shippingInfoErrors
         }
     );

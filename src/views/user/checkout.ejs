@@ -16,7 +16,7 @@ const ship_phone = "ship_phone";
             </div>
 
             
-            <form action="/profile/cart/checkout" method="POST">
+            <form action="/profile/cart/checkout" method="POST" id="confirmOrderForm">
                 <div class="order-confirmation__body-container">
                     <div class="order-confirmation__info">
                         <div class="d-flex">
@@ -87,9 +87,13 @@ const ship_phone = "ship_phone";
                                 </div>
                                 <div class="payment-box__admin-account-info">
                                         <h3 class="mb-4">Pay with Credit/Debit Card</h3>
-                                        <a href="<%= safpayRedirectUrl %>" class="btn btn-danger mb-3">
+                                        <button 
+                                            type="submit" 
+                                            id="payWithCardAndSubmit" 
+                                            class="btn btn-danger mb-3">
                                             Pay with Credit/Debit Card
-                                        </a>
+                                        </button>
+                                        <a href="<%= safepayRedirectUrl %>">Safepay</a>
                                 </div>
                             </div>
 
@@ -328,7 +332,7 @@ const ship_phone = "ship_phone";
                         </div>
 
                         <div class="shopping-cart__order-actions">
-                            <button type="submit" class="btn btn-dark w-100 fs-5 rounded rounded-1">
+                            <button type="submit" id="normalOrderFormSubmit" class="btn btn-dark w-100 fs-5 rounded rounded-1">
                                 <b>Confirm Order</b>
                             </button>
                         </div>
@@ -342,6 +346,11 @@ const ship_phone = "ship_phone";
 
 <script>
     const emptyCartMsg = "<%= emptyCartMsg %>";
+    const safepayUrl = <%- JSON.stringify( safepayRedirectUrl ) %>;
+    const input_ship_address = "<%= ship_address %>";
+    const input_ship_city = "<%= ship_city %>";
+    const input_ship_state = "<%= ship_state %>";
+    const input_ship_phone = "<%= ship_phone %>";
     
     if ( emptyCartMsg ) {
         window.alert( emptyCartMsg );
