@@ -1468,9 +1468,10 @@ th.customer-orders-history-header {
 .shopping-cart__order-details-row {
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 14px;
     border-bottom: 1px solid #aaa;
     padding: 4px 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .shopping-cart__order-details-row p {

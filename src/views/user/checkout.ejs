@@ -304,17 +304,21 @@ const ship_phone = "ship_phone";
                         <div class="shopping-cart__order-details">
                             <h3 class="shopping-cart__order-title">Order Summary</h3>
                             <div class="shopping-cart__order-details-row">
-                                <p>Subtotal</p>
+                                <p><b>Subtotal</b></p>
                                 <p>
                                     <i>Rs.</i><%= totalAmount %>
                                 </p>
                             </div>
                             <div class="shopping-cart__order-details-row">
-                                <p>Delivery Charges</p>
+                                <p><b>Delivery Charges</b></p>
                                 <p><i>Rs.</i>300</p>
                             </div>
                             <div class="shopping-cart__order-details-row">
-                                <p>Items</p>
+                                <p><b>Items</b></p>
+                                <p><%= totalCartItems %></p>
+                            </div>
+                            <div class="shopping-cart__order-details-row">
+                                <p><b>Payment status</b></p>
                                 <p><%= totalCartItems %></p>
                             </div>
                             <div class="shopping-cart__order-details-row">
