@@ -40,8 +40,12 @@ radios.forEach( radio => {
             const selectedBox = document.getElementById(radio.value);
             if (selectedBox) {
                 selectedBox.style.display = 'block';
-                if ( radio.id == "paywithcard_opt" ) {
-                    console.log( radio.id );
+                if ( radio.value == "Card" ) {
+                    document.getElementById( "normalOrderFormSubmit" ).disabled =
+                    true;
+                } else {
+                    document.getElementById( "normalOrderFormSubmit" ).disabled =
+                    false;
                 }
             }
 
