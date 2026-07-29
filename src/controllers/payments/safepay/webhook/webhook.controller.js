@@ -16,11 +16,11 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
         
 
         if ( valid ) {
-
-            console.log( "---------------- neworder ------------------" );
+            console.log( "-------------------------------" )
+            console.log( "Webhook" )
+            console.log( "-------------------------------" )
             console.log( valid );
-            console.log( "---------------- neworder ------------------" );
-
+            console.log( "-------------------------------" )
         }
 
     } catch ( err ) {
