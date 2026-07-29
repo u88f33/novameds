@@ -89,8 +89,11 @@ const GenerateOrderOnCardPayment = async ( req, res, next ) => {
         newOrder.paymentStatus = "Unpaid"
         newOrder.totalAmount = totalAmount
 
-
+        
         const insertDataInMongoDB = await newOrder.save();
+        console.log( "insertDataInMongoDB" );
+        console.log( insertDataInMongoDB );
+        console.log( "insertDataInMongoDB" );
 
 
         const confirmedOrderDetails = await OrderCollection.findById(
@@ -110,12 +113,11 @@ const GenerateOrderOnCardPayment = async ( req, res, next ) => {
             generateInvoice( orderId, res, orderDetails );
         }
 
-        res.json( { newOrder } );
 
 
     } catch ( err ) {
         console.log( "--------------- Card Address ------------------" );
-        console.log( err );
+        console.log( err.message );
         console.log( "--------------- Card Address ------------------" );
     }
 
