@@ -66,6 +66,7 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
         newOrder.items = items;
         newOrder.orderStatus = "Pending";
         newOrder.paymentStatus = "Paid";
+        newOrder.paymentMethod = "Safepay";
         newOrder.totalAmount = totalAmount;
 
 
