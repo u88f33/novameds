@@ -92,19 +92,10 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
 
         res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
 
-        // res.render(
-        //     "user/paymentSuccess",
-        //     {
-        //         customerOrder,
-        //         medicineRecords,
-        //         nameOfLoggedInUser: customerName,
-        //         loggedInUserId: customerId
-        //     }
-        // )
     } catch ( err ) {
         console.log( "Error in /controllers/user/cart/payment/payment_success.controller.js" );
         console.log( "-------------------------------------------" );
-        console.log( err );
+        console.log( err.message );
         console.log( "-------------------------------------------" );
     }
 
