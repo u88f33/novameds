@@ -9,6 +9,7 @@ import OrdersHistoryCtrl from "../../controllers/user/cart/orders_history.contro
 import InvoicePdfCtrl from "../../controllers/user/cart/invoice/invoice_pdf.controller.js";
 import OrderConfirmationCtrl from "../../controllers/user/cart/order_confirmation.controller.js";
 import paymentSuccessCtrl from "../../controllers/user/cart/payment/payment_success.controller.js"
+import CheckoutCardAddressPost from "../../controllers/user/cart/checkout/card/address/card_address.controller.js"
 import { body } from "express-validator";
 import userCitiesList from "../../utils/userCityInfo/citiesList.js";
 
@@ -64,5 +65,10 @@ router.post(
     requiredShippingUserInfo,
     CheckoutPageCtrlPost
 );
+
+router.post(
+    "/checkout/card/address",
+    CheckoutCardAddressPost
+)
 
 export default router;
