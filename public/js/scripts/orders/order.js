@@ -98,7 +98,7 @@ orderForm.addEventListener( "submit", async function( event ) {
 
         try {
             const response = await fetch(
-                "/profile/cart/checkout/generate/order",
+                "/profile/cart/checkout/card/generate/order",
                 {
                     method: "POST",
                     headers: {
