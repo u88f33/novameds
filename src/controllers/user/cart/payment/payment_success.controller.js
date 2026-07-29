@@ -7,6 +7,13 @@ import { newOrder } from "../checkout/checkout.controller.js";
 
 const paymentSuccessCtrl = async ( req, res, next ) => {
 
+    const medicineRecords = await medicineRecordsArray();
+    const customerName = req.session.userLoginSession.userName;
+    const customerId = req.session.userLoginSession.userId;
+
+    const customerOrder = await OrderCollection.findById( orderId )
+    .populate( "customerId" );
+
     try {
         res.render(
             "user/paymentSuccess",
