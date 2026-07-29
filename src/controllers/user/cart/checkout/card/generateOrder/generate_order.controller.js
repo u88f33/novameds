@@ -66,14 +66,14 @@ const GenerateOrderOnCardPayment = async ( req, res, next ) => {
             address: shippingAddress.address,
             city: shippingAddress.city,
             country: shippingAddress.country,
-            phone: shippingAddress.phone
+            phoneNumber: shippingAddress.phone
         }
 
         const permanent_address = {
             address: permanentAddress.address,
             city: permanentAddress.city,
             country: permanentAddress.country,
-            phone: permanentAddress.phone
+            phoneNumber: permanentAddress.phone
         }
 
         
@@ -117,7 +117,7 @@ const GenerateOrderOnCardPayment = async ( req, res, next ) => {
 
     } catch ( err ) {
         console.log( "--------------- Card Address ------------------" );
-        console.log( err.message );
+        console.log( err );
         console.log( "--------------- Card Address ------------------" );
     }
 
