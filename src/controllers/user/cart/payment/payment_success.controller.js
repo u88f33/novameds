@@ -83,7 +83,7 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
         const orderId = insertDataInMongoDB._id;
         const orderDetails = confirmedOrderDetails;
 
-        generateInvoice( orderId, res, orderDetails );
+        // generateInvoice( orderId, res, orderDetails );
     }
 
     res.render(
