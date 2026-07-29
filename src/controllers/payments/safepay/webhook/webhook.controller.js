@@ -17,11 +17,9 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
 
         if ( valid ) {
 
-            console.log( "---------------------------" );
-            console.log( "Session in Webhook" )
-            console.log( "---------------------------" );
-            console.log( req.session );
-
+            console.log( "---------------- neworder ------------------" );
+            console.log( newOrder );
+            console.log( "---------------- neworder ------------------" );
         //     const medicineRecords = await medicineRecordsArray();
         //     const customerName = req.session.userLoginSession.userName;
         //     const customerId = req.session.userLoginSession.userId;
