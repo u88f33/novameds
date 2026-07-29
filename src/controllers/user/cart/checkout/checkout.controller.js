@@ -30,6 +30,7 @@ const CartPageCtrl = async ( req, res, next ) => {
     );
 
     newOrder.customerId = customerId;
+    await newOrder.save()
 
     res.render(
         "user/checkout",
