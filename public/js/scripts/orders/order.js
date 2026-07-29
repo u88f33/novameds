@@ -85,32 +85,37 @@ orderForm.addEventListener( "submit", async function( event ) {
             shippingAddress: {
                 address: targetFormInput( input_ship_address ),
                 city: targetFormInput( input_ship_city ),
-                country: targetFormInput( input_ship_country ),
+                country: targetFormInput( input_ship_state ),
                 phone: targetFormInput( input_ship_phone )
             },
             permanentAddress: {
                 address: targetFormInput( "perm_address" ),
                 city: targetFormInput( "perm_city" ),
-                country: targetFormInput( "perm_country" ),
+                country: targetFormInput( "perm_state" ),
                 phone: targetFormInput( "perm_phone" )
             }
         }
 
-        const postCustomerAddress = await fetch(
-            "/profile/cart/checkout/card/address",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: payload
-            }
-        );
+        try {
+            const response = await fetch(
+                "/profile/cart/checkout/card/address",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify( payload )
+                }
+            );
 
-        const res = await postCustomerAddress.json();
-        console.log( res );
+            const result = await response.json();
+        } catch ( err ) {
+            console.log( "Error while fetching shipping and permanent address" );
+            console.log( "Error in /js/scripts/orders/order.js" );
+            console.log( `Error: ${ err }` );
+        }
 
-        // window.location.href = safepayUrl;
+        window.location.href = safepayUrl;
         return;
     }
     
