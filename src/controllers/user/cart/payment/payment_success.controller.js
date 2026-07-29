@@ -64,8 +64,9 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
 
         newOrder.customerId = customerId;
         newOrder.items = items;
-        newOrder.orderStatus = "Pending",
-        newOrder.totalAmount = totalAmount
+        newOrder.orderStatus = "Pending";
+        newOrder.paymentStatus = "Paid";
+        newOrder.totalAmount = totalAmount;
 
 
         const insertDataInMongoDB = await newOrder.save();
