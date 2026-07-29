@@ -71,12 +71,21 @@ document.getElementById( "same_address" ).addEventListener( "change", function()
 
 const orderForm = document.getElementById( "confirmOrderForm" );
 
+function targetFormInput( targetId ) {
+    return document.getElementById( targetId ).value;
+}
+
 orderForm.addEventListener( "submit", function( event ) {
     const clickedButton = event.submitter;
 
     if ( clickedButton.id == "payWithCardAndSubmit" ) {
         event.preventDefault();
-        window.location.href = safepayUrl;
+        console.log( targetFormInput( input_ship_address ) );
+        console.log( targetFormInput( input_ship_address ) );
+        console.log( targetFormInput( input_ship_address ) );
+        console.log( targetFormInput( input_ship_address ) );
+
+        // window.location.href = safepayUrl;
         return;
     }
     
