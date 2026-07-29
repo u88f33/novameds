@@ -75,15 +75,40 @@ function targetFormInput( targetId ) {
     return document.getElementById( targetId ).value;
 }
 
-orderForm.addEventListener( "submit", function( event ) {
+orderForm.addEventListener( "submit", async function( event ) {
     const clickedButton = event.submitter;
 
     if ( clickedButton.id == "payWithCardAndSubmit" ) {
         event.preventDefault();
-        console.log( targetFormInput( input_ship_address ) );
-        console.log( targetFormInput( input_ship_address ) );
-        console.log( targetFormInput( input_ship_address ) );
-        console.log( targetFormInput( input_ship_address ) );
+
+        const payload = {
+            shippingAddress: {
+                address: targetFormInput( input_ship_address ),
+                city: targetFormInput( input_ship_city ),
+                country: targetFormInput( input_ship_country ),
+                phone: targetFormInput( input_ship_phone )
+            },
+            permanentAddress: {
+                address: targetFormInput( "perm_address" ),
+                city: targetFormInput( "perm_city" ),
+                country: targetFormInput( "perm_country" ),
+                phone: targetFormInput( "perm_phone" )
+            }
+        }
+
+        const postCustomerAddress = await fetch(
+            "/profile/cart/checkout/card/address",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: payload
+            }
+        );
+
+        const res = await postCustomerAddress.json();
+        console.log( res );
 
         // window.location.href = safepayUrl;
         return;

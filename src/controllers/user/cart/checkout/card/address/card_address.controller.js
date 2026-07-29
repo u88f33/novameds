@@ -1,8 +1,8 @@
 const CheckoutCardAddressPost = ( req, res, next ) => {
-    console.log( "CheckoutCardAddressPost" )
-    console.log( "----------------------------------------" );
-    res.json( req.body );
-    console.log( "----------------------------------------" );
+    res.json( {
+        message: "Data sent while Card payment",
+        data: req.body
+    } );
 }
 
 export default CheckoutCardAddressPost;
