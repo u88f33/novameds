@@ -11,14 +11,10 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
     const customerName = req.session.userLoginSession.userName;
     const customerId = req.session.userLoginSession.userId;
 
-    const customerOrder = await OrderCollection.findById( orderId )
-    .populate( "customerId" );
-
     try {
         res.render(
             "user/paymentSuccess",
             {
-                customerOrder,
                 medicineRecords,
                 nameOfLoggedInUser: customerName,
                 loggedInUserId: customerId
