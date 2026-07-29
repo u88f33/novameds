@@ -90,15 +90,17 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
             generateInvoice( orderId, res, orderDetails );
         }
 
-        res.render(
-            "user/paymentSuccess",
-            {
-                customerOrder,
-                medicineRecords,
-                nameOfLoggedInUser: customerName,
-                loggedInUserId: customerId
-            }
-        )
+        res.redirect( "/profile/cart/checkout" );
+
+        // res.render(
+        //     "user/paymentSuccess",
+        //     {
+        //         customerOrder,
+        //         medicineRecords,
+        //         nameOfLoggedInUser: customerName,
+        //         loggedInUserId: customerId
+        //     }
+        // )
     } catch ( err ) {
         console.log( "Error in /controllers/user/cart/payment/payment_success.controller.js" );
         console.log( "-------------------------------------------" );
