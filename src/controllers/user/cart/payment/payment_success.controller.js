@@ -90,7 +90,7 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
             generateInvoice( orderId, res, orderDetails );
         }
 
-        res.redirect( "/profile/cart/checkout" );
+        res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
 
         // res.render(
         //     "user/paymentSuccess",
