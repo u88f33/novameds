@@ -110,6 +110,8 @@ const GenerateOrderOnCardPayment = async ( req, res, next ) => {
             generateInvoice( orderId, res, orderDetails );
         }
 
+        res.json( { newOrder } );
+
 
     } catch ( err ) {
         console.log( "--------------- Card Address ------------------" );
