@@ -86,7 +86,7 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
         console.log( orderId );
         console.log( orderDetails );
 
-        // generateInvoice( orderId, res, orderDetails );
+        generateInvoice( orderId, res, orderDetails );
     }
 
     res.render(
