@@ -36,12 +36,12 @@ function generateInvoice(orderId, response, orderDetails) {
         doc.pipe(writeStream);
 
         // Also send to browser
-        // response.setHeader("Content-Type", "application/pdf");
-        // response.setHeader(
-        //     "Content-Disposition",
-        //     `inline; filename="${invoiceName}"`
-        // );
-        // doc.pipe(response);
+        response.setHeader("Content-Type", "application/pdf");
+        response.setHeader(
+            "Content-Disposition",
+            `inline; filename="${invoiceName}"`
+        );
+        doc.pipe(response);
 
 
         const imagePath = path.resolve( invoicePath, "../../logo/Logo.png" );
