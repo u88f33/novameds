@@ -112,7 +112,7 @@ orderForm.addEventListener( "submit", async function( event ) {
         } catch ( err ) {
             console.log( "Error while fetching shipping and permanent address" );
             console.log( "Error in /js/scripts/orders/order.js" );
-            console.log( `Error: ${ err }` );
+            console.log( `Error: ${ err.message }` );
         }
 
         window.location.href = safepayUrl;
