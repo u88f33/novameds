@@ -8,7 +8,7 @@ const connectDB = ( mongoUri, databaseName ) => {
     } catch ( error ) {
         console.log( `File: /src/config/database.connection.js` );
         console.log( `Error While connection to Mongo Database` );
-        console.log( `Error: ${ error }` );
+        console.log( `Error: ${ error.message }` );
     }
 }
 

@@ -4,85 +4,94 @@ import PDFDocument from "pdfkit";
 
 function generateInvoice(orderId, response, orderDetails) {
 
-            const invoiceDirectoryPath = path.join(
-                "public",
-                "assets",
-                "invoices"
+    try {
+        const invoiceDirectoryPath = path.join(
+            "public",
+            "assets",
+            "invoices"
+        );
+        
+        // Check whether the invoice folder exist or not.
+        // If not exist, then create it.
+        if ( !fs.existsSync( invoiceDirectoryPath ) ) {
+            fs.mkdirSync( invoiceDirectoryPath, { recursive: true } );
+        }
+
+        // 3. File Path
+        const invoiceName = `order_${orderId}.pdf`;
+        const invoicePath = path.join(
+            "public",
+            "assets",
+            "invoices",
+            invoiceName
+        );
+
+        // 4. Create PDF
+        const doc = new PDFDocument();
+
+        doc.lineGap(8);
+
+        // Save file
+        const writeStream = fs.createWriteStream(invoicePath);
+        doc.pipe(writeStream);
+
+        // Also send to browser
+        response.setHeader("Content-Type", "application/pdf");
+        response.setHeader(
+            "Content-Disposition",
+            `inline; filename="${invoiceName}"`
+        );
+        doc.pipe(response);
+
+
+        const imagePath = path.resolve( invoicePath, "../../logo/Logo.png" );
+        doc.fontSize(24).text("Invoice", { align: "left" });
+        doc.image(imagePath, {width: 100, align: "right", valign: "top"});
+        doc.moveDown();
+
+        doc.fontSize(12).text(`Order ID: ${orderDetails._id}`);
+        doc.text(`Customer Name: ${orderDetails.customerId.customerName}`);
+
+        doc.text(`Order Status: ${orderDetails.orderStatus}`);
+        doc.text(`Payment Status: ${orderDetails.paymentStatus}`);
+        doc.moveDown();
+
+        doc.font('Helvetica-Bold')
+        .text('Shipping Address:');
+
+        doc.font('Helvetica');
+        doc.text(
+            `Shipping Address: ${orderDetails.shippingAddress.address}`
+        );
+        doc.text(`City: ${orderDetails.shippingAddress.city}`);
+        doc.text(`Country: ${orderDetails.shippingAddress.country}`);
+        doc.moveDown();
+
+        doc.font('Helvetica-Bold')
+        .text('Ordered Medicines:');
+
+        doc.font('Helvetica');
+
+        orderDetails.items.forEach((item, index) => {
+            doc.fontSize(12).text(
+                `${index + 1}. ${item.medicineId.medicineName} (Qty: ${item.quantity}) ---------------------------------------- Price: Rs ${item.price}`
             );
-            
-            // Check whether the invoice folder exist or not.
-            // If not exist, then create it.
-            if ( !fs.existsSync( invoiceDirectoryPath ) ) {
-                fs.mkdirSync( invoiceDirectoryPath, { recursive: true } );
-            }
+        });
 
-            // 3. File Path
-            const invoiceName = `order_${orderId}.pdf`;
-            const invoicePath = path.join(
-                "public",
-                "assets",
-                "invoices",
-                invoiceName
-            );
+        doc.moveDown();
+        doc.fontSize(20).text(`Total: Rs ${orderDetails.totalAmount}`, {
+            align: "right",
+        });
 
-            // 4. Create PDF
-            const doc = new PDFDocument();
+        doc.end();
+    } catch ( err ) {
+        console.log( "Error in utils/invoice/pdfGenereator.js" );
+        console.log( "-------------------------------------------------" );
+        console.log( `Error: ${ err }` );
+        console.log( "-------------------------------------------------" );
+        
+    }
 
-            doc.lineGap(8);
-
-            // Save file
-            const writeStream = fs.createWriteStream(invoicePath);
-            doc.pipe(writeStream);
-
-            // Also send to browser
-            response.setHeader("Content-Type", "application/pdf");
-            response.setHeader(
-                "Content-Disposition",
-                `inline; filename="${invoiceName}"`
-            );
-            doc.pipe(response);
-
-
-            const imagePath = path.resolve( invoicePath, "../../logo/Logo.png" );
-            doc.fontSize(24).text("Invoice", { align: "left" });
-            doc.image(imagePath, {width: 100, align: "right", valign: "top"});
-            doc.moveDown();
-
-            doc.fontSize(12).text(`Order ID: ${orderDetails._id}`);
-            doc.text(`Customer Name: ${orderDetails.customerId.customerName}`);
-
-            doc.text(`Order Status: ${orderDetails.orderStatus}`);
-            doc.text(`Payment Status: ${orderDetails.paymentStatus}`);
-            doc.moveDown();
-
-            doc.font('Helvetica-Bold')
-            .text('Shipping Address:');
-
-            doc.font('Helvetica');
-            doc.text(
-                `Shipping Address: ${orderDetails.shippingAddress.address}`
-            );
-            doc.text(`City: ${orderDetails.shippingAddress.city}`);
-            doc.text(`Country: ${orderDetails.shippingAddress.country}`);
-            doc.moveDown();
-
-            doc.font('Helvetica-Bold')
-            .text('Ordered Medicines:');
-
-            doc.font('Helvetica');
-
-            orderDetails.items.forEach((item, index) => {
-                doc.fontSize(12).text(
-                    `${index + 1}. ${item.medicineId.medicineName} (Qty: ${item.quantity}) ---------------------------------------- Price: Rs ${item.price}`
-                );
-            });
-
-            doc.moveDown();
-            doc.fontSize(20).text(`Total: Rs ${orderDetails.totalAmount}`, {
-                align: "right",
-            });
-
-            doc.end();
 }
 
 export default generateInvoice;

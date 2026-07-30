@@ -1,17 +1,35 @@
-const UserLogoutGetCtrl = ( req, res, next ) => {
+import CustomersCollection from "../../../../models/customers.model.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
-    if ( req.session.adminLoginSession ) {
-        res.redirect( "/admin/manage/customers" );
-        return;
-    }
+dotenv.config();
 
-    req.session.destroy(( error ) => {
-        if ( error ) {
-            console.log( `Unable to destroy Session` );
-            console.log( `Error: ${ error }` );
+const UserLogoutGetCtrl = async ( req, res, next ) => {
+
+        const adminToken = req.cookies.adminToken;
+        const userToken = req.cookies.userToken;
+
+        if ( adminToken ) {
+            return res.redirect( "/admin/manage/customers" );
         }
-        res.redirect( "/login" );
-    })
+
+        if ( userToken ) {
+
+            req.session.destroy( () => {
+                console.log( "Session destroyed!!!" );
+            } );
+
+            res.clearCookie( "userToken", {
+                httpOnly: true,
+                secure: false,
+                path: "/"
+            });
+
+            return res.redirect( "/login" );
+        }
+    
+        return res.redirect( "/login" );
+    
 }
 
 export default UserLogoutGetCtrl;

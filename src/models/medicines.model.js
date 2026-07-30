@@ -33,6 +33,13 @@ const medicineCollectionSchema = new mongoose.Schema({
         required: true
     },
 
+    supplierDetails: {
+        supplierName: { type: String },
+        supplierEmail: { type: String },
+        supplierPhone: { type: String },
+        supplierAddress: { type: String }
+    },
+
     medicineImage: {
         type: String,
         default: "no-image.jpg"

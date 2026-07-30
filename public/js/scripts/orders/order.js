@@ -17,10 +17,10 @@ async function fetchCustomerAddress() {
 async function fillShippingAddress( inputId = "", inputValue = "" ) {
     try {
 
-        const user = await fetchCustomerAddress();
+        const userAddress = await fetchCustomerAddress();
 
         if ( inputValue ) {
-            document.getElementById( inputId ).value = user[inputValue];
+            document.getElementById( inputId ).value = userAddress[inputValue];
         } else {
             document.getElementById( inputId ).value = ""
         }
@@ -40,6 +40,13 @@ radios.forEach( radio => {
             const selectedBox = document.getElementById(radio.value);
             if (selectedBox) {
                 selectedBox.style.display = 'block';
+                if ( radio.value == "Card" ) {
+                    document.getElementById( "normalOrderFormSubmit" ).disabled =
+                    true;
+                } else {
+                    document.getElementById( "normalOrderFormSubmit" ).disabled =
+                    false;
+                }
             }
 
         });
@@ -61,3 +68,52 @@ document.getElementById( "same_address" ).addEventListener( "change", function()
         fillShippingAddress( "ship_state", "" );   
     }
 })
+
+const orderForm = document.getElementById( "confirmOrderForm" );
+
+function targetFormInput( targetId ) {
+    return document.getElementById( targetId ).value;
+}
+
+orderForm.addEventListener( "submit", async function( event ) {
+    const clickedButton = event.submitter;
+
+    if ( clickedButton.id == "payWithCardAndSubmit" ) {
+        event.preventDefault();
+
+        const payload = {
+            shippingAddress: {
+                address: targetFormInput( input_ship_address ),
+                city: targetFormInput( input_ship_city ),
+                country: targetFormInput( input_ship_state ),
+                phone: targetFormInput( input_ship_phone )
+            },
+            permanentAddress: {
+                address: targetFormInput( "perm_address" ),
+                city: targetFormInput( "perm_city" ),
+                country: targetFormInput( "perm_state" ),
+                phone: targetFormInput( "perm_phone" )
+            }
+        }
+
+        try {
+            const response = await fetch(
+                "/profile/cart/checkout/save/address/safepay",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify( payload )
+                }
+            );
+
+            const result = await response.json();
+            window.location.href = result.safepayUrl;
+            return true;
+        } catch ( err ) {
+            console.log( err );
+        }
+    }
+
+} )

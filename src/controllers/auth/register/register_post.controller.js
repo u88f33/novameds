@@ -26,6 +26,21 @@ const RegisterPostCtrl = async ( req, res, next ) => {
             user_country
         } = req.body;
 
+        const isEmailAlreadyFound = 
+        await CustomerCollections.findOne( { customerEmail: user_email } );
+
+        if ( isEmailAlreadyFound ) {
+            return res.redirect( `/register/?errorMessage=Email already Exists` );
+        }
+
+        const isPhoneNumberAlreadyFound = 
+        await CustomerCollections.findOne( { customerPhone: user_phone } );
+
+        if ( isPhoneNumberAlreadyFound ) {
+            return res.redirect( `/register/?errorMessage=Phone number already Exists` );
+        }
+
+
         if ( user_password != confirm_user_password ) {
             res.redirect( "/register/?errorMessage=Password and Confirm Password do not match" );
         } else {
@@ -54,7 +69,7 @@ const RegisterPostCtrl = async ( req, res, next ) => {
     } catch ( error ) {
         console.log( "/src/controllers/auth/register/register_post" );
         console.log( `Error: ${ error }` );
-        res.redirect( "/register/?errorMessage=Email already present in database" );
+        res.redirect( `/register/?errorMessage=${error}}` );
     }
 
 }

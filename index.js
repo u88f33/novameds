@@ -1,11 +1,15 @@
 import express from "express";
 import session from "express-session";
 import path from "path";
+import passport from "passport";
+import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import connectDB from "./src/config/database.connection.js";
 import Routes from "./src/routes/index.js";
 import generatePDF from "./src/utils/salesReport/generatePdf.js"
+import MongoStore from "connect-mongo";
+import "./src/utils/passport/google.js";
 
 // Initializing Environment variables from ".env" file
 dotenv.config();
@@ -17,23 +21,28 @@ connectDB( MONGO_URI, DATABASE_NAME );
 
 const app = express();
 
+app.use(
+  cookieParser()
+);
+
 // Session Middleware
 app.use( session( 
   {
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: `${MONGO_URI}/${DATABASE_NAME}`
+    }),
     cookie: {
       maxAge: 1000 * 60 * 60
     }
   }
 ) )
 
-/************************************************************************ */
-/**-------------------- Generate Daily Sales Function --------------------*/
+app.use( passport.initialize() );
+app.use( passport.session() );
 
-/**-------------------------------------------------------------------*/
-/********************************************************************* */
 
 // Fix __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -49,7 +58,7 @@ app.use("/fa", express.static(
 ));
 
 // Middleware for static public folder
-app.use( express.static( "./public" ) );
+app.use( express.static( path.join( process.cwd(), "public" ) ) );
 
 // Middleware for JSON and HTML Form data
 app.use( express.urlencoded( { extended: false } ) );

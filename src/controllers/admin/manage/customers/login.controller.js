@@ -4,6 +4,9 @@ const UserAccountLoggedInByAdminCtrl = async ( req, res, next ) => {
     
     try {
 
+        if ( !req.params.id ) {
+            res.redirect( "/admin" );
+        }
 
         const findUser = await CustomersCollection.findById( req.params.id );
 

@@ -3,20 +3,30 @@ import OrderCollection from "../../../models/order.model.js";
 
 const OrdersHistoryCtrl = async ( req, res, next ) => {
 
-    const customerId = req.session.userLoginSession.userId;
-    const medicineRecords = await medicineRecordsArray();
+    try {
 
-    const customerOrders = await OrderCollection.find( { customerId } ).sort( { createdAt: -1 } );
+        const customerId = req.session.userLoginSession.userId;
+        const medicineRecords = await medicineRecordsArray();
 
-    res.render(
-        "user/ordersHistory",
-        {
-            customerOrders,
-            medicineRecords,
-            nameOfLoggedInUser: req.session.userLoginSession.userName,
-            loggedInUserId: customerId
-        }
-    );
+        const customerOrders = await OrderCollection.find( { customerId } ).sort( { createdAt: -1 } );
+
+        res.render(
+            "user/ordersHistory",
+            {
+                customerOrders,
+                medicineRecords,
+                nameOfLoggedInUser: req.session.userLoginSession.userName,
+                loggedInUserId: customerId
+            }
+        );    
+
+    } catch ( err ) {
+
+        console.log( `/src/controllers/user/cart/orders_history.controller.js` );
+        console.log( `Error: ${ err }` );
+
+    }
+
 }
 
 export default OrdersHistoryCtrl;

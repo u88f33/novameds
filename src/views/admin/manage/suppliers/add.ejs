@@ -184,6 +184,22 @@ const supplier_address = "supplier_address";
 
         </div>
 
+        <% if ( message ) { %>
+            <div class="dashboard__section-main mt-5">
+                <p class="alert alert-primary mt-5 mb-4 border border-primary">
+                    <%= message  %>
+                </p>
+            </div>
+        <% } %>
+
+        <% if ( errorMessage ) { %>
+            <div class="dashboard__section-main mt-5">
+                <p class="alert alert-danger mt-5 mb-4 border border-danger text-danger">
+                    <%= errorMessage  %>
+                </p>
+            </div>
+        <% } %>
+
     </div>
 </div>
 

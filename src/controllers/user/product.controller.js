@@ -3,21 +3,31 @@ import medicineRecordsArray from "../../utils/medicines/records.js"
 
 const ProductPageCtrl = async ( req, res, next ) => {
 
-    const singleMedicineRecord = 
-    await MedicinesCollection.findById( req.params.id );
+    try {
 
-    const medicineRecords = await medicineRecordsArray();
+        const singleMedicineRecord = 
+        await MedicinesCollection.findById( req.params.id );
 
-    res.render(
-        "user/product",
-        {
-            medicineRecords,
-            singleMedicineRecord,
-            errorMessage: req.query.errorMessage,
-            nameOfLoggedInUser: req.session.userLoginSession.userName,
-            loggedInUserId: req.session.userLoginSession.userId
-        }
-    )
+        const medicineRecords = await medicineRecordsArray();
+
+        res.render(
+            "user/product",
+            {
+                medicineRecords,
+                singleMedicineRecord,
+                errorMessage: req.query.errorMessage,
+                nameOfLoggedInUser: req.session.userLoginSession.userName,
+                loggedInUserId: req.session.userLoginSession.userId
+            }
+        )
+
+    } catch ( err ) {
+
+        console.log( "/src/controllers/user/product.controller.js" );
+        console.log( `Error: ${ err }` );
+        
+    }
+
 }
 
 export default ProductPageCtrl;

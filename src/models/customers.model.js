@@ -12,31 +12,39 @@ const customerCollectionSchema = new mongoose.Schema({
         type: String,
         trim: true,
         maxlength: 100,
-        unique: true
+        unique: true,
+        required: true 
     },
     customerPassword: {
         type: String,
-        required: true
+        required: false 
     },
     customerPhone: {
         type: String,
-        required: true,
         trim: true,
     },
     customerAddress: {
         type: String,
-        required: true,
         trim: true
     },
     customerCity: {
         type: String,
-        required: true,
         trim: true
     },
     customerCountry: {
         type: String,
-        required: true,
         trim: true
+    },
+    provider: {
+        type: String,
+        required: true,
+        enum: ['local', 'google'],
+        default: 'local'
+    },
+    googleId: {
+        type: String,
+        unique: true,
+        sparse: true 
     },
     resetToken: {
         type: String,

@@ -29,7 +29,7 @@ const UpdateCustomerRecordCtrlPost = async ( req, res, next ) => {
         } = req.body;
 
         if ( customer_password != customer_confirm_password ) {
-            return res.redirect( `/admin/manage/customers/update/${req.params.id}/?errorMessage=Passwords do not match` );
+            return res.redirect( `/admin/manage/customers/update/${req.params.id}/?errorMessage=Password and Confirm Password do not match` );
         }
 
         if ( customer_password == "" ) {
@@ -55,7 +55,8 @@ const UpdateCustomerRecordCtrlPost = async ( req, res, next ) => {
             console.log( "Record not found" );
         } 
 
-        res.redirect( `/admin/manage/customers` );
+        res.redirect( `/admin/manage/customers/update/${req.params.id}/?message=Customer Record Updated Successfully` );
+    
     } catch ( error ) {
         console.log( "Something went wrong in controllers/admin/manage/customers/update/update_post" );
         console.log( `Error: ${ error }` );

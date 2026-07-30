@@ -5,20 +5,30 @@ import PDFDocument from "pdfkit";
 import generateInvoice from "../../../../utils/invoice/pdfGenerator.js";
 import path from "path";
 import fs from "fs";
+import { validationResult } from 'express-validator';
 
 const CheckoutPageCtrlPost = async ( req, res, next ) => {
     try {
+
+        let errors = validationResult( req );
+
+        if ( !errors.isEmpty() ) {
+            req.session.shippingInfoErrors = errors.errors;
+            return res.redirect("/profile/cart/checkout");
+        }
+
+        let newOrder = new OrderCollection();
 
         const {
             payment_method,
             perm_address,
             perm_city,
             perm_state,
-            perm_postal,
+            perm_phone,
             ship_address,
             ship_city,
             ship_state,
-            ship_postal
+            ship_phone
         } = req.body;
         
         const customerId = req.session.userLoginSession.userId;
@@ -63,14 +73,14 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             address: perm_address,
             city: perm_city,
             country: perm_state,
-            postalCode: perm_postal
+            phoneNumber: perm_phone
         }
         
         const shippingAddress = {
             address: ship_address,
             city: ship_city,
             country: ship_state,
-            postalCode: ship_postal
+            phoneNumber: ship_phone
         }
 
         if ( totalItems <= 0 ) {
@@ -95,7 +105,18 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             totalAmount        
         };
 
-        const insertDataInMongoDB = await OrderCollection.insertOne( orderData );
+        
+        newOrder.customerId = customerId;
+        newOrder.items = items;
+        newOrder.permanentAddress = permanentAddress;
+        newOrder.shippingAddress = shippingAddress;
+        newOrder.paymentMethod = payment_method;
+        newOrder.orderStatus = "Pending",
+        newOrder.totalAmount = totalAmount
+
+        
+        const insertDataInMongoDB = await newOrder.save();
+
 
         const confirmedOrderDetails = await OrderCollection.findById(
             insertDataInMongoDB._id
@@ -114,6 +135,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
         }
 
        res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
+
 
     } catch ( error ) {
         console.log( "File: /src/controllers/user/cart/checkout/checkout_post.controller.js" );

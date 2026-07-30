@@ -1,5 +1,12 @@
 <%- include( "../partials/header/postlogin" ) -%>
 
+<%
+const ship_address = "ship_address";
+const ship_city = "ship_city";
+const ship_state = "ship_state";
+const ship_phone = "ship_phone";
+%>
+
 <div class="container">
     <div class="row">
 
@@ -8,10 +15,24 @@
                 <h1 class="order-confirmation__heading">Place an Order</h1>
             </div>
 
-            <form action="/profile/cart/checkout" method="POST">
+            
+            <form action="/profile/cart/checkout" method="POST" id="confirmOrderForm">
                 <div class="order-confirmation__body-container">
                     <div class="order-confirmation__info">
-                        <h4>Payment Method</h4>
+                        <div class="d-flex">
+                            <h4>Payment Method</h4>
+                            <% if ( paymentSuccess ) { %>
+                                <div class="bg-success text-light rounded round-3 ps-5 pe-5 p-2 ms-auto">
+                                    <b>You have successfully paid your bill using Safepay</b>
+                                </div>  
+                            <% } %>
+
+                            <% if ( paymentError ) { %>
+                                <div class="bg-danger text-light rounded round-3 ps-5 pe-5 p-2 ms-auto">
+                                    <b>Error: Your Payment is Failed (Please try again)</b>
+                                </div>  
+                            <% } %>
+                        </div>
                         <hr />
                         
 
@@ -26,6 +47,17 @@
                                     checked="checked" /> Cash On Delivery
                             </label>
                         </div>
+
+                        <div>
+                            <label for="paywithcard_opt">
+                                <input 
+                                    id="paywithcard_opt" 
+                                    type="radio"
+                                    name="payment_method" 
+                                    value="Card" /> Pay with Credit/Debit Card
+                            </label>
+                        </div>
+
                         <div>
                             <label for="easypaisa_opt">
                                 <input 
@@ -44,11 +76,31 @@
                                 <p>No details required. Pay on delivery.</p>
                             </div>
 
+                            <!-- PayWithCard -->
+                            <div id="Card" class="payment-box__info">
+                                <div class="payment-box__image-container w-100">
+                                    <img 
+                                        src="/assets/images/debit-card.png"
+                                        class="payment-box__image mb-4"
+                                        style="width: 300px; border-radius: 5px;"
+                                    />
+                                </div>
+                                <div class="payment-box__admin-account-info">
+                                        <h3 class="mb-4">Pay with Credit/Debit Card</h3>
+                                        <button 
+                                            type="submit" 
+                                            id="payWithCardAndSubmit" 
+                                            class="btn btn-danger mb-3">
+                                            Pay with Card and Confirm Order
+                                        </button>
+                                </div>
+                            </div>
+
                             <!-- Easypaisa -->
                             <div id="Easypaisa" class="payment-box__info">
                                 <div class="payment-box__image-container w-100">
                                     <img 
-                                        src="/assets/images/easypaisa.jpg"
+                                        src="/assets/images/easypaisa.png"
                                         class="payment-box__image mb-4"
                                         style="width: 300px; border-radius: 5px;"
                                     />
@@ -86,19 +138,47 @@
                                             <label for="ship_address">Shipping Address</label>
                                             <input 
                                                 type="text" 
-                                                name="ship_address"
-                                                id="ship_address"
+                                                name=<%= ship_address %>
+                                                id=<%= ship_address %>
                                                 class="shipping-form__input"
                                                 required="required" />
+                                                <%# Display Shipping Address validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_address ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
 
                                         <div class="shipping-form__field">
                                             <label for="ship_city">City</label>
                                             <input type="text" 
-                                                name="ship_city"
-                                                id="ship_city"
+                                                name=<%= ship_city %>
+                                                id=<%= ship_city %>
                                                 class="shipping-form__input"
                                                 required="required" />
+                                                <%# Display Shipping City validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_city ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
                                     </div>
 
@@ -107,18 +187,49 @@
                                         <div class="shipping-form__field">
                                             <label for="ship_state">State</label>
                                             <input type="text" 
-                                                name="ship_state" 
-                                                id="ship_state" 
+                                                name=<%= ship_state %> 
+                                                id=<%= ship_state %>
+                                                value="Pakistan"
                                                 class="shipping-form__input"
-                                                required="required" />
+                                                required="required"
+                                                readonly="true" />
+                                                <%# Display Shipping State validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_state ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
 
                                         <div class="shipping-form__field">
-                                            <label for="ship_postal">Postal Code</label>
+                                            <label for="ship_phone">Mobile number</label>
                                             <input type="text" 
-                                                name="ship_postal" 
-                                                id="ship_postal" 
+                                                name=<%= ship_phone %> 
+                                                id=<%= ship_phone %>
+                                                required="required"
                                                 class="shipping-form__input" />
+                                                <%# Display Shipping City validation Errors %>
+                                                <div class="error-message">
+                                                    <% shippingInfoErrors.forEach(error => { %>
+                                                        <% if ( error.path == ship_phone ) { %>
+                                                            <span class="text-danger d-block me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="text-danger d-none me-3">
+                                                                &#128204; <%= error.msg %>
+                                                            </span>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </div>
                                         </div>
                                     </div>
 
@@ -176,10 +287,10 @@
                                         </div>
 
                                         <div class="shipping-form__field">
-                                            <label for="perm_postal">Postal Code</label>
+                                            <label for="perm_phone">Mobile Number</label>
                                             <input type="text" 
-                                                name="perm_postal" 
-                                                id="perm_postal" 
+                                                name="perm_phone" 
+                                                id="perm_phone" 
                                                 class="shipping-form__input" />
                                         </div>
                                     </div>
@@ -196,18 +307,22 @@
                         <div class="shopping-cart__order-details">
                             <h3 class="shopping-cart__order-title">Order Summary</h3>
                             <div class="shopping-cart__order-details-row">
-                                <p>Subtotal</p>
+                                <p><b>Subtotal</b></p>
                                 <p>
                                     <i>Rs.</i><%= totalAmount %>
                                 </p>
                             </div>
                             <div class="shopping-cart__order-details-row">
-                                <p>Delivery Charges</p>
+                                <p><b>Delivery Charges</b></p>
                                 <p><i>Rs.</i>300</p>
                             </div>
                             <div class="shopping-cart__order-details-row">
-                                <p>Items</p>
+                                <p><b>Items</b></p>
                                 <p><%= totalCartItems %></p>
+                            </div>
+                            <div class="shopping-cart__order-details-row">
+                                <p><b>Payment status</b></p>
+                                <p><b>Unpaid</b></p>
                             </div>
                             <div class="shopping-cart__order-details-row">
                                 <p><b><i>Total</i></b></p>
@@ -216,7 +331,7 @@
                         </div>
 
                         <div class="shopping-cart__order-actions">
-                            <button type="submit" class="btn btn-dark w-100 fs-5 rounded rounded-1">
+                            <button type="submit" id="normalOrderFormSubmit" class="btn btn-dark w-100 fs-5 rounded rounded-1">
                                 <b>Confirm Order</b>
                             </button>
                         </div>
@@ -230,6 +345,10 @@
 
 <script>
     const emptyCartMsg = "<%= emptyCartMsg %>";
+    const input_ship_address = "<%= ship_address %>";
+    const input_ship_city = "<%= ship_city %>";
+    const input_ship_state = "<%= ship_state %>";
+    const input_ship_phone = "<%= ship_phone %>";
     
     if ( emptyCartMsg ) {
         window.alert( emptyCartMsg );

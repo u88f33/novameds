@@ -18,11 +18,17 @@ const ManageSupplierRecordsCtrl = ( req, res, next ) => {
         const supplierRecordsErrors = req.session.supplierRecordsErrors || [];
 
         req.session.supplierRecordsErrors = null;
+
+        let message = req.query.message || "";
+        let errorMessage = req.query.errorMessage || "";
+        
         
         res.render(
             "admin/manage/suppliers/add",
             {
-                supplierRecordsErrors
+                supplierRecordsErrors,
+                message,
+                errorMessage
             }
         );
 

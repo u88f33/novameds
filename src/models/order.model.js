@@ -14,7 +14,7 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    postalCode: {
+    phoneNumber: {
         type: String,
     }
 }, { _id: false });
@@ -57,12 +57,13 @@ const orderCollectionSchema = new mongoose.Schema({
     paymentMethod: {
         type: String,
         required: true,
-        default: "Cash on Delivery"
+        enum: [ "Easypaisa", "Safepay", "COD" ],
+        default: "COD"
     },
     paymentStatus: {
         type: String,
         required: true,
-        enum: [ "Paid", "Unpaid", "Pay on Delivery" ],
+        enum: [ "Paid", "Unpaid", "Pay on Delivery", "Updated soon" ],
         default: "Unpaid"
     },
     totalAmount: {
