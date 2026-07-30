@@ -57,8 +57,8 @@ const orderCollectionSchema = new mongoose.Schema({
     paymentMethod: {
         type: String,
         required: true,
-        enum: [ "Easypaisa", "Safepay", "Cash on Delivery" ],
-        default: "Cash on Delivery"
+        enum: [ "Easypaisa", "Safepay", "COD" ],
+        default: "COD"
     },
     paymentStatus: {
         type: String,

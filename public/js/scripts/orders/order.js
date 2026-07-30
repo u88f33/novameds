@@ -98,7 +98,7 @@ orderForm.addEventListener( "submit", async function( event ) {
 
         try {
             const response = await fetch(
-                "/profile/cart/checkout/card/generate/order",
+                "/profile/cart/checkout/save/address/safepay",
                 {
                     method: "POST",
                     headers: {
@@ -109,14 +109,12 @@ orderForm.addEventListener( "submit", async function( event ) {
             );
 
             const result = await response.json();
+            window.location.href = result.safepayUrl;
+            return true;
         } catch ( err ) {
-            console.log( "Error while fetching shipping and permanent address" );
-            console.log( "Error in /js/scripts/orders/order.js" );
-            console.log( `Error: ${ err.message }` );
+            console.log( err );
         }
-
-        window.location.href = safepayUrl;
-        return;
     }
+
     
 } )

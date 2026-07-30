@@ -2,7 +2,6 @@ import CartCollection from "../../../../models/cart.model.js";
 import OrderCollection from "../../../../models/order.model.js";
 import MedicineCollection from "../../../../models/medicines.model.js";
 import PDFDocument from "pdfkit";
-import { newOrder } from "./checkout.controller.js";
 import generateInvoice from "../../../../utils/invoice/pdfGenerator.js";
 import path from "path";
 import fs from "fs";
@@ -17,6 +16,8 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             req.session.shippingInfoErrors = errors.errors;
             return res.redirect("/profile/cart/checkout");
         }
+
+        let newOrder = new OrderCollection();
 
         const {
             payment_method,
@@ -104,6 +105,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
             totalAmount        
         };
 
+        
         newOrder.customerId = customerId;
         newOrder.items = items;
         newOrder.permanentAddress = permanentAddress;
@@ -112,7 +114,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
         newOrder.orderStatus = "Pending",
         newOrder.totalAmount = totalAmount
 
-        console.log( newOrder );
+        
         const insertDataInMongoDB = await newOrder.save();
 
 
@@ -133,6 +135,7 @@ const CheckoutPageCtrlPost = async ( req, res, next ) => {
         }
 
        res.redirect( `/profile/cart/order/confirm/${ confirmedOrderDetails._id }` );
+
 
     } catch ( error ) {
         console.log( "File: /src/controllers/user/cart/checkout/checkout_post.controller.js" );
