@@ -1,3 +1,4 @@
+import OrderCollection from "../../../../models/order.model.js";
 import { generateSafepayWebhook } from
 "../../../../utils/safepay/safepay.js";
 
@@ -7,14 +8,16 @@ const WebhookBySafepayServer = async ( req, res, next ) => {
         const valid = await generateSafepayWebhook( req );
         const orderId = req.body.data.notification.metadata.order_id;
 
-        
-
         if ( valid ) {
-            console.log( "-------------------------------" )
-            console.log( "Webhook" )
-            console.log( "-------------------------------" )
-            console.log( valid );
-            console.log( "-------------------------------" )
+            const updatePaymentStatus = await OrderCollection.findByIdAndUpdate(
+                orderId,
+                { paymentStatus: "Paid" }
+            )
+        } else {
+            const updatePaymentStatus = await OrderCollection.findByIdAndUpdate(
+                orderId,
+                { paymentStatus: "Unpaid" }
+            )
         }
 
     } catch ( err ) {
