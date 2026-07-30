@@ -63,7 +63,7 @@ const orderCollectionSchema = new mongoose.Schema({
     paymentStatus: {
         type: String,
         required: true,
-        enum: [ "Paid", "Unpaid", "Pay on Delivery" ],
+        enum: [ "Paid", "Unpaid", "Pay on Delivery", "Updated soon" ],
         default: "Unpaid"
     },
     totalAmount: {

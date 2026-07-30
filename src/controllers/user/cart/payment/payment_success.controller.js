@@ -70,7 +70,7 @@ const paymentSuccessCtrl = async ( req, res, next ) => {
         newOrder.permanentAddress = req.session.permanentAddress;
         newOrder.orderStatus = "Pending";
         newOrder.paymentMethod = "Safepay";
-        newOrder.paymentStatus = "Under Process... (Updated soon)"
+        newOrder.paymentStatus = "Updated soon"
         newOrder.totalAmount = totalAmount
         
         const insertDataInMongoDB = await newOrder.save();
